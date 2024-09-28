@@ -5,14 +5,14 @@ project:
 language: tr.yml
 
 book:
-  title: "İstatistik"
+  title: "İstatistik Ders Notları"
   author: "Hüseyin Taştan"
   date: ""
   chapters:
     - index.qmd
     - Giris.qmd
-#    - R-base.qmd
-#    - Betimsel.qmd
+    - R-base.qmd
+    - Betimsel.qmd
 #    - Olasilik.qmd
 #    - Kesiklird.qmd
 #    - Sureklird.qmd
@@ -21,9 +21,9 @@ book:
 #    - Noktatahmini.qmd
 #    - Araliktahmini.qmd
 #    - Hipotez.qmd
-    - kaynaklar.qmd
+#    - kaynaklar.qmd
 
-bibliography: kaynaklar.bib
+#bibliography: kaynaklar.bib
 format:
   html:
     theme: cosmo

@@ -1,9 +1,18 @@
-# Önsöz {.unnumbered}
+# Plan {.unnumbered}
 
-Bu kitabın amacı:
 
-Kapsamı:
+Bu kitap İstatistik I ve İstatistik II ders notlarının bir araya getirilmesiyle oluşturulmuştur. İstatistik I, betimsel istatistik, olasılık, ve dağılım teorisi konularını kapsamaktadır. Ders planına buradan ulaşabilirsiniz: <https://htastan.github.io/istatistik/Istatistik_I_Syllabus_2024_Fall.pdf>
 
-Hedef kitle:
+İstatistik I dersinin amacı, öğrencilere temel istatistik kavramlarını ve yöntemlerini tanıtarak, veriye dayalı analiz yapabilme becerisi kazandırmaktır. Bu ders, öğrencilerin ekonomi ve sosyal bilimler alanındaki problemleri istatistiksel yöntemlerle analiz edebilme yeteneğini geliştirmeyi hedefler. Ayrıca, öğrencilerin veri toplama, düzenleme, analiz etme ve yorumlama süreçlerini etkin bir şekilde yürütebilmeleri için gerekli teorik ve uygulamalı bilgi altyapısını sunar.
 
-Genel yapısına ilişkin özet ve yol haritası
+Ders kapsamında, betimsel istatistik, olasılık kuramı, kesikli ve sürekli olasılık dağılımları, normal dağılım, Merkezi Limit Teoremi, ve örnekleme kavramları incelenecektir. Bu dersin ikinci kısmını oluşturan İstatistik II dersinde ise ağırlıklı olarak çıkarsama konuları ele alınacaktır (nokta ve aralık tahmini, hipotez testleri, varyans analizi). Öğrenciler bu kavramları hem teorik düzeyde hem de çeşitli uygulamalar aracılığıyla öğrenerek, özellikle iktisadi veriler üzerinde anlamlı çıkarımlar yapma yetisi kazanacaklardır. Ders, ekonominin yanı sıra sosyal bilimlerin diğer alanlarında karşılaşılan problemlerin çözümünde istatistiksel araçların nasıl kullanılacağını göstermeyi amaçlamaktadır.
+ 
+İstatistik yazılımı: Derslerde ve laboratuvar oturumlarında `R` kullanacağız. `R`, istatistiksel hesaplamalar ve grafikler için kullanılan, istatistikçiler, araştırmacılar, veri bilimciler ve ekonometrisyenler ile endüstri profesyonelleri tarafından yaygın olarak tercih edilen açık kaynaklı bir yazılımdır. `R`'ın en son sürümünü şu adresten indirebilirsiniz:
+
+<https://www.r-project.org/>
+
+R için entegre bir geliştirme ortamı olarak R-studio kullanılabilir:
+
+<https://www.rstudio.com/products/RStudio/> 
+
+
