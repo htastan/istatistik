@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>İstatistik - 1&nbsp; Giriş</title>
+<title>İstatistik Ders Notları - 1&nbsp; Giriş</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./kaynaklar.html" rel="next">
+<link href="./R-base.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">İstatistik</a> 
+      <a href="./">İstatistik Ders Notları</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -101,13 +101,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Önsöz</span></a>
+ <span class="menu-text">Plan</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Giris.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Giriş</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R-base.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Programına Giriş</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Betimsel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Betimsel İstatistik</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -122,7 +134,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">İçindekiler</h2>
+   
+  <ul>
+  <li><a href="#istatistik-nedir" id="toc-istatistik-nedir" class="nav-link active" data-scroll-target="#istatistik-nedir"><span class="header-section-number">1.1</span> İstatistik Nedir?</a></li>
+  <li><a href="#istatistiğin-kullanım-alanları" id="toc-istatistiğin-kullanım-alanları" class="nav-link" data-scroll-target="#istatistiğin-kullanım-alanları"><span class="header-section-number">1.2</span> İstatistiğin kullanım alanları</a></li>
+  <li><a href="#istatistiksel-süreç-ve-bilimsel-yöntem" id="toc-istatistiksel-süreç-ve-bilimsel-yöntem" class="nav-link" data-scroll-target="#istatistiksel-süreç-ve-bilimsel-yöntem"><span class="header-section-number">1.3</span> İstatistiksel süreç ve bilimsel yöntem</a></li>
+  <li><a href="#istatistik-veri-bilimi-ve-yapay-zeka" id="toc-istatistik-veri-bilimi-ve-yapay-zeka" class="nav-link" data-scroll-target="#istatistik-veri-bilimi-ve-yapay-zeka"><span class="header-section-number">1.4</span> İstatistik, Veri Bilimi ve Yapay Zeka</a></li>
+  <li><a href="#istatistiksel-yazılımlar" id="toc-istatistiksel-yazılımlar" class="nav-link" data-scroll-target="#istatistiksel-yazılımlar"><span class="header-section-number">1.5</span> İstatistiksel Yazılımlar</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -144,8 +166,76 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="istatistik-nedir" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="istatistik-nedir"><span class="header-section-number">1.1</span> İstatistik Nedir?</h2>
+<p>İstatistik, verilerin toplanması, düzenlenmesi, özetlenmesi, analiz edilmesi ve yorumlanması ile uğraşan bir bilim dalıdır. Günümüzde bilgiye dayalı karar alma süreçlerinde istatistik vazgeçilmez bir araç haline gelmiştir. İster bireysel kararlar isterse büyük organizasyonların stratejik kararları olsun, çoğu zaman güvenilir veriler ve bu verilerin doğru analizi gereklidir.</p>
+<p>İstatistik bilimi aşağıdaki işlevleri içinde barındırır:</p>
+<ul>
+<li><p>Verileri tanımlama ve özetleme: Büyük veri yığınlarının sistematik bir şekilde özetlenmesi, betimlenmesi ve anlam çıkarılması istatistiğin temel görevlerinden biridir. Betimsel istatistik bu amaca uygun sayısal ve görsel yöntemler geliştirmiştir.</p></li>
+<li><p>Belirsizliğin ele alınması: İstatistik belirsizliğin bilimi olarak düşünülebilir. Olasılık teorisi, istatistiksel çıkarsamanın temelini oluşturur ve belirsizliğin incelenmesi için gereken bilimsel dili ve araçları sunar.</p></li>
+<li><p>Anakütleye ilişkin çıkarım ve genellemeler yapma: Örneğin, yeni bir ürün geliştiren bir firma tüm tüketicilerden oluşan anakütlenin bu ürüne olan talebi ile ilgilenebilir. Ancak çoğu durumda anakütle yerine onu temsil eden bir örneklem üzerinden çıkarım ve genellemeler yapılır. Daha küçük bir tüketici alt kümesinden hareketle tüm pazara ilişkin genellemeler yapılabilir ve ürüne ilişkin bir pazarlama stratejisi geliştirilebilir.</p></li>
+<li><p>İlişkilerin analizi: İstatistik, değişkenler arasındaki ilişkilerin analiz edilmesi için çeşitli yöntemler içerir. Korelasyon ve regresyon analizi, iki değişken arasındaki ilişkinin doğasını anlamaya yardımcı olur. Örneğin, reklam harcamaları ile satışlar arasındaki ilişki bu yöntemlerle ortaya konabilir.</p></li>
+<li><p>Nedensellik analizi: İstatistik aynı zamanda nedensel ilişkilerin tahmin edilmesi için deneysel yaklaşımlar sunar. Deney tasarımı ve deneysel verilerin toplanması, belirli bir müdahalenin (tedavinin) hedef değişkenler üzerindeki etkisini analiz etmeye olanak tanır. Bu deneysel yöntemler, gözlemsel çalışmalardan farklı olarak, kontrol grupları ve rastgele atama gibi tekniklerle bir nedensellik ilişkisi kurmaya yardımcı olur.</p></li>
+<li><p>Geleceğe yönelik tahminler yapma (kestirim/öngörü): İstatistik, geçmiş verilere dayanarak gelecekteki olaylar hakkında tahmin yapmak için yöntemler geliştirir. Örneğin, bir şirket geçmiş yıllardaki satış verilerine dayanarak önümüzdeki yıl için satış tahminlerinde bulunabilir. Zaman serisi analizi, ekonometrik modeller ve makine öğrenimi yöntemleri bu süreçte kullanılabilir. İstatistik tüm bu yöntemlerin temelini oluşturur.</p></li>
+<li><p>Belirsizlik altında karar verme: Karar verme süreçlerinde belirsizlik her zaman mevcuttur. İstatistik, bu belirsizlikleri hesaba katarak olası sonuçların risklerini değerlendirir ve daha doğru kararlar alınmasına yardımcı olur. Örneğin, bir yatırım şirketi, borsadaki dalgalanmaları göz önünde bulundurarak hangi hisse senedine yatırım yapacağına karar verirken istatistiksel analizlerden yararlanabilir.</p></li>
+</ul>
+</section>
+<section id="istatistiğin-kullanım-alanları" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="istatistiğin-kullanım-alanları"><span class="header-section-number">1.2</span> İstatistiğin kullanım alanları</h2>
+<p>İstatistik hemen her alanda kullanılır. Örneğin:</p>
+<ul>
+<li><p>Ekonomi: Enflasyon, işsizlik oranları, büyüme oranları gibi ekonomik göstergelerin hesaplanması ve analiz edilmesi istatistiğin konuları arasındadır. Ayrıca, ekonometrik modellerin oluşturulması, tahmini ve yorumlanması için istatistiksel araçların kullanılması zorunludur. Örneğin, bir ülkenin GSYİH büyüme oranlarını veya gelir dağılımındaki değişimleri incelemek ve nedensel ilişkiler kurmak ekonometrik analizler gerektirir.</p></li>
+<li><p>İşletme: İş dünyasında istatistik, karar verme süreçlerini destekleyen önemli bir araçtır. Pazarlama stratejilerinin belirlenmesi, müşteri memnuniyeti anketlerinin analizi ve finansal risklerin yönetimi istatistiksel yöntemlerle gerçekleştirilir. Örneğin, işletmeler pazar araştırmaları ve müşteri verilerini kullanarak ürün geliştirme ve pazarlama stratejilerini şekillendirirler. Finans alanında, portföy yönetimi, risk analizi ve stok tahminleri gibi süreçlerde de istatistiksel yöntemler kullanılmaktadır. Ayrıca, işletme operasyonlarının etkinliğini ölçmek ve iyileştirmek için veri analitiği ve ileri istatistiksel modellemeler giderek daha fazla tercih edilmektedir.</p></li>
+<li><p>Sağlık Bilimleri: Klinik çalışmalar, ilaç etkinliği testleri ve epidemiyolojik araştırmalar gibi alanlarda istatistiksel analizler büyük bir öneme sahiptir. İlaçların güvenliği ve etkinliği üzerine yapılan araştırmalar, rastgele kontrollü deneyler (RCT’ler) ile yürütülür ve sonuçların analizinde istatistiksel yöntemler kullanılır. Ayrıca, bulaşıcı hastalıkların yayılımını inceleyen epidemiyolojik çalışmalar, salgın hastalıkların kontrolü ve önlenmesi için gerekli olan verileri sağlar.</p></li>
+<li><p>Sosyal Bilimler: Toplumun genel eğilimlerini anlamak, kamuoyu yoklamaları ve anket analizleri istatistiğin önemli bir parçasıdır. Örneğin, seçim anketleri veya tüketici davranışlarıyla ilgili araştırmalar, istatistiksel analizlerle desteklenir. Sosyal bilimler araştırmalarında nedensel ilişkilerin belirlenmesi de istatistiksel modellemelerle yapılır, bu da kamu politikalarının ve sosyal programların etkisini anlamada önemli bir rol oynar.</p></li>
+<li><p>Mühendislik: Mühendislikte istatistik, üretim süreçlerinde kalite kontrol ve güvenilirlik analizleri için vazgeçilmezdir. Üretim hatlarının verimliliğini artırmak, arızaları önlemek ve ürün kalitesini sağlamak için mühendisler, istatistiksel süreç kontrolü ve güvenilirlik mühendisliği gibi çeşitli yöntemler kullanırlar.</p></li>
+</ul>
+</section>
+<section id="istatistiksel-süreç-ve-bilimsel-yöntem" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="istatistiksel-süreç-ve-bilimsel-yöntem"><span class="header-section-number">1.3</span> İstatistiksel süreç ve bilimsel yöntem</h2>
+<p>İstatistiksel analiz genellikle şu adımları içerir:</p>
+<ul>
+<li><p>Veri Toplama: Doğru ve güvenilir veri toplama süreci, istatistiksel analizlerin temelini oluşturur. Anketler, deneyler veya gözlemlerle veri toplanabilir.</p></li>
+<li><p>Veri Düzenleme: Toplanan veriler analiz edilebilir hale getirilir. Eksik veriler tamamlanır, hatalı veriler düzeltilir.</p></li>
+<li><p>Veri Analizi: İstatistiksel teknikler kullanılarak veriler incelenir. Betimsel ve çıkarımsal istatistiklerle veri hakkında sonuçlar çıkarılır.</p></li>
+<li><p>Sonuçların Yorumlanması: Elde edilen bulguların anlamı değerlendirilir ve karar alma süreçlerinde kullanılır.</p></li>
+</ul>
+<p>Bilimsel yöntem, gözlemler ve deneylerle hipotezleri test etmeyi içerir. İstatistik, bu süreçte kullanılan temel yöntemleri içerir ve yeni yöntemler geliştirir. Bilimsel araştırma süreçleri genel olarak şu aşamalardan oluşur:</p>
+<ul>
+<li><p>Hipotez Oluşturma: Bilimsel araştırmaların ilk adımı araştırma sorusunu ve hipotezlerini ortaya koymaktır. Araştırmacı teorik modellere, mevcut bulgu ve gözlemlere dayanarak bir hipotez ileri sürer.</p></li>
+<li><p>Veri Toplama: Hipotezi test etmek için deneyler veya gözlemler yoluyla veri toplanır.</p></li>
+<li><p>Veri Analizi: Toplanan veriler istatistiksel analizlerle değerlendirilir.</p></li>
+<li><p>Hipotezin Test Edilmesi: Veriler ışığında hipotez kabul veya reddedilir.</p></li>
+</ul>
+<p>Deneysel ve gözlemsel araştırmalar bu sürecin iki temel bileşenidir:</p>
+<ul>
+<li><p>Deneysel Araştırmalar: Araştırmacının müdahalesiyle yürütülen kontrollü deneyleri kapsar.</p></li>
+<li><p>Gözlemsel Araştırmalar: Doğal ortamda gözlemlerle veri toplanan araştırmaları içerir.</p></li>
+</ul>
+</section>
+<section id="istatistik-veri-bilimi-ve-yapay-zeka" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="istatistik-veri-bilimi-ve-yapay-zeka"><span class="header-section-number">1.4</span> İstatistik, Veri Bilimi ve Yapay Zeka</h2>
+<p>İstatistik, günümüzde hızla gelişen veri bilimi, makine öğrenimi, veri madenciliği ve yapay zeka (AI) gibi interdisipliner alanların temel taşlarından biridir. Bu alanlar, büyük veri kümeleri ile çalışmak ve bu verilerden anlamlı sonuçlar çıkarmak için istatistiksel yöntemlerden geniş ölçüde yararlanır.</p>
+<p>Veri Bilimi (Data Science): Veri bilimi, yapılandırılmış ve yapılandırılmamış büyük veri setlerinden bilgi çıkarma amacı güder. İstatistik, veri bilimcilerin veri temizleme, modelleme, analiz ve görselleştirme süreçlerinde kullandıkları temel araçları içerir. Ayrıca, istatistiksel çıkarımlar, veri biliminin hipotez testi ve güven aralıkları gibi analiz süreçlerine rehberlik eder.</p>
+<p>Makine Öğrenimi (Machine Learning): İstatistik, makine öğrenimi algoritmalarının geliştirilmesinde büyük bir rol oynar. Regresyon, sınıflandırma, kümeleme gibi temel makine öğrenimi algoritmaları istatistiksel yöntemlerle yakından ilişkilidir. İstatistik, ayrıca model performansını değerlendirme ve sonuçların genellenebilirliğini sağlama süreçlerinde de kullanılır.</p>
+<p>Veri Madenciliği (Data Mining): Veri madenciliği, büyük veri kümelerinden anlamlı desenler ve ilişkiler keşfetme sürecidir. Bu alanda kullanılan pek çok yöntem, istatistiksel teknikler üzerine kuruludur. Örneğin, kümeleme algoritmaları, ilişki kurma ve hipotez oluşturma gibi işlemler, istatistiksel modellere dayanır.</p>
+<p>Yapay Zeka (Artificial Intelligence - AI): Yapay zeka, insan benzeri karar verme süreçlerini simüle eden sistemler geliştirmeyi hedefler. Bu sistemlerin temelinde, genellikle istatistiksel analizler ve olasılık teorisi yatar. AI uygulamalarında belirsizlikleri yönetme, riskleri hesaplama ve sonuçları tahmin etme gibi işlemler için istatistiksel yöntemler hayati öneme sahiptir. Örneğin, doğal dil işleme (NLP) alanında büyük metinlerde kelime sıklığı ve sentiment analizinde, hangi kelimelerin daha anlamlı olduğunu, ve olumlu veya olumsuz duygudurumu belirlemek için istatistiksel yöntemler kullanılır.</p>
+<p>Sonuç olarak, bu alanlar istatistikten doğrudan beslenmekte ve her biri verinin gücünden yararlanarak daha iyi kararlar almak ve tahminlerde bulunmak için istatistiksel araçları kullanmaktadır. Modern veri analiz dünyasında istatistiğin, bu disiplinlerle entegrasyonu, verinin doğru yorumlanması ve anlamlı sonuçlar çıkarılması açısından vazgeçilmezdir.</p>
+</section>
+<section id="istatistiksel-yazılımlar" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="istatistiksel-yazılımlar"><span class="header-section-number">1.5</span> İstatistiksel Yazılımlar</h2>
+<p>İstatistiksel yazılımlar günümüzde istatistik biliminin vazgeçilmez bir parçası haline gelmiştir. Geniş veri setleri üzerinde analiz yapmak, karmaşık modeller oluşturmak ve sonuçları görselleştirmek için bilgisayar yazılımları kullanmak, manuel yöntemlerle mümkün olmayacak kadar kapsamlı analizlerin hızlı ve etkili bir şekilde yapılmasını sağlar. Bu yazılımlar, akademik araştırmalardan endüstriyel projelere kadar her alanda kullanılan çok çeşitli araçlar sunar. İstatistiksel yazılımlar, kullanıcıya modelleme, veri yönetimi ve grafik oluşturma gibi fonksiyonlar sağlar. Bazı yazılımlar ticari olarak sunulurken, bazıları açık kaynaklı ve ücretsizdir. Her yazılımın sunduğu özellikler ve kullanım kolaylığı farklılık gösterebilir; bu da kullanıcıların ihtiyaçlarına göre seçim yapmasına olanak tanır.</p>
+<p>Yaygın olarak kullanılan istatistiksel yazılımlar şunlardır:</p>
+<p>R: Bu kitapta kullanılan R, açık kaynaklı ve güçlü bir istatistiksel programlama dilidir. R, geniş bir paket yelpazesi ve kullanıcı topluluğu sayesinde istatistiksel analizlerde esneklik sağlar. Veri analizinden makine öğrenimi algoritmalarına kadar birçok alanda kullanılan R, kullanıcıya istatistiksel modelleme, veri görselleştirme ve simülasyon olanakları sunar. R’ın popülerliği, esnekliği ve topluluk desteği, onu hem akademik dünyada hem de iş dünyasında önemli bir araç haline getirmiştir. Ayrıca, RStudio gibi entegre geliştirme ortamları, bu dili daha erişilebilir ve kullanışlı hale getirir.</p>
+<p>SPSS: Sosyal bilimlerde ve pazar araştırmalarında yaygın olarak kullanılan bu ticari yazılım, kullanıcı dostu bir arayüze sahiptir. SPSS, anket analizleri, regresyon modelleri ve temel istatistiksel testler gibi işlemler için idealdir. Kullanıcının programlama bilgisi gerektirmeden analiz yapabilmesi, SPSS’in yaygın olarak tercih edilmesinin başlıca sebeplerinden biridir. Özellikle anket verilerinin analizi ve sosyal bilimler araştırmalarında tercih edilen SPSS, sunduğu geniş kapsamlı raporlama ve tablo oluşturma araçlarıyla dikkat çeker.</p>
+<p>Excel: Microsoft Excel, istatistiksel analizler için kullanılabilecek temel işlevlere sahip, yaygın bir elektronik tablo programıdır. Excel, büyük veri kümelerinin hızlı bir şekilde işlenmesi ve görselleştirilmesi için ideal bir araçtır. Özellikle küçük ölçekli analizler ve veri düzenleme işlemleri için pratik bir çözüm sunar. Kullanıcılar, Excel’de yerleşik fonksiyonlar sayesinde ortalama, standart sapma ve regresyon analizi gibi temel istatistiksel hesaplamaları kolayca yapabilirler. Bununla birlikte, daha karmaşık istatistiksel analizler için sınırlı kalabilir, bu durumda ek eklentiler veya daha gelişmiş yazılımlar tercih edilebilir.</p>
+<p>SAS: Büyük veri setleri üzerinde hızlı analiz yapabilme kabiliyeti ile bilinen SAS, ticari bir yazılım olarak birçok sektörde yaygın şekilde kullanılmaktadır. Özellikle bankacılık, sağlık ve sigorta gibi büyük veri gerektiren sektörlerde tercih edilen SAS, güçlü istatistiksel araçlar ve veri yönetimi özellikleri sunar. SAS’ın güçlü yanlarından biri de gelişmiş raporlama ve veri madenciliği yetenekleridir.</p>
+<p>Stata: Ekonomi, ekonometri ve sosyal bilimler araştırmalarında yaygın olarak kullanılan ticari bir yazılımdır. Stata, özellikle panel veri analizleri, nedensel çıkarım ve zaman serisi analizleri gibi alanlarda güçlü araçlar sunar. Kullanıcı dostu komut sistemi sayesinde, Stata, hem basit hem de karmaşık istatistiksel analizler için esnek bir platform sunar. Gelişmiş veri yönetimi, modelleme ve grafik oluşturma yetenekleri, onu araştırma projelerinde yaygın bir seçim haline getirmiştir.</p>
+<p>Python: Veri bilimi ve makine öğrenimi alanında yaygın olarak kullanılan Python, istatistiksel analizlerde de güçlü bir araçtır. Pandas, NumPy, SciPy ve StatsModels gibi kütüphaneler sayesinde Python, hem veri işleme hem de istatistiksel modelleme açısından büyük esneklik sağlar. Python’un açık kaynak olması ve geniş bir topluluğa sahip olması, onu veri bilimi projelerinde popüler bir dil haline getirmiştir.</p>
+<p>Bunların dışında Minitab, JMP, Julia gibi başka yazılımlar da bulunmaktadır. Her bir yazılım, farklı alanlara ve ihtiyaçlara yönelik özel araçlar ve özellikler sunarak kullanıcıların istatistiksel analizleri daha verimli yapmalarını sağlar. Bu nedenle, hangi yazılımın kullanılacağı, analiz edilen verinin türüne, analiz yöntemlerine ve kullanıcının uzmanlık düzeyine göre değişiklik gösterebilir.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -384,12 +474,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Önsöz</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plan</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./kaynaklar.html" class="pagination-link">
-        <span class="nav-page-text">Kaynaklar</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./R-base.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Programına Giriş</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
