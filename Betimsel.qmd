@@ -1,8 +1,10 @@
 # Betimsel İstatistik {#sec-betimsel}
 
-İstatistiksel analizin önemli aşamalarından biri verilerin betimlenmesi ve özetlenmesidir. Betimsel istatistik verilerin çeşitli sayısal ve görsel araçlar yardımıyla özetlenmesi ile uğraşır. Bu bölümde, veri kümelerinin temel özelliklerini tanımlamada yaygın olarak kullanılan sayısal ve görsel yöntemleri inceleyeceğiz. Bu yöntemler, veri kümesinin genel yapısını anlamaya ve sayısal bilgi yığınlarındaki gizli örüntüleri, ilişkileri ve sıra dışı davranışları tanımlamaya yardımcı olur. Betimsel istatistiklerin kullanımı, verinin türünden veya büyüklüğünden bağımsız olarak faydalıdır. Küçük veri setlerinden büyük veri tabanlarına kadar her türlü veri üzerinde kullanılabilir. Görgül bilimsel verilerle çalışmaya başlamanın ilk adımı betimsel istatistiklerin incelenmesidir. Bu analizler, verileriniz hakkında genel bir anlayış sağlar ve daha karmaşık analitik tekniklerin temelini oluşturur.
+İstatistiksel analizin önemli aşamalarından biri verilerin betimlenmesi ve özetlenmesidir. Betimsel istatistik verilerin çeşitli sayısal ve görsel araçlar yardımıyla özetlenmesi ile uğraşır. Bu bölümde, veri kümelerinin temel özelliklerini tanımlamada yaygın olarak kullanılan görsel ve sayısal yöntemleri inceleyeceğiz. Bu yöntemler, veri kümesinin genel yapısını anlamaya ve sayısal bilgi yığınlarındaki gizli örüntüleri, ilişkileri ve sıra dışı davranışları tanımlamaya yardımcı olur. 
 
-Bu bölümde, ilk olarak veri kümelerinin ve değişkenlerin özelliklerini ele alacağız. Daha sonra verilerin merkezi eğilimini (ortalama, medyan, mod) ve değişkenliğini (standart sapma, varyans) ölçmeye yönelik temel teknikleri inceleyeceğiz. Ayrıca, veri dağılımını görselleştirmek için histogramlar, kutu grafikleri ve diğer grafik türlerini nasıl kullanacağımızı öğreneceğiz. 
+Betimsel istatistiklerin kullanımı, verinin türünden veya büyüklüğünden bağımsız olarak faydalıdır. Küçük veri setlerinden büyük veri tabanlarına kadar her türlü veri üzerinde kullanılabilir. Görgül bilimsel verilerle çalışmaya başlamanın ilk adımı betimsel istatistiklerin incelenmesidir. Bu analizler, verileriniz hakkında genel bir anlayış sağlar ve daha karmaşık analitik tekniklerin temelini oluşturur.
+
+Bu bölümde, veri kümelerinin ve değişkenlerin temel özelliklerini ele alacağız. Verilerin görselleştirilmesinde yaygın olarak kullanılan grafik yöntemlerini inceledikten sonra, verileri sayısal olarak özetleyen betimsel istatistik araçlarını öğreneceğiz. Özellikle, merkezi eğilim (ortalama, medyan, mod) ve değişkenlik ölçüleri (standart sapma, varyans) üzerinde duracağız. Bu süreçte, verilerin dağılımını ve yapısını daha iyi anlamaya yönelik çeşitli yöntemler hakkında bilgi sahibi olacağız.
 
 
 ## Anakütle ve Örneklem 
@@ -37,6 +39,14 @@ Anakütle hakkında bilgi edinmek amacıyla belirli yöntemlerle seçilen anakü
 
 Örneklem anakütleden daha küçük olduğu için bilgi toplamak daha kolay ve ucuzdur. Bir şehirde yaşayan tüm hanelere ulaşmak yerine, bu anakütleyi temsil edebilen 500 gözlemli bir örneklem oluşturulabilir. Toplam öğrenci sayısı 40000 olan bir üniversitede, tesadüfi olarak seçilmiş 100 öğrenciden oluşan bir örneklem kullanılarak çıkarım ve genellemeler yapılabilir. 
 
+::: {#fig-anakutle1}
+
+![](img/anakutle1.png)
+
+Anakütleden örnekleme ve istatistiksel çıkarım süreci 
+
+::: 
+
 ::: {#def-istatistik}
 
 ## İstatistik
@@ -49,7 +59,13 @@ Parametre ile istatistik birbiriyle karıştırılmamalıdır. Parametre anaküt
 Anakütlenin daha küçük bir temsili olarak düşünebileceğimiz örneklemi uygun yöntemlerle inceleyerek anakütle hakkında genellemeler ve çıkarımlar yapabiliriz. 
 Temsili bir örneklem, anakütlenin özelliklerini doğru bir şekilde yansıtmalıdır. Örneklem ne kadar iyi seçilirse, anakütle hakkında o kadar güvenilir genellemeler yapılabilir. Yanlış veya eksik bir örneklem, yanıltıcı sonuçlara ve yanlış çıkarımlara yol açabilir.
 
-Anakütleden örneklem almanın çok çeşitli yolları vardır. En sık kullanılan iki yöntem **basit rassal örnekleme** ve **tabakalı örnekleme**dir. Basit rassal örneklemede her birimin örneklemde olma olasılığı eşittir. Tabakalı örneklemede,  anakütle belirli özelliklere göre homojen alt gruplara (tabakalara) ayrılır ve her tabaka içinde rassal örneklemler çekilir. Örneğin, bir okulda öğrenci gruplarını sınıf düzeylerine göre (9. sınıf, 10. sınıf, vb.) ayırarak her sınıftan belirli sayıda öğrenci seçilerek anakütlenin daha iyi temsil edilmesi sağlanabilir. Bunlara ek olarak, küme örneklemesi ve sistematik örnekleme gibi daha ileri örnekleme teknikleri de mevcuttur. Bu yöntemler, anakütlenin yapısına ve araştırmanın amacına bağlı olarak tercih edilebilir.
+Anakütleden örneklem almanın çok çeşitli yolları vardır. Başlıca örnekleme yöntemleri arasında basit rassal örnekleme, tabakalı örnekleme, ve sistematik örnekleme sayılabilir. **Basit rassal örnekleme**de anakütledeki her  birimin $n$ boyutlu  örneklemde olma olasılığı eşittir. Bir birimin örnekleme seçilmesi diğer brimlerin seçilmesini etkilemez. Ayrıca oluşturabileceğimiz $n$ boyutlu tüm örneklemlerin seçilme olasılığı aynıdır. Anakütlenin bir listesi yapılabilirse örneklem birimleri bilgisayarda rassal sayı üreteçleri kullanılarak seçilebilir.  
+
+**Tabakalı örnekleme**de,  anakütle belirli özelliklere göre homojen alt gruplara (tabakalara) ayrılır ve her tabaka içinde rassal örneklemler çekilir. Örneğin, bir okulda öğrenci gruplarını sınıf düzeylerine göre (9. sınıf, 10. sınıf, vb.) ayırarak her sınıftan belirli sayıda öğrenci seçilerek anakütlenin daha iyi temsil edilmesi sağlanabilir. 
+
+**Sistematik örnekleme** birimleri düzenli aralıklarla seçer. $N$ boyutlu bir listeden $n$ elemanlı bir alt küme seçmek istiyorsak $j=N/n$ olmak üzere, 1 ile j arasında rassal bir sayı ile başlarız. Daha sonra her j sırasındaki birimleri örnekleme dahil ederiz. Örneğin $N=10000$ elemanlı bir listeden $n=500$ elemanlı bir örneklem seçmek için ile $j=10000/500=20$ arasında bir tamsayıyı tesadüfi olarak seçeriz. Bu sayı 10 olsun. Daha sonra buna $j=20$ ekleriz ve 500'ü tamamlayana kadar seçime devam ederiz: 10, 30, 50, ... vb.    
+
+Bunlara ek olarak başka  örnekleme teknikleri de mevcuttur. Bu yöntemler, anakütlenin yapısına ve araştırmanın amacına bağlı olarak tercih edilebilir.
 
 Bu bölümde inceleyeceğimiz araçlar veri kümesinin anakütle mi yoksa örneklem mi olduğuna göre değişebilir. Ancak çoğu kavram ve araç her iki veri türüne de uygulanabilir. Bazı kavram ve araçların tanımları anakütle ve örneklem için ayrı ayrı yapılmıştır.  
 
@@ -67,7 +83,7 @@ head(hane_ornek[,1:6])
 
 Sütunlarda yer alan değişkenler gözlem birimlerine (hanehalklarına) ilişkin çeşitli bilgiler içerir. Hanehalkı bir adreste (konutta) yaşayan tüm bireylerden oluşan topluluk olarak tanımlanır.  Yukarıdaki örnekte, birinci satırdaki 7373 numaralı hanehalkı 3 kişiden oluşmaktadır, yıllık geliri 61379 TL'dir ve tasarruf yapmaktadır. 2483 numaralı hanehalkı ise 6 kişiden oluşmaktadır, yıllık geliri 55287 TL'dir ve tasarruf yapmamaktadır. 
 
-Tipik olarak bu veriler gözlem birimleriyle yapılan anketlerle toplanır. İktisatta ve diğer sosyal bilim alanlarında kullanılan verilerin önemli bir kısmı, anket ve araştırma sonuçlarına dayanmaktadır. Türkiye'de bu tür verilerin en önemli kaynaklarından biri **Türkiye İstatistik Kurumu (TÜİK)**'dur. TÜİK, hem makro hem de mikro düzeyde veri üretmek için düzenli aralıklarla çeşitli anketler ve araştırmalar gerçekleştirir. Mikro veriler, bireyler, hanehalkları veya firmalar gibi küçük birimlerin davranışlarını anlamak için kullanılır ve iktisadi analizlerde yaygın olarak kullanılır. 
+Örneklem birimlerinden bilgi toplamanın en yaygın yöntemi anketlerdir. İktisatta ve diğer sosyal bilim alanlarında kullanılan verilerin önemli bir kısmı, anket ve araştırma sonuçlarına dayanmaktadır. Türkiye'de bu tür verilerin en önemli kaynaklarından biri **Türkiye İstatistik Kurumu (TÜİK)**'dur. TÜİK, hem makro hem de mikro düzeyde veri üretmek için düzenli aralıklarla çeşitli anketler ve araştırmalar gerçekleştirir. Mikro veriler, bireyler, hanehalkları veya firmalar gibi küçük birimlerin davranışlarını anlamak için kullanılır ve iktisadi analizlerde yaygın olarak kullanılır. 
 
 TÜİK'in iktisatta sıkça kullanılan mikro verileri topladığı başlıca anketler ve veri kümeleri şunlardır:
 
@@ -79,7 +95,56 @@ TÜİK'in iktisatta sıkça kullanılan mikro verileri topladığı başlıca an
   
   - **Sanayi ve Hizmet İstatistikleri**: Türkiye'deki firmaların üretim, istihdam, yatırım ve yenilikçilik faaliyetlerini ölçen bu araştırmalar, firma düzeyinde iktisadi analizler için değerli mikro veriler sağlar. Özellikle iktisadi büyüme, verimlilik analizleri ve sanayi dinamikleri üzerine yapılan çalışmalarda sıkça kullanılır.
 
-Bu verilere ve TÜİK tarafından derlenen diğer veri tabanlarına  ilişkin daha fazla bilgi için bkz. <https://www.tuik.gov.tr/Kurumsal/Mikro_Veri>. 
+Bu verilere ve TÜİK tarafından derlenen diğer veri tabanlarına  ilişkin daha fazla bilgi için bkz. <https://www.tuik.gov.tr/Kurumsal/Mikro_Veri> ve <https://data.tuik.gov.tr/>. 
+
+::: {#exm-issizlik1}
+
+## İşsizlik oranı nasıl hesaplanır? 
+
+TÜİK **Hanehalkı İşgücü Araştırması** (HİA) verilerinden hareketle Türkiye geneli ve İBBS2 26 bölge düzeyinde işsizlik oranlarını hesaplamaktadır. İstatistiki Bölge Birimleri Sınıflaması (İBBS) Düzey 2 bölgeleri, illerin (Düzey 3) toplulaştırılmasıyla oluşturulmaktadır (bkz. @fig-ibbs2). İBBS-1 düzeyi 12 bölgeden, İBBS-3 ise 81 ilden oluşmaktadır.  
+
+```{r}
+load("Data/issizlik2023.RData")
+issizlik2023
+```
+
+::: {#fig-ibbs2}
+
+![](img/ibbs2map.png)
+
+İstatistiki Bölge Birimleri Sınıflaması (İBBS) Düzey 2 bölgeleri 
+
+::: 
+
+Anakütle tüm Türkiye'yi kapsamaktadır. Gözlem birimi ya da örnekleme birimi adrestir. TÜİK HİA'da 26 İBBS2 bölgesini ve Türkiye'yi temsil edecek şekilde tabakalı örnekleme yöntemini uygulamaktadır.  Adrese Dayalı Nüfus Kayıt Sistemi (ADNKS) üzerinden elde edilen adreslerde yaşayan bireylerle yüzyüze ve telefon ile anketler yapılır. Toplanan demografik ve işgücü piyasası verilerinden hareketle çeşitli istatistikler hesaplanır. 
+
+İşsizlik oranı 
+$$
+\frac{\mbox{işsizlerin sayısı}}{\mbox{işgücü}}\times 100
+$$
+olarak tanımlanır. Bir birey bir işte çalışmıyorsa, son dört hafta içerisinde aktif olarak iş arıyorsa ve iş bulduğu takdirde 2 hafta içinde işbaşı yapabilecek durumda ise işsiz olarak sınıflandırılır. İşgücü, "emek arzında bulunan çalışma
+çağındaki" yani 15 ve yukarı yaştaki nüfusu kapsar. @fig-HIA HIA anketinde bu bilgilerle ilişkisi soruları göstermektedir (kaynak: İşgücü İstatistikleri Mikro Veri seti, TÜİK yayın no 4738, 2023). 
+
+::: {#fig-HIA} 
+
+![](img/hia1.png)
+![](img/hia2.png)
+ 
+Hanehalkı İşgücü Araştırması örnek anket soruları (Kaynak: TÜİK) 
+
+:::  
+
+2023 yılında 15-64 yaş arası Türkiye geneli için işsizlik oranı %9.6 olarak tahmin edilmiştir. @fig-ibbs2unem 26 bölge için işsizlik oranlarını harita üzerinde göstermektedir. 
+
+::: {#fig-ibbs2unem}
+
+![](img/ibbs2unemp.png)
+
+İBBS2 düzeyinde işsizlik oranları 
+
+:::
+
+:::  
 
 ## Veri Türleri  
 
@@ -103,6 +168,77 @@ Deney süreci kabaca aşağıdaki adımlardan oluşur:
   
 Bu derste istatistiksel çıkarsama başlığı altında, iki grup arasında ortalamada fark olup olmadığını nasıl sınayacağımızı öğreneceğiz.  
 
+::: {#fig-anakutle1}
+
+![](img/deney1.png)
+
+Deneysel veri süreci: rassal atama ile deney ve kontrol grupları
+:::
+
+```{r}
+#| echo: false
+#| output: false
+#| eval: false 
+#| warning: false
+
+# Install and load the DiagrammeR package
+if (!require(DiagrammeR)) {
+  install.packages("DiagrammeR")
+}
+library(DiagrammeR)
+
+# Create the diagram
+grViz("
+digraph G {
+  node [shape = oval, style=filled, fillcolor=lightpink]
+  A [label = 'Rassal Atama']
+
+  # Grup A ve izleyen akışın gri renkte olması
+  node [shape = box, style=filled, fillcolor=lightgrey]
+  B1 [label = 'Kontrol Grubu (Grup A)']
+  C1 [label = 'Ölçüm']
+  D1 [label = 'Müdahale/Tedavi Yok']
+  E1 [label = 'Ölçüm']
+
+  # Grup B ve izleyen akışın lightblue renkte olması
+  node [shape = box, style=filled, fillcolor=lightblue]
+  B2 [label = 'Deney Grubu (Grup B)']
+  C2 [label = 'Ölçüm']
+  D2 [label = 'Müdahale/Tedavi']
+  E2 [label = 'Ölçüm']
+
+  # Kenarları tanımla
+  A -> B1
+  A -> B2
+  B1 -> C1
+  B2 -> C2
+  C1 -> D1
+  C2 -> D2
+  D1 -> E1
+  D2 -> E2
+}
+")
+
+```
+
+
+::: {#exm-ABtest}
+
+## A/B Testing
+
+A/B testi, özellikle dijital ortamda iki veya daha fazla seçeneğin (versiyonun) performansını karşılaştırmak için kullanılan basit ama güçlü bir deneysel tasarım yöntemidir. Bu yöntemde anakütle rassal olarak  iki gruba ayrılır: bir grup "A" (kontrol grubu) ve diğer grup "B" (deney grubu). A grubu mevcut durumu, B grubu ise değiştirilen bir unsuru (fiyat, tasarım, ürün özellikleri vb.) deneyimler. Daha sonra iki grubun performansı karşılaştırılarak hangisinin daha etkili olduğu belirlenir. Bu testler, özellikle pazarlama, ürün geliştirme ve kullanıcı deneyimi  iyileştirmelerinde yaygın olarak kullanılır.
+
+A/B testleri dijital ortamda oldukça kullanışlıdır çünkü büyük veri kümelerine hızlıca erişilebilir ve sonuçlar kısa sürede analiz edilebilir. Web siteleri, uygulamalar, reklam kampanyaları ve dijital ürünlerin performansını iyileştirmek için A/B testleri sıkça tercih edilir. Şirketler, ürünlerinin fiyatını optimize etmek için farklı fiyat noktalarının nasıl bir performans gösterdiğini görmek amacıyla A/B testlerinden faydalanabilirler. Özellikle dijital ürünlerde, hızlı bir şekilde farklı fiyat stratejileri deneyip sonuçlarını analiz etmek mümkündür.
+
+Örneğin, bir dijital ürün sağlayıcısının (bir müzik veya video akış platformunun) yeni bir premium üyelik fiyatlandırmasını test ettiğini düşünelim. Şirket, premium üyelik ücretini artırarak gelirini artırmayı hedefliyor, ancak bu fiyat artışının müşteri kaybına yol açıp açmayacağını öğrenmek istiyor. Bu durumda A/B testi şöyle uygulanabilir:
+
+  - A Grubu (Kontrol Grubu): Mevcut fiyat 10 TL olarak belirlenmiştir ve bu grup, bu fiyat üzerinden üyelik almayı sürdürür.
+  - B Grubu (Deney Grubu): Fiyat 15 TL'ye yükseltilir ve bu gruba, üyelik alırken 15 TL'lik fiyat sunulur.
+  
+Belirli bir süre sonra, her iki grubun davranışları analiz edilir. Örneğin, A grubu üyelerinin kaç tanesi üyeliklerini sürdürmüş veya yeni üyelik almış, B grubunun kaç üyesi daha yüksek fiyat karşısında üyeliğini sürdürmüş ya da iptal etmiş gibi metrikler incelenir. Bu metrikler arasında en önemlisi, grupların elde ettiği toplam gelir ve müşteri kayıp oranıdır. Bu basit A/B testi ile şirket, müşteri davranışlarına dayalı en uygun fiyatı belirleyebilir. Ayrıca, bu testleri farklı segmentler için (örneğin, farklı yaş grupları veya bölgeler) tekrar ederek daha ayrıntılı fiyatlandırma stratejileri geliştirebilir.
+::: 
+
+
 ### Gözlemsel Veriler 
 
 Gözlemsel veriler, araştırmacının herhangi bir müdahalede bulunmadığı, doğal süreçlerin izlendiği verilerden oluşur. Gözlemsel verilerin deneysel verilerden en önemli farkı araştırmacının deney ve kontrol gruplarını rassal bir şekilde oluşturamamasıdır. Gözlemsel veriler genellikle anket çalışmaları ve idari kayıtlardan elde edilen verilerdir.  Bu tür araştırmalar, bazı özel durumlar dışında, nedensellik yerine değişkenler arasındaki ilişkileri incelemek için yapılır. 
@@ -120,6 +256,25 @@ Veriler ölçüm ve toplanma biçimine, ve zamanın niteliğine göre dört fark
   - **Yatay kesit veri** (Cross-sectional data): Belirli bir zaman diliminde, birden fazla birimden (birey, hanehalkı, firma, şehir, vb.) toplanan verileri ifade eder. Yatay kesit verilerin kaynağı çoğunlukla idari kayıtlar ya da bilimsel anketlerdir. Bu anketleri araştırmacı kendi tasarlayacağı gibi diğer kurum ve kuruluşlar tarafından da hazırlanabilir. Örneğin, TÜİK tarafından her yıl yapılan hanehalkı ve fert araştırmaları (HHBA, HIA, vb) bir anket sonucunda farklı kişilere ait yaş, gelir ve eğitim düzeyi gibi bilgiler içerir. Gelir İdaresi Başkanlığı tarafından belirli bir yılda vergi mükelleflerinin bilanço ve gelir tablosu gibi finansal raporlarından oluşturulan idari kayıtlar da yatay kesit veri kümesi oluşturur. 
 
   - **Zaman serisi** (Time series data): Aynı birimden,  birbirini düzenli biçimde takip eden belirli zaman dilimlerinde alınan verileri ifade eder. Doğal olarak verilerin bir zaman sırası (kronoloji) vardır ve bu değiştirilemez. Örneğin, bir ülkenin yıllık GSYİH değerleri, aylık enflasyon oranları, bir finansal varlığın günlük değerleri ve getirileri zaman serisi verisidir. Bu veri türü özellikle finans ve makroiktisat alanlarında geliştirilen teori ve hipotezlerin değerlendirilmesinde, geleceğe dönük öngörü yapılmasında, zaman içerisindeki eğilimlerin ve dalgalanmaların analizinde kullanılır.
+  
+::: {#exm-ts1}
+`R`'da zaman serileri `ts` ya da `xts` nesnesi olarak tanımlanabilir. Bu konuda daha fazla detay için bkz. <https://htastan.github.io/Finansal-Ekonometri-MPI/R/R-zaman-serileri.html>
+
+Zaman serilerini görselleştirmenin en kolay yolu x ekseninde zamanın ve y ekseninde ölçümlerin olduğu çizgi grafiğidir. @fig-bist100xts BIST 100 endeksinin 02/01/2003-29/09/2021 dönemine ait günlük kapanış değerlerini göstermektedir. 
+```{r}
+#| label: fig-bist100xts
+#| fig-cap: "BIST100 endeksi günlük kapanış değerleri" 
+#| echo: false
+#| warning: false
+
+library(xts)
+load("Data/bist100.rda")
+bistxts <- as.xts(bist100)   # xts nesnesine dönüştür
+head(bistxts)
+plot(bistxts$BIST100, main="")
+```
+
+::: 
   
   - **Birleştirilmiş yatay kesit**  (Pooled cross-sectional data): Farklı zaman dilimlerinde toplanmış yatay kesit verilerinin birleştirilmesiyle oluşturulan veri kümesidir. İki boyutludur; hem zaman hem de yatay kesite ilişkin bilgi içerir ancak yatay kesit birimleri takip edilmez. Bu tür veriler, farklı dönemlerdeki birimlerin özelliklerini inceleme imkanı sunar. Örneğin, TÜİK hanehalkı bütçe anketleri her yıl ilgili anakütleden rassal örnekleme yöntemiyle farklı birimlerden veri toplar. Bu farklı hanelerden oluşan yatay kesit verileri bir araya getirerek birleştirilmiş yatay kesit veri kümesi elde edebiliriz. Böylece hanehalkı tüketiminin zaman içindeki eğilimini inceleyebiliriz. 
   
@@ -193,18 +348,18 @@ tempC
 
 Yıllık sıcaklık ortalamalarına göre bu dört bölge arasında en sıcak il İzmir, en soğuk il ise Ardahan'dır. Ancak buradan hareketle İzmir'in Ardahan'dan yaklaşık 5 kat daha sıcak olduğunu söyleyemeyiz. 
 
-Sıfır noktasının keyfiliğini görmenin bir yolu Celsius-Fahrenheit dönüştürmesi yapmaktır. Sıcaklık $X$ $^{\circ}C$ ise Fahrenheit cinsinden sıcaklık 
+Sıfır noktasının keyfiliğini görmenin bir yolu Celsius-Fahrenheit dönüştürmesi yapmaktır. Celsius $^{\circ}C$ ile  Fahrenheit cinsinden sıcaklık arasındaki ilişki aşağıda verilmiştir: 
 $$
-Y = 1.8X+32
+F = 1.8~C+32
 $$
-olur. Buna göre santigrat cinsinden 0 noktası Fahrenheit cinsinden 32 $^{\circ}F$ dereceye karşılık gelir. Bu yeni değişkeni ekleyelim: 
+Buna göre santigrat cinsinden 0 noktası Fahrenheit cinsinden 32 $^{\circ}F$ dereceye karşılık gelir. Bu yeni değişkeni veri çerçevesine ekleyelim: 
 
 ```{r}
 tempC$Fahrenheit <- 1.8*tempC$ort_sicaklik + 32
 tempC
 ```
 
-Suyun donma noktası keyfi olarak tanımlandığı için değerlerin birbirlerine oranları alınmaz. Aralıklar anlamlı bir biçimde yorumlanabilir. Her iki sıcaklık derecesi cinsinden 0 noktasının sıcaklığın olmadığı anlamına gelmediğine dikkat ediniz. 
+Suyun donma noktası keyfi olarak tanımlandığı için değerlerin birbirlerine oranları alınmaz. Aralıklar ise  anlamlı bir biçimde yorumlanabilir. Her iki sıcaklık derecesi cinsinden 0 noktasının sıcaklığın olmadığı anlamına gelmediğine dikkat ediniz. 
 
 
 
@@ -287,6 +442,649 @@ veri <- hane_ornek[1:10,c("saglik_merkezi_erisim", "saglik_merkezi_erisim_olcek"
 veri
 ```
 Hanenin bulunduğu yerden sağlık merkezlerine erişimin kolaylığına ilişkin bilgi içeren bu değişken 5 seviyeden oluşur. Bu seviyeler 1-5 arasında sayısal değerlerle ifade edilmiştir. Buna göre 1 (Çok kolay), 2 (Kolay), 3 (Orta), 4 (Zor) ve 5 (Çok zor). `saglik_merkezi_erisim_olcek` bu bilgileri karakter formatında içerir. İstenirse bu değişken faktör değişkeni olarak da tanımlanabilir.  
+
+## Görsel özet araçlar 
+
+Bu ve izleyen alt bölümlerde inceleyeceğimiz görsel yöntemler karmaşık sayı yığınlarının anlaşılmasında genellikle ilk adımdır. Bu görsel araçlar, sayısal özet bilgilerin yanı sıra verilerdeki eğilimleri, dağılımları ve ilişkileri daha açık bir şekilde ortaya koyar. Görsel araçlar, verilerin ardındaki hikayeyi anlatmada güçlü bir araç olarak işlev görür. Örneğin, bir histogram, verinin dağılımını etkili bir şekilde gösterirken, çubuk çizimi kategorik verilerin nasıl dağıldığına ilişkin bilgi sunar. 
+
+Verilerin görselleştirilmesinde değişkenin türüne göre uygun araçların seçilmesi gerekir. Kategorik değişkenler için frekans tabloları, çubuk çizimleri, pasta çizimi gibi araçlar uygundur. Sürekli değişkenler için ise histogram, dal-yaprak çizim, kutu çizimi gibi araçlar kullanılabilir.  
+
+### Frekans tabloları ve kategorik değişkenler
+
+Kategorik değişkenlerin gözlem kümesindeki sayısını ve oranını (yüzde) kolayca hesaplayarak bir tablo haline getirebilir ve görselleştirebiliriz. Kategorik (nominal ya da ordinal) değişkenlerin veri kümesindeki sıklığını ya da frekansını hesaplamak için `R`'da `table()` ve `prop.table(table())` fonksiyonları kullanılabilir. 
+
+Örneğin, hanelerde sigara içenlerin sayısını ve oranını bulmak istediğimizi düşünelim. `hane_ornek.RData` verisinden hareketle
+
+```{r}
+load("Data/hane_ornek.RData")
+table(hane_ornek$sigara)
+prop.table(table(hane_ornek$sigara))
+```
+bulunur. Hanelerin yaklaşık % 51.8'inde (1036 hane) sigara içilmektedir (kategori = 1). Yaklaşık %48.2 hanede ise (964 hane) sigara içilmemektedir (kategori = 2). 
+
+
+Kategorik değişkenlerin frekansları çeşitli araçlarla görselleştirilebilir. Bunlardan biri çubuk çizimidir (barplot). Örneğin, sağlık merkezlerine erişim kolaylığını hanelerin nasıl değerlendirdiğini özetlemek istiyorsak, her kategorinin sıklığını gösteren bir tablo ve çubuk çizimi oluşturabiliriz: 
+
+```{r}
+#| label: fig-barplot1
+#| fig-cap: "Çubuk çizimi: sağlık merkezine erişimin kolaylığı"
+#| warning: false
+#| echo: true
+#| # Frekans tablosu
+frekans_tablosu <- sort(
+  table(hane_ornek$saglik_merkezi_erisim_olcek), 
+  decreasing = TRUE)
+frekans_tablosu
+# Frekans (yüzdelik)
+frekans_tablosu_yuzde <- prop.table(frekans_tablosu) * 100
+frekans_tablosu_yuzde
+barplot(table(hane_ornek$saglik_merkezi_erisim_olcek), 
+        ylim = c(0,1000))
+```
+@fig-barplot1 hanelerin sağlık merkezlerine erişim kolaylığına ilişkin 1-5 skalasında verdikleri cevapların çubuk çizimini göstermektedir. Bu grafiği sıklığa göre büyükten küçüğe sıralayarak çizebiliriz. @fig-barplot2 bu grafiği göstermektedir. 
+```{r}
+#| label: fig-barplot2
+#| fig-cap: "Sıralanmış çubuk çizimi: sağlık merkezine erişimin kolaylığı"
+#| warning: false
+#| echo: true
+
+# çubuk çizimi 
+barplot(frekans_tablosu, # sıklık tablosu
+        ylim = c(0,1000) # y ekseninin sınırları
+        )
+text(x = barplot(frekans_tablosu, plot=FALSE), 
+     y = frekans_tablosu, 
+     label = paste0(round(frekans_tablosu_yuzde, 1), "%"), 
+     pos = 1, cex = 0.8, col = "black")
+```
+Buna göre hanelerin %49.1'i sağlık merkezlerine ulaşımın kolay olduğunu düşünmektedir. Sağlık merkezlerine erişimin zor olduğunu düşünen hanelerin oranı %19.4, çok zor olduğunu söyleyen hanelerin oranı ise %7.5'tir. 
+
+Uygulamalarda yaygın olarak kullanılan başka bir grafik türü pasta grafiğidir. @fig-pasta1  `pie()` fonksiyonu ile çizilmiş örnek bir pasta grafiğini göstermektedir.  
+```{r}
+#| label: fig-pasta1
+#| fig-cap: "Pasta grafiği: sağlık merkezine erişimin kolaylığı"
+#| warning: false
+#| echo: true
+pie(frekans_tablosu, col = blues9)
+```
+
+Belirli bir aralıkta herhangi bir değeri alabilen sayısal değişkenleri görselleştirmenin bir çok yöntemi mevcuttur. İzleyen alt bölümlerde bunları ele alacağız. 
+
+Frekans (sıklık) tablosu özellikle büyük boyutlu sayısal verilerin yorumlanmasında yardımcı olabilir. Bunun için veriler az sayıda gruplara (sınıflara) ayrılır ve her bir sınıfa kaç gözlem düştüğü yani sıklığı (frekansı) hesaplanır. Bu sıklıklar yüzde olarak da ifade edilebilir. 
+
+::: {#exm-frekans1}
+Bir eğitim seminerine katılanların yaşları kaydedilmiştir: 
+$$
+x=(22, 24, 27, 28, 30, 32, 35, 37, 40, 46).
+$$ 
+Bu veriyi birbirine eşit 4 parçaya ayıralım. Birinci grup: 15-25 yaş grubu 15 yaşında ya da daha büyük ve 25 yaşından küçük bireyleri kapsar. İkinci grup 25-35 yaş grubudur ve 25 (dahil) ile 35 (hariç) yaşları arasındaki bireyleri kapsar. @tbl-frekans1 bu yaş verilerinin sıklık tablosunu göstermektedir. 
+
+| Sınıf   | Sıklık (frekans) | Yüzde Sıklık | Birikimli sıklık | % Birikimli sıklık | 
+|---------|:-----------------|-------------:|:----------------:|:------------------:|
+| 15-25   |        2         |      % 20    |         2        |          % 20      | 
+| 25-35   |        4         |      % 40    |         6        |          % 60      | 
+| 35-45   |        3         |      % 30    |         9        |          % 90      | 
+| 45-55   |        1         |      % 10    |        10        |          % 100     
+
+: Katılımcıların yaş dağılımı {#tbl-frekans1}
+
+Frekans tablosuna (@tbl-frekans1) göre 2 gözlem, yani verilerin % 20'si 15-25 aralığında değerler almaktadır. Verilerin % 40'ı 25-35, % 30'u ise 35-45 aralığındadır. 
+
+Sayısal verilerin sınıflara ayrılmasında  `cut()` fonksiyonu kullanılabilir: 
+```{r}
+yas <- c(22, 24, 27, 28, 30, 32, 35, 37, 40, 46)
+yas_grup <- cut(yas, 
+                breaks = c(15, 25, 35, 45,55), 
+                right = FALSE # sağ sınır dahil değil
+                )
+
+# Gruplanmış yaş verisindeki frekansları hesaplayalım
+frekanslar <- table(yas_grup)
+print(frekanslar)
+prop.table(frekanslar)
+```
+::: 
+
+::: {#exm-frekans2}
+
+32 gözlemden oluşan bir otomobil kümesinde araçların beygir gücü aşağıdaki gibidir: 
+```{r}
+beygir_gucu <- mtcars$hp 
+# Veriyi 4x8 tablo haline getirmek için yeniden şekillendir
+matrix_data <- matrix(beygir_gucu, nrow = 4, byrow = TRUE)
+matrix_data
+```
+- `stripchart()` fonksiyonunu kullanarak verilerin basit bir görsel özetini oluşturun. 
+- Gözlemleri 5 sınıfa bölün ve frekans tablosunu hazırlayın. X ekseninde sınıflar Y ekseninde sınıf içindeki gözlemler olmak üzere bir çubuk çizimi hazırlayın.  
+
+**Çözüm**
+
+@fig-bg1 beygir gücü verisinin nokta grafiğini göstermektedir. 
+```{r}
+#| label: fig-bg1
+#| fig-cap: "Nokta grafiği: otomobillerin beygir gücü"
+#| warning: false
+#| echo: true
+# Verilerin basit bir görsel özetini stripchart() kullanarak oluştur
+stripchart(beygir_gucu, 
+           method = "stack", 
+           main = " ", 
+           xlab = "Beygir Gücü", 
+           col = "blue", 
+           pch = 16)
+```
+
+
+```{r}
+# Beygir gücü verilerini 5 sınıfa bölmek için sınıf aralıklarını belirle
+breaks <- seq(min(beygir_gucu), max(beygir_gucu), length.out = 6)
+print(breaks)
+```
+Bu sınır noktalarını kullanarak frekans tablosunu oluşturalım: 
+```{r}
+# Sınıf aralıklarına göre verileri sınıflandır
+beygir_gucu_cut <- cut(beygir_gucu, 
+                       breaks = breaks, 
+                       include.lowest = TRUE, # en alt sınırı dahil et
+                       right = FALSE          # sağ sınır hariç
+                       )
+
+# Frekans tablosunu oluştur
+freq_table <- table(beygir_gucu_cut)
+freq_table
+```
+$[52,109)$ aralığında (52 dahil, 109 hariç) 10 gözlem, $[109, 165)$ aralığında (109 dahil, 165 hariç) 9 gözlem bulunmaktadır. @fig-bg2 bu frekans tablosunun çubuk çizimini göstermektedir.  
+```{r}
+#| label: fig-bg2
+#| fig-cap: "Beygir gücü frekans dağılımı: çubuk çizimi"
+#| warning: false
+#| echo: true
+# Frekans tablosunu çubuk grafiği olarak çiz
+barplot(freq_table, 
+        main = " ", 
+        xlab = "Beygir Gücü Sınıfları", 
+        ylab = "Frekans", 
+        col = "lightblue",  
+        space=0,
+        border = "black")
+```
+
+Aralıklar x ekseninde ve frekanslar y ekseninde olacak şekilde çubuk yerine nokta ile de gösterebiliriz (bkz. @fig-bg3): 
+```{r}
+#| label: fig-bg3
+#| fig-cap: "Beygir gücü frekans dağılımı"
+#| warning: false
+#| echo: true
+# Sınıf isimlerini al
+classes <- names(freq_table)
+
+# Çubuk grafiği yerine noktalar ve dikey çizgiler kullanarak grafiği çiz
+plot(as.numeric(freq_table), 
+     type = "p", 
+     main = "",
+     xlab = "Beygir Gücü Sınıfları", 
+     ylab = "Frekans",
+     col = "blue", 
+     pch = 19, 
+     xaxt = "n", 
+     ylim = c(0,12))
+
+# Dikey çizgiler ekle
+segments(x0 = 1:length(freq_table), 
+         y0 = 0, 
+         x1 = 1:length(freq_table), 
+         y1 = freq_table, 
+         col = "lightblue", 
+         lty = "dashed")
+
+# X ekseni etiketlerini ekle
+axis(1, at = 1:length(classes), labels = classes)
+
+# Frekans sayılarını noktaların üzerine yerleştir
+text(x = 1:length(freq_table), 
+     y = freq_table, 
+     label = freq_table, 
+     pos = 3, 
+     cex = 0.8, 
+     col = "black")
+
+```
+:::
+
+Sınıf sayısının ve genişliğinin frekans dağılımını doğrudan etkilediğine dikkat ediniz. Bu grafiğin özel bir versiyonu histogram adını alır. İzleyen bölümlerde bu grafik türünü inceleyeceğiz. 
+
+### Çapraz Tablolar
+
+Bir çapraz tablo iki nominal ya da ordinal değişkenin sıklıklarını gösterir. Eğer A  değişkeni $r$ grup, B değişkeni $c$ grup içeriyorsa çapraz tablo $r\times c$ hücreden oluşur. Her hücre o gruplara karşılık gelen gözlem sayısını içerir. 
+
+::: {#exm-capraztablo1}
+
+Hanehalkı örnekleminde aylık geliri kullanarak yeni bir kategorik değişken oluşturalım. Aylık geliri 1883 TL'den düşük olanlar "Düşük Gelir", 1883-4230 arasında olanlar "Orta gelir" ve 4230 TL'den yüksek olanlar "Yüksek Gelir" olsun. 
+```{r}
+load("Data/hane_ornek.RData")
+hane_ornek$gelir_seviyesi <- ifelse(hane_ornek$aylik_gelir < 1883, "Düşük",
+                              ifelse(hane_ornek$aylik_gelir <= 4230, "Orta", "Yüksek"))
+
+# Sonuçları görmek için
+# head(hane_ornek) 
+table(hane_ornek$gelir_seviyesi)
+```
+
+Aylık gelir düzeyi ile sigara arasındaki $2\times 3$ çapraz tabloyu oluşturalım:  
+```{r}
+hane_ornek$sigara <- factor(hane_ornek$sigara,
+                            levels = c(1, 2),
+                            labels = c("Evet", "Hayır"))
+table(hane_ornek$sigara, hane_ornek$gelir_seviyesi)
+```
+
+|          | Düşük | Orta | Yüksek | Toplam |
+|----------|-------|------|--------|--------|
+| Evet     |   215 |  503 |    318 |  1036  |
+| Hayır    |   284 |  441 |    239 |  964   |
+| **Toplam**|  499  |  944 |    557 |  2000  |
+
+: Gelir düzeyi ve sigara kullanımı {#tbl-capraztablo1} 
+
+@tbl-capraztablo1 çapraz tabloyu göstermektedir. Toplam 2000 hane içinde 215'i düşük gelir grubundadır ve hanede sigara içilmektedir. Yüksek gelir grubundaki hanelerin 318'inde sigara içen vardır, 239 hanede ise yoktur. 
+
+Bu tabloyu genel toplama, satır toplamına ya da sütun toplamına göre oran olarak ifade edebiliriz: 
+
+```{r}
+# genel toplama oran
+tablo <- table(hane_ornek$sigara, hane_ornek$gelir_seviyesi)
+prop.table(tablo) * 100
+```
+Tüm hanelerin %22.05'i orta gelir grubunda ve sigara içilmeyen hanelerdir. Diğer oranlar da benzer şekilde yorumlanabilir. 
+
+
+```{r}
+# satır toplamına oran: 
+prop.table(tablo, 1) * 100
+```
+Bu tabloda satır toplamları 1'dir. Sigara içilen hanelerde orta gelirlilerin oranı yaklaşık %48.55'tir. 
+
+```{r}
+# sütun toplamına oran: 
+prop.table(tablo, 2) * 100
+```
+Bu tabloda ise sütun toplamları 1'dir. Yüksek gelirli hanelerde sigara içilenlerin oranı %57.09, içilmeyenlerin oranı ise %42.91'dir. 
+
+
+Çapraz tablolar çubuk çizimi ile görselleştirilebilir (bkz.  @fig-capraztablo1). 
+
+```{r}
+#| label: fig-capraztablo1
+#| fig-cap: "Gelir grubuna göre sigara kullanımı"
+#| warning: false
+#| echo: true
+# Yüzde hesaplama
+yuzde <- prop.table(tablo, 2) * 100  # Sütun bazında yüzde
+
+# Yüzdeleri çubukların üzerine ekle
+yuzde_yerleri <- barplot(tablo, 
+                         beside = TRUE, 
+                         col = c("lightblue", "orange"),
+                         main = "",
+                         xlab = "Gelir Grubu", 
+                         ylab = "Sayı", ylim=c(0,600),
+                         legend.text = rownames(tablo))
+
+# Yüzdeleri grafiğin üzerine ekle
+text(x = yuzde_yerleri, 
+     y = as.vector(tablo), 
+     labels = round(yuzde, 1), 
+     pos = 3, cex = 0.8, col = "black")
+
+```
+
+
+::: 
+
+
+### Dal-ve-yaprak
+
+Dal-ve-yaprak (*Stem-and-Leaf*) grafiği, genellikle  az sayıda nümerik gözlemin dağılımını görselleştirmek için kullanılan bir yöntemdir. Bu grafik, veri değerlerini basit bir şekilde gruplandırarak dağılımın şeklini gösterir. Özellikle bilgisayar ya da hesaplama araçlarına erişimin olmadığı durumlarda, bir kağıt ve kalemle hızlıca çizilebilir.
+
+İki basamaklı örnek bir veri kümesinin Dal-ve-yaprak çizimi için aşağıdaki adımlar takip edilebilir: 
+
+- Gözlem değerleri onlar ve birler basamağı alınarak "dal" ve "yaprak" olarak adlandırılan iki parçaya ayrılır. Örneğin 75 değeri için 7 dal ve 5 yaprak olarak alınabilir. 
+
+- "Dal" kısmı, veri değerlerinin onlar basamağından oluşur ve genellikle soldan sağa doğru sıralanır. 
+
+- "Yaprak" kısmı, veri değerlerinin birler basamağından oluşur ve her bir "dal" için bir dizi yaprak değeri içerir.
+
+- Her bir "dal" için yaprak değerleri, sıralanmış bir şekilde yan yana yazılır.
+
+- Son olarak, her bir dal ile yaprak değerleri arasında bir ayraç kullanılarak dal-ve-yaprak grafiği oluşturulur.
+
+Dal ve yaprak kısımları verilerin değerlerine göre belirlenebilir. Örneğin üç basamaklı değerler alan bir veri kümesi için dal kısmı yüzler basamağı, yaprak kısmı birler basamağı olarak seçilebilir. 
+
+::: {#exm-stem1}
+
+Bir sınavdan alınan 100 üzerinden puanların dal-ve-yaprak çizimini oluşturalım:   
+```{r} 
+not <- c(48, 55, 87, 58, 63, 75, 95, 68, 75, 80, 60, 52, 66)
+stem(not)
+```
+Burada `|` işaretinin solunda kalan değerler "stem" (dal), sağında kalan değerler ise "leaf" (yaprak) olarak isimlendirilir. Buna göre bir öğrenci 48, üç öğrenci 50-60 arasında, 4 öğrenci 60-70 arasında not almıştır. Notu 75 olan iki öğrenci vardır. Ayrıca en yüksek notun 95 olduğunu ve 80-90 arasında not alan 2 öğrenci olduğunu görüyoruz.  
+:::
+
+::: {#exm-stem2}
+
+Beygir gücü veri kümesinin dal-ve-yaprak çizimini hazırlayınız.
+
+Bu veri kümesinde otomobillerin beygir gücü 52 ile 335 arasında değerler almaktadır. Onlar ve yüzler basamağını "dal", birler basamağını "yaprak" olarak seçersek: 
+```{r}
+stem(beygir_gucu, scale = 3)
+```
+
+grafiğin olası tüm basamakları içerdiğini ve boşluklar oluştuğunu görüyoruz. `scale = 1` seçeneğini kullanarak grafiği daha kompakt bir şekilde çizebiliriz: 
+
+```{r}
+stem(beygir_gucu, scale = 1)
+```
+Bu grafikte "0" 95'ten küçük iki basamaklı gözlemleri içerir. Bu değerler, 52, 62, 65, 66, 66, 91, ve 93, grafikte sırasıyla, 5, 6, 7, 7, 7, 9, ve 9 "yaprak" değerleriyle gösterilmiştir. Benzer şekilde grafikte yer alan 1 dalları 95 (dahil) ile 200 (hariç) arasındaki gözlemleri temsil etmektedir.  1 dal ve 0 yaprak değeri yaklaşık olarak 100 beygir gücünü, 1 dal ve 1 yaprak değeri yaklaşık 110 beygir gücünü göstermektedir. Diğer değerlerde benzer şekilde yorumlanabilir. Sıralanmış veriler: 
+```{r}
+sort(beygir_gucu)
+```
+En yüksek değerin (335) dal-ve-yaprak grafiğinde 3 dal ve 4 yaprak değeri ile temsil edildiğine dikkat ediniz. 
+
+::: 
+
+::: {#exm-stem3}
+Türkiye'de il düzeyinde mutluluk endeksinin dal-ve-yaprak yaprak çizimi aşağıdaki gibidir: 
+```{r}
+load("Data/mutluluk.rda")
+stem(mutluluk$mutluluk)
+```
+Buna göre minimum ve maksimum mutluluk endeksleri sırasıyla 42 ve 78 olarak ölçülmüştür. Değerlerin 55-65 arasında yoğunlaştığı görülebilir. 
+Stem basamağının tekrar etmesini istemiyorsak scale=0.5 seçilebilir: 
+```{r}
+stem(mutluluk$mutluluk, scale=0.5)
+```
+Bu grafik verilerin sayısal özet istatistikleri ile birlikte yorumlanabilir: 
+```{r}
+summary(mutluluk$mutluluk)
+```
+::: 
+
+
+
+### Histogram
+
+Sürekli değerler alan bir veri kümesinin dağılımını görselleştirmenin yaygın olarak kullanılan bir yolu gözlemlerin sınıflara ayrılması ve her sınıfa giren gözlem sayısının (frekansının) grafiğinin çizilmesidir. Bu grafik türüne histogram adı verilir.  
+
+Histogram, gözlemleri belirli aralıklara böler ve her aralıktaki gözlem sayısını ya da yüzdesini bir çubuk grafiği olarak gösterir. Bunun için genellikle aşağıdaki adımlar izlenir: 
+
+- Değerler aralığını bulun.
+
+- Verileri belirli ve (genel olarak) birbirine eşit sınıflara bölün (gruplayın).
+
+- Her sınıftaki gözlem sayısını hesaplayın.
+
+- Her sınıf ya da aralık için bir çubuk oluşturun ve yüksekliğini o aralıktaki gözlem sayısına (frekans ya da sıklık) göre ayarlayın.
+
+
+```{r}
+#| label: fig-hist1
+#| fig-cap: "Histogram sınıf sayısına duyarlıdır"
+#| fig-subcap: 
+#|   - "Sınıf sayısı çok az"
+#|   - "Sınıf sayısı çok fazla"
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 3
+#| echo: false 
+set.seed(234567)
+z <- rnorm(100)
+hist(z, breaks=2, xlab="", ylab="Frekans", main="", xlim = c(-3,3))
+hist(z, breaks=40, xlab="", ylab="Frekans", main="", xlim = c(-3,3))  
+```
+Histogram çizimindeki en önemli kararlardan biri sınıf ya da aralık sayısının belirlenmesidir. @fig-hist1 bir veri kümesi için farklı sınıf sayısı tercihlerini göstermektedir. Sınıf sayısı gereğinden az belirlenirse verilerdeki dağılım bilgisi kaybolur. Benzer şekilde sınıf sayısı çok yüksek belirlenirse çubuk sayısı artar, sınıflar arasında boşluklar oluşur ve dağılım fazla inişli çıkışlı olur. 
+
+
+```{r}
+#| label: fig-hist2
+#| fig-cap: "Histogramda ideal sınıf seçimi"
+#| fig-subcap: 
+#|   - "Sınıf sayısı = 6"
+#|   - "Sınıf sayısı= 11"
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 3
+#| echo: false 
+hist(z, breaks=6, xlab="", ylab="Frekans", main="", xlim = c(-3,3))
+hist(z, breaks=11, xlab="", ylab="Frekans", main="", xlim = c(-3,3))  
+```
+@fig-hist2 aynı veri kümesi için sınıf sayısının 6 ve 11 olduğu iki durumu göstermektedir. Her iki sınıf sayısı için histogramın şeklinin yaklaşık olarak simetrik olduğunu görüyoruz. Sınıf sayısını ya da sınıf aralıklarını deneme yanılma ile belirlemek de mümkündür. Pratikte gözlem sayısına bağlı olarak sınıf sayısını belirleyebiliriz. 
+
+Histogramdaki sınıf sayısını belirlemek için çeşitli yardımcı formüller önerilmiştir. Sturges formülü, verinin büyüklüğüne bağlı olarak histogramın optimal aralık sayısını aşağıdaki formüle göre hesaplar: 
+$$
+h = 1+\log_2(n)
+$$
+Burada $h$ sınıf sayısı ve $n$ gözlem sayısıdır. Bu formül,daha büyük veri kümeleri için daha fazla aralık ve daha küçük veri kümeleri için daha az aralık önerir.
+
+Freedman-Diaconis kuralı, bir histogramın aralık sayısını belirlemek için kullanılan bir başka yöntemdir. Bu kural, veri setinin dağılımını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler. Freedman-Diaconis kuralı şu şekildedir:
+
+$$
+bw = 2~IQR(x)~ n^{-1/3}
+$$
+Burada $bw$ aralık genişliğini, IQR ise kartiller aralığını temsil etmektedir ($Q_3-Q_1$). 
+
+Scott kuralı, bir histogramın aralık sayısını belirlemek için bir başka yöntemdir. Bu kural, veri setinin standart sapmasını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler.
+$$
+bw=3.5sd(x)n^{-1/3}
+$$
+Burada $sd(x)$ verilerin örneklem standart sapmasını göstermektedir. 
+
+
+::: {#exm-hist1}
+
+Mutluluk verileri için önerilen sınıf sayılarını hesaplayalım: 
+```{r}
+sturges <- nclass.Sturges(mutluluk$mutluluk)
+scott <- nclass.scott(mutluluk$mutluluk)
+fd <- nclass.FD(mutluluk$mutluluk)
+c(Sturges = sturges, Scott=scott, Friedman_Diaconis=fd)
+```
+
+
+```{r}
+#| label: fig-mutlulukhist
+#| fig-cap: "Histogram: Türkiye'de illerin mutluluk düzeyi" 
+#| echo: false 
+hist(mutluluk$mutluluk,
+     breaks = 8, 
+     xlab = "Mutluluk endeksi", 
+     ylab = "Frekans", 
+     main = "")
+```
+@fig-mutlulukhist mutluluk endeksinin histogramını göstermektedir. Sınıf sayısı 8 olarak belirlenmiştir. Bu histograma göre mutluluk düzeyinin merkezi eğiliminin 60 civarında olduğunu söyleyebiliriz. Mutluluk düzeyi azaldıkça ve arttıkça frekans azalmaktadır. Bu veri kümesinde ortalama ve medyan, sırasıyla, 61 ve 60 olarak bulunmuştu:
+```{r}
+summary(mutluluk$mutluluk)
+```
+
+
+`R`'da histogramın çiziminde kullanılan istatistikleri görmek istersek aşağıdaki kodu çalıştırabiliriz:  
+```{r}
+hist_mutluluk <- hist(mutluluk$mutluluk, breaks = 8, plot = FALSE)
+str(hist_mutluluk)
+```
+
+`hist()` fonksiyonu birbirine eşit aralıklı sınıfları (breaks) ve her sınıfa düşen gözlem sayısını (counts) gösterir. Sınıf (bin) genişliği 5 birimdir. Gri renkte gösterilen dikdörtgenin uzunluğu (y ekseni) o sınıfa düşen gözlem sayısı ile orantılıdır. Sınıf aralıklarının tanımı  $(a, b]$  (`right = TRUE`) ya da $[a,b)$ (`right = FALSE`) olarak seçilebilir.  
+
+Yoğunluk (density) her sınıfa düşen gözlem sayısının (counts) gözlem sayısı ve sınıf genişliğine oranıyla bulunur. Örneğin 40-45 aralığında sadece 1 gözlem vardır. Toplam gözlem sayısı 81 ve sınıf genişliği 5 olduğu için yoğunluk 
+```{r}
+1/81/5
+```
+yaklaşık 0.00247 olarak bulunur. 
+
+`$mids` sınıfların orta noktalarını göstermektedir. 
+
+`cut()` fonksiyonu ile de sınıfların ve sıklıklar hesaplanabilir: 
+```{r}
+m_cut <- cut(mutluluk$mutluluk, breaks=seq(40,80,5), right=FALSE)
+table(m_cut)
+```
+Buradan frekans tablosunu aşağıdaki gibi oluşturabiliriz: 
+```{r}
+# Mutluluk endeksi için frekans tablosu 
+frekans = table(m_cut)
+goreli_frekans = 100*frekans/81
+kumulatif_frekans = cumsum(goreli_frekans)
+yogunluk = frekans/81/5
+cbind(frekans, 
+      goreli_frekans=round(goreli_frekans, 2), 
+      kumulatif_frekans=round(kumulatif_frekans, 2), 
+      yogunluk=round(yogunluk,5))
+```
+
+
+:::  
+
+Sayısal değerler alan bir değişkenin yoğunluk grafiği düzleştirilmiş histogram olarak yorumlanabilir. Sınıf aralıkları daraldıkça (ya da sınıf sayısı arttıkça) histogram yoğunluk fonksiyonuna yaklaşır. 
+
+```{r}
+#| label: fig-duzhist
+#| fig-cap: "Düzleştirilmiş histogram ya da yoğunluk fonksiyonu"
+#| fig-subcap: 
+#|   - " "
+#|   - " "
+#|   - " "
+#|   - " "
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 3
+#| echo: false 
+set.seed(2345)
+z <- rnorm(10000)
+hist(z, breaks=4, xlab="", ylab="Frekans", main="") 
+hist(z, breaks=10, xlab="", ylab="Frekans", main="")  
+hist(z, breaks=30, xlab="", ylab="Frekans", main="")  
+hist(z, breaks=80, freq = FALSE, xlab="", ylab="Yoğunluk", main="", col = "white") 
+lines(density(z), col="blue", lwd=2) 
+```
+
+@fig-duzhist histogram ve yoğunluk arasındaki ilişkiyi göstermektedir. Bu grafikte sınıf sayısı arttıkça histogramın yoğunluk fonksiyonuna yaklaştığına dikkat ediniz (bkz. @fig-duzhist-4). Histogram yorumunda olduğu gibi dağılımın merkezine doğru yaklaştıkça yoğunluk artmaktadır. Görece daha az sıklıkta gerçekleşen değerler için yoğunluk daha düşük değerler alır. İzleyen bölümlerde buradan hareketle olasılıkları nasıl hesaplayabileceğimizi öğreneceğiz. 
+
+`R` `density()` fonksiyonunu kullanarak yoğunlukları hesaplayabilir ve görselleştirebiliriz. 
+
+::: {#exm-hist2}
+İllere göre mutluluk endeksinin yoğunluk grafiğini çiziniz. 
+
+```{r}
+#| label: fig-yogmutlu
+#| fig-cap: "Yoğunluk grafiği: Türkiye'de illerin mutluluk düzeyi" 
+#| echo: false 
+plot(density(mutluluk$mutluluk), main="")
+```
+Yoğunluk ya da düzleştirilmiş histograma göre gözlem değerleri 55-65 arasında "yoğunlaşmaktadır" (@fig-yogmutlu). Sol ve sağ kuyruklara doğru gidildikçe yoğunluk azalmaktadır. 
+
+Histogram ve yoğunluğu birlikte de çizebiliriz (bkz. @fig-yogmutlu2) 
+```{r}
+#| label: fig-yogmutlu2
+#| fig-cap: "Yoğunluk grafiği: Türkiye'de illerin mutluluk düzeyi" 
+#| echo: false  
+hist(mutluluk$mutluluk,
+     breaks = 8, freq = FALSE,
+     xlab = "Mutluluk endeksi", 
+     ylab = "Yoğunluk", 
+     main = "")
+lines(density(mutluluk$mutluluk), col="blue")
+```
+
+Yoğunluk fonksiyonunun detayları için yardım dosyasına bakınız, `?density()` 
+::: 
+
+Histogram ya da yoğunluk grafikleri dağılımın simetriklik, sağa ve sola çarpıklık gibi özelliklerine ilişkin önemli bilgiler verir. Simetrik bir dağılımın merkezinin iki tarafı birbirine benzer. @fig-simetri simetrik dağılan üç histogramı göstermektedir. Merkezden geçen kırmızı çizginin her iki tarafı benzer şekle sahiptir. 
+
+```{r}
+#| label: fig-simetri
+#| fig-cap: "Dağılımların simetrikliği" 
+#| echo: false 
+par(mfrow=c(1,3))  # 3 histogramı yan yana yerleştir
+
+# 1. Normal Dağılım
+x <- rnorm(1000, mean=0, sd=1)  # Normal dağılım
+hist(x, freq=FALSE, breaks=20, main="", xlab="", ylab="", col="lightblue", border="black")
+abline(v=mean(x), col="red", lwd=2)  # Ortalama
+
+# 2. Uniform Dağılım
+x <- runif(10000, min=0, max=1)  # Düzgün (uniform) dağılım
+hist(x, freq=FALSE, breaks=20, main="", xlab="", ylab="", col="lightgreen", border="black")
+abline(v=mean(x), col="red", lwd=2)  # Ortalama
+
+# 3. Simetrik Beta Dağılımı (Beta(2, 2))
+x <- rbeta(10000, shape1=2, shape2=2)  # Simetrik beta dağılımı
+hist(x, freq=FALSE, breaks=20, main="", xlab="", ylab="", col="lightcoral", border="black")
+abline(v=mean(x), col="red", lwd=2)  # Ortalama
+
+par(mfrow=c(1,1))  # Grafik yerleşimini eski haline döndür
+
+```
+
+Simetrik bir dağılımın uçlardaki davranışı birbirine benzer. Ancak bazı dağılımların kuyrukları daha uzun olabilir. Buna çarpıklık denir. 
+
+```{r}
+#| label: fig-asimetri
+#| fig-cap: "Dağılımların çarpıklığı" 
+#| echo: false 
+par(mfrow=c(1,2))  # 2 histogramı yan yana yerleştir
+
+# 1. Sağa Çarpık Dağılım (Gamma Dağılımı)
+x <- rgamma(1000, shape=2, scale=2)  # Gamma dağılımı
+hist(x, freq=FALSE, main="Sağa çarpık", xlab="", ylab="", col="lightblue", border="black")
+abline(v=mean(x), col="red", lwd=2)  # Ortalama
+
+# 2. Sola Çarpık Dağılım (Beta(2, 5))
+x <- rbeta(1000, shape1=10, shape2=2)  # Beta dağılımı
+hist(x, freq=FALSE, main="Sola çarpık", xlab="", ylab="", col="lightcoral", border="black")
+abline(v=mean(x), col="red", lwd=2)  # Ortalama
+
+par(mfrow=c(1,1))  # Grafik yerleşimini eski haline döndür
+
+```
+
+@fig-asimetri simetrik olmayan dağılımları göstermektedir. Sağa çarpık dağılımların sağ kuyruğu daha uzundur. Böyle bir dağılımda yoğunlaşma küçük ve orta değerlerdedir. Örneğin ücretler, hane geliri ve harcaması, ve ev fiyatları tipik olarak sağa çarpık dağılır. Sola çarpık bir dağılımda ise sol kuyruk daha uzundur. Değerler büyüdükçe yoğunlaşma artmaktadır. Çok zorlayıcı olmayan bir sınavda not dağılımı sola çarpık olabilir. Çok sayıda öğrenci yüksek not alırken daha az sayıda öğrenci düşük notlar alır. Başka bir örnek emeklilik yaşı olabilir. 
+
+
+
+```{r}
+#| label: fig-modality
+#| fig-cap: "Dağılımların modalliği"
+#| fig-subcap: 
+#|   - "Tek tepeli (Unimodal) dağılım "
+#|   - "Çift tepeli (Bimodal) dağılım"
+#|   - "Çok tepeli (Multimodal) dağılım" 
+#| layout-ncol: 3
+#| echo: false 
+# Unimodal distribution example
+set.seed(123)
+data_unimodal <- rnorm(1000, mean = 50, sd = 10)
+hist(data_unimodal, freq = FALSE,  
+     breaks = 20, main = "", xlab="", col = "lightblue")
+lines(density(data_unimodal))
+# Bimodal distribution example
+set.seed(123)
+data_bimodal <- c(rnorm(500, mean = 40, sd = 5), rnorm(500, mean = 60, sd = 5))
+hist(data_bimodal, freq = FALSE,  
+     breaks = 20, main = "", xlab="", col = "lightgreen")
+lines(density(data_bimodal))
+# Multimodal distribution example
+set.seed(123)
+data_multimodal <- c(rnorm(300, mean = 30, sd = 5), 
+                     rnorm(300, mean = 50, sd = 5), 
+                     rnorm(300, mean = 70, sd = 5))
+hist(data_multimodal, freq = FALSE,  
+     breaks = 20, main = "", xlab="", col = "lightcoral")
+lines(density(data_multimodal))
+```
+
+Histogramların önemli bir başka özelliği de modalliktir. Modallik, dağılımda kaç tane tepe noktası (mod) olduğunu gösterir ve verilerin farklı alt gruplara bölünmesi gerektiğine işaret edebilir. 
+
+Tek tepeli (unimodal) bir dağılımda, @fig-modality-1 da görüldüğü gibi, histogramın yalnızca bir belirgin tepe noktası vardır. Verinin büyük çoğunluğu belirli bir değerde toplanmıştır. İki tepe noktası olan dağılımlar çift tepeli olarak adlandırılır (@fig-modality-2). Bu tür dağılımlar, genellikle verinin iki farklı grup veya popülasyondan geldiğini gösterebilir. Örneğin, erkek ve kadın bireylerin boy dağılımı çift tepeli olabilir. Üç veya daha fazla tepe noktası olan dağılımlar çok modlu olarak adlandırılır (@fig-modality-3). Bu durum, verinin farklı alt gruplardan oluştuğunu veya karmaşık bir yapıya sahip olduğunu gösterebilir.
+ 
 
 
 ## Merkezi Eğilim Ölçüleri {#betimsel-merkezi}
@@ -1013,7 +1811,52 @@ quantile(hane_ornek$yillik_gelir,
 Buna göre hanelerin %10'unun yıllık geliri 15583.23 TL'den düşüktür. Benzer şekilde 22598.81 TL'den daha az yıllık geliri olan hanelerin oranı %25'dir. Hanelerin %90'ının geliri 81032.53 TL'den düşüktür. 
 :::  
 
+::: {#exm-hist3}
+`hane_ornek` veri kümesinde yer alan `aylik_harcama` değişkeninin histogramını ve yoğunluk fonksiyonunu çiziniz. Özet istatistiklerle birlikte yorumlayınız. Ayrıca, 0.1, 0.90, 0.95 ve 0.98 yüzdelik değerlerini hesaplayınız ve yorumlayınız. 
 
+```{r}
+load("Data/hane_ornek.RData")
+
+sturges <- nclass.Sturges(hane_ornek$aylik_harcama)
+scott <- nclass.scott(hane_ornek$aylik_harcama)
+fd <- nclass.FD(hane_ornek$aylik_harcama)
+c(Sturges = sturges, Scott=scott, Friedman_Diaconis=fd)
+```
+
+`breaks=100` ile histogramı ve yoğunluk fonksiyonunu çizelim. X ekseninin sınırlarını (0, 15000) olarak belirleyelim. 
+
+```{r}
+#| label: fig-harcamayog
+#| fig-cap: "Hanehalkı harcama dağılımı" 
+#| echo: false 
+medyan <- median(hane_ornek$aylik_harcama)
+ortalama <- mean(hane_ornek$aylik_harcama)
+
+hist(hane_ornek$aylik_harcama,
+     breaks = 100, freq = FALSE, 
+     xlab = "Aylık hane harcaması, TL", 
+     ylab = "Yoğunluk", 
+     main = "", xlim = c(0,15000), ylim = c(0, 0.0004))
+lines(density(hane_ornek$aylik_harcama), col="black", lwd=2,)
+
+abline(v = medyan, col = "blue", lwd = 2, lty = 2)
+abline(v = ortalama, col = "red", lwd = 2, lty = 2)
+
+# Medyan ve ortalama değerlerini etiketleme
+text(medyan, 0.0003, paste("Medyan = \n", round(medyan, 2)), col = "blue", adj = c(1, -0.5))
+text(ortalama, 0.0003, paste("Ortalama =", round(ortalama, 2)), col = "red", adj = c(-0.1, 1))
+```
+Özet istatistikler: 
+```{r}
+summary(hane_ornek$aylik_harcama)
+```
+Histogram ve yoğunluk grafiğinden de görüleceği gibi (bkz. @fig-harcamayog) aylık hane harcamaları **sağa çarpık** bir dağılıma sahiptir. Örneklem ortalaması (3261 TL) medyan hane harcamasından (2584 TL) daha büyüktür. Hanelerinin yaklaşık % 75'inin aylık harcaması 3948 TL'den küçüktür. 
+
+```{r}
+quantile(hane_ornek$aylik_harcama, p=c(0.1, 0.9, 0.95, 0.98))
+```
+Hanelerin % 10'u aylık yaklaşık 1108 TL'den daha az harcamaktadır. Dağılımın diğer ucunda, hanelerin % 5'i 7802 TL'den daha fazla, % 2'si ise 10869 TL'den daha fazla harcamaktadır.
+::: 
 
 ## Değişkenlik Ölçüleri {#betimsel-degiskenlik}
 
@@ -1090,6 +1933,96 @@ IQR
 ```
 kartiller aralığıdır, $IQR=26$. Bu dağılımın ortasında yer alan gözlemlerin aralığı olarak düşünülebilir. Özellikle uç değerlerin varlığı durumunda aralık yerine dördebölenler aralığı tercih edilebilir. 
 :::
+
+### Kutu çizimi
+
+Kutu ya da kutu-bıyık (box-whiskers) çizimi olarak da isimlendirilen bu grafik verinin dağılımı hakkında bilgi verir ve beş-sayı özetinden hareketle oluşturulur.  **Beş-sayı özeti** aşağıdaki bileşenlerden oluşur:
+
+1. **Minimum:** Verideki en küçük değer, $x_{(1)}$ sıra istatistiği.
+
+2. **Birinci Çeyrek (Q1):** Verinin %25'inin altında kalan değeri gösterir (birinci kartil).
+
+3. **Medyan (Q2):** Verinin ortasındaki değeri temsil eder. Verinin %50'si bu değerin altındadır (ikinci kartil).
+
+4. **Üçüncü Çeyrek (Q3):** Verinin %75'inin altında kalan değeri gösterir (üçüncü kartil).
+
+5. **Maksimum:** Verideki en büyük değer.
+
+
+```{r}
+#| label: fig-kutu0
+#| fig-cap: "Kutu grafiği (uç değerlerin olmadığı durum)"
+#| echo: false
+#| 
+set.seed(1)
+x <- 5*rnorm(100)+100
+# Boxplot çizimi
+boxplot(x, horizontal = TRUE, main = "", ylim = c(85,115), 
+        xlab = "X", col = "gray", frame = FALSE)
+
+# Boxplot istatistiklerini hesaplayalım
+box_stats <- boxplot.stats(x)
+
+# Q1, Q2 (Medyan), Q3, min (whisker) ve max (whisker) değerlerini işaretleme
+text(x = box_stats$stats[1], y = 0.9, labels = "Min", cex=0.9, col = "red", pos = 1)
+text(x = box_stats$stats[2], y = 0.8, labels = "Q1", col = "blue", cex=0.9, pos = 1)
+text(x = box_stats$stats[3], y = 0.8, labels = "Q2\n(Medyan)", cex=0.9, col = "black", pos = 1)
+text(x = box_stats$stats[4], y = 0.8, labels = "Q3", col = "blue", cex=0.9, pos = 1)
+text(x = box_stats$stats[5], y = 0.9, labels = "Maks", col = "red", cex=0.9, pos = 1)
+```
+
+@fig-kutu0 uç değerlerin (outlier) olmadığı durum için örnek bir kutu çizimini göstermektedir. Bu grafiğin bileşenleri şunlardır: 
+
+- **Kutu:** Q1 ve Q3 arasında yer alır ve verinin ortanca %50'sini içerir. Kutunun içinde yer alan çizgi (dikey ya da yatay olabilir) medyanı gösterir. Buradan hareketle merkezi aralığı (IQR) kolayca değerlendirebiliriz. 
+
+- **Bıyıklar (Whiskers):** Kutunun her iki ucundan minimum ve maksimum değerlere kadar uzanır. Eğer tüm gözlem değerleri $1.5\times IQR$ aralığı içindeyse alt ve üst bıyık noktaları aynı zamanda minimum ve maksimum değerlerdir. Ancak bu aralığın dışında değerler varsa bunlar ayrıca gösterilir. 
+
+- **Uç (aşırı) Değerler (Outliers):** Q1-1.5*IQR'den küçük veya Q3+1.5*IQR'den büyük olan değerlerdir. Bunlar kutu ve bıyıkların dışında tekil noktalar olarak gösterilir. Örneğin @fig-kutu1 alt ve üst uç değerlerin olduğu bir veri kümesine ilişkin kutu çizimini göstermektedir. Bu grafikte alt ve üst bıyık ötesindeki noktalar uç değerleri göstermektedir. 
+
+
+```{r}
+#| label: fig-kutu1
+#| fig-cap: "Kutu grafiği (uç değerlerin olduğu durum)"
+#| echo: false
+
+set.seed(1)
+x <- 5*rnorm(400)+100
+# Boxplot çizimi
+boxplot(x, horizontal = TRUE, main = "", ylim = c(85,115), 
+        xlab = "X", col = "gray", frame = FALSE)
+
+# Boxplot istatistiklerini hesaplayalım
+box_stats <- boxplot.stats(x)
+
+# Q1, Q2 (Medyan), Q3, min (whisker) ve max (whisker) değerlerini işaretleme
+text(x = box_stats$stats[1], y = 0.9, labels = "Alt bıyık", cex=0.9, col = "red", pos = 1)
+text(x = box_stats$stats[2], y = 0.8, labels = "Q1", col = "blue", cex=0.9, pos = 1)
+text(x = box_stats$stats[3], y = 0.8, labels = "Q2\n(Medyan)", cex=0.9, col = "black", pos = 1)
+text(x = box_stats$stats[4], y = 0.8, labels = "Q3", col = "blue", cex=0.9, pos = 1)
+text(x = box_stats$stats[5], y = 0.9, labels = "Üst bıyık", col = "red", cex=0.9, pos = 1)
+```
+
+
+
+R'da kutu çizimi için `boxplot()` fonksiyonu kullanılabilir (bkz. @fig-kutumutluluk): 
+```{r}
+#| label: fig-kutumutluluk
+#| fig-cap: "Türkiye'de illerin mutluluk endeksinin kutu grafiği"
+#| echo: true
+boxplot(x = mutluluk$mutluluk,
+        xlab = "",  
+        ylim = c(40,80),
+        ylab = "Mutluluk endeksi"
+        )
+```
+Mutluluk endeksinin kutu grafiğini 5-sayı özeti ile birlikte yorumlayabiliriz. 
+```{r}
+# min Q1 median Q3 max
+fivenum(mutluluk$mutluluk)
+summary(mutluluk$mutluluk)
+```
+Buna göre minimum mutluluk düzeyi yaklaşık olarak 42, ilk kartil 56.54, medyan 60.39, üçüncü kartil yaklaşık 66 ve maksimum mutluluk yaklaşık 78'dir. Medyan ve ortalamanın birbirine yakın olması mutluluğun yaklaşık olarak simetrik dağıldığına işaret etmektedir. Kutu çiziminde medyan çizgisinin kartiller aralığın gösteren dikdörtgeni yaklaşık iki eşit parçaya ayırdığına dikkat ediniz. 
+
 
 ### Varyans 
 
@@ -1486,6 +2419,24 @@ medyan > ortalama
 $$
 olur.   
 
+```{r}
+#| label: fig-carpiklik1
+#| fig-cap: "Dağılımın çarpıklığı" 
+#| echo: false 
+set.seed(1) 
+n <- 10000
+a <- rbeta(n, 10,2) 
+c <- rbeta(n, 2,10) 
+b <- rbeta(n, 10,10) 
+par(mfrow = c(1, 3))  # 1 satır, 3 sütunlu bir çizim alanı oluşturur
+hist(a, main = "Sola Çarpık, c<0", ylab = "", col = "lightblue", xlim=c(0,1))
+hist(b, main = "Simetrik, c=0", ylab = "", col = "lightblue", xlim=c(0,1))
+hist(c, main = "Sağa Çarpık, c>0", ylab = "", col = "lightblue", xlim=c(0,1))
+```
+
+Histogramın (dağılımın) biçimi ile çarpıklık katsayısı ($c$) ilişkilidir. Çarpıklık katsayısı $c$'nin 0 olması dağılımın simetrik olduğu duruma işaret eder (@fig-carpiklik1 (b)). Çarpıklık katsayısının pozitif olması, yani pozitif çarpıklık, dağılımın sağ kuyruğunun sola göre daha uzun olduğunu gösterir (@fig-carpiklik1 (c)). Negatif çarpıklık ise sol kuyruğun sağa göre daha uzun olduğunu ifade eder (@fig-carpiklik1 (a)).
+
+
 ::: {#exm-carpiklik1}
 
 Aşağıdaki not ortalaması verisinde çarpıklık katsayısını `R` ile hesaplayınız.  
@@ -1579,516 +2530,6 @@ Basıklık katsayısı yaklaşık 8.07 olarak bulunmuştur. Bu değer 3'ten büy
 :::  
 
 
-
-## Görsel özet araçlar 
-
-İncelediğimiz sayısal özet istatistikler, verilerin temel özelliklerini anlamak için önemli bir ilk adımdır. Bu istatistiklerin yanı sıra, verilerin görsel temsili karmaşık sayı yığınlarının daha iyi anlaşılmasını sağlar. Bu alt bölümde öğreneceğimiz görsel araçlar, sayısal özet bilgilerin yanı sıra verilerdeki eğilimleri, dağılımları ve ilişkileri daha açık bir şekilde ortaya koyar. Görsel araçlar, verilerin ardındaki hikayeyi anlatmada güçlü bir araç olarak işlev görür. Örneğin, bir histogram, verinin dağılımını etkili bir şekilde gösterirken, bir kutu grafiği (box plot), çeyrek değerleri ve olası uç değerleri görsel olarak sunar. 
-
-Verilerin görselleştirilmesinde değişkenin türüne göre uygun araçların seçilmesi gerekir. Kategorik değişkenler için frekans tabloları, çubuk çizimleri, pasta çizimi gibi araçlar uygundur. Sürekli değişkenler için ise histogram, dal-yaprak çizim, kutu çizimi gibi araçlar kullanılabilir.  
-
-### Frekans tabloları ve kategorik değişkenler
-
-Kategorik değişkenlerin gözlem kümesindeki sayısını ve oranını (yüzde) kolayca hesaplayarak bir tablo haline getirebilir ve görselleştirebiliriz. Kategorik (nominal ya da ordinal) değişkenlerin veri kümesindeki sıklığını ya da frekansını hesaplamak için `R`'da `table()` ve `prop.table(table())` fonksiyonları kullanılabilir. 
-
-Örneğin, hanelerde sigara içenlerin sayısını ve oranını bulmak istediğimizi düşünelim. `hane_ornek.RData` verisinden hareketle
-
-```{r}
-load("Data/hane_ornek.RData")
-table(hane_ornek$sigara)
-prop.table(table(hane_ornek$sigara))
-```
-bulunur. Hanelerin yaklaşık % 51.8'inde (1036 hane) sigara içilmektedir (kategori = 1). Yaklaşık %48.2 hanede ise (964 hane) sigara içilmemektedir (kategori = 2). 
-
-
-Kategorik değişkenlerin frekansları çeşitli araçlarla görselleştirilebilir. Bunlardan biri çubuk çizimidir (barplot). Örneğin, sağlık merkezlerine erişim kolaylığını hanelerin nasıl değerlendirdiğini özetlemek istiyorsak, her kategorinin sıklığını gösteren bir tablo ve çubuk çizimi oluşturabiliriz: 
-
-```{r}
-#| label: fig-barplot1
-#| fig-cap: "Çubuk çizimi: sağlık merkezine erişimin kolaylığı"
-#| warning: false
-#| echo: true
-#| # Frekans tablosu
-frekans_tablosu <- sort(
-  table(hane_ornek$saglik_merkezi_erisim_olcek), 
-  decreasing = TRUE)
-frekans_tablosu
-# Frekans (yüzdelik)
-frekans_tablosu_yuzde <- prop.table(frekans_tablosu) * 100
-frekans_tablosu_yuzde
-barplot(table(hane_ornek$saglik_merkezi_erisim_olcek), 
-        ylim = c(0,1000))
-```
-@fig-barplot1 hanelerin sağlık merkezlerine erişim kolaylığına ilişkin 1-5 skalasında verdikleri cevapların çubuk çizimini göstermektedir. Bu grafiği sıklığa göre büyükten küçüğe sıralayarak çizebiliriz. @fig-barplot2 bu grafiği göstermektedir. 
-```{r}
-#| label: fig-barplot2
-#| fig-cap: "Sıralanmış çubuk çizimi: sağlık merkezine erişimin kolaylığı"
-#| warning: false
-#| echo: true
-
-# çubuk çizimi 
-barplot(frekans_tablosu, # sıklık tablosu
-        ylim = c(0,1000) # y ekseninin sınırları
-        )
-text(x = barplot(frekans_tablosu, plot=FALSE), 
-     y = frekans_tablosu, 
-     label = paste0(round(frekans_tablosu_yuzde, 1), "%"), 
-     pos = 1, cex = 0.8, col = "black")
-```
-Buna göre hanelerin %49.1'i sağlık merkezlerine ulaşımın kolay olduğunu düşünmektedir. Sağlık merkezlerine erişimin zor olduğunu düşünen hanelerin oranı %19.4, çok zor olduğunu söyleyen hanelerin oranı ise %7.5'tir. 
-
-Uygulamalarda yaygın olarak kullanılan başka bir grafik türü pasta grafiğidir. @fig-pasta1  `pie()` fonksiyonu ile çizilmiş örnek bir pasta grafiğini göstermektedir.  
-```{r}
-#| label: fig-pasta1
-#| fig-cap: "Pasta grafiği: sağlık merkezine erişimin kolaylığı"
-#| warning: false
-#| echo: true
-pie(frekans_tablosu, col = blues9)
-```
-
-Belirli bir aralıkta herhangi bir değeri alabilen sayısal değişkenleri görselleştirmenin bir çok yöntemi mevcuttur. İzleyen alt bölümlerde bunları ele alacağız. 
-
-Frekans (sıklık) tablosu özellikle büyük boyutlu sayısal verilerin yorumlanmasında yardımcı olabilir. Bunun için veriler az sayıda gruplara (sınıflara) ayrılır ve her bir sınıfa kaç gözlem düştüğü yani sıklığı (frekansı) hesaplanır. Bu sıklıklar yüzde olarak da ifade edilebilir. 
-
-::: {#exm-frekans1}
-Bir eğitim seminerine katılanların yaşları kaydedilmiştir: 
-$$
-x=(22, 24, 27, 28, 30, 32, 35, 37, 40, 46).
-$$ 
-Bu veriyi birbirine eşit 4 parçaya ayıralım. Birinci grup: 15-25 yaş grubu 15 yaşında ya da daha büyük ve 25 yaşından küçük bireyleri kapsar. İkinci grup 25-35 yaş grubudur ve 25 (dahil) ile 35 (hariç) yaşları arasındaki bireyleri kapsar. @tbl-frekans1 bu yaş verilerinin sıklık tablosunu göstermektedir. 
-
-| Sınıf   | Sıklık (frekans) | Yüzde Sıklık | Birikimli sıklık | % Birikimli sıklık | 
-|---------|:-----------------|-------------:|:----------------:|:------------------:|
-| 15-25   |        2         |      % 20    |         2        |          % 20      | 
-| 25-35   |        4         |      % 40    |         6        |          % 60      | 
-| 35-45   |        3         |      % 30    |         9        |          % 90      | 
-| 45-55   |        1         |      % 10    |        10        |          % 100     
-
-: Katılımcıların yaş dağılımı {#tbl-frekans1}
-
-Frekans tablosuna (@tbl-frekans1) göre 2 gözlem, yani verilerin % 20'si 15-25 aralığında değerler almaktadır. Verilerin % 40'ı 25-35, % 30'u ise 35-45 aralığındadır. 
-
-Sayısal verilerin sınıflara ayrılmasında  `cut()` fonksiyonu kullanılabilir: 
-```{r}
-yas <- c(22, 24, 27, 28, 30, 32, 35, 37, 40, 46)
-yas_grup <- cut(yas, 
-                breaks = c(15, 25, 35, 45,55), 
-                right = FALSE # sağ sınır dahil değil
-                )
-
-# Gruplanmış yaş verisindeki frekansları hesaplayalım
-frekanslar <- table(yas_grup)
-print(frekanslar)
-prop.table(frekanslar)
-```
-::: 
-
-::: {#exm-frekans2}
-
-32 gözlemden oluşan bir otomobil kümesinde araçların beygir gücü aşağıdaki gibidir: 
-```{r}
-beygir_gucu <- mtcars$hp 
-# Veriyi 4x8 tablo haline getirmek için yeniden şekillendir
-matrix_data <- matrix(beygir_gucu, nrow = 4, byrow = TRUE)
-matrix_data
-```
-- `stripchart()` fonksiyonunu kullanarak verilerin basit bir görsel özetini oluşturun. 
-- Gözlemleri 5 sınıfa bölün ve frekans tablosunu hazırlayın. X ekseninde sınıflar Y ekseninde sınıf içindeki gözlemler olmak üzere bir çubuk çizimi hazırlayın.  
-
-**Çözüm**
-
-@fig-bg1 beygir gücü verisinin nokta grafiğini göstermektedir. 
-```{r}
-#| label: fig-bg1
-#| fig-cap: "Nokta grafiği: otomobillerin beygir gücü"
-#| warning: false
-#| echo: true
-# Verilerin basit bir görsel özetini stripchart() kullanarak oluştur
-stripchart(beygir_gucu, 
-           method = "stack", 
-           main = " ", 
-           xlab = "Beygir Gücü", 
-           col = "blue", 
-           pch = 16)
-```
-
-
-```{r}
-# Beygir gücü verilerini 5 sınıfa bölmek için sınıf aralıklarını belirle
-breaks <- seq(min(beygir_gucu), max(beygir_gucu), length.out = 6)
-print(breaks)
-```
-Bu sınır noktalarını kullanarak frekans tablosunu oluşturalım: 
-```{r}
-# Sınıf aralıklarına göre verileri sınıflandır
-beygir_gucu_cut <- cut(beygir_gucu, 
-                       breaks = breaks, 
-                       include.lowest = TRUE, # en alt sınırı dahil et
-                       right = FALSE          # sağ sınır hariç
-                       )
-
-# Frekans tablosunu oluştur
-freq_table <- table(beygir_gucu_cut)
-freq_table
-```
-$[52,109)$ aralığında (52 dahil, 109 hariç) 10 gözlem, $[109, 165)$ aralığında (109 dahil, 165 hariç) 9 gözlem bulunmaktadır. @fig-bg2 bu frekans tablosunun çubuk çizimini göstermektedir.  
-```{r}
-#| label: fig-bg2
-#| fig-cap: "Beygir gücü frekans dağılımı: çubuk çizimi"
-#| warning: false
-#| echo: true
-# Frekans tablosunu çubuk grafiği olarak çiz
-barplot(freq_table, 
-        main = " ", 
-        xlab = "Beygir Gücü Sınıfları", 
-        ylab = "Frekans", 
-        col = "lightblue",  
-        space=0,
-        border = "black")
-```
-
-Aralıklar x ekseninde ve frekanslar y ekseninde olacak şekilde çubuk yerine nokta ile de gösterebiliriz (bkz. @fig-bg3): 
-```{r}
-#| label: fig-bg3
-#| fig-cap: "Beygir gücü frekans dağılımı"
-#| warning: false
-#| echo: true
-# Sınıf isimlerini al
-classes <- names(freq_table)
-
-# Çubuk grafiği yerine noktalar ve dikey çizgiler kullanarak grafiği çiz
-plot(as.numeric(freq_table), 
-     type = "p", 
-     main = "",
-     xlab = "Beygir Gücü Sınıfları", 
-     ylab = "Frekans",
-     col = "blue", 
-     pch = 19, 
-     xaxt = "n", 
-     ylim = c(0,12))
-
-# Dikey çizgiler ekle
-segments(x0 = 1:length(freq_table), 
-         y0 = 0, 
-         x1 = 1:length(freq_table), 
-         y1 = freq_table, 
-         col = "lightblue", 
-         lty = "dashed")
-
-# X ekseni etiketlerini ekle
-axis(1, at = 1:length(classes), labels = classes)
-
-# Frekans sayılarını noktaların üzerine yerleştir
-text(x = 1:length(freq_table), 
-     y = freq_table, 
-     label = freq_table, 
-     pos = 3, 
-     cex = 0.8, 
-     col = "black")
-
-```
-:::
-
-Sınıf sayısının ve genişliğinin frekans dağılımını doğrudan etkilediğine dikkat ediniz. Bu grafiğin özel bir versiyonu histogram adını alır. İzleyen bölümlerde bu grafik türünü inceleyeceğiz. 
-
-
-
-### Dal-ve-yaprak
-
-Dal-ve-yaprak (*Stem-and-Leaf*) grafiği, genellikle  az sayıda nümerik gözlemin dağılımını görselleştirmek için kullanılan bir yöntemdir. Bu grafik, veri değerlerini basit bir şekilde gruplandırarak dağılımın şeklini gösterir. Özellikle bilgisayar ya da hesaplama araçlarına erişimin olmadığı durumlarda, bir kağıt ve kalemle hızlıca çizilebilir.
-
-İki basamaklı örnek bir veri kümesinin Dal-ve-yaprak çizimi için aşağıdaki adımlar takip edilebilir: 
-
-- Gözlem değerleri onlar ve birler basamağı alınarak "dal" ve "yaprak" olarak adlandırılan iki parçaya ayrılır. Örneğin 75 değeri için 7 dal ve 5 yaprak olarak alınabilir. 
-
-- "Dal" kısmı, veri değerlerinin onlar basamağından oluşur ve genellikle soldan sağa doğru sıralanır. 
-
-- "Yaprak" kısmı, veri değerlerinin birler basamağından oluşur ve her bir "dal" için bir dizi yaprak değeri içerir.
-
-- Her bir "dal" için yaprak değerleri, sıralanmış bir şekilde yan yana yazılır.
-
-- Son olarak, her bir dal ile yaprak değerleri arasında bir ayraç kullanılarak dal-ve-yaprak grafiği oluşturulur.
-
-Dal ve yaprak kısımları verilerin değerlerine göre belirlenebilir. Örneğin üç basamaklı değerler alan bir veri kümesi için dal kısmı yüzler basamağı, yaprak kısmı birler basamağı olarak seçilebilir. 
-
-::: {#exm-stem1}
-
-Bir sınavdan alınan 100 üzerinden puanların dal-ve-yaprak çizimini oluşturalım:   
-```{r} 
-not <- c(48, 55, 87, 58, 63, 75, 95, 68, 75, 80, 60, 52, 66)
-stem(not)
-```
-Burada `|` işaretinin solunda kalan değerler "stem" (dal), sağında kalan değerler ise "leaf" (yaprak) olarak isimlendirilir. Buna göre bir öğrenci 48, üç öğrenci 50-60 arasında, 4 öğrenci 60-70 arasında not almıştır. Notu 75 olan iki öğrenci vardır. Ayrıca en yüksek notun 95 olduğunu ve 80-90 arasında not alan 2 öğrenci olduğunu görüyoruz.  
-:::
-
-::: {#exm-stem2}
-
-Beygir gücü veri kümesinin dal-ve-yaprak çizimini hazırlayınız.
-
-Bu veri kümesinde otomobillerin beygir gücü 52 ile 335 arasında değerler almaktadır. Onlar ve yüzler basamağını "dal", birler basamağını "yaprak" olarak seçersek: 
-```{r}
-stem(beygir_gucu, scale = 3)
-```
-
-grafiğin olası tüm basamakları içerdiğini ve boşluklar oluştuğunu görüyoruz. `scale = 1` seçeneğini kullanarak grafiği daha kompakt bir şekilde çizebiliriz: 
-
-```{r}
-stem(beygir_gucu, scale = 1)
-```
-Bu grafikte "0" 95'ten küçük iki basamaklı gözlemleri içerir. Bu değerler, 52, 62, 65, 66, 66, 91, ve 93, grafikte sırasıyla, 5, 6, 7, 7, 7, 9, ve 9 "yaprak" değerleriyle gösterilmiştir. Benzer şekilde grafikte yer alan 1 dalları 95 (dahil) ile 200 (hariç) arasındaki gözlemleri temsil etmektedir.  1 dal ve 0 yaprak değeri yaklaşık olarak 100 beygir gücünü, 1 dal ve 1 yaprak değeri yaklaşık 110 beygir gücünü göstermektedir. Diğer değerlerde benzer şekilde yorumlanabilir. Sıralanmış veriler: 
-```{r}
-sort(beygir_gucu)
-```
-En yüksek değerin (335) dal-ve-yaprak grafiğinde 3 dal ve 4 yaprak değeri ile temsil edildiğine dikkat ediniz. 
-
-::: 
-
-::: {#exm-stem3}
-Türkiye'de il düzeyinde mutluluk endeksinin dal-ve-yaprak yaprak çizimi aşağıdaki gibidir: 
-```{r}
-stem(mutluluk$mutluluk)
-```
-Buna göre minimum ve maksimum mutluluk endeksleri sırasıyla 42 ve 78 olarak ölçülmüştür. Değerlerin 55-65 arasında yoğunlaştığı görülebilir. 
-Stem basamağının tekrar etmesini istemiyorsak scale=0.5 seçilebilir: 
-```{r}
-stem(mutluluk$mutluluk, scale=0.5)
-```
-Bu grafik verilerin sayısal özet istatistikleri ile birlikte yorumlanabilir: 
-```{r}
-summary(mutluluk$mutluluk)
-```
-::: 
-
-
-### Histogram
-
-Sayısal değerler alan bir veri kümesinin dağılımını görselleştirmenin yaygın olarak kullanılan bir yolu gözlemlerin sınıflara ayrılması ve her sınıfa giren gözlem sayısının grafiğinin çizilmesidir. Bu grafik türüne histogram adı verilir.  
-
-Histogram, gözlemleri belirli aralıklara böler ve her aralıktaki gözlem sayısını ya da yüzdesini bir çubuk grafiği olarak gösterir. Bunun için genellikle aşağıdaki adımlar izlenir: 
-
-- Değerler aralığını bulun.
-
-- Verileri belirli ve (genel olarak) birbirine eşit sınıflara bölün (gruplayın).
-
-- Her sınıftaki gözlem sayısını hesaplayın.
-
-- Her sınıf ya da aralık için bir çubuk oluşturun ve yüksekliğini o aralıktaki gözlem sayısına (frekans ya da sıklık) göre ayarlayın.
-
-
-```{r}
-#| label: fig-hist1
-#| fig-cap: "Histogram sınıf sayısına duyarlıdır"
-#| fig-subcap: 
-#|   - "Sınıf sayısı çok az"
-#|   - "Sınıf sayısı çok fazla"
-#| layout-ncol: 2
-#| fig-width: 4
-#| fig-height: 3
-#| echo: false 
-set.seed(234567)
-z <- rnorm(100)
-hist(z, breaks=2, xlab="", ylab="Frekans", main="", xlim = c(-3,3))
-hist(z, breaks=40, xlab="", ylab="Frekans", main="", xlim = c(-3,3))  
-```
-Histogram çizimindeki en önemli kararlardan biri sınıf ya da aralık sayısının belirlenmesidir. @fig-hist1 bir veri kümesi için farklı sınıf sayısı tercihlerini göstermektedir. Sınıf sayısı gereğinden az belirlenirse verilerdeki dağılım bilgisi kaybolur. Benzer şekilde sınıf sayısı çok yüksek belirlenirse çubuk sayısı artar, sınıflar arasında boşluklar oluşur ve dağılım fazla inişli çıkışlı olur. 
-
-
-```{r}
-#| label: fig-hist2
-#| fig-cap: "Histogramda ideal sınıf seçimi"
-#| fig-subcap: 
-#|   - "Sınıf sayısı = 6"
-#|   - "Sınıf sayısı= 11"
-#| layout-ncol: 2
-#| fig-width: 4
-#| fig-height: 3
-#| echo: false 
-hist(z, breaks=6, xlab="", ylab="Frekans", main="", xlim = c(-3,3))
-hist(z, breaks=11, xlab="", ylab="Frekans", main="", xlim = c(-3,3))  
-```
-@fig-hist2 aynı veri kümesi için sınıf sayısının 6 ve 11 olduğu iki durumu göstermektedir. Her iki sınıf sayısı için histogramın şeklinin yaklaşık olarak simetrik olduğunu görüyoruz. Sınıf sayısını ya da sınıf aralıklarını deneme yanılma ile belirlemek de mümkündür. Pratikte gözlem sayısına bağlı olarak sınıf sayısını belirleyebiliriz. 
-
-Histogramdaki sınıf sayısını belirlemek için çeşitli yardımcı formüller önerilmiştir. Sturges formülü, verinin büyüklüğüne bağlı olarak histogramın optimal aralık sayısını aşağıdaki formüle göre hesaplar: 
-$$
-h = 1+\log_2(n)
-$$
-Burada $h$ sınıf sayısı ve $n$ gözlem sayısıdır. Bu formül,daha büyük veri kümeleri için daha fazla aralık ve daha küçük veri kümeleri için daha az aralık önerir.
-
-Freedman-Diaconis kuralı, bir histogramın aralık sayısını belirlemek için kullanılan bir başka yöntemdir. Bu kural, veri setinin dağılımını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler. Freedman-Diaconis kuralı şu şekildedir:
-
-$$
-bw = 2~IQR(x)~ n^{-1/3}
-$$
-Burada $bw$ aralık genişliğini, IQR ise kartiller aralığını temsil etmektedir ($Q_3-Q_1$). 
-
-Scott kuralı, bir histogramın aralık sayısını belirlemek için bir başka yöntemdir. Bu kural, veri setinin standart sapmasını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler.
-$$
-bw=3.5sd(x)n^{-1/3}
-$$
-Burada $sd(x)$ verilerin örneklem standart sapmasını göstermektedir. 
-
-```{r}
-#| label: fig-carpiklik1
-#| fig-cap: "Dağılımın çarpıklığı" 
-#| echo: false 
-set.seed(1) 
-n <- 10000
-a <- rbeta(n, 10,2) 
-c <- rbeta(n, 2,10) 
-b <- rbeta(n, 10,10) 
-par(mfrow = c(1, 3))  # 1 satır, 3 sütunlu bir çizim alanı oluşturur
-hist(a, main = "Sola Çarpık, c<0", ylab = "", col = "lightblue", xlim=c(0,1))
-hist(b, main = "Simetrik, c=0", ylab = "", col = "lightblue", xlim=c(0,1))
-hist(c, main = "Sağa Çarpık, c>0", ylab = "", col = "lightblue", xlim=c(0,1))
-```
-
-Histogramın (dağılımın) biçimi ile çarpıklık katsayısı ($c$) ilişkilidir. Çarpıklık katsayısı $c$'nin 0 olması dağılımın simetrik olduğu duruma işaret eder (@fig-carpiklik1 (b)). Çarpıklık katsayısının pozitif olması, yani pozitif çarpıklık, dağılımın sağ kuyruğunun sola göre daha uzun olduğunu gösterir (@fig-carpiklik1 (c)). Negatif çarpıklık ise sol kuyruğun sağa göre daha uzun olduğunu ifade eder (@fig-carpiklik1 (a)).
-
-::: {#exm-hist1}
-
-Mutluluk verileri için önerilen sınıf sayılarını hesaplayalım: 
-```{r}
-sturges <- nclass.Sturges(mutluluk$mutluluk)
-scott <- nclass.scott(mutluluk$mutluluk)
-fd <- nclass.FD(mutluluk$mutluluk)
-c(Sturges = sturges, Scott=scott, Friedman_Diaconis=fd)
-```
-
-
-```{r}
-#| label: fig-mutlulukhist
-#| fig-cap: "Histogram: Türkiye'de illerin mutluluk düzeyi" 
-#| echo: false 
-hist(mutluluk$mutluluk,
-     breaks = 8, 
-     xlab = "Mutluluk endeksi", 
-     ylab = "Frekans", 
-     main = "")
-```
-@fig-mutlulukhist mutluluk endeksinin histogramını göstermektedir. Sınıf sayısı 8 olarak belirlenmiştir. Bu histograma göre mutluluk düzeyinin merkezi eğiliminin 60 civarında olduğunu söyleyebiliriz. Mutluluk düzeyi azaldıkça ve arttıkça frekans azalmaktadır. Bu veri kümesinde ortalama ve medyan, sırasıyla, 61 ve 60 olarak bulunmuştu:
-```{r}
-summary(mutluluk$mutluluk)
-```
-
-
-`R`'da histogramın çiziminde kullanılan istatistikleri görmek istersek aşağıdaki kodu çalıştırabiliriz:  
-```{r}
-hist_mutluluk <- hist(mutluluk$mutluluk, breaks = 8, plot = FALSE)
-str(hist_mutluluk)
-```
-
-`hist()` fonksiyonu birbirine eşit aralıklı sınıfları (breaks) ve her sınıfa düşen gözlem sayısını (counts) gösterir. Sınıf (bin) genişliği 5 birimdir. Gri renkte gösterilen dikdörtgenin uzunluğu (y ekseni) o sınıfa düşen gözlem sayısı ile orantılıdır. Sınıf aralıklarının tanımı  $(a, b]$  (`right = TRUE`) ya da $[a,b)$ (`right = FALSE`) olarak seçilebilir.  
-
-Yoğunluk (density) her sınıfa düşen gözlem sayısının (counts) gözlem sayısı ve sınıf genişliğine oranıyla bulunur. Örneğin 40-45 aralığında sadece 1 gözlem vardır. Toplam gözlem sayısı 81 ve sınıf genişliği 5 olduğu için yoğunluk 
-```{r}
-1/81/5
-```
-yaklaşık 0.00247 olarak bulunur. 
-
-`$mids` sınıfların orta noktalarını göstermektedir. 
-:::  
-
-Sayısal değerler alan bir değişkenin yoğunluk grafiği düzleştirilmiş histogram olarak yorumlanabilir. Sınıf aralıkları daraldıkça (ya da sınıf sayısı arttıkça) histogram yoğunluk fonksiyonuna yaklaşır. 
-
-```{r}
-#| label: fig-duzhist
-#| fig-cap: "Düzleştirilmiş histogram ya da yoğunluk fonksiyonu"
-#| fig-subcap: 
-#|   - " "
-#|   - " "
-#|   - " "
-#|   - " "
-#| layout-ncol: 2
-#| fig-width: 4
-#| fig-height: 3
-#| echo: false 
-set.seed(2345)
-z <- rnorm(10000)
-hist(z, breaks=4, xlab="", ylab="Frekans", main="") 
-hist(z, breaks=10, xlab="", ylab="Frekans", main="")  
-hist(z, breaks=30, xlab="", ylab="Frekans", main="")  
-hist(z, breaks=80, freq = FALSE, xlab="", ylab="Yoğunluk", main="", col = "white") 
-lines(density(z), col="blue", lwd=2) 
-```
-
-@fig-duzhist histogram ve yoğunluk arasındaki ilişkiyi göstermektedir. Bu grafikte sınıf sayısı arttıkça histogramın yoğunluk fonksiyonuna yaklaştığına dikkat ediniz (bkz. @fig-duzhist-4). Histogram yorumunda olduğu gibi dağılımın merkezine doğru yaklaştıkça yoğunluk artmaktadır. Görece daha az sıklıkta gerçekleşen değerler için yoğunluk daha düşük değerler alır. İzleyen bölümlerde buradan hareketle olasılıkları nasıl hesaplayabileceğimizi öğreneceğiz. 
-
-`R` `density()` fonksiyonunu kullanarak yoğunlukları hesaplayabilir ve görselleştirebiliriz. 
-
-::: {#exm-hist2}
-İllere göre mutluluk endeksinin yoğunluk grafiğini çiziniz. 
-
-```{r}
-#| label: fig-yogmutlu
-#| fig-cap: "Yoğunluk grafiği: Türkiye'de illerin mutluluk düzeyi" 
-#| echo: false 
-plot(density(mutluluk$mutluluk), main="")
-```
-Yoğunluk ya da düzleştirilmiş histograma göre gözlem değerleri 55-65 arasında "yoğunlaşmaktadır" (@fig-yogmutlu). Sol ve sağ kuyruklara doğru gidildikçe yoğunluk azalmaktadır. 
-
-Histogram ve yoğunluğu birlikte de çizebiliriz (bkz. @fig-yogmutlu2) 
-```{r}
-#| label: fig-yogmutlu2
-#| fig-cap: "Yoğunluk grafiği: Türkiye'de illerin mutluluk düzeyi" 
-#| echo: false  
-hist(mutluluk$mutluluk,
-     breaks = 8, freq = FALSE,
-     xlab = "Mutluluk endeksi", 
-     ylab = "Yoğunluk", 
-     main = "")
-lines(density(mutluluk$mutluluk), col="blue")
-```
-
-Yoğunluk fonksiyonunun detayları için yardım dosyasına bakınız, `?density()` 
-::: 
-
-::: {#exm-hist3}
-`hane_ornek` veri kümesinde yer alan `aylik_harcama` değişkeninin histogramını ve yoğunluk fonksiyonunu çiziniz. Özet istatistiklerle birlikte yorumlayınız. Ayrıca, 0.1, 0.90, 0.95 ve 0.98 yüzdelik değerlerini hesaplayınız ve yorumlayınız. 
-
-```{r}
-load("Data/hane_ornek.RData")
-
-sturges <- nclass.Sturges(hane_ornek$aylik_harcama)
-scott <- nclass.scott(hane_ornek$aylik_harcama)
-fd <- nclass.FD(hane_ornek$aylik_harcama)
-c(Sturges = sturges, Scott=scott, Friedman_Diaconis=fd)
-```
-
-`breaks=100` ile histogramı ve yoğunluk fonksiyonunu çizelim. X ekseninin sınırlarını (0, 15000) olarak belirleyelim. 
-
-```{r}
-#| label: fig-harcamayog
-#| fig-cap: "Hanehalkı harcama dağılımı" 
-#| echo: false 
-medyan <- median(hane_ornek$aylik_harcama)
-ortalama <- mean(hane_ornek$aylik_harcama)
-
-hist(hane_ornek$aylik_harcama,
-     breaks = 100, freq = FALSE, 
-     xlab = "Aylık hane harcaması, TL", 
-     ylab = "Yoğunluk", 
-     main = "", xlim = c(0,15000), ylim = c(0, 0.0004))
-lines(density(hane_ornek$aylik_harcama), col="black", lwd=2,)
-
-abline(v = medyan, col = "blue", lwd = 2, lty = 2)
-abline(v = ortalama, col = "red", lwd = 2, lty = 2)
-
-# Medyan ve ortalama değerlerini etiketleme
-text(medyan, 0.0003, paste("Medyan = \n", round(medyan, 2)), col = "blue", adj = c(1, -0.5))
-text(ortalama, 0.0003, paste("Ortalama =", round(ortalama, 2)), col = "red", adj = c(-0.1, 1))
-```
-Özet istatistikler: 
-```{r}
-summary(hane_ornek$aylik_harcama)
-```
-Histogram ve yoğunluk grafiğinden de görüleceği gibi (bkz. @fig-harcamayog) aylık hane harcamaları **sağa çarpık** bir dağılıma sahiptir. Örneklem ortalaması (3261 TL) medyan hane harcamasından (2584 TL) daha büyüktür. Hanelerinin yaklaşık % 75'inin aylık harcaması 3948 TL'den küçüktür. 
-
-```{r}
-quantile(hane_ornek$aylik_harcama, p=c(0.1, 0.9, 0.95, 0.98))
-```
-Hanelerin % 10'u aylık yaklaşık 1108 TL'den daha az harcamaktadır. Dağılımın diğer ucunda, hanelerin % 5'i 7802 TL'den daha fazla, % 2'si ise 10869 TL'den daha fazla harcamaktadır.
-::: 
-
-
 ```{r}
 #| label: fig-histkurtosis
 #| fig-cap: "Dağılımların basıklığı"
@@ -2137,133 +2578,9 @@ lines(density(rnorm(10000, mean=ort, sd=sd)))
 
 Basıklık kavramı dağılımın kuyruklardaki ve merkezdeki davranışını incelemede önemlidir. Özellikle verinin uçlardaki davranışı, çeşitli analizler için önemli olabilir. Örneğin bazı finansal varlık getirilerinin dağılımı kalın kuyruklu (leptokurtik) olma eğilimindedir. Böyle bir dağılım, normal dağılıma göre daha sivri bir tepe ve daha kalın kuyruklara sahip olur. @fig-getirihist BIST100 endeksinin günlük getirilerinin histogramını göstermektedir. Karşılaştırma amacıyla normal dağılımın yoğunluğu da grafiğe eklenmiştir. Bu getiriler için kurtosis değeri 8.07 olarak bulunmuştur. Normal dağılıma kıyasla, çoğu getiri değerinin ortalamaya yakın gerçekleştiğini, ancak uç olayların (aşırı kazanç veya kayıplar) normalden daha sık görüldüğünü söyleyebiliriz.  
 
-```{r}
-#| label: fig-modality
-#| fig-cap: "Dağılımların modalliği"
-#| fig-subcap: 
-#|   - "Tek tepeli (Unimodal) dağılım "
-#|   - "Çift tepeli (Bimodal) dağılım"
-#|   - "Çok tepeli (Multimodal) dağılım" 
-#| layout-ncol: 3
-#| echo: false 
-# Unimodal distribution example
-set.seed(123)
-data_unimodal <- rnorm(1000, mean = 50, sd = 10)
-hist(data_unimodal, freq = FALSE,  
-     breaks = 20, main = "", xlab="", col = "lightblue")
-lines(density(data_unimodal))
-# Bimodal distribution example
-set.seed(123)
-data_bimodal <- c(rnorm(500, mean = 40, sd = 5), rnorm(500, mean = 60, sd = 5))
-hist(data_bimodal, freq = FALSE,  
-     breaks = 20, main = "", xlab="", col = "lightgreen")
-lines(density(data_bimodal))
-# Multimodal distribution example
-set.seed(123)
-data_multimodal <- c(rnorm(300, mean = 30, sd = 5), 
-                     rnorm(300, mean = 50, sd = 5), 
-                     rnorm(300, mean = 70, sd = 5))
-hist(data_multimodal, freq = FALSE,  
-     breaks = 20, main = "", xlab="", col = "lightcoral")
-lines(density(data_multimodal))
-```
-
-Histogram ya da yoğunluk grafikleri dağılımın simetriklik, sağa ve sola çarpıklık gibi özelliklerine ilişkin önemli bilgiler verir. Histogramların önemli bir başka özelliği de modalliktir. Modallik, dağılımda kaç tane tepe noktası (mod) olduğunu gösterir ve verilerin farklı alt gruplara bölünmesi gerektiğine işaret edebilir. 
-
-Tek tepeli (unimodal) bir dağılımda, @fig-modality-1 da görüldüğü gibi, histogramın yalnızca bir belirgin tepe noktası vardır. Verinin büyük çoğunluğu belirli bir değerde toplanmıştır. İki tepe noktası olan dağılımlar çift tepeli olarak adlandırılır (@fig-modality-2). Bu tür dağılımlar, genellikle verinin iki farklı grup veya popülasyondan geldiğini gösterebilir. Örneğin, erkek ve kadın bireylerin boy dağılımı çift tepeli olabilir. Üç veya daha fazla tepe noktası olan dağılımlar çok modlu olarak adlandırılır (@fig-modality-3). Bu durum, verinin farklı alt gruplardan oluştuğunu veya karmaşık bir yapıya sahip olduğunu gösterebilir.
- 
-
-
-### Kutu çizimi
 
 
 
-Kutu ya da kutu-bıyık (box-whiskers) çizimi olarak da isimlendirilen bu grafik verinin dağılımı hakkında bilgi verir ve beş-sayı özetinden hareketle oluşturulur.  **Beş-sayı özeti** aşağıdaki bileşenlerden oluşur:
-
-1. **Minimum:** Verideki en küçük değer, $x_{(1)}$ sıra istatistiği.
-
-2. **Birinci Çeyrek (Q1):** Verinin %25'inin altında kalan değeri gösterir (birinci kartil).
-
-3. **Medyan (Q2):** Verinin ortasındaki değeri temsil eder. Verinin %50'si bu değerin altındadır (ikinci kartil).
-
-4. **Üçüncü Çeyrek (Q3):** Verinin %75'inin altında kalan değeri gösterir (üçüncü kartil).
-
-5. **Maksimum:** Verideki en büyük değer.
-
-
-```{r}
-#| label: fig-kutu0
-#| fig-cap: "Kutu grafiği (uç değerlerin olmadığı durum)"
-#| echo: false
-#| 
-set.seed(1)
-x <- 5*rnorm(100)+100
-# Boxplot çizimi
-boxplot(x, horizontal = TRUE, main = "", ylim = c(85,115), 
-        xlab = "X", col = "gray", frame = FALSE)
-
-# Boxplot istatistiklerini hesaplayalım
-box_stats <- boxplot.stats(x)
-
-# Q1, Q2 (Medyan), Q3, min (whisker) ve max (whisker) değerlerini işaretleme
-text(x = box_stats$stats[1], y = 0.9, labels = "Min", cex=0.9, col = "red", pos = 1)
-text(x = box_stats$stats[2], y = 0.8, labels = "Q1", col = "blue", cex=0.9, pos = 1)
-text(x = box_stats$stats[3], y = 0.8, labels = "Q2\n(Medyan)", cex=0.9, col = "black", pos = 1)
-text(x = box_stats$stats[4], y = 0.8, labels = "Q3", col = "blue", cex=0.9, pos = 1)
-text(x = box_stats$stats[5], y = 0.9, labels = "Maks", col = "red", cex=0.9, pos = 1)
-```
-
-@fig-kutu0 uç değerlerin (outlier) olmadığı durum için örnek bir kutu çizimini göstermektedir. Bu grafiğin bileşenleri şunlardır: 
-
-- **Kutu:** Q1 ve Q3 arasında yer alır ve verinin ortanca %50'sini içerir. Kutunun içinde yer alan çizgi (dikey ya da yatay olabilir) medyanı gösterir. Buradan hareketle merkezi aralığı (IQR) kolayca değerlendirebiliriz. 
-
-- **Bıyıklar (Whiskers):** Kutunun her iki ucundan minimum ve maksimum değerlere kadar uzanır. Eğer tüm gözlem değerleri $1.5\times IQR$ aralığı içindeyse alt ve üst bıyık noktaları aynı zamanda minimum ve maksimum değerlerdir. Ancak bu aralığın dışında değerler varsa bunlar ayrıca gösterilir. 
-
-- **Uç (aşırı) Değerler (Outliers):** Q1-1.5*IQR'den küçük veya Q3+1.5*IQR'den büyük olan değerlerdir. Bunlar kutu ve bıyıkların dışında tekil noktalar olarak gösterilir. Örneğin @fig-kutu1 alt ve üst uç değerlerin olduğu bir veri kümesine ilişkin kutu çizimini göstermektedir. Bu grafikte alt ve üst bıyık ötesindeki noktalar uç değerleri göstermektedir. 
-
-
-```{r}
-#| label: fig-kutu1
-#| fig-cap: "Kutu grafiği (uç değerlerin olduğu durum)"
-#| echo: false
-
-set.seed(1)
-x <- 5*rnorm(400)+100
-# Boxplot çizimi
-boxplot(x, horizontal = TRUE, main = "", ylim = c(85,115), 
-        xlab = "X", col = "gray", frame = FALSE)
-
-# Boxplot istatistiklerini hesaplayalım
-box_stats <- boxplot.stats(x)
-
-# Q1, Q2 (Medyan), Q3, min (whisker) ve max (whisker) değerlerini işaretleme
-text(x = box_stats$stats[1], y = 0.9, labels = "Alt bıyık", cex=0.9, col = "red", pos = 1)
-text(x = box_stats$stats[2], y = 0.8, labels = "Q1", col = "blue", cex=0.9, pos = 1)
-text(x = box_stats$stats[3], y = 0.8, labels = "Q2\n(Medyan)", cex=0.9, col = "black", pos = 1)
-text(x = box_stats$stats[4], y = 0.8, labels = "Q3", col = "blue", cex=0.9, pos = 1)
-text(x = box_stats$stats[5], y = 0.9, labels = "Üst bıyık", col = "red", cex=0.9, pos = 1)
-```
-
-
-
-R'da kutu çizimi için `boxplot()` fonksiyonu kullanılabilir (bkz. @fig-kutumutluluk): 
-```{r}
-#| label: fig-kutumutluluk
-#| fig-cap: "Türkiye'de illerin mutluluk endeksinin kutu grafiği"
-#| echo: true
-boxplot(x = mutluluk$mutluluk,
-        xlab = "",  
-        ylim = c(40,80),
-        ylab = "Mutluluk endeksi"
-        )
-```
-Mutluluk endeksinin kutu grafiğini 5-sayı özeti ile birlikte yorumlayabiliriz. 
-```{r}
-# min Q1 median Q3 max
-fivenum(mutluluk$mutluluk)
-summary(mutluluk$mutluluk)
-```
-Buna göre minimum mutluluk düzeyi yaklaşık olarak 42, ilk kartil 56.54, medyan 60.39, üçüncü kartil yaklaşık 66 ve maksimum mutluluk yaklaşık 78'dir. Medyan ve ortalamanın birbirine yakın olması mutluluğun yaklaşık olarak simetrik dağıldığına işaret etmektedir. Kutu çiziminde medyan çizgisinin kartiller aralığın gösteren dikdörtgeni yaklaşık iki eşit parçaya ayırdığına dikkat ediniz. 
 
 ### Keman grafiği 
 
@@ -2816,11 +3133,6 @@ Burada, eşitlik durumu, iki değişken arasında tam doğrusal bir ilişki oldu
 
 ## Çözümlü Alıştırmalar
 
-::: {#exr-betimsel0}
-
-::: 
-
-
 ::: {#exr-medyan}
 
 Bir sayısal vektörü girdi olarak alan ve medyanı hesaplayan bir `R` fonksiyonu yazınız. 
@@ -3138,7 +3450,7 @@ Bilgisayar kullanmadan:
   a) 4 ya da 5 sınıftan oluşan frekans tablosunu hazırlayın ve histogramını çizin.  
 :::  
 
-::: {#cnj-betimsel0a} 
+::: {#cnj-betimsel0b} 
 Aşağıdaki ifadelerin doğru/yanlış olup olmadıklarını belirtin ve kısaca açıklayın. 
 
   a) Medyan ortalamaya göre uç değerlere daha az duyarlıdır. 
@@ -3162,7 +3474,7 @@ Bu ifadelerden hangileri kesin olarak yanlıştır? Kısaca açıklayınız.
 Ortalaması 10 standart sapması 2 olan 5 sayı oluşturun (bilgisayar kullanmayın). 
 ::: 
 
-::: {#cnj-mutluluk} 
+::: {#cnj-gapminder} 
 
 `gapminder` verilerini kullanarak aşağıdaki soruları yanıtlayınız:
 
@@ -3186,5 +3498,13 @@ Ortalaması 10 standart sapması 2 olan 5 sayı oluşturun (bilgisayar kullanmay
   a) `ort_gun_kazanc` o ilde yaşayan bireylerin ortalama günlük kazançlarını göstermektedir. Bu değişkenin histogramını ve kutu grafiğini çizin. Özet istatistikleri hesaplayın ve grafiklerle birlikte yorumlayın. 
   a) `mutluluk` endeksi ile `ort_gun_kazanc` arasındaki korelasyon katsayısını bulun. Serpilme diagramını çizin ve yorumlayın. 
   a) Bu iki değişkenin varyasyon katsayılarını (CV) hesaplayın ve yorumlayın. 
+::: 
+
+::: {#cnj-body1} 
+
+`body.RData` vücut ölçümleri veri kümesini kullanarak aşağıdaki soruları yanıtlayınız:
+
+  a) `height` (boy) değişkeninin kadın ve erkekler için ayrı ayrı kutu çizimlerini oluşturun ve özet istatistiklerle birlikte yorumlayın. 
+  a) `height` ve `weight` değişkenlerinin serpilme çizimlerini oluşturun. Cinsiyete göre noktaları ayrıştırın (renk ya da geometrik şekil kullanılabilir, erkekler için kırmızı, kadınlar için mavi vb.).  
 ::: 
 
