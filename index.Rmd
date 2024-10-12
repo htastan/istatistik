@@ -1,0 +1,67 @@
+---
+title: "İstatistik 1"
+author: 
+  name: "Prof. Dr. Hüseyin Taştan"
+  affiliation: "Yıldız Teknik Üniversitesi"
+output: 
+  html_document:
+    theme: flatly
+    highlight: haddock
+date: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+İstatistik 1 (YTU İktisat Lisans Programı) ders notları 
+
+Syllabus: <https://htastan.github.io/istatistik/Istatistik_I_Syllabus_2024_Fall.pdf>
+
+## Ders Planı
+
+
+1. Giriş: [pdf](docs/Giris.pdf) | [html](docs/Giris.html)
+
+2. Temel Kavramlar: [pdf](docs/Temelk.pdf) | [html](docs/Temelk.html)
+
+3. R Programı 
+    - R Base: <https://htastan.github.io/R-Giris/R-Base.html>
+      - Repository: <https://github.com/htastan/R-Giris>
+    - R Tidyverse: <https://htastan.github.io/R-Giris/R-Tidyverse.html>
+      - Repository: <https://github.com/htastan/R-Giris>  
+    - R Markdown Örnek: <https://htastan.github.io/RMarkdown-Ornek/RMarkdown_Ornek>
+      - Repository: <https://github.com/htastan/RMarkdown-Ornek>
+    - R Veri İndirme: <https://htastan.github.io/R-veri-indirme/R_veri_paketleri>
+      - Repository: <https://github.com/htastan/R-veri-indirme>
+<br/>
+<br/>
+
+4. Betimsel İstatistik: Görsel özet araçlar: [pdf](docs/Betimsel-gorsel.pdf) | [html](docs/Betimsel-gorsel.html)
+<br/>
+<br/>
+
+5. Betimsel İstatistik: Sayısal özet araçlar: [pdf](docs/Betimsel-sayisal.pdf) | [html](docs/Betimsel-sayisal.html) 
+<br/>
+<br/>
+
+6. Olasılık 
+<br/>
+<br/>
+
+7. Kesikli Rassal Değişkenler 
+<br/>
+<br/>
+
+8. Sürekli Rassal Değişkenler 
+<br/>
+<br/>
+
+9. Normal Dağılım 
+<br/>
+
+10. Örnekleme ve örnekleme Dağılımları 
+<br/>
+<br/>
+
+

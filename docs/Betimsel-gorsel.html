@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>betimsel-gorsel</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Betimsel-gorsel_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Betimsel-gorsel_files/libs/quarto-html/quarto.js"></script>
+<script src="Betimsel-gorsel_files/libs/quarto-html/popper.min.js"></script>
+<script src="Betimsel-gorsel_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Betimsel-gorsel_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Betimsel-gorsel_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Betimsel-gorsel_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Betimsel-gorsel_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Betimsel-gorsel_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Betimsel-gorsel_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<div class="hidden">
+<p><span class="math display">\[
+  \newcommand{\E}{\mathbb{E}}
+  \renewcommand{\P}{\mathbb{P}}
+  \newcommand{\Var}{\mbox{Var}}
+  \newcommand{\Cov}{\mbox{Cov}}
+\]</span></p>
+</div>
+<section id="sec-betimsel" class="level1">
+<h1>Betimsel İstatistik: Görsel Yöntemler</h1>
+<p>İstatistiksel analizin önemli aşamalarından biri verilerin betimlenmesi ve özetlenmesidir. Betimsel istatistik verilerin çeşitli sayısal ve görsel araçlar yardımıyla özetlenmesi ile uğraşır. Bu bölümde, veri kümelerinin temel özelliklerini tanımlamada yaygın olarak kullanılan görsel ve sayısal yöntemleri inceleyeceğiz. Bu yöntemler, veri kümesinin genel yapısını anlamaya ve sayısal bilgi yığınlarındaki gizli örüntüleri, ilişkileri ve sıra dışı davranışları tanımlamaya yardımcı olur.</p>
+<p>Betimsel istatistiklerin kullanımı, verinin türünden veya büyüklüğünden bağımsız olarak faydalıdır. Küçük veri setlerinden büyük veri tabanlarına kadar her türlü veri üzerinde kullanılabilir. Görgül bilimsel verilerle çalışmaya başlamanın ilk adımı betimsel istatistiklerin incelenmesidir. Bu analizler, verileriniz hakkında genel bir anlayış sağlar ve daha karmaşık analitik tekniklerin temelini oluşturur.</p>
+<p>Bu ve izleyen alt bölümlerde inceleyeceğimiz görsel yöntemler karmaşık sayı yığınlarının anlaşılmasında genellikle ilk adımdır. Bu görsel araçlar, sayısal özet bilgilerin yanı sıra verilerdeki eğilimleri, dağılımları ve ilişkileri daha açık bir şekilde ortaya koyar. Görsel araçlar, verilerin ardındaki hikayeyi anlatmada güçlü bir araç olarak işlev görür. Örneğin, bir histogram, verinin dağılımını etkili bir şekilde gösterirken, çubuk çizimi kategorik verilerin nasıl dağıldığına ilişkin bilgi sunar.</p>
+<p>Verilerin görselleştirilmesinde değişkenin türüne göre uygun araçların seçilmesi gerekir. Kategorik değişkenler için frekans tabloları, çubuk çizimleri, pasta çizimi gibi araçlar uygundur. Sürekli değişkenler için ise histogram, dal-yaprak çizim, kutu çizimi gibi araçlar kullanılabilir.</p>
+<section id="frekans-tabloları-ve-kategorik-değişkenler" class="level2">
+<h2 class="anchored" data-anchor-id="frekans-tabloları-ve-kategorik-değişkenler">Frekans tabloları ve kategorik değişkenler</h2>
+<p>Kategorik değişkenlerin gözlem kümesindeki sayısını ve oranını (yüzde) kolayca hesaplayarak bir tablo haline getirebilir ve görselleştirebiliriz. Kategorik (nominal ya da ordinal) değişkenlerin veri kümesindeki sıklığını ya da frekansını hesaplamak için <code>R</code>’da <code>table()</code> ve <code>prop.table(table())</code> fonksiyonları kullanılabilir.</p>
+<p>Örneğin, hanelerde sigara içenlerin sayısını ve oranını bulmak istediğimizi düşünelim. <code>hane_ornek.RData</code> verisinden hareketle</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/hane_ornek.RData"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>sigara)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2 
+1036  964 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(hane_ornek<span class="sc">$</span>sigara))</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1     2 
+0.518 0.482 </code></pre>
+</div>
+</div>
+<p>bulunur. Hanelerin yaklaşık % 51.8’inde (1036 hane) sigara içilmektedir (kategori = 1). Yaklaşık %48.2 hanede ise (964 hane) sigara içilmemektedir (kategori = 2).</p>
+<p>Kategorik değişkenlerin frekansları çeşitli araçlarla görselleştirilebilir. Bunlardan biri çubuk çizimidir (barplot). Örneğin, sağlık merkezlerine erişim kolaylığını hanelerin nasıl değerlendirdiğini özetlemek istiyorsak, her kategorinin sıklığını gösteren bir tablo ve çubuk çizimi oluşturabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>frekans_tablosu <span class="ot">&lt;-</span> <span class="fu">sort</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(hane_ornek<span class="sc">$</span>saglik_merkezi_erisim_olcek), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>frekans_tablosu</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kolay       Zor Çok kolay      Orta   Çok zor 
+      982       387       269       212       150 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frekans (yüzdelik)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>frekans_tablosu_yuzde <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(frekans_tablosu) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>frekans_tablosu_yuzde</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Kolay       Zor Çok kolay      Orta   Çok zor 
+    49.10     19.35     13.45     10.60      7.50 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(hane_ornek<span class="sc">$</span>saglik_merkezi_erisim_olcek), </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>))</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-barplot1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-barplot1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;1: Çubuk çizimi: sağlık merkezine erişimin kolaylığı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-barplot1">Şekil&nbsp;1</a> hanelerin sağlık merkezlerine erişim kolaylığına ilişkin 1-5 skalasında verdikleri cevapların çubuk çizimini göstermektedir. Bu grafiği sıklığa göre büyükten küçüğe sıralayarak çizebiliriz. <a href="#fig-barplot2">Şekil&nbsp;2</a> bu grafiği göstermektedir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># çubuk çizimi </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(frekans_tablosu, <span class="co"># sıklık tablosu</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1000</span>) <span class="co"># y ekseninin sınırları</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fu">barplot</span>(frekans_tablosu, <span class="at">plot=</span><span class="cn">FALSE</span>), </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> frekans_tablosu, </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(frekans_tablosu_yuzde, <span class="dv">1</span>), <span class="st">"%"</span>), </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-barplot2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-barplot2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;2: Sıralanmış çubuk çizimi: sağlık merkezine erişimin kolaylığı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Buna göre hanelerin %49.1’i sağlık merkezlerine ulaşımın kolay olduğunu düşünmektedir. Sağlık merkezlerine erişimin zor olduğunu düşünen hanelerin oranı %19.4, çok zor olduğunu söyleyen hanelerin oranı ise %7.5’tir.</p>
+<p>Uygulamalarda yaygın olarak kullanılan başka bir grafik türü pasta grafiğidir. <a href="#fig-pasta1">Şekil&nbsp;3</a> <code>pie()</code> fonksiyonu ile çizilmiş örnek bir pasta grafiğini göstermektedir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(frekans_tablosu, <span class="at">col =</span> blues9)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-pasta1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-pasta1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;3: Pasta grafiği: sağlık merkezine erişimin kolaylığı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Belirli bir aralıkta herhangi bir değeri alabilen sayısal değişkenleri görselleştirmenin bir çok yöntemi mevcuttur. İzleyen alt bölümlerde bunları ele alacağız.</p>
+<p>Frekans (sıklık) tablosu özellikle büyük boyutlu sayısal verilerin yorumlanmasında yardımcı olabilir. Bunun için veriler az sayıda gruplara (sınıflara) ayrılır ve her bir sınıfa kaç gözlem düştüğü yani sıklığı (frekansı) hesaplanır. Bu sıklıklar yüzde olarak da ifade edilebilir.</p>
+<div id="exm-frekans1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1 </strong></span>Bir eğitim seminerine katılanların yaşları kaydedilmiştir: <span class="math display">\[
+x=(22, 24, 27, 28, 30, 32, 35, 37, 40, 46).
+\]</span> Bu veriyi birbirine eşit 4 parçaya ayıralım. Birinci grup: 15-25 yaş grubu 15 yaşında ya da daha büyük ve 25 yaşından küçük bireyleri kapsar. İkinci grup 25-35 yaş grubudur ve 25 (dahil) ile 35 (hariç) yaşları arasındaki bireyleri kapsar. <a href="#tbl-frekans1">Tablo&nbsp;1</a> bu yaş verilerinin sıklık tablosunu göstermektedir.</p>
+<div id="tbl-frekans1" class="anchored">
+<table class="table">
+<caption>Tablo&nbsp;1: Katılımcıların yaş dağılımı</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 17%">
+<col style="width: 22%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sınıf</th>
+<th style="text-align: left;">Sıklık (frekans)</th>
+<th style="text-align: right;">Yüzde Sıklık</th>
+<th style="text-align: center;">Birikimli sıklık</th>
+<th style="text-align: center;">% Birikimli sıklık</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>15-25</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">% 20</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">% 20</td>
+</tr>
+<tr class="even">
+<td>25-35</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">% 40</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">% 60</td>
+</tr>
+<tr class="odd">
+<td>35-45</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">% 30</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">% 90</td>
+</tr>
+<tr class="even">
+<td>45-55</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">% 10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">% 100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Frekans tablosuna (<a href="#tbl-frekans1">Tablo&nbsp;1</a>) göre 2 gözlem, yani verilerin % 20’si 15-25 aralığında değerler almaktadır. Verilerin % 40’ı 25-35, % 30’u ise 35-45 aralığındadır.</p>
+<p>Sayısal verilerin sınıflara ayrılmasında <code>cut()</code> fonksiyonu kullanılabilir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">35</span>, <span class="dv">37</span>, <span class="dv">40</span>, <span class="dv">46</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>yas_grup <span class="ot">&lt;-</span> <span class="fu">cut</span>(yas, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">45</span>,<span class="dv">55</span>), </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">right =</span> <span class="cn">FALSE</span> <span class="co"># sağ sınır dahil değil</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Gruplanmış yaş verisindeki frekansları hesaplayalım</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>frekanslar <span class="ot">&lt;-</span> <span class="fu">table</span>(yas_grup)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(frekanslar)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>yas_grup
+[15,25) [25,35) [35,45) [45,55) 
+      2       4       3       1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(frekanslar)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>yas_grup
+[15,25) [25,35) [35,45) [45,55) 
+    0.2     0.4     0.3     0.1 </code></pre>
+</div>
+</div>
+</div>
+<div id="exm-frekans2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 2 </strong></span>32 gözlemden oluşan bir otomobil kümesinde araçların beygir gücü aşağıdaki gibidir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>beygir_gucu <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Veriyi 4x8 tablo haline getirmek için yeniden şekillendir</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>matrix_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(beygir_gucu, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>matrix_data</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+[1,]  110  110   93  110  175  105  245   62
+[2,]   95  123  123  180  180  180  205  215
+[3,]  230   66   52   65   97  150  150  245
+[4,]  175   66   91  113  264  175  335  109</code></pre>
+</div>
+</div>
+<ul>
+<li><code>stripchart()</code> fonksiyonunu kullanarak verilerin basit bir görsel özetini oluşturun.</li>
+<li>Gözlemleri 5 sınıfa bölün ve frekans tablosunu hazırlayın. X ekseninde sınıflar Y ekseninde sınıf içindeki gözlemler olmak üzere bir çubuk çizimi hazırlayın.</li>
+</ul>
+<p><strong>Çözüm</strong></p>
+<p><a href="#fig-bg1">Şekil&nbsp;4</a> beygir gücü verisinin nokta grafiğini göstermektedir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verilerin basit bir görsel özetini stripchart() kullanarak oluştur</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(beygir_gucu, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"stack"</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">" "</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">xlab =</span> <span class="st">"Beygir Gücü"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"blue"</span>, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-bg1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-bg1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;4: Nokta grafiği: otomobillerin beygir gücü</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beygir gücü verilerini 5 sınıfa bölmek için sınıf aralıklarını belirle</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(beygir_gucu), <span class="fu">max</span>(beygir_gucu), <span class="at">length.out =</span> <span class="dv">6</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(breaks)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  52.0 108.6 165.2 221.8 278.4 335.0</code></pre>
+</div>
+</div>
+<p>Bu sınır noktalarını kullanarak frekans tablosunu oluşturalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sınıf aralıklarına göre verileri sınıflandır</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>beygir_gucu_cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(beygir_gucu, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">breaks =</span> breaks, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">include.lowest =</span> <span class="cn">TRUE</span>, <span class="co"># en alt sınırı dahil et</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">right =</span> <span class="cn">FALSE</span>          <span class="co"># sağ sınır hariç</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Frekans tablosunu oluştur</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="fu">table</span>(beygir_gucu_cut)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>freq_table</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>beygir_gucu_cut
+ [52,109) [109,165) [165,222) [222,278) [278,335] 
+       10         9         8         4         1 </code></pre>
+</div>
+</div>
+<p><span class="math inline">\([52,109)\)</span> aralığında (52 dahil, 109 hariç) 10 gözlem, <span class="math inline">\([109, 165)\)</span> aralığında (109 dahil, 165 hariç) 9 gözlem bulunmaktadır. <a href="#fig-bg2">Şekil&nbsp;5</a> bu frekans tablosunun çubuk çizimini göstermektedir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frekans tablosunu çubuk grafiği olarak çiz</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(freq_table, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">" "</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Beygir Gücü Sınıfları"</span>, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Frekans"</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">space=</span><span class="dv">0</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-bg2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-bg2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;5: Beygir gücü frekans dağılımı: çubuk çizimi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Aralıklar x ekseninde ve frekanslar y ekseninde olacak şekilde çubuk yerine nokta ile de gösterebiliriz (bkz. <a href="#fig-bg3">Şekil&nbsp;6</a>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sınıf isimlerini al</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">names</span>(freq_table)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Çubuk grafiği yerine noktalar ve dikey çizgiler kullanarak grafiği çiz</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(freq_table), </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"p"</span>, </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Beygir Gücü Sınıfları"</span>, </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frekans"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>, </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>, </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Dikey çizgiler ekle</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(freq_table), </span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">y0 =</span> <span class="dv">0</span>, </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(freq_table), </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">y1 =</span> freq_table, </span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="st">"lightblue"</span>, </span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">lty =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># X ekseni etiketlerini ekle</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(classes), <span class="at">labels =</span> classes)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Frekans sayılarını noktaların üzerine yerleştir</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(freq_table), </span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> freq_table, </span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> freq_table, </span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>, </span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.8</span>, </span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"black"</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-bg3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-bg3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;6: Beygir gücü frekans dağılımı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Sınıf sayısının ve genişliğinin frekans dağılımını doğrudan etkilediğine dikkat ediniz. Bu grafiğin özel bir versiyonu histogram adını alır. İzleyen bölümlerde bu grafik türünü inceleyeceğiz.</p>
+</section>
+<section id="çapraz-tablolar" class="level2">
+<h2 class="anchored" data-anchor-id="çapraz-tablolar">Çapraz Tablolar</h2>
+<p>Bir çapraz tablo iki nominal ya da ordinal değişkenin sıklıklarını gösterir. Eğer A değişkeni <span class="math inline">\(r\)</span> grup, B değişkeni <span class="math inline">\(c\)</span> grup içeriyorsa çapraz tablo <span class="math inline">\(r\times c\)</span> hücreden oluşur. Her hücre o gruplara karşılık gelen gözlem sayısını içerir.</p>
+<div id="exm-capraztablo1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 3 </strong></span>Hanehalkı örnekleminde aylık geliri kullanarak yeni bir kategorik değişken oluşturalım. Aylık geliri 1883 TL’den düşük olanlar “Düşük Gelir”, 1883-4230 arasında olanlar “Orta gelir” ve 4230 TL’den yüksek olanlar “Yüksek Gelir” olsun.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/hane_ornek.RData"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>hane_ornek<span class="sc">$</span>gelir_seviyesi <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(hane_ornek<span class="sc">$</span>aylik_gelir <span class="sc">&lt;</span> <span class="dv">1883</span>, <span class="st">"Düşük"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">ifelse</span>(hane_ornek<span class="sc">$</span>aylik_gelir <span class="sc">&lt;=</span> <span class="dv">4230</span>, <span class="st">"Orta"</span>, <span class="st">"Yüksek"</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sonuçları görmek için</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># head(hane_ornek) </span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>gelir_seviyesi)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ Düşük   Orta Yüksek 
+   499    944    557 </code></pre>
+</div>
+</div>
+<p>Aylık gelir düzeyi ile sigara arasındaki <span class="math inline">\(2\times 3\)</span> çapraz tabloyu oluşturalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hane_ornek<span class="sc">$</span>sigara <span class="ot">&lt;-</span> <span class="fu">factor</span>(hane_ornek<span class="sc">$</span>sigara,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Evet"</span>, <span class="st">"Hayır"</span>))</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(hane_ornek<span class="sc">$</span>sigara, hane_ornek<span class="sc">$</span>gelir_seviyesi)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+        Düşük Orta Yüksek
+  Evet    215  503    318
+  Hayır   284  441    239</code></pre>
+</div>
+</div>
+<div id="tbl-capraztablo1" class="anchored">
+<table class="table">
+<caption>Tablo&nbsp;2: Gelir düzeyi ve sigara kullanımı</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Düşük</th>
+<th>Orta</th>
+<th>Yüksek</th>
+<th>Toplam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Evet</td>
+<td>215</td>
+<td>503</td>
+<td>318</td>
+<td>1036</td>
+</tr>
+<tr class="even">
+<td>Hayır</td>
+<td>284</td>
+<td>441</td>
+<td>239</td>
+<td>964</td>
+</tr>
+<tr class="odd">
+<td><strong>Toplam</strong></td>
+<td>499</td>
+<td>944</td>
+<td>557</td>
+<td>2000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="#tbl-capraztablo1">Tablo&nbsp;2</a> çapraz tabloyu göstermektedir. Toplam 2000 hane içinde 215’i düşük gelir grubundadır ve hanede sigara içilmektedir. Yüksek gelir grubundaki hanelerin 318’inde sigara içen vardır, 239 hanede ise yoktur.</p>
+<p>Bu tabloyu genel toplama, satır toplamına ya da sütun toplamına göre oran olarak ifade edebiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># genel toplama oran</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>tablo <span class="ot">&lt;-</span> <span class="fu">table</span>(hane_ornek<span class="sc">$</span>sigara, hane_ornek<span class="sc">$</span>gelir_seviyesi)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tablo) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+        Düşük  Orta Yüksek
+  Evet  10.75 25.15  15.90
+  Hayır 14.20 22.05  11.95</code></pre>
+</div>
+</div>
+<p>Tüm hanelerin %22.05’i orta gelir grubunda ve sigara içilmeyen hanelerdir. Diğer oranlar da benzer şekilde yorumlanabilir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># satır toplamına oran: </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tablo, <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+           Düşük     Orta   Yüksek
+  Evet  20.75290 48.55212 30.69498
+  Hayır 29.46058 45.74689 24.79253</code></pre>
+</div>
+</div>
+<p>Bu tabloda satır toplamları 1’dir. Sigara içilen hanelerde orta gelirlilerin oranı yaklaşık %48.55’tir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sütun toplamına oran: </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tablo, <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+           Düşük     Orta   Yüksek
+  Evet  43.08617 53.28390 57.09156
+  Hayır 56.91383 46.71610 42.90844</code></pre>
+</div>
+</div>
+<p>Bu tabloda ise sütun toplamları 1’dir. Yüksek gelirli hanelerde sigara içilenlerin oranı %57.09, içilmeyenlerin oranı ise %42.91’dir.</p>
+<p>Çapraz tablolar çubuk çizimi ile görselleştirilebilir (bkz. <a href="#fig-capraztablo1">Şekil&nbsp;7</a>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Yüzde hesaplama</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>yuzde <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tablo, <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Sütun bazında yüzde</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Yüzdeleri çubukların üzerine ekle</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>yuzde_yerleri <span class="ot">&lt;-</span> <span class="fu">barplot</span>(tablo, </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">beside =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"orange"</span>),</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">xlab =</span> <span class="st">"Gelir Grubu"</span>, </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ylab =</span> <span class="st">"Sayı"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">600</span>),</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">legend.text =</span> <span class="fu">rownames</span>(tablo))</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Yüzdeleri grafiğin üzerine ekle</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> yuzde_yerleri, </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">as.vector</span>(tablo), </span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">round</span>(yuzde, <span class="dv">1</span>), </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-capraztablo1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-capraztablo1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;7: Gelir grubuna göre sigara kullanımı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dal-ve-yaprak" class="level2">
+<h2 class="anchored" data-anchor-id="dal-ve-yaprak">Dal-ve-yaprak</h2>
+<p>Dal-ve-yaprak (<em>Stem-and-Leaf</em>) grafiği, genellikle az sayıda nümerik gözlemin dağılımını görselleştirmek için kullanılan bir yöntemdir. Bu grafik, veri değerlerini basit bir şekilde gruplandırarak dağılımın şeklini gösterir. Özellikle bilgisayar ya da hesaplama araçlarına erişimin olmadığı durumlarda, bir kağıt ve kalemle hızlıca çizilebilir.</p>
+<p>İki basamaklı örnek bir veri kümesinin Dal-ve-yaprak çizimi için aşağıdaki adımlar takip edilebilir:</p>
+<ul>
+<li><p>Gözlem değerleri onlar ve birler basamağı alınarak “dal” ve “yaprak” olarak adlandırılan iki parçaya ayrılır. Örneğin 75 değeri için 7 dal ve 5 yaprak olarak alınabilir.</p></li>
+<li><p>“Dal” kısmı, veri değerlerinin onlar basamağından oluşur ve genellikle soldan sağa doğru sıralanır.</p></li>
+<li><p>“Yaprak” kısmı, veri değerlerinin birler basamağından oluşur ve her bir “dal” için bir dizi yaprak değeri içerir.</p></li>
+<li><p>Her bir “dal” için yaprak değerleri, sıralanmış bir şekilde yan yana yazılır.</p></li>
+<li><p>Son olarak, her bir dal ile yaprak değerleri arasında bir ayraç kullanılarak dal-ve-yaprak grafiği oluşturulur.</p></li>
+</ul>
+<p>Dal ve yaprak kısımları verilerin değerlerine göre belirlenebilir. Örneğin üç basamaklı değerler alan bir veri kümesi için dal kısmı yüzler basamağı, yaprak kısmı birler basamağı olarak seçilebilir.</p>
+<div id="exm-stem1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 4 </strong></span>Bir sınavdan alınan 100 üzerinden puanların dal-ve-yaprak çizimini oluşturalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>not <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">55</span>, <span class="dv">87</span>, <span class="dv">58</span>, <span class="dv">63</span>, <span class="dv">75</span>, <span class="dv">95</span>, <span class="dv">68</span>, <span class="dv">75</span>, <span class="dv">80</span>, <span class="dv">60</span>, <span class="dv">52</span>, <span class="dv">66</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(not)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  4 | 8
+  5 | 258
+  6 | 0368
+  7 | 55
+  8 | 07
+  9 | 5</code></pre>
+</div>
+</div>
+<p>Burada <code>|</code> işaretinin solunda kalan değerler “stem” (dal), sağında kalan değerler ise “leaf” (yaprak) olarak isimlendirilir. Buna göre bir öğrenci 48, üç öğrenci 50-60 arasında, 4 öğrenci 60-70 arasında not almıştır. Notu 75 olan iki öğrenci vardır. Ayrıca en yüksek notun 95 olduğunu ve 80-90 arasında not alan 2 öğrenci olduğunu görüyoruz.</p>
+</div>
+<div id="exm-stem2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 5 </strong></span>Beygir gücü veri kümesinin dal-ve-yaprak çizimini hazırlayınız.</p>
+<p>Bu veri kümesinde otomobillerin beygir gücü 52 ile 335 arasında değerler almaktadır. Onlar ve yüzler basamağını “dal”, birler basamağını “yaprak” olarak seçersek:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(beygir_gucu, <span class="at">scale =</span> <span class="dv">3</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+   5 | 2
+   6 | 2566
+   7 | 
+   8 | 
+   9 | 1357
+  10 | 59
+  11 | 0003
+  12 | 33
+  13 | 
+  14 | 
+  15 | 00
+  16 | 
+  17 | 555
+  18 | 000
+  19 | 
+  20 | 5
+  21 | 5
+  22 | 
+  23 | 0
+  24 | 55
+  25 | 
+  26 | 4
+  27 | 
+  28 | 
+  29 | 
+  30 | 
+  31 | 
+  32 | 
+  33 | 5</code></pre>
+</div>
+</div>
+<p>grafiğin olası tüm basamakları içerdiğini ve boşluklar oluştuğunu görüyoruz. <code>scale = 1</code> seçeneğini kullanarak grafiği daha kompakt bir şekilde çizebiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(beygir_gucu, <span class="at">scale =</span> <span class="dv">1</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 2 digit(s) to the right of the |
+
+  0 | 5677799
+  1 | 0011111122
+  1 | 55888888
+  2 | 123
+  2 | 556
+  3 | 4</code></pre>
+</div>
+</div>
+<p>Bu grafikte “0” 95’ten küçük iki basamaklı gözlemleri içerir. Bu değerler, 52, 62, 65, 66, 66, 91, ve 93, grafikte sırasıyla, 5, 6, 7, 7, 7, 9, ve 9 “yaprak” değerleriyle gösterilmiştir. Benzer şekilde grafikte yer alan 1 dalları 95 (dahil) ile 200 (hariç) arasındaki gözlemleri temsil etmektedir. 1 dal ve 0 yaprak değeri yaklaşık olarak 100 beygir gücünü, 1 dal ve 1 yaprak değeri yaklaşık 110 beygir gücünü göstermektedir. Diğer değerlerde benzer şekilde yorumlanabilir. Sıralanmış veriler:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(beygir_gucu)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  52  62  65  66  66  91  93  95  97 105 109 110 110 110 113 123 123 150 150
+[20] 175 175 175 180 180 180 205 215 230 245 245 264 335</code></pre>
+</div>
+</div>
+<p>En yüksek değerin (335) dal-ve-yaprak grafiğinde 3 dal ve 4 yaprak değeri ile temsil edildiğine dikkat ediniz.</p>
+</div>
+<div id="exm-stem3" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 6 </strong></span>Türkiye’de il düzeyinde mutluluk endeksinin dal-ve-yaprak yaprak çizimi aşağıdaki gibidir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"Data/mutluluk.rda"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(mutluluk<span class="sc">$</span>mutluluk)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  4 | 2
+  4 | 69
+  5 | 0012222333344
+  5 | 56677777778888889999
+  6 | 0000011111123334444
+  6 | 55555666788
+  7 | 00011122344
+  7 | 5668</code></pre>
+</div>
+</div>
+<p>Buna göre minimum ve maksimum mutluluk endeksleri sırasıyla 42 ve 78 olarak ölçülmüştür. Değerlerin 55-65 arasında yoğunlaştığı görülebilir. Stem basamağının tekrar etmesini istemiyorsak scale=0.5 seçilebilir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(mutluluk<span class="sc">$</span>mutluluk, <span class="at">scale=</span><span class="fl">0.5</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is 1 digit(s) to the right of the |
+
+  4 | 269
+  5 | 001222233334456677777778888889999
+  6 | 000001111112333444455555666788
+  7 | 000111223445668</code></pre>
+</div>
+</div>
+<p>Bu grafik verilerin sayısal özet istatistikleri ile birlikte yorumlanabilir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mutluluk<span class="sc">$</span>mutluluk)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  41.98   56.54   60.39   61.15   65.57   77.66 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
+<p>Sürekli değerler alan bir veri kümesinin dağılımını görselleştirmenin yaygın olarak kullanılan bir yolu gözlemlerin sınıflara ayrılması ve her sınıfa giren gözlem sayısının (frekansının) grafiğinin çizilmesidir. Bu grafik türüne histogram adı verilir.</p>
+<p>Histogram, gözlemleri belirli aralıklara böler ve her aralıktaki gözlem sayısını ya da yüzdesini bir çubuk grafiği olarak gösterir. Bunun için genellikle aşağıdaki adımlar izlenir:</p>
+<ul>
+<li><p>Değerler aralığını bulun.</p></li>
+<li><p>Verileri belirli ve (genel olarak) birbirine eşit sınıflara bölün (gruplayın).</p></li>
+<li><p>Her sınıftaki gözlem sayısını hesaplayın.</p></li>
+<li><p>Her sınıf ya da aralık için bir çubuk oluşturun ve yüksekliğini o aralıktaki gözlem sayısına (frekans ya da sıklık) göre ayarlayın.</p></li>
+</ul>
+<div id="fig-hist1" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hist1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-hist1-1.png" class="img-fluid figure-img" data-ref-parent="fig-hist1" width="384"></p>
+<figcaption class="figure-caption">(a) Sınıf sayısı çok az</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hist1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-hist1-2.png" class="img-fluid figure-img" data-ref-parent="fig-hist1" width="384"></p>
+<figcaption class="figure-caption">(b) Sınıf sayısı çok fazla</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Şekil&nbsp;8: Histogram sınıf sayısına duyarlıdır</figcaption><p></p>
+</figure>
+</div>
+<p>Histogram çizimindeki en önemli kararlardan biri sınıf ya da aralık sayısının belirlenmesidir. <a href="#fig-hist1">Şekil&nbsp;8</a> bir veri kümesi için farklı sınıf sayısı tercihlerini göstermektedir. Sınıf sayısı gereğinden az belirlenirse verilerdeki dağılım bilgisi kaybolur. Benzer şekilde sınıf sayısı çok yüksek belirlenirse çubuk sayısı artar, sınıflar arasında boşluklar oluşur ve dağılım fazla inişli çıkışlı olur.</p>
+<div id="fig-hist2" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hist2-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-hist2-1.png" class="img-fluid figure-img" data-ref-parent="fig-hist2" width="384"></p>
+<figcaption class="figure-caption">(a) Sınıf sayısı = 6</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hist2-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-hist2-2.png" class="img-fluid figure-img" data-ref-parent="fig-hist2" width="384"></p>
+<figcaption class="figure-caption">(b) Sınıf sayısı= 11</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Şekil&nbsp;9: Histogramda ideal sınıf seçimi</figcaption><p></p>
+</figure>
+</div>
+<p><a href="#fig-hist2">Şekil&nbsp;9</a> aynı veri kümesi için sınıf sayısının 6 ve 11 olduğu iki durumu göstermektedir. Her iki sınıf sayısı için histogramın şeklinin yaklaşık olarak simetrik olduğunu görüyoruz. Sınıf sayısını ya da sınıf aralıklarını deneme yanılma ile belirlemek de mümkündür. Pratikte gözlem sayısına bağlı olarak sınıf sayısını belirleyebiliriz.</p>
+<p>Histogramdaki sınıf sayısını belirlemek için çeşitli yardımcı formüller önerilmiştir. Sturges formülü, verinin büyüklüğüne bağlı olarak histogramın optimal aralık sayısını aşağıdaki formüle göre hesaplar: <span class="math display">\[
+h = 1+\log_2(n)
+\]</span> Burada <span class="math inline">\(h\)</span> sınıf sayısı ve <span class="math inline">\(n\)</span> gözlem sayısıdır. Bu formül,daha büyük veri kümeleri için daha fazla aralık ve daha küçük veri kümeleri için daha az aralık önerir.</p>
+<p>Freedman-Diaconis kuralı, bir histogramın aralık sayısını belirlemek için kullanılan bir başka yöntemdir. Bu kural, veri setinin dağılımını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler. Freedman-Diaconis kuralı şu şekildedir:</p>
+<p><span class="math display">\[
+bw = 2~IQR(x)~ n^{-1/3}
+\]</span> Burada <span class="math inline">\(bw\)</span> aralık genişliğini, IQR ise kartiller aralığını temsil etmektedir (<span class="math inline">\(Q_3-Q_1\)</span>).</p>
+<p>Scott kuralı, bir histogramın aralık sayısını belirlemek için bir başka yöntemdir. Bu kural, veri setinin standart sapmasını ve büyüklüğünü dikkate alarak histogram aralıklarını belirler. <span class="math display">\[
+bw=3.5sd(x)n^{-1/3}
+\]</span> Burada <span class="math inline">\(sd(x)\)</span> verilerin örneklem standart sapmasını göstermektedir.</p>
+<div id="exm-hist1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 7 </strong></span>Mutluluk verileri için önerilen sınıf sayılarını hesaplayalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sturges <span class="ot">&lt;-</span> <span class="fu">nclass.Sturges</span>(mutluluk<span class="sc">$</span>mutluluk)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>scott <span class="ot">&lt;-</span> <span class="fu">nclass.scott</span>(mutluluk<span class="sc">$</span>mutluluk)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>fd <span class="ot">&lt;-</span> <span class="fu">nclass.FD</span>(mutluluk<span class="sc">$</span>mutluluk)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">Sturges =</span> sturges, <span class="at">Scott=</span>scott, <span class="at">Friedman_Diaconis=</span>fd)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Sturges             Scott Friedman_Diaconis 
+                8                 6                 9 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-mutlulukhist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-mutlulukhist-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;10: Histogram: Türkiye’de illerin mutluluk düzeyi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-mutlulukhist">Şekil&nbsp;10</a> mutluluk endeksinin histogramını göstermektedir. Sınıf sayısı 8 olarak belirlenmiştir. Bu histograma göre mutluluk düzeyinin merkezi eğiliminin 60 civarında olduğunu söyleyebiliriz. Mutluluk düzeyi azaldıkça ve arttıkça frekans azalmaktadır. Bu veri kümesinde ortalama ve medyan, sırasıyla, 61 ve 60 olarak bulunmuştu:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mutluluk<span class="sc">$</span>mutluluk)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  41.98   56.54   60.39   61.15   65.57   77.66 </code></pre>
+</div>
+</div>
+<p><code>R</code>’da histogramın çiziminde kullanılan istatistikleri görmek istersek aşağıdaki kodu çalıştırabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>hist_mutluluk <span class="ot">&lt;-</span> <span class="fu">hist</span>(mutluluk<span class="sc">$</span>mutluluk, <span class="at">breaks =</span> <span class="dv">8</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hist_mutluluk)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 6
+ $ breaks  : int [1:9] 40 45 50 55 60 65 70 75 80
+ $ counts  : int [1:8] 1 3 13 22 19 9 10 4
+ $ density : num [1:8] 0.00247 0.00741 0.0321 0.05432 0.04691 ...
+ $ mids    : num [1:8] 42.5 47.5 52.5 57.5 62.5 67.5 72.5 77.5
+ $ xname   : chr "mutluluk$mutluluk"
+ $ equidist: logi TRUE
+ - attr(*, "class")= chr "histogram"</code></pre>
+</div>
+</div>
+<p><code>hist()</code> fonksiyonu birbirine eşit aralıklı sınıfları (breaks) ve her sınıfa düşen gözlem sayısını (counts) gösterir. Sınıf (bin) genişliği 5 birimdir. Gri renkte gösterilen dikdörtgenin uzunluğu (y ekseni) o sınıfa düşen gözlem sayısı ile orantılıdır. Sınıf aralıklarının tanımı <span class="math inline">\((a, b]\)</span> (<code>right = TRUE</code>) ya da <span class="math inline">\([a,b)\)</span> (<code>right = FALSE</code>) olarak seçilebilir.</p>
+<p>Yoğunluk (density) her sınıfa düşen gözlem sayısının (counts) gözlem sayısı ve sınıf genişliğine oranıyla bulunur. Örneğin 40-45 aralığında sadece 1 gözlem vardır. Toplam gözlem sayısı 81 ve sınıf genişliği 5 olduğu için yoğunluk</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">81</span><span class="sc">/</span><span class="dv">5</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.002469136</code></pre>
+</div>
+</div>
+<p>yaklaşık 0.00247 olarak bulunur.</p>
+<p><code>$mids</code> sınıfların orta noktalarını göstermektedir.</p>
+<p><code>cut()</code> fonksiyonu ile de sınıfların ve sıklıklar hesaplanabilir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>m_cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(mutluluk<span class="sc">$</span>mutluluk, <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">40</span>,<span class="dv">80</span>,<span class="dv">5</span>), <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(m_cut)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>m_cut
+[40,45) [45,50) [50,55) [55,60) [60,65) [65,70) [70,75) [75,80) 
+      1       3      13      22      19       9      10       4 </code></pre>
+</div>
+</div>
+<p>Buradan frekans tablosunu aşağıdaki gibi oluşturabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mutluluk endeksi için frekans tablosu </span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>frekans <span class="ot">=</span> <span class="fu">table</span>(m_cut)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>goreli_frekans <span class="ot">=</span> <span class="dv">100</span><span class="sc">*</span>frekans<span class="sc">/</span><span class="dv">81</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>kumulatif_frekans <span class="ot">=</span> <span class="fu">cumsum</span>(goreli_frekans)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>yogunluk <span class="ot">=</span> frekans<span class="sc">/</span><span class="dv">81</span><span class="sc">/</span><span class="dv">5</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(frekans, </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">goreli_frekans=</span><span class="fu">round</span>(goreli_frekans, <span class="dv">2</span>), </span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">kumulatif_frekans=</span><span class="fu">round</span>(kumulatif_frekans, <span class="dv">2</span>), </span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">yogunluk=</span><span class="fu">round</span>(yogunluk,<span class="dv">5</span>))</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        frekans goreli_frekans kumulatif_frekans yogunluk
+[40,45)       1           1.23              1.23  0.00247
+[45,50)       3           3.70              4.94  0.00741
+[50,55)      13          16.05             20.99  0.03210
+[55,60)      22          27.16             48.15  0.05432
+[60,65)      19          23.46             71.60  0.04691
+[65,70)       9          11.11             82.72  0.02222
+[70,75)      10          12.35             95.06  0.02469
+[75,80)       4           4.94            100.00  0.00988</code></pre>
+</div>
+</div>
+</div>
+<p>Sayısal değerler alan bir değişkenin yoğunluk grafiği düzleştirilmiş histogram olarak yorumlanabilir. Sınıf aralıkları daraldıkça (ya da sınıf sayısı arttıkça) histogram yoğunluk fonksiyonuna yaklaşır.</p>
+<div id="fig-duzhist" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-duzhist-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-duzhist-1.png" class="img-fluid figure-img" data-ref-parent="fig-duzhist" width="384"></p>
+<figcaption class="figure-caption">(a)</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-duzhist-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-duzhist-2.png" class="img-fluid figure-img" data-ref-parent="fig-duzhist" width="384"></p>
+<figcaption class="figure-caption">(b)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-duzhist-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-duzhist-3.png" class="img-fluid figure-img" data-ref-parent="fig-duzhist" width="384"></p>
+<figcaption class="figure-caption">(c)</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-duzhist-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-duzhist-4.png" class="img-fluid figure-img" data-ref-parent="fig-duzhist" width="384"></p>
+<figcaption class="figure-caption">(d)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Şekil&nbsp;11: Düzleştirilmiş histogram ya da yoğunluk fonksiyonu</figcaption><p></p>
+</figure>
+</div>
+<p><a href="#fig-duzhist">Şekil&nbsp;11</a> histogram ve yoğunluk arasındaki ilişkiyi göstermektedir. Bu grafikte sınıf sayısı arttıkça histogramın yoğunluk fonksiyonuna yaklaştığına dikkat ediniz (bkz. <a href="#fig-duzhist-4">Şekil&nbsp;11 (d)</a>). Histogram yorumunda olduğu gibi dağılımın merkezine doğru yaklaştıkça yoğunluk artmaktadır. Görece daha az sıklıkta gerçekleşen değerler için yoğunluk daha düşük değerler alır. İzleyen bölümlerde buradan hareketle olasılıkları nasıl hesaplayabileceğimizi öğreneceğiz.</p>
+<p><code>R</code> <code>density()</code> fonksiyonunu kullanarak yoğunlukları hesaplayabilir ve görselleştirebiliriz.</p>
+<div id="exm-hist2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 8 </strong></span>İllere göre mutluluk endeksinin yoğunluk grafiğini çiziniz.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-yogmutlu" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-yogmutlu-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;12: Yoğunluk grafiği: Türkiye’de illerin mutluluk düzeyi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Yoğunluk ya da düzleştirilmiş histograma göre gözlem değerleri 55-65 arasında “yoğunlaşmaktadır” (<a href="#fig-yogmutlu">Şekil&nbsp;12</a>). Sol ve sağ kuyruklara doğru gidildikçe yoğunluk azalmaktadır.</p>
+<p>Histogram ve yoğunluğu birlikte de çizebiliriz (bkz. <a href="#fig-yogmutlu2">Şekil&nbsp;13</a>)</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-yogmutlu2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-yogmutlu2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;13: Yoğunluk grafiği: Türkiye’de illerin mutluluk düzeyi</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Yoğunluk fonksiyonunun detayları için yardım dosyasına bakınız, <code>?density()</code></p>
+</div>
+<p>Histogram ya da yoğunluk grafikleri dağılımın simetriklik, sağa ve sola çarpıklık gibi özelliklerine ilişkin önemli bilgiler verir. Simetrik bir dağılımın merkezinin iki tarafı birbirine benzer. <a href="#fig-simetri">Şekil&nbsp;14</a> simetrik dağılan üç histogramı göstermektedir. Merkezden geçen kırmızı çizginin her iki tarafı benzer şekle sahiptir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-simetri" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-simetri-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;14: Dağılımların simetrikliği</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Simetrik bir dağılımın uçlardaki davranışı birbirine benzer. Ancak bazı dağılımların kuyrukları daha uzun olabilir. Buna çarpıklık denir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-asimetri" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-asimetri-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Şekil&nbsp;15: Dağılımların çarpıklığı</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-asimetri">Şekil&nbsp;15</a> simetrik olmayan dağılımları göstermektedir. Sağa çarpık dağılımların sağ kuyruğu daha uzundur. Böyle bir dağılımda yoğunlaşma küçük ve orta değerlerdedir. Örneğin ücretler, hane geliri ve harcaması, ve ev fiyatları tipik olarak sağa çarpık dağılır. Sola çarpık bir dağılımda ise sol kuyruk daha uzundur. Değerler büyüdükçe yoğunlaşma artmaktadır. Çok zorlayıcı olmayan bir sınavda not dağılımı sola çarpık olabilir. Çok sayıda öğrenci yüksek not alırken daha az sayıda öğrenci düşük notlar alır. Başka bir örnek emeklilik yaşı olabilir.</p>
+<div id="fig-modality" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-modality-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-modality-1.png" class="img-fluid figure-img" data-ref-parent="fig-modality" width="672"></p>
+<figcaption class="figure-caption">(a) Tek tepeli (Unimodal) dağılım</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-modality-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-modality-2.png" class="img-fluid figure-img" data-ref-parent="fig-modality" width="672"></p>
+<figcaption class="figure-caption">(b) Çift tepeli (Bimodal) dağılım</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-modality-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Betimsel-gorsel_files/figure-html/fig-modality-3.png" class="img-fluid figure-img" data-ref-parent="fig-modality" width="672"></p>
+<figcaption class="figure-caption">(c) Çok tepeli (Multimodal) dağılım</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Şekil&nbsp;16: Dağılımların modalliği</figcaption><p></p>
+</figure>
+</div>
+<p>Histogramların önemli bir başka özelliği de modalliktir. Modallik, dağılımda kaç tane tepe noktası (mod) olduğunu gösterir ve verilerin farklı alt gruplara bölünmesi gerektiğine işaret edebilir.</p>
+<p>Tek tepeli (unimodal) bir dağılımda, <a href="#fig-modality-1">Şekil&nbsp;16 (a)</a> da görüldüğü gibi, histogramın yalnızca bir belirgin tepe noktası vardır. Verinin büyük çoğunluğu belirli bir değerde toplanmıştır. İki tepe noktası olan dağılımlar çift tepeli olarak adlandırılır (<a href="#fig-modality-2">Şekil&nbsp;16 (b)</a>). Bu tür dağılımlar, genellikle verinin iki farklı grup veya popülasyondan geldiğini gösterebilir. Örneğin, erkek ve kadın bireylerin boy dağılımı çift tepeli olabilir. Üç veya daha fazla tepe noktası olan dağılımlar çok modlu olarak adlandırılır (<a href="#fig-modality-3">Şekil&nbsp;16 (c)</a>). Bu durum, verinin farklı alt gruplardan oluştuğunu veya karmaşık bir yapıya sahip olduğunu gösterebilir.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
