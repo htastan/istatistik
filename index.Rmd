@@ -45,7 +45,7 @@ Syllabus: <https://htastan.github.io/istatistik/Istatistik_I_Syllabus_2024_Fall.
 <br/>
 <br/>
 
-6. Olasılık 
+6. Olasılık: [pdf](docs/Olasilik.pdf) | [html](docs/Olasilik.html)  
 <br/>
 <br/>
 
