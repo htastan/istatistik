@@ -44,11 +44,15 @@ Syllabus: <https://htastan.github.io/istatistik/Istatistik_I_Syllabus_2024_Fall.
 5. Betimsel İstatistik: Sayısal özet araçlar: [pdf](docs/Betimsel-sayisal.pdf) | [html](docs/Betimsel-sayisal.html) 
 <br/>
 <br/>
-
+Problemler-01: [pdf](docs/PPS-01.pdf)
+<br/>
+<br/>
 6. Olasılık: [pdf](docs/Olasilik.pdf) | [html](docs/Olasilik.html)  
 <br/>
 <br/>
-
+Problemler-02:  
+<br/>
+<br/>
 7. Kesikli Rassal Değişkenler 
 <br/>
 <br/>
