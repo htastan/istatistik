@@ -53,7 +53,7 @@ Problemler-01: [pdf](docs/PPS-01.pdf)
 Problemler-02: [pdf](docs/PPS-02.pdf) 
 <br/>
 <br/>
-7. Kesikli Rassal Değişkenler 
+7. Kesikli Rassal Değişkenler: [pdf](docs/Kesiklird.pdf)  
 <br/>
 <br/>
 
