@@ -1,0 +1,3211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Kesikli Rassal Değişkenler – İstatistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Kesiklird.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kesikli Rassal Değişkenler</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">İstatistik</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Önsöz</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Kesiklird.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kesikli Rassal Değişkenler</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">İçindekiler</h2>
+   
+  <ul>
+  <li><a href="#kesikli-rassal-değişkenlerin-dağılımları" id="toc-kesikli-rassal-değişkenlerin-dağılımları" class="nav-link active" data-scroll-target="#kesikli-rassal-değişkenlerin-dağılımları"><span class="header-section-number">1.1</span> Kesikli Rassal Değişkenlerin Dağılımları</a>
+  <ul class="collapse">
+  <li><a href="#olasılık-kütle-fonksiyonu" id="toc-olasılık-kütle-fonksiyonu" class="nav-link" data-scroll-target="#olasılık-kütle-fonksiyonu"><span class="header-section-number">1.1.1</span> Olasılık Kütle Fonksiyonu</a></li>
+  <li><a href="#birikimli-olasılık-fonksiyonu" id="toc-birikimli-olasılık-fonksiyonu" class="nav-link" data-scroll-target="#birikimli-olasılık-fonksiyonu"><span class="header-section-number">1.1.2</span> Birikimli Olasılık Fonksiyonu</a></li>
+  </ul></li>
+  <li><a href="#beklenen-değer" id="toc-beklenen-değer" class="nav-link" data-scroll-target="#beklenen-değer"><span class="header-section-number">1.2</span> Beklenen Değer</a>
+  <ul class="collapse">
+  <li><a href="#beklenti-işlemcisinin-özellikleri" id="toc-beklenti-işlemcisinin-özellikleri" class="nav-link" data-scroll-target="#beklenti-işlemcisinin-özellikleri"><span class="header-section-number">1.2.1</span> Beklenti İşlemcisinin Özellikleri</a></li>
+  </ul></li>
+  <li><a href="#varyans" id="toc-varyans" class="nav-link" data-scroll-target="#varyans"><span class="header-section-number">1.3</span> Varyans</a>
+  <ul class="collapse">
+  <li><a href="#varyansın-özellikleri" id="toc-varyansın-özellikleri" class="nav-link" data-scroll-target="#varyansın-özellikleri"><span class="header-section-number">1.3.1</span> Varyansın özellikleri</a></li>
+  </ul></li>
+  <li><a href="#momentler" id="toc-momentler" class="nav-link" data-scroll-target="#momentler"><span class="header-section-number">1.4</span> Momentler</a></li>
+  <li><a href="#bazı-kesikli-dağılımlar" id="toc-bazı-kesikli-dağılımlar" class="nav-link" data-scroll-target="#bazı-kesikli-dağılımlar"><span class="header-section-number">1.5</span> Bazı Kesikli Dağılımlar</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-dağılımı" id="toc-bernoulli-dağılımı" class="nav-link" data-scroll-target="#bernoulli-dağılımı"><span class="header-section-number">1.5.1</span> Bernoulli Dağılımı</a></li>
+  <li><a href="#binom-dağılımı" id="toc-binom-dağılımı" class="nav-link" data-scroll-target="#binom-dağılımı"><span class="header-section-number">1.5.2</span> Binom Dağılımı</a></li>
+  <li><a href="#hipergeometrik-dağılım" id="toc-hipergeometrik-dağılım" class="nav-link" data-scroll-target="#hipergeometrik-dağılım"><span class="header-section-number">1.5.3</span> Hipergeometrik Dağılım</a></li>
+  <li><a href="#poisson-dağılımı" id="toc-poisson-dağılımı" class="nav-link" data-scroll-target="#poisson-dağılımı"><span class="header-section-number">1.5.4</span> Poisson Dağılımı</a></li>
+  </ul></li>
+  <li><a href="#kesikli-rassal-değişkenlerin-birleşik-dağılımları" id="toc-kesikli-rassal-değişkenlerin-birleşik-dağılımları" class="nav-link" data-scroll-target="#kesikli-rassal-değişkenlerin-birleşik-dağılımları"><span class="header-section-number">1.6</span> Kesikli Rassal Değişkenlerin Birleşik Dağılımları</a>
+  <ul class="collapse">
+  <li><a href="#birleşik-olasılık-kütle-fonksiyonu" id="toc-birleşik-olasılık-kütle-fonksiyonu" class="nav-link" data-scroll-target="#birleşik-olasılık-kütle-fonksiyonu"><span class="header-section-number">1.6.1</span> Birleşik Olasılık Kütle Fonksiyonu</a></li>
+  <li><a href="#marjinal-olasılık-fonksiyonu" id="toc-marjinal-olasılık-fonksiyonu" class="nav-link" data-scroll-target="#marjinal-olasılık-fonksiyonu"><span class="header-section-number">1.6.2</span> Marjinal Olasılık Fonksiyonu</a></li>
+  <li><a href="#koşullu-olasılık-fonksiyonu" id="toc-koşullu-olasılık-fonksiyonu" class="nav-link" data-scroll-target="#koşullu-olasılık-fonksiyonu"><span class="header-section-number">1.6.3</span> Koşullu Olasılık Fonksiyonu</a></li>
+  <li><a href="#bağımsızlık" id="toc-bağımsızlık" class="nav-link" data-scroll-target="#bağımsızlık"><span class="header-section-number">1.6.4</span> Bağımsızlık</a></li>
+  <li><a href="#x-ve-ynin-fonksiyonlarının-beklenen-değeri" id="toc-x-ve-ynin-fonksiyonlarının-beklenen-değeri" class="nav-link" data-scroll-target="#x-ve-ynin-fonksiyonlarının-beklenen-değeri"><span class="header-section-number">1.6.5</span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>’nin fonksiyonlarının beklenen değeri</a></li>
+  <li><a href="#kovaryans" id="toc-kovaryans" class="nav-link" data-scroll-target="#kovaryans"><span class="header-section-number">1.6.6</span> Kovaryans</a></li>
+  <li><a href="#korelasyon-katsayısı" id="toc-korelasyon-katsayısı" class="nav-link" data-scroll-target="#korelasyon-katsayısı"><span class="header-section-number">1.6.7</span> Korelasyon Katsayısı</a></li>
+  </ul></li>
+  <li><a href="#rassal-değişkenlerin-toplamları-ve-farkları" id="toc-rassal-değişkenlerin-toplamları-ve-farkları" class="nav-link" data-scroll-target="#rassal-değişkenlerin-toplamları-ve-farkları"><span class="header-section-number">1.7</span> Rassal Değişkenlerin Toplamları ve Farkları</a></li>
+  <li><a href="#çözümlü-alıştırmalar" id="toc-çözümlü-alıştırmalar" class="nav-link" data-scroll-target="#çözümlü-alıştırmalar"><span class="header-section-number">1.8</span> Çözümlü Alıştırmalar</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler"><span class="header-section-number">1.9</span> Problemler</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-kesrassald" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Kesikli Rassal Değişkenler</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p><span class="math display">\[
+  \renewcommand{\E}{\mathbb{E}}
+  \renewcommand{\P}{\mathbb{P}}
+  \renewcommand{\Var}{\mbox{Var}}
+  \renewcommand{\Cov}{\mbox{Cov}}
+  \renewcommand{\plim}{\operatornamewithlimits{plim}}
+  \renewcommand{\cd}{\overset{d}{\longrightarrow}}
+  \renewcommand{\cp}{\overset{p}{\longrightarrow}}
+  \renewcommand{\adistr}{\stackrel{a}{\sim}}
+  \renewcommand{\ind}{1\hspace{-2.5mm}{1}}
+\]</span></p>
+</div>
+<p>Bilimsel araştırmalarda değişkenler incelenen birimlerin farklı yönlerine ilişkin bilgi içerirler. Değişken, bir araştırma ya da deneyde ölçülen/gözlemlenen herhangi bir nitelik veya nicelik olarak düşünülebilir. Değişkenleri alacağı değerlerin kesin olarak bilinip bilinmemesine göre deterministik ve rassal olmak üzere ikiye ayırabiliriz. Deterministik değişkenler alacağı değerlere ilişkin belirsizlik içermezler. Aynı girdi kümesiyle aynı sonuçların elde edileceği kesindir. Rassal ya da stokastik değişkenlerin ise alacağı değerler önceden kesin olarak bilinemez, ancak olasılıklı olarak tanımlanabilirler.</p>
+<div id="def-RD" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.1 (Rassal Değişken)</strong></span> Alacağı değer bir rassal denemenin ya da sürecin sonucuna bağlı olan değişkenlere rassal (stokastik, tesadüfi, rastlantısal) değişken (r.d.) denir. Bir rassal değişkenin alacağı değer önceden kesin olarak bilinemez.</p>
+<p>Rassal değişkenleri <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, <span class="math inline">\(W\)</span> gibi büyük harflerle, ve bunların aldığı belirli değerleri ise <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, <span class="math inline">\(z\)</span>, <span class="math inline">\(w\)</span> gibi küçük harflerle göstereceğiz.</p>
+</div>
+<p>Rassal değişkenler matematiksel özelliklerine göre kesikli ve sürekli olmak üzere ikiye ayrılır. Bir kesikli rassal değişkenin aldığı değerler <strong>sayılabilir</strong> ya da listelenebilirdir. <strong>Kesikli r.d.</strong> <span class="math inline">\(X\)</span>’in alacağı değerler sonlu ya da sonsuz olabilir. Örneğin, iki zar atımında üste gelen sayıların toplamı, belli bir üretim bandında bir çalışanın yaptığı hata sayısı, bir bankaya 15 dk içinde gelen müşteri sayısı, bir hanede yaşayan kişi sayısı kesikli rassal değişkenlerdir.</p>
+<p><strong>Sürekli rassal değişkenler</strong> ise belirli bir aralıkta (genellikle reel sayılar doğrusu üzerinde) her hangi bir değeri alabilir ve bu değerler <strong>sayılamaz</strong>. Örneğin, bir şehirdeki hanehalklarının harcanabilir geliri, belli bir dönemdeki enflasyon oranı, borsa endeksinin günlük kapanış değeri, bir yılda yapılan toplam ihracat tutarı sürekli rassal değişkenlerdir.</p>
+<p>Bu bölümde kesikli ve sürekli rassal değişkenlerin dağılımlarını nasıl betimleneceğini ve yorumlanabileceğini öğreneceğiz.</p>
+<section id="kesikli-rassal-değişkenlerin-dağılımları" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="kesikli-rassal-değişkenlerin-dağılımları"><span class="header-section-number">1.1</span> Kesikli Rassal Değişkenlerin Dağılımları</h2>
+<p></p>
+<p>Kesikli rassal değişkenler sayılabilir olduğu için her bir değere karşılık gelen gerçekleşme olasılıkları hesaplanabilir. Bunun için olasılık kütle fonksiyonu ve birikimli/kümülatif olasılık/dağılım fonksiyonu kullanılabilir.</p>
+<section id="olasılık-kütle-fonksiyonu" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="olasılık-kütle-fonksiyonu"><span class="header-section-number">1.1.1</span> Olasılık Kütle Fonksiyonu</h3>
+<div id="def-OKF" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.2 (<strong>Olasılık Kütle Fonksiyonu</strong>)</strong></span> <span class="math inline">\(X\)</span> kesikli rassal değişkeninin olasılık kütle fonksiyonu belirli bir <span class="math inline">\(x\)</span> değerinin gerçekleşme olasılığını gösterir. <span class="math inline">\(X\)</span>’in alabileceği değerler sayılabilir olduğu için bunu bir tablo ya da fonksiyon olarak ifade edebiliriz. Olasılık kütle fonksiyonunu <span class="math inline">\(f(x)\)</span> ya da <span class="math inline">\(\P(X=x)\)</span> ile göstereceğiz.</p>
+<p><span id="eq-OKF1"><span class="math display">\[
+f(x)\equiv \P(X=x)=\P(X\mbox{'in belirli bir}~ x ~\mbox{değerine eşit olması})
+\tag{1.1}\]</span></span></p>
+<p>Bu fonksiyonun aşağıdaki iki özelliği sağlaması gerekir:</p>
+<p><span id="eq-OKF2"><span class="math display">\[
+1.\quad f(x)\geq 0,
+\tag{1.2}\]</span></span></p>
+<p><span id="eq-OKF3"><span class="math display">\[
+2.\quad \sum_x f(x)=1,
+\tag{1.3}\]</span></span></p>
+<p>Birinci özelliğe göre olasılık kütle fonksiyonu negatif değerler alamaz. İkinci özellik ise olasılık toplamlarının 1 olmasını gerektirir. Bu toplam <span class="math inline">\(x\)</span>’in alabileceği tüm değerler üzerinedir ve listelenmiş <span class="math inline">\(x_i\)</span> değerleri için <span id="eq-OKF3a"><span class="math display">\[
+\sum_i \P(X=x_i)=1,~~~i=1,2,3,\ldots
+\tag{1.4}\]</span></span> olarak tanımlanabilir.</p>
+</div>
+<p>Bir kesikli rassal değişkenin alabileceği değerler az sayıda ise olasılık kütle fonksiyonu bir tablo ile gösterilebilir. Örneğin <span class="math inline">\(X\)</span>’in aldığı değerler <span class="math inline">\(-1,0,1\)</span> ve bunların olasılıkları, sırasıyla, <span class="math inline">\(0.25,0.5,0.25\)</span> ise olasılık kütle fonksiyonu <span id="eq-okf0"><span class="math display">\[
+\begin{array}{c|ccc}
+  x &amp; -1 &amp; 0 &amp; 1 \\
+  \hline
+  f(x)=\P(X=x) &amp; 0.25 &amp; 0.5 &amp; 0.25 \\
+\end{array}
+\tag{1.5}\]</span></span> biçiminde yazılabilir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-okf0" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-okf0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-okf0-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-okf0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.1: Bir olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-okf0" class="quarto-xref">Şekil&nbsp;<span>1.1</span></a> bu olasılık kütle fonksiyonunun grafiğini göstermektedir. <span class="math inline">\(f(x)=\P(X=x)\)</span> fonksiyonunun sadece belirli <span class="math inline">\(x\)</span> değerlerinde tanımlı olduğuna ve noktaların birleştirilmediğine dikkat ediniz.</p>
+</section>
+<section id="birikimli-olasılık-fonksiyonu" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="birikimli-olasılık-fonksiyonu"><span class="header-section-number">1.1.2</span> Birikimli Olasılık Fonksiyonu</h3>
+<p><span class="math inline">\(X\)</span> kesikli rassal değişkeninin dağılımını betimlemenin bir yolu, bu rassal değişkenin belirli bir değere eşit ya da küçük olma olasılıklarının hesaplanmasıdır. Birikimli olasılık fonksiyonu (ya da kümülatif dağılım fonksiyonu) bu olasılıkları verir.</p>
+<div id="def-BOF" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.3 (<strong>Birikimli Olasılık Fonksiyonu</strong>)</strong></span> <span class="math inline">\(X\)</span> kesikli rassal değişkeninin birikimli olasılık fonksiyonu (bof), <span class="math inline">\(X\)</span>’in belli bir <span class="math inline">\(x\)</span> değerini <strong>aşmamasının</strong> olasılığını verir:</p>
+<p><span class="math display">\[\begin{eqnarray}
+  F(x_0) &amp;=&amp; \P(X\leq x_0) \\
+   &amp;=&amp; \sum_{x\leq x_0} f(x)
+\end{eqnarray}\]</span></p>
+<p><span class="math inline">\(F(x_0)\)</span> fonksiyonu <span class="math inline">\(x\)</span>’in azalmayan bir fonksiyonudur ve 0 ile 1 arasında değerler alır. Kesikli rassal değişkenler için <span class="math inline">\(F(x_0)\)</span> adım fonksiyonudur.</p>
+</div>
+<p><a href="#eq-okf0" class="quarto-xref">Denklem&nbsp;<span>1.5</span></a>’de olasılık kütle fonksiyonu verilen kesikli rassal değişkenin birikimli olasılık fonksiyonunu bulalım. Bunun için <span class="math inline">\(X\)</span>’in alabileceği değerleri, birbiriyle örtüşmeyen alt aralıklara bölebiliriz. İlk olarak, <span class="math inline">\(X\)</span>’in en küçük değeri olan <span class="math inline">\(-1\)</span>’den daha küçük tüm değerler için <span class="math display">\[
+F(x_0=-1)=\P(X&lt; -1)=0
+\]</span> olur. Bu rassal değişkenin tanımı gereği <span class="math inline">\(-1\)</span>’den küçük değerler gerçekleşemez.</p>
+<p><span class="math inline">\(-1\leq x&lt;0\)</span> aralığında <span class="math inline">\(X\)</span> sadece <span class="math inline">\(-1\)</span> değerini alabilir. Bu nedenle</p>
+<p><span class="math display">\[\begin{eqnarray}
+  F(-1) &amp;=&amp; \P(X\leq -1) \\
+   &amp;=&amp; \P(X=-1) \\
+   &amp;=&amp; 0.25
+\end{eqnarray}\]</span></p>
+<p>olur. İzleyen aralıkta, <span class="math inline">\(0\leq x&lt;1\)</span>, <span class="math inline">\(X\)</span> sadece <span class="math inline">\(0\)</span> değerini alabilir; öyleyse</p>
+<p><span class="math display">\[\begin{eqnarray}
+  F(0) &amp;=&amp; \P(X\leq 0) \\
+   &amp;=&amp; \P(X=-1) + \P(X = 0) \\
+   &amp;=&amp; 0.25 + 0.50 \\
+   &amp;=&amp; 0.75
+\end{eqnarray}\]</span></p>
+<p>olur. <span class="math inline">\(X=1\)</span> ve daha büyük değerler için ise</p>
+<p><span class="math display">\[\begin{eqnarray}
+  F(1) &amp;=&amp; \P(X\leq 1) \\
+   &amp;=&amp; \P(X=-1) + \P(X = 0) + \P(X = 1) \\
+   &amp;=&amp; 0.25 + 0.50 + 0.25 \\
+   &amp;=&amp; 1
+\end{eqnarray}\]</span></p>
+<p>olacaktır. Yani, <span class="math inline">\(X\)</span>’in tanımı gereği 1 ya da daha küçük bir değerin gerçekleşme olasılığı 1’dir. Bu kesikli rassal değişkenin birikimli olasılık fonksiyonunu daha kompakt bir şekilde aşağıdaki gibi yazabiliriz:</p>
+<p><span id="eq-bof0"><span class="math display">\[
+F(x)=P(X\leq x)=\left\{
+\begin{array}{ll}
+    0, &amp; x&lt;-1; \\
+    0.25, &amp; -1\leq x&lt;0; \\
+    0.75, &amp; 0\leq x&lt;1;\\
+    1, &amp; x\geq 1. \\
+\end{array}%
+\right.
+\tag{1.6}\]</span></span></p>
+<p><a href="#fig-bof0" class="quarto-xref">Şekil&nbsp;<span>1.2</span></a> bu kümülatif dağılım fonksiyonunun (<a href="#eq-bof0" class="quarto-xref">Denklem&nbsp;<span>1.6</span></a>) grafiğini göstermektedir. Bu grafikteki dolgulu noktalar, <span class="math inline">\(X\)</span>’in belirli değerlerinde <span class="math inline">\(F(x)\)</span>’in tanımlı olduğunu gösterir. Örneğin, <span class="math inline">\(-1\leq x&lt;0\)</span> aralığında, <span class="math inline">\(X=-1\)</span> ise <span class="math inline">\(F(-1)=0.25\)</span> olur. Alt değerin içerilmediği <span class="math inline">\(-1&lt; x&lt;0\)</span> aralığında ise birikimli olasılık değişmediği için grafikte yatay çizgi ile gösterilmiştir. Bu aralığın üst ucunun açık (boş nokta) olduğuna dikkat ediniz. <span class="math inline">\(X=0\)</span> olduğunda <span class="math inline">\(F(x)\)</span>’in içi boş noktadan üstteki içi dolu noktaya atladığını görebiliriz. <span class="math inline">\(0&lt; x&lt;1\)</span> aralığındaki <span class="math inline">\(X\)</span> değerleri için <span class="math inline">\(F(x)\)</span> değişmez, yani <span class="math inline">\(F(0)\)</span> değerine eşittir. <span class="math inline">\(X\)</span>’in en büyük değeri <span class="math inline">\(1\)</span> için bof içi dolu noktaya atlar, yani <span class="math inline">\(F(1)=1\)</span> olur. Bu aslında olasılıklar toplamının tam olarak 1 olması gerektiğine işaret etmektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bof0" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bof0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-bof0-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bof0-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.2: Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Kümülatif ya da birikimli olasılık fonksiyonu, belirli bir değere kadar olan tüm olasılıkların toplamını, yani <span class="math inline">\(X\)</span>’in bu değere eşit ya da daha küçük olma olasılığını gösterir. Yatay çizgiler olasılığın belirli bir aralıkta sabit kaldığını gösterir.</p>
+<p>Bir kesikli rassal değişkenin kümülatif dağılım fonksiyonundan hareketle olasılık kütle fonksiyonuna ulaşabiliriz. Bunun için birikimli olasılıkların farkını almamız yeterli olacaktır. <span class="math inline">\(x_{i-1}\)</span> ve <span class="math inline">\(x_{i}\)</span> birbirini izleyen iki değer olmak üzere <span class="math display">\[
+\P(X=x_i) = F(x_i)-F(x_{i-1})
+\]</span> olduğu görülebilir. Örneğin <span class="math inline">\(-1,0,1\)</span> değerlerinde tanımlı <span class="math inline">\(X\)</span> rassal değişkeni için <span class="math inline">\(F(-1)=0.25\)</span>, <span class="math inline">\(F(0)=0.5\)</span> ve <span class="math inline">\(F(1)=1\)</span> olduğunu biliyoruz. Buradan hareketle</p>
+<p><span class="math display">\[
+\P(X=-1)=F(-1)-F(x&lt;-1)=0.25-0=0.25
+\]</span> <span class="math display">\[
+\P(X=0)=F(0)-F(-1)=0.75-0.25=0.5
+\]</span> ve <span class="math display">\[
+\P(X=1)=F(1)-F(0)=1-0.75=0.25
+\]</span> olasılık kütle fonksiyonuna ulaşılır.</p>
+<div id="exm-OKFex1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.1</strong></span> 3 madeni para atılıyor ve tura (T) gelme sayısı <span class="math inline">\(X\)</span> ile gösteriliyor. <span class="math inline">\(X\)</span> rassal değişkeninin olasılık kütle fonksiyonunu ve birikimli olasılık fonksiyonunu bulalım.</p>
+<p>Öncelikle örneklem uzayını oluşturalım. Bu deneyde ortaya çıkabilecek sonuçlar şunlardır: <span class="math display">\[
+S=\{TTT, ~TTY, ~TYT, ~YTT, ~YYT, ~TYY, ~YTY, ~YYY\}
+\]</span> Bu 8 sonuç karşılıklı olarak bağdaşmazdır ve herbirinin gelme olasılığı aynıdır: 1/8. <span class="math inline">\(X\)</span>’in alabileceği değerler 0, 1, 2, ve 3 olacaktır. <a href="#tbl-okf1" class="quarto-xref">Tablo&nbsp;<span>1.1</span></a> örneklem uzayı ile rassal değişkenini aldığı değerleri ilişkilendirmektedir.</p>
+<div id="tbl-okf1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-okf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;1.1: Üç madeni para deneyinde örneklem uzayı ve <span class="math inline">\(X\)</span>’in aldığı değerler
+</figcaption>
+<div aria-describedby="tbl-okf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Sonuçlar</th>
+<th style="text-align: center;"><span class="math inline">\(X\)</span> (Tura sayısı)</th>
+<th style="text-align: center;">Olasılık</th>
+<th style="text-align: center;"><span class="math inline">\(f(x)=\P(X=x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">YYY</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">YYT</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">YTY</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">3/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">TYY</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">YTT</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">TYT</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">3/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">TTY</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">TTT</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Buna göre hiç Tura gelmemesi, yani <span class="math inline">\(YYY\)</span> sonucu, sadece bir şekilde oluşabilir. Öyleyse <span class="math display">\[
+f(0)=\P(X=0)=\frac{1}{8}
+\]</span> olur. Bir Tura gelmesi, yani <span class="math inline">\(X=1\)</span> değerini alması üç farklı şekilde ortaya çıkabilir: <span class="math inline">\(YYT\)</span>, <span class="math inline">\(YTY\)</span>, ve <span class="math inline">\(TYY\)</span>. <span class="math inline">\(\P(X=1)\)</span> olasılığı bu üç temel sonucun olasılıklarının toplamı olacaktır: <span class="math display">\[
+f(1) = \P(X=1) = \frac{3}{8}
+\]</span> Benzer şekilde <span class="math display">\[
+f(2)=\P(X=2)=\frac{3}{8}
+\]</span> ve <span class="math display">\[
+f(3)=\P(X=3)=\frac{1}{8}
+\]</span> olduğu gösterilebilir.</p>
+<div id="fig-bof1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bof1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bof1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bof1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bof1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-bof1-1.png" class="img-fluid figure-img" data-ref-parent="fig-bof1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bof1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-bof1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-bof1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-bof1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-bof1-2.png" class="img-fluid figure-img" data-ref-parent="fig-bof1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-bof1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bof1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.3: Üç para atımı deneyinde X’in dağılımı
+</figcaption>
+</figure>
+</div>
+<!-- ```{=tex} -->
+<!-- \begin{center} -->
+<!--  \begin{tabular}{|c|c|c|} -->
+<!--       \hline -->
+<!--       % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ... -->
+<!--       Sonuçlar & $x$  & $f(x)$  \\ -->
+<!--       YYY      & 0    & 1/8     \\ -->
+<!--       YYT      & 1    &         \\ -->
+<!--       YTY      & 1    & 3/8     \\ -->
+<!--       TYY      & 1    &         \\ -->
+<!--       YTT      & 2    &         \\ -->
+<!--       TYT      & 2    & 3/8     \\ -->
+<!--       TTY      & 2    &         \\ -->
+<!--       TTT      & 3    & 1/8     \\ -->
+<!--       \hline -->
+<!--     \end{tabular} -->
+<!-- \end{center} -->
+<!-- ``` -->
+<p>Buradan hareketle <span class="math inline">\(X\)</span>’in olasılık kütle fonksiyonu <span id="eq-okf1"><span class="math display">\[
+\begin{array}{c|cccc}
+  x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f(x)=P(X=x) &amp; \frac{1}{8} &amp; \frac{3}{8} &amp; \frac{3}{8} &amp; \frac{1}{8} \\
+\end{array}
+\tag{1.7}\]</span></span></p>
+<p>olarak yazılabilir.</p>
+<!-- ```{=tex} -->
+<!-- \begin{center} -->
+<!-- \begin{tabular}{c|cccc} -->
+<!--   $x$           & 0 & 1 & 2 & 3 \\ -->
+<!--   \hline -->
+<!--   $f(x)=P(X=x)$ & $\frac{1}{8}$ & $\frac{3}{8}$ & $\frac{3}{8}$ & $\frac{1}{8}$ \\ -->
+<!-- \end{tabular} -->
+<!-- \end{center} -->
+<!-- ``` -->
+<!-- | $x$             | 0           | 1           | 2           | 3           | -->
+<!-- |-----------------|-------------|-------------|-------------|-------------| -->
+<!-- | $f(x)=P(X=x)$   | $\frac{1}{8}$ | $\frac{3}{8}$ | $\frac{3}{8}$ | $\frac{1}{8}$ | -->
+<!-- : $X$'in olasılık kütle fonksiyonu {#tbl-okf2} -->
+<p><span class="math inline">\(X\)</span>’in birikimli olasılık fonksiyonu <span class="math display">\[
+F(x)=P(X\leq x)=\left\{%
+\begin{array}{ll}
+    0, &amp; x&lt;0; \\
+    \frac{1}{8}, &amp; 0\leq x&lt;1; \\
+    \frac{1}{2}, &amp; 1\leq x&lt;2;\\
+    \frac{7}{8}, &amp; 2\leq x&lt;3; \\
+    1, &amp; x\geq 3. \\
+\end{array}%
+\right.
+\]</span> olur. <a href="#fig-bof1" class="quarto-xref">Şekil&nbsp;<span>1.3</span></a> <span class="math inline">\(X\)</span> rassal değişkeninin birikimli olasılık fonksiyonunu göstermektedir. Bu bof kullanılarak aşağıdaki gibi olasılıklar hesaplanabilir: <span class="math display">\[
+\P(X\leq1)=F(1)=0.5
+\]</span></p>
+<p><span class="math display">\[
+\P(1\leq X\leq3) = \P(X=1)+\P(X=2)+\P(X=3)=7/8
+\]</span> <span class="math display">\[
+\P(1\leq X\leq3) = F(3)-F(0) = 1-1/8=7/8
+\]</span></p>
+</div>
+<!-- ::: {#fig-bof1 layout-ncol=1} -->
+<!-- ![](img/discrete1.pdf) -->
+<!-- Üç para atımı deneyinde toplam tura gelme sayısının olasılık kütle fonksiyonu (üstte) ve birikimli olasılık fonksiyonu (altta) -->
+<!-- ::: -->
+<div id="exm-kuniform1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.2 (Kesikli tekdüze (uniform) dağılım)</strong></span> Bir torbada üzerinde 0’dan 9’a kadar rakamların olduğu 10 top olduğunu düşünelim. Toplar birbirinden bağımsız şekilde tekrar torbaya konarak çekilirse her bir rakamın çekilme olasılığı aynı olur. <span class="math inline">\(X\)</span> çekilen rakamı göstermek üzere bu rassal değişken için olasılık kütle fonksiyonu <span class="math display">\[
+P(X=x) = \frac{1}{10},\quad x=0,1,2,\ldots,9
+\]</span> birikimli olasılık fonksiyonu ise</p>
+<p><span class="math display">\[
+F(x)=P(X\leq x)=
+\begin{cases}
+0, &amp; x &lt; 0, \\
+\frac{x + 1}{10}, &amp; 0 ≤ x ≤ 9, \\
+1, &amp; x &gt; 9.
+\end{cases}
+\]</span> olarak yazılabilir. <a href="#fig-kuniform1" class="quarto-xref">Şekil&nbsp;<span>1.4</span></a> bu rassal değişkenin okf ve bof’unu göstermektedir.</p>
+<div id="fig-kuniform1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kuniform1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kuniform1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-kuniform1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kuniform1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-kuniform1-1.png" class="img-fluid figure-img" data-ref-parent="fig-kuniform1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kuniform1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-kuniform1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-kuniform1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kuniform1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-kuniform1-2.png" class="img-fluid figure-img" data-ref-parent="fig-kuniform1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kuniform1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kuniform1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.4: Kesikli tekdüze dağılım
+</figcaption>
+</figure>
+</div>
+<p>Daha genel olarak <span class="math inline">\([a,~b ]\)</span> aralığında tanımlı tüm tamsayıların gerçekleşme olasılığı aynı ise bu dağılıma kesikli tekdüze (uniform) adı verilir. Olasılık kütle fonksiyonu <span id="eq-kuniform1"><span class="math display">\[
+P(X=x)=\frac{1}{b-a+1},\quad x=a,a+1,a+2,\ldots,b
+\tag{1.8}\]</span></span> ve birikimli olasılık fonksiyonu <span id="eq-kuniform2"><span class="math display">\[
+F(x)=P(X\leq x)=
+\begin{cases}
+0, &amp;  x &lt; a~\text{; } \\
+\frac{x - a + 1}{b - a + 1}, &amp; a \leq x \leq b~\text{; } \\
+1, &amp;  x &gt; b.
+\end{cases}
+\tag{1.9}\]</span></span> olur.</p>
+</div>
+</section>
+</section>
+<section id="beklenen-değer" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="beklenen-değer"><span class="header-section-number">1.2</span> Beklenen Değer</h2>
+<div id="def-BD-tanim" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.4 (<strong>Beklenen Değer</strong>)</strong></span> Kesikli r. d.&nbsp;<span class="math inline">\(X\)</span>’in beklenen değeri <span id="eq-exp1"><span class="math display">\[
+\E(X) = \sum_x x\cdot f(x),
+\tag{1.10}\]</span></span> şeklinde tanımlanır. <span class="math inline">\(\E(X)\)</span>, yani <span class="math inline">\(X\)</span>’in beklenen değeri, anakütle dağılımının merkezine ilişkin bilgi içerir ve anakütle ortalaması olarak yorumlanır: <span class="math inline">\(\E(X)=\mu_X\)</span>.</p>
+</div>
+<p>Daha genel olarak <span class="math inline">\(\E(\cdot)\)</span> matematiksel işlemcisini, olasılık kütle fonksiyonunda verilen olasılıklarla ağırlıklandırılmış toplama işlemi olarak düşünebiliriz. Kesikli rassal değişkenler için bu basit olarak tüm değerlere karşılık gelen olasılıkların çarpılıp toplanmasıyla bulunabilir.</p>
+<div id="exm-BD-ornek-1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.3</strong></span> <a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>’de olasılık kütle fonksiyonu aşağıdaki gibi bulunmuştu: <span class="math display">\[
+\begin{array}{c|cccc}
+  x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f(x)=P(X=x) &amp; \frac{1}{8} &amp; \frac{3}{8} &amp; \frac{3}{8} &amp; \frac{1}{8} \\
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(X\)</span>’in beklenen değerini bulalım:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\E(X) &amp;=&amp; \sum_x x\cdot  f(x) \\
+   &amp;=&amp; 0\cdot \frac{1}{8}+1\cdot \frac{3}{8} +
+2\cdot \frac{3}{8}+3\cdot \frac{1}{8} \\
+&amp;=&amp; \frac{3}{2}
+\end{eqnarray}\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-beklenti1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beklenti1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-beklenti1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beklenti1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.5: Üç para atımı deneyinde X’in beklenen değeri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Beklenen değeri <span class="math inline">\(X\)</span> rassal değişkeninin olasılık dağılımının merkezi olarak düşünebiliriz (bkz. <a href="#fig-beklenti1" class="quarto-xref">Şekil&nbsp;<span>1.5</span></a>).</p>
+</div>
+<div id="def-BD-tanim2" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.5 (<span class="math inline">\(X\)</span>’in fonksiyonunun beklenen değeri)</strong></span> <span class="math inline">\(g(x)\)</span>, <span class="math inline">\(X\)</span>’in bir fonksiyonu olsun. <span class="math inline">\(g(x)\)</span>’in beklenen değeri <span id="eq-exp2"><span class="math display">\[
+\E\left[ g(X) \right] = \sum_x g(x) \cdot f(x),
+\tag{1.11}\]</span></span> ile bulunur. Toplama işlemi <span class="math inline">\(X\)</span>’in tüm değerleri üzerine tanımlıdır.</p>
+</div>
+<div id="exm-BD-ornek-2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.4</strong></span> <a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>’deki olasılık kütle fonksiyonuna sahip <span class="math inline">\(X\)</span> rassal değişkeninin beklenen değerini <span class="math inline">\(\E(X)=1.5\)</span> olarak bulmuştuk. Şimdi <span class="math inline">\(X\)</span>’in karesinin beklenen değerini bulalım.</p>
+<p><span class="math inline">\(g(x)=x^2\)</span> olarak tanımlıdır. Beklenen değer:<br>
+<span class="math display">\[
+\E\left( X^2 \right)=0 \times \frac{1}{8}+1\times \frac{3}{8} + 4\times \frac{3}{8}+9\times \frac{1}{8}=3
+\]</span></p>
+</div>
+<p><span class="math inline">\(g(X)\)</span> doğrusal ya da doğrusal olmayan bir forma sahip olabilir. Genel olarak, <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzüre <span class="math inline">\(g(X)=a+bX\)</span> biçimindeki doğrusal dönüştürmeler için <span class="math display">\[
+\E[g(X) ] = \E[a+bX ] = a+b\E(X)
+\]</span> yazılabilir.</p>
+<p>Ancak <span class="math inline">\(g(X)\)</span> doğrusal olmayan bir fonksiyonsa genellikle <span class="math display">\[
+\E[g(X)]\neq g(E(X))
+\]</span> olur. Yani, doğrusal olmayan fonksiyonların beklenen değerini, bu fonksiyonu ortalamada değerleyerek bulamayız. Örneğin <span class="math inline">\(g(x)=\log(x)\)</span> ve <span class="math inline">\(g(x)=x^2\)</span> olarak tanımlı fonksiyonlar için <span class="math display">\[
+\E[\log(X)] \neq \log(\E(X))
+\]</span> <span class="math display">\[
+\E(X^2)\neq [\E(X)]^2
+\]</span> olduğu gösterilebilir.</p>
+<div id="exm-BD-ornek-3" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.5</strong></span> Önceki örnekte <span class="math inline">\(\E(X)=\mu=1.5\)</span> ve <span class="math inline">\(\E(X^2)=3\)</span> olduğunu göstermiştik. Öyleyse, <span class="math display">\[
+\E\left( X^2 \right)=3\neq \E\left( X \right)^2 = 2.25
+\]</span> yazabiliriz.</p>
+</div>
+<section id="beklenti-işlemcisinin-özellikleri" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="beklenti-işlemcisinin-özellikleri"><span class="header-section-number">1.2.1</span> Beklenti İşlemcisinin Özellikleri</h3>
+<p>Rassal değişken ister kesikli isterse sürekli olsun, beklenti işlemcisi aşağıdaki özellikleri sağlar:</p>
+<ul>
+<li><p><em>Sabitin beklentisi</em>: Eğer <span class="math inline">\(c\)</span> bir sabit sayı ise beklenen değeri <span class="math display">\[
+\E(c)=c
+\]</span> olur.</p></li>
+<li><p><strong>Doğrusallık</strong>: <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzere <span class="math inline">\(Y=aX+b\)</span> biçiminde tanımlı doğrusal bir fonksiyonun beklenen değeri:<br>
+<span class="math display">\[
+\E(Y) = \E(aX + b) = a \E(X) + b
+\]</span> olur.</p></li>
+</ul>
+<p><span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> iki rassal değişken ise bunların toplamının beklenen değeri <span class="math display">\[
+\E(X + Y) = \E(X) + \E(Y)
+\]</span> olur. Daha genel olarak <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> bir rassal değişkenler dizisiyse bunların toplamının beklenen değeri <span class="math display">\[
+\E\left( \sum_{i=1}^n X_i \right) = \E(X_1)+\E(X_2)+\ldots+\E(X_n)
+\]</span> beklenen değerlerinin toplamıdır.</p>
+<p>Önceki özelliği ağırlıklı toplamlar için de yazabiliriz. <span class="math inline">\(w_1,w_2,\ldots,w_n\)</span> her bir rassal değişkenin ağırlığı olsun. Ağırlıklı toplamın beklenen değeri <span class="math display">\[
+\E\left( \sum_{i=1}^n w_i~X_i \right) = \sum_{i=1}^n w_i~\E\left(X_i \right) = w_1\E(X_1) + w_2\E(X_2)+ \ldots + w_n\E(X_n)
+\]</span> ile bulunur.</p>
+<div id="exm-BD-ozellik1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.6</strong></span> İnşaat işleriyle uğraşan bir firma girmek istediği bir ihale için maliyet hesabı yapıyor. Sabit maliyetlerin 1000 birim (1000 TL), işçilik maliyetinin ise ayda 320 birim (1000 TL) olacağı tahmin ediliyor. Böylece <span class="math inline">\(X\)</span> işin tamamlanma süresi (ay cinsinden) olmak üzere toplam maliyet<br>
+<span class="math display">\[
+Y=1000 + 320 X
+\]</span> olarak yazılabilir. <span class="math inline">\(X\)</span>’in dağılımının aşağıdaki gibi verildiğini düşünelim: <span class="math display">\[
+\begin{array}{c|ccccc}
+  x &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+  \hline
+  f(x)=P(X=x) &amp; 0.1 &amp; 0.25 &amp; 0.35 &amp; 0.2 &amp; 0.1 \\
+\end{array}
+\]</span> Toplam maliyetin beklenen değerini bulun.</p>
+<p><strong>Çözüm</strong></p>
+<p>Önce <span class="math inline">\(X\)</span>’in beklentisini bulalım: <span class="math display">\[
+\E(X) = \sum_x x\cdot  f(x)=1(0.1)+2(0.25)+3(0.35)+4(0.2)+5(0.1)=2.95
+\]</span> Buradan, beklenen değerin özelliklerinden hareketle toplam maliyetin beklenen değeri <span class="math display">\[
+\E(Y) = \E(1000+320X) = 1000+320\cdot\E(X)=1944
+\]</span> birim, yani <span class="math inline">\(1,944,000.00\)</span> TL olur.</p>
+</div>
+</section>
+</section>
+<section id="varyans" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="varyans"><span class="header-section-number">1.3</span> Varyans</h2>
+<p>Matematiksel beklenti <span class="math inline">\(\E(X)\)</span>’in, <span class="math inline">\(X\)</span> rassal değişkeninin anakütle dağılımındaki ortalamayı gösterdiğini öğrendik. Bu merkez çevresindeki değişkenliği, <span class="math inline">\(\Var(X)\)</span> ya da <span class="math inline">\(\sigma^2\)</span> ile gösterdiğimiz anakütle varyansı ile ölçebiliriz. Bunu örneklem varyansı ile karıştırmamamız gerekir. Anakütle varyansı dağılımın ne kadar yayık olduğuna ilişkin bir parametredir. Tanım gereği, anakütle dağılımın bir özelliğini gösteren parametreler sabit sayılardır ve rassallık içermezler. Örneklem varyansı ise, pratikte anakütle varyansının bilinmediği durumlarda tahmin amacıyla kullandığımız bir istatistiktir. Bir örneklemden hareketle hesaplanan istatistikler veriye bağlı olduğu için rassal değişkenlerdir. Farklı ölçüm ve örneklemeler sonucunda değişebilirler.</p>
+<div id="def-varyans" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.6 (<strong>Varyans</strong>)</strong></span> Bir rassal değişkenin varyansı, anakütle dağılımında ortalama çevresindeki değişkenliği ölçer. <span class="math inline">\(X\)</span>’in beklenen değerinden farkının karesinin beklenen değeri olarak tanımlanır: <span id="eq-varyans1"><span class="math display">\[
+\Var(X)  = \E\left[\left(X-\E(X)\right)^2\right] \equiv \sigma_x^2
+\tag{1.12}\]</span></span></p>
+</div>
+<p>Kesikli rassal değişken <span class="math inline">\(X\)</span>’in ortalaması <span class="math inline">\(\E(X)=\mu\)</span> ise varyansı aşağıdaki formülden hareketle bulabiliriz: <span id="eq-varyans1a"><span class="math display">\[
+\Var(X) \equiv \sigma^2 = \sum_x (x-\mu)^2\cdot f(x)
+\tag{1.13}\]</span></span> Bu toplam <span class="math inline">\(x\)</span>’in tüm değerleri üzerinedir.</p>
+<p>Matematiksel beklenti işlemcisini kullanarak varyansın kısa yol formülünü elde edebiliriz:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\nonumber  \Var(X) &amp;=&amp; \E\left[\left(X-\E(X)\right)^2\right] \\
+\nonumber   &amp;=&amp; \E\left[(X^2-2X\E(X)+(\E(X))^2)\right] \\
+\nonumber   &amp;=&amp; \E\left(X^2\right)-2\E\left(X\E(X)\right)+\E\left((\E(X))^2)\right) \\
+\nonumber   &amp;=&amp; \E\left(X^2\right)-2\E(X)^2+ \E(X)^2 \\
+\nonumber   &amp;=&amp; \E\left(X^2\right)-\E(X)^2
+\end{eqnarray}\]</span></p>
+<p>Burada önce parantezin karesini aldık. Daha sonra her bir terimin beklenen değerini aldık. Bu türetmeleri yaparken <span class="math inline">\(X\)</span>’in bir rassal değişken olduğuna, popülasyon ortalaması <span class="math inline">\(E(X)\)</span>’in ise bir sabit sayı olduğuna dikkat ediniz:</p>
+<p><span class="math display">\[
+\E[ \E(X)] = \E(X), \quad \E[ \E(X)^2] = \E(X)^2
+\]</span></p>
+<p><span class="math inline">\(\mu=\E(X)\)</span> dersek varyans kısaca <span id="eq-varyans2"><span class="math display">\[
+\Var(X) \equiv \sigma^2 = \E\left(X^2\right)-\mu^2
+\tag{1.14}\]</span></span> olarak yazılabilir. Öyleyse, beklenen değer <span class="math inline">\(\E(X)\)</span> ve <span class="math display">\[
+\E(X^2) = \sum_x x^2 f(x)
+\]</span> hesaplandıktan sonra kısa yol formülünü kullanarak kesikli rassal değişken <span class="math inline">\(X\)</span>’in varyansını bulabiliriz.</p>
+<div id="def-stdsapma" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.7 (<strong>Standart Sapma</strong>)</strong></span> Bir rassal değişkenin standart sapması varyansının (pozitif işaretli) karekökü olarak tanımlanır: <span id="eq-ssapm1"><span class="math display">\[
+\sigma_x = \sqrt{\Var(X)}
+\tag{1.15}\]</span></span></p>
+</div>
+<div id="exm-varyans-ornek-1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.7</strong></span> Üç para atımı deneyinde (Örnek <a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>) <span class="math inline">\(X\)</span>’in ve <span class="math inline">\(X^2\)</span>’nin beklenen değerlerini hesaplamıştık. Buradan hareketle <span class="math inline">\(X\)</span>’in varyansı <span class="math display">\[
+\Var(X) = \E\left(X^2\right)-\mu_x^2 = 3 - (3/2)^2=0.75
+\]</span> standart sapması ise <span class="math display">\[
+\sigma_x = \sqrt{0.75} = 0.866
+\]</span></p>
+<p>olur.</p>
+</div>
+<section id="varyansın-özellikleri" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="varyansın-özellikleri"><span class="header-section-number">1.3.1</span> Varyansın özellikleri</h3>
+<p><strong>1)</strong> Sabit bir sayının varyansı sıfırdır: <span class="math display">\[
+\Var(c) = 0
+\]</span></p>
+<p><strong>2)</strong> <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzere <span class="math display">\[
+Y = a + bX
+\]</span> biçiminde doğrusal bir dönüştürmenin varyansı <span class="math display">\[
+\Var(Y)=\Var\left( a + bX \right) = b^2\Var(X) = b^2\sigma_X^2
+\]</span> olur. Standart sapması ise <span class="math display">\[
+\sigma_Y = \sqrt{\Var(Y)} = \sqrt{b^2\Var(X)} =|b|\sigma_X
+\]</span></p>
+<p><strong>3)</strong> <span class="math inline">\(X\)</span> ortalaması <span class="math inline">\(\mu_x\)</span> ve standart sapması <span class="math inline">\(\sigma_x\)</span> olan bir rassal değişken olsun. Aşağıdaki dönüştürmeyi düşünelim: <span class="math display">\[
+Z=\frac{X-\mu_x}{\sigma_x}
+\]</span> <span class="math inline">\(\mu_x\)</span> ve <span class="math inline">\(\sigma_x\)</span> sabit sayılar olduğu için bu dönüştürme <span class="math display">\[
+Z=a+bX, \quad a=-\frac{\mu_x}{\sigma_x},\quad b=\frac{1}{\sigma_x}
+\]</span> doğrusal formda da ifade edilebilir. Öyleyse <span class="math display">\[
+\E(Z) = \E(a+bX) = a+b\mu_x=0
+\]</span> ve <span class="math display">\[
+\Var(Z) = b^2\sigma_x^2 = \frac{1}{\sigma_x^2}\sigma_x^2 = 1
+\]</span> bulunur.</p>
+<div id="exm-varyans-ornek-2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.8</strong></span> <a href="#exm-BD-ozellik1" class="quarto-xref">Örnek&nbsp;<span>1.6</span></a>’de <span class="math inline">\(X\)</span>’in ve <span class="math inline">\(Y\)</span>’nin varyansını ve standart sapmasını bulun.</p>
+<p><strong>Çözüm</strong> <span class="math inline">\(X\)</span>’in varyansı için önce <span class="math inline">\(X^2\)</span>’nin beklentisini bulalım:</p>
+<span class="math display">\[\begin{align*}
+\E(X^2)  &amp;= \sum_x x^2\cdot  f(x) \\
+&amp;=  1^2(0.1)+2^2(0.25)+3^2(0.35)+4^2(0.2)+5^2(0.1)\\
+&amp;= 9.95
+\end{align*}\]</span>
+<p>Buradan</p>
+<span class="math display">\[\begin{align*}
+\Var(X) &amp;= \E(X^2)-[\E(X)]^2 \\
+&amp;= 9.95-2.95^2 \\
+&amp;= 1.2475
+\end{align*}\]</span>
+<p>bulunur. Öyleyse <span class="math inline">\(Y=1000+320X\)</span>’nin varyansı <span class="math display">\[
+\Var(Y) = 320^2\Var(X) = 127744
+\]</span> ve standart sapması <span class="math display">\[
+\sigma_Y = \sqrt{\Var(Y)} = \sqrt{127744}=357.41
+\]</span> olarak bulunur.</p>
+</div>
+</section>
+</section>
+<section id="momentler" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="momentler"><span class="header-section-number">1.4</span> Momentler</h2>
+<p>Bir dağılımın momentleri, dağılımın şekli hakkında önemli bilgiler sağlar. Momentler, ortalama, varyans, çarpıklık ve basıklık gibi özellikleri anlamamıza yardımcı olur. Finans, ekonomi, mühendislik ve diğer bilim dallarında, verilerin analizi ve yorumlanması sırasında yaygın olarak kullanılırlar. Momentler, anakütle dağılımının belirli özelliklerini yansıtan parametrelerle ilişkilidir. İzleyen bölümlerde göreceğimiz gibi, momentler örneklemden hareketle anakütle parametrelerinin tahmin edilmesinde önemli bir rol oynar.</p>
+<div id="def-moment" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.8 (<strong>Moment</strong>)</strong></span> Kesikli rassal değişken <span class="math inline">\(X\)</span>’in <span class="math inline">\(k\)</span>nci momenti <span class="math display">\[
+\mu_k=\E(X^k)=\sum_x x^k f(x), \quad k=0,1,2,...
+\]</span> <span class="math inline">\(k\)</span>nci kuvvetinin beklenen değeri olarak tanımlanır. İlk dört moment aşağıdaki gibi yazılabilir:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Moment</th>
+<th><span class="math inline">\(\mu_k\)</span></th>
+<th>Tanım</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. moment</td>
+<td><span class="math inline">\(\mu_1\)</span></td>
+<td><span class="math inline">\(\E(X)\)</span></td>
+<td><span class="math inline">\(=\)</span> anakütle ortalaması</td>
+</tr>
+<tr class="even">
+<td>2. moment</td>
+<td><span class="math inline">\(\mu_2\)</span></td>
+<td><span class="math inline">\(\E(X^2)\)</span></td>
+<td><span class="math inline">\(= \Var(X) + \mu_1^2\)</span></td>
+</tr>
+<tr class="odd">
+<td>3. moment</td>
+<td><span class="math inline">\(\mu_3\)</span></td>
+<td><span class="math inline">\(\E(X^3)\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4. moment</td>
+<td><span class="math inline">\(\mu_4\)</span></td>
+<td><span class="math inline">\(\E(X^4)\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Birinci moment, <span class="math inline">\(\mu_1\)</span>, rassal değişkenin ortalamasını, yani beklenen değerini ifade eder. <span class="math inline">\(X\)</span>’in karesinin beklenen değeri, yani ikinci moment, varyans ile ilişkilidir. Kısayol varyans formülünden (bkz. <a href="#eq-varyans2" class="quarto-xref">Denklem&nbsp;<span>1.14</span></a>) hareketle<br>
+<span class="math display">\[
+\E(X^2) = \Var(X) + \mu_1^2
+\]</span> olduğu kolayca görülebilir. Üçüncü moment, <span class="math inline">\(\mu_3\)</span>, dağılımın çarpıklığına ilişkin bilgi içerir. Dördüncü moment, <span class="math inline">\(\mu_4\)</span>, dağılımın basıklığı ve sivriliği (kurtosis) hakkında bilgi içerir.</p>
+</div>
+<div id="exm-moment" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.9</strong></span> Üç para atımı deneyinde (Örnek <a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>) <span class="math inline">\(X\)</span>’in birinci ve ikinci momentlerini hesaplamıştık. Üçüncü ve dördüncü momentleri bulalım:<br>
+<span class="math display">\[
+\E(X^3)=0 \frac{1}{8}+1 \frac{3}{8} + 2^3\frac{3}{8}+3^3\frac{1}{8}=6.75
+\]</span> ve <span class="math display">\[
+\E(X^4)=0 \frac{1}{8}+1 \frac{3}{8} + 2^4\frac{3}{8}+3^4\frac{1}{8}=16.5
+\]</span> olur.</p>
+</div>
+<div id="def-merkmoment" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.9 (<strong>Merkezi Moment</strong>)</strong></span> Kesikli r.d. <span class="math inline">\(X\)</span>’in <span class="math inline">\(k\)</span>nci merkezi momenti, <span class="math inline">\(X\)</span>’in beklenen değerden (yani birinci momentten) farkının <span class="math inline">\(k\)</span>nci kuvvetinin beklenen değeri olarak tanımlanır: <span class="math display">\[
+m_k=\E((X-\mu_1)^k)=\sum_x (x-\mu_1)^k f(x) \quad k=0,1,2,...
+\]</span> Örneğin ilk dört merkezi moment aşağıdaki gibi yazılabilir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(m_k\)</span></th>
+<th>Tanım</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. merkezi moment</td>
+<td><span class="math inline">\(m_1\)</span></td>
+<td><span class="math inline">\(\E(X)-\mu_1\)</span></td>
+<td><span class="math inline">\(=0\)</span></td>
+</tr>
+<tr class="even">
+<td>2. merkezi moment</td>
+<td><span class="math inline">\(m_2\)</span></td>
+<td><span class="math inline">\(\E((X-\mu_1)^2)\)</span></td>
+<td><span class="math inline">\(=\Var(X)\)</span></td>
+</tr>
+<tr class="odd">
+<td>3. merkezi moment</td>
+<td><span class="math inline">\(m_3\)</span></td>
+<td><span class="math inline">\(\E((X-\mu_1)^3)\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4. merkezi moment</td>
+<td><span class="math inline">\(m_4\)</span></td>
+<td><span class="math inline">\(\E((X-\mu_1)^4)\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Birinci merkezi moment, yani <span class="math inline">\(X\)</span>’in anakütle ortalamasından (beklentisinden) farkının beklenen değeri sıfır olur. İkinci merkez moment ile anakütle varyansı tanım olarak aynıdır.</p>
+</div>
+<div id="exm-merkmoment" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.10</strong></span> Üç para atımı deneyinde (Örnek <a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>) <span class="math inline">\(X\)</span>’in üçüncü merkezi momenti</p>
+<span class="math display">\[\begin{align*}
+m_3  &amp;= \E((X-\mu_1)^3) \\
+&amp;= \sum_x (x-\mu)^3 f(x) \\
+&amp;= \left(0-\frac{3}{2}\right)^3\times \frac{1}{8}           +\left(1-\frac{3}{2}\right)^3\times \frac{3}{8} + \left(2-\frac{3}{2}\right)^3\times\frac{3}{8} +\left(3-\frac{3}{2}\right)^3\times\frac{1}{8} \\
+&amp;= 0
+\end{align*}\]</span>
+<p>ve dördüncü merkezi momenti</p>
+<span class="math display">\[\begin{align*}
+m_4  &amp;= \E((X-\mu_1)^4) \\
+&amp;= \sum_x (x-\mu)^4 f(x) \\
+&amp;= \left(0-\frac{3}{2}\right)^4\times \frac{1}{8}           +\left(1-\frac{3}{2}\right)^4\times \frac{3}{8} + \left(2-\frac{3}{2}\right)^4\times\frac{3}{8} +\left(3-\frac{3}{2}\right)^4\times\frac{1}{8} \\
+&amp;= 1.3125
+\end{align*}\]</span>
+<p>olarak bulunur. Üçüncü merkezi moment <span class="math inline">\(m_3\)</span>’ün 0 olması dağılımın simetrikliğini göstermektedir.</p>
+</div>
+<div id="def-stdmoment" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.10 (<strong>Standart Moment</strong>)</strong></span> Kesikli r.d. <span class="math inline">\(X\)</span>’in <span class="math inline">\(k\)</span>nci standart momenti <span class="math display">\[
+\gamma_k=\frac{m_k}{\sigma^k} \quad k=0,1,2,...
+\]</span> şeklinde tanımlanır. Burada <span class="math inline">\(\sigma\)</span> populasyon standart sapmasıdır: <span class="math display">\[
+\sigma=\sqrt{\Var(X)} =\sqrt{\E\left[\left(X-\mu_1 \right)^2\right]}
+\]</span> İlk dört standart moment aşağıdaki gibi yazılabilir:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 20%">
+<col style="width: 28%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(\gamma_k\)</span></th>
+<th>Tanım</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. standart moment</td>
+<td><span class="math inline">\(\gamma_1\)</span></td>
+<td><span class="math inline">\(m_1/\sigma\)</span></td>
+<td><span class="math inline">\(=0\)</span></td>
+</tr>
+<tr class="even">
+<td>2. standart moment</td>
+<td><span class="math inline">\(\gamma_2\)</span></td>
+<td><span class="math inline">\(m_2/\sigma^2\)</span></td>
+<td><span class="math inline">\(=1\)</span></td>
+</tr>
+<tr class="odd">
+<td>3. standart moment</td>
+<td><span class="math inline">\(\gamma_3\)</span></td>
+<td><span class="math inline">\(\E((X-\mu_1)^3)/\sigma^3\)</span></td>
+<td>çarpıklık katsayısı</td>
+</tr>
+<tr class="even">
+<td>4. standart moment</td>
+<td><span class="math inline">\(\gamma_4\)</span></td>
+<td><span class="math inline">\(\E((X-\mu_1)^4)/\sigma^4\)</span></td>
+<td>basıklık katsayısı</td>
+</tr>
+</tbody>
+</table>
+<p>Birinci ve ikinci standart moment tanım gereği her zaman, sırasıyla, 0 ve 1 olur. Üçüncü standart moment ya da çarpıklık (skewness) katsayısı dağılımın simetrisine ilişkin bilgi içerir. Simetrik dağılımlar için <span class="math inline">\(\gamma_3\)</span> sıfır olur. Sağa çarpık dağılımlar için <span class="math inline">\(\gamma_3&gt;0\)</span>, sola çarpık dağılımlar için ise <span class="math inline">\(\gamma_3&lt;0\)</span> olur. Dördüncü standart moment, <span class="math inline">\(\gamma_4\)</span>, basıklık katsayısı olarak bilinir ve dağılımın merkezdeki sivriliğini ve kuyruk kalınlığını gösterir. <span class="math inline">\(\gamma_4\)</span> genellikle normal dağılım ile karşılaştırılarak yorumlanır.</p>
+</div>
+<div id="exm-stdmoment" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.11</strong></span> Üç para atımı deneyinde (<a href="#exm-OKFex1" class="quarto-xref">Örnek&nbsp;<span>1.1</span></a>) <span class="math inline">\(\gamma_1=0\)</span>, <span class="math inline">\(\gamma_2=1\)</span>, ve <span class="math inline">\(\gamma_3=0\)</span> olduğu açıktır. Kesikli rassal değişken <span class="math inline">\(X\)</span> için dördüncü standart momenti hesaplayalım: <span class="math display">\[
+\gamma_4 = \frac{m_4}{\sigma^4} = \frac{1.3125}{0.866^4} = 2.334
+\]</span> Bu dağılımın basıklık katsayısı 2.334 olarak bulunur.</p>
+</div>
+</section>
+<section id="bazı-kesikli-dağılımlar" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="bazı-kesikli-dağılımlar"><span class="header-section-number">1.5</span> Bazı Kesikli Dağılımlar</h2>
+<p>Kesikli rassal değişkenlerin sayılabilir bir dizi olduğunu ve olası sonuçların kümülatif dağılım ve olasılık kütle fonksiyonları ile tanımlanabileceğini öğrendik. Kesikli ressal değişkenlerin pratikte yaygın olarak kullanılan bazı dağılımları vardır. Bu dağılımlar, farklı türdeki tesadüfi olayları ve süreçleri modellemek için kullanılır. Bunlar arasında en önemlileri Bernoulli, Binom, Hipergeometrik ve Poisson dağılımlarıdır. Bu bölümde bu dağılımların özelliklerini inceleyeceğiz.</p>
+<section id="bernoulli-dağılımı" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="bernoulli-dağılımı"><span class="header-section-number">1.5.1</span> Bernoulli Dağılımı</h3>
+<p>Bernoulli dağılımı en temel kesikli dağılımdır ve iki olası sonuçtan birine sahip olan deneyler/süreçler için kullanılır. Rassal denemenin olası sonuçları genellikle “başarı” (1) ve “başarısızlık/yenilgi” (0) olarak adlandırılır. Bir Bernoulli denemesinde başarı olayının gerçekleşme olasılığı <span class="math inline">\(p\)</span>, başarısızlık ise <span class="math inline">\(1-p\)</span> olarak tanımlıdır:</p>
+<p><span id="eq-bernoulli1"><span class="math display">\[
+f(x)=\left\{%
+\begin{array}{ll}
+    p, &amp; ~X=1~\hbox{ise,} \\
+    1-p, &amp; ~X=0~\hbox{ise.} \\
+\end{array}%
+\right.
+\tag{1.16}\]</span></span></p>
+<p>Örnek olarak madeni para atma (Yazı-Tura), bir üretim bandından çekilen bir ürününün hatalı olup olmaması (defolu-defosuz), bir öğrencinin başarısı (geçti-kaldı), rassal seçilen bir hanenin özel sigortasının olması (var-yok) verilebilir.</p>
+<p><span class="math inline">\(X\)</span> bir Bernoulli rassal değişkeni olsun. <span class="math inline">\(X\)</span>’in beklenen değeri <span id="eq-bernoulli2"><span class="math display">\[
+\E(X)=\sum_x xf(x)=p\cdot1+(1-p)\cdot 0 =p,
+\tag{1.17}\]</span></span> ikinci momenti <span id="eq-bernoulli3"><span class="math display">\[
+\E(X^2)=\sum_x x^2f(x)=p\cdot1+(1-p)\cdot 0 =p,
+\tag{1.18}\]</span></span></p>
+<p>varyansı (ikinci merkezi moment) <span id="eq-bernoulli4"><span class="math display">\[
+\Var(X)=\E(X^2)-(\E(X))^2=p-p^2=p(1-p)
+\tag{1.19}\]</span></span> ve standart sapması <span id="eq-bernoulli4"><span class="math display">\[
+\sigma = \sqrt{p(1-p)}
+\tag{1.20}\]</span></span> olarak bulunur.</p>
+<div id="exm-bernoulli1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.12</strong></span> Telefonda anket yapan bir firma geçmiş bilgilerden hareketle, bir kişinin anket sorularına cevap vermeyi kabul etme olasılığını 0.6, reddetme olasılığını 0.4 olarak bulmuştur. Görüşme reddedilirse <span class="math inline">\(X=0\)</span>, kabul edilirse <span class="math inline">\(X=1\)</span> değerlerini almak üzere olasılık dağılımı aşağıdaki gibi yazılabilir: <span class="math display">\[
+\begin{array}{c|cc}
+  x &amp; 0 &amp; 1 \\
+  \hline
+  f(x)=P(X=x) &amp; 0.4 &amp; 0.6 \\
+\end{array}
+\]</span> <span class="math inline">\(X\)</span>’in beklenen değerini ve varyansını bulun.</p>
+<p><strong>Çözüm</strong>:</p>
+<span class="math display">\[\begin{align*}
+\E(X) &amp;= 0\cdot(0.4) + 1\cdot (0.6) \\
+&amp;= 0.6\equiv p_x   
+\end{align*}\]</span>
+<span class="math display">\[\begin{align*}
+\Var(X) &amp;= \E(X^2)-[\E(X)]^2 \\
+&amp;= (0\cdot (0.4)+1^2\cdot 0.6) - 0.6^2 \\
+&amp;= 0.24\equiv p_x(1-p_x)
+\end{align*}\]</span>
+</div>
+<p>Bu örnekte anket firmasının, birbirinden bağımsız olarak, 10 kişiyle görüştüğünü düşünelim. Bu görüşmelerin 5’inin başarıyla sonuçlanma olasılığı kaçtır? Buna benzer olasılıkların betimlenmesinde Binom dağılımı kullanılır.</p>
+</section>
+<section id="binom-dağılımı" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="binom-dağılımı"><span class="header-section-number">1.5.2</span> Binom Dağılımı</h3>
+<p>Binom dağılımının temelinde birbirinden bağımsız olarak tekrarlanan Bernoulli denemeleri yer alır. Belirli sayıda (<span class="math inline">\(n\)</span>) bağımsız Bernoulli denemesinde toplam başarı sayısını modellemek için kullanılır. Örnek olarak bir sınıftaki öğrencilerin bir sınavda başarılı olma sayısını, bir üretim hattında belirli sayıda ürünün hatalı olup olmamasını, bir ankete katılanların belirli bir soruya evet/hayır cevabı verme sayısını verebiliriz.</p>
+<p><span class="math inline">\(Z\)</span> bir Bernoulli(<span class="math inline">\(p\)</span>) rassal değişkeni olsun ve başarı/yenilgi olasılıkları <span class="math display">\[
+\P(Z=1)=p,\quad \P(Z=0)=1-p
+\]</span> olarak tanımlansın.</p>
+<p><span class="math inline">\(X\)</span> rassal değişkenini, toplam başarı sayısı, yani <span class="math inline">\(n\)</span> bağımsız Bernoulli denemesinde <span class="math inline">\(Z\)</span>’nin <span class="math inline">\(1\)</span> değerini alma sayısı olarak tanımlayalım: <span id="eq-binom0"><span class="math display">\[
+X=\sum_i Z_i=\mbox{toplam başarı sayısı}
+\tag{1.21}\]</span></span> <span class="math inline">\(Z\)</span> sadece 0 ve 1 değerlerini aldığı için tüm sonuçlar üzerine toplam aldığımızda başarı sayısına ulaşırız. Binom dağılımı <span class="math inline">\(X\)</span>’in olası sonuçlarının olasılıklarını belirler.</p>
+<p>Toplam başarı sayısı <span class="math inline">\(X\)</span> aşağıda olasılık kütle fonksiyonu verilen <span class="math inline">\(Binom(n,p)\)</span> dağılımına uyar: <span id="eq-binom1"><span class="math display">\[
+    f(x) = \left(\begin{array}{c}
+         n \\
+         x
+       \end{array}\right)
+     p^x (1-p)^{n-x} = \frac{n!}{x!(n-x)!}p^x (1-p)^{n-x}, \quad
+    x=0,1,2,\ldots,n
+\tag{1.22}\]</span></span></p>
+<div id="fig-binom1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binom1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/binomplot1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.6: Binom dağılımı: <span class="math inline">\(X\sim~Binom(n=10,~p=0.2)\)</span>
+</figcaption>
+</figure>
+</div>
+<p><a href="#fig-binom1" class="quarto-xref">Şekil&nbsp;<span>1.6</span></a> <span class="math inline">\(X\sim~B(n=10,~p=0.2)\)</span> dağılımının olasılık kütle ve kümülatif dağılım fonksiyonlarını göstermektedir.</p>
+<p>Bir <span class="math inline">\(Binom(n,p)\)</span> rassal değişkeninin beklenen değer, varyans ve standart sapmasının <span id="eq-binom2"><span class="math display">\[
+\E(X)=np
+\tag{1.23}\]</span></span> <span id="eq-binom3"><span class="math display">\[
+\Var(X)=np(1-p)
+\tag{1.24}\]</span></span> <span id="eq-binom4"><span class="math display">\[
+\sigma = \sqrt{\Var(X)}=\sqrt{np(1-p)}
+\tag{1.25}\]</span></span> olduğu gösterilebilir.</p>
+<div id="exm-bernoulli1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.13</strong></span> <a href="#exm-bernoulli1" class="quarto-xref">Örnek&nbsp;<span>1.13</span></a>’de verilen Bernoulli dağılımını kullanarak 10 görüşmenin 5’inin başarıyla sonuçlanma olasılığını bulun. Bunun için genel olarak “n denemede x başarı” olasılığını veren Binom dağılımını bulun.</p>
+<p><strong>Çözüm</strong></p>
+<p>Başarı olasılığı <span class="math inline">\(=0.6\)</span>, yenilgi olasılığı <span class="math inline">\(0.4\)</span> olduğuna göre “n denemede x başarı” olasılığını veren Binom dağılımı <span class="math display">\[
+f(x) = \frac{n!}{x!(n-x)!} 0.6^x\cdot 0.4^{n-x}  
+\]</span> olur. <span class="math inline">\(n=10\)</span> denemede <span class="math inline">\(x=5\)</span> başarı olasılığı <span class="math display">\[
+\P(X=5) = \frac{10!}{5!(10-5)!} 0.6^5\cdot 0.4^{10-5} \approx 0.20
+\]</span> yani yaklaşık <span class="math inline">\(\%20\)</span>’dir.</p>
+</div>
+<p><code>R</code>’da Binom dağılımına ilişkin hesaplamaları yapmak için <code>dbinom()</code> ve <code>pbinom()</code> fonksiyonları kullanılabilir. Önceki örnekte olasılık kütle fonksiyonu ve birikimli olasılık fonksiyonunu bulalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parametreler</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Başarı sayıları</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Olasılık Kütle Fonksiyonu (PMF)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Birikimli Olasılık Fonksiyonu (CDF)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">cbind</span>(x,pmf,cdf), <span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       x    pmf    cdf
+ [1,]  0 0.0001 0.0001
+ [2,]  1 0.0016 0.0017
+ [3,]  2 0.0106 0.0123
+ [4,]  3 0.0425 0.0548
+ [5,]  4 0.1115 0.1662
+ [6,]  5 0.2007 0.3669
+ [7,]  6 0.2508 0.6177
+ [8,]  7 0.2150 0.8327
+ [9,]  8 0.1209 0.9536
+[10,]  9 0.0403 0.9940
+[11,] 10 0.0060 1.0000</code></pre>
+</div>
+</div>
+<p><a href="#fig-binomaex1" class="quarto-xref">Şekil&nbsp;<span>1.7</span></a> Binom(10,0.6) dağılımının olasılık kütle ve birikimli olasılık fonksiyonlarını göstermektedir.</p>
+<div id="fig-binomaex1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomaex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binomaex1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-binomaex1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binomaex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-binomaex1-1.png" class="img-fluid figure-img" data-ref-parent="fig-binomaex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binomaex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binomaex1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-binomaex1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binomaex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-binomaex1-2.png" class="img-fluid figure-img" data-ref-parent="fig-binomaex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binomaex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomaex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.7: Binom(n=10, p=0.6) Dağılımı
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="hipergeometrik-dağılım" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="hipergeometrik-dağılım"><span class="header-section-number">1.5.3</span> Hipergeometrik Dağılım</h3>
+<p>Eğer Bernoulli denemeleri birbirinden bağımsız değilse toplam başarı sayısı Binom dağılımına uymaz. İçinde <span class="math inline">\(B\)</span> tane başarı bulunan <span class="math inline">\(N\)</span> nesneli rassal bir örneklemde, toplam başarı sayısı <span class="math inline">\(X\)</span>’in olasılık dağılımı</p>
+<p><span id="eq-hiperg1"><span class="math display">\[
+    f(x) = \frac{\left(\begin{array}{c}
+         B \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         N-B \\
+         n-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         N \\
+         n
+       \end{array}\right)}
+\tag{1.26}\]</span></span> olur. Burada <span class="math inline">\(x\)</span> rassal değişkeni, <span class="math inline">\(\max(0,n-(N-B))\)</span> ile <span class="math inline">\(\min(n,B)\)</span> arasında tamsayı değerler alabilir. Beklenen değer ve varyans, sırasıyla, <span id="eq-hiperg2"><span class="math display">\[
+E(X)=np,
+\tag{1.27}\]</span></span> <span id="eq-hiperg3"><span class="math display">\[
+\Var(X)=\frac{N-n}{N-1}np(1-p)
+\tag{1.28}\]</span></span> olarak bulunur. Burada <span class="math display">\[
+p=\frac{B}{N}
+\]</span> başarı olasılığıdır.</p>
+<div id="exm-hipergeom1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.14</strong></span> Bir sınıfta 20 öğrenci bulunmaktadır. Bu öğrencilerden 8’i kız, 12’si erkektir. Sınıf öğretmeni rassal olarak 5 öğrenci seçiyor. Seçilen öğrencilerden 3’ünün kız olma olasılığı kaçtır?</p>
+<p><strong>Çözüm</strong>: Anakütlenin boyutu <span class="math inline">\(N=20\)</span> ve seçilen öğrenci sayısı <span class="math inline">\(n=5\)</span> olduğuna göre olanaklı kombinasyonların sayısı <span class="math display">\[
+\frac{N!}{n!(N-n)!} =  \frac{20!}{5!(20-5)!} = 15504
+\]</span> olur. Anakütle 8 başarı (kız öğrenci) 12 yenilgi (erkek öğrenci) içerdiğine göre, 8 kız öğrenciden 3’ünü seçmenin olasılığı <span class="math display">\[
+\frac{B!}{x!(B-x)!} =  \frac{8!}{3!(8-3)!} = 56
+\]</span> 12 erkek öğrenciden 2’sinin seçilme olasılığı <span class="math display">\[
+\frac{(N-B)!}{(n-x)!(N-B-n+x)!} =  \frac{12!}{2!(20-8-5+3)!} = 66
+\]</span> Böylece 3 kız öğrencinin seçilme olasılığı <span class="math display">\[
+f(3)=\P(X=3) = \frac{56\cdot 66}{15504}=0.2384
+\]</span> yani yaklaşık <span class="math inline">\(\%23.84\)</span> olur.</p>
+</div>
+<p><code>R</code>’da hipergeometrik olasılık kütle ve birikimli dağılım fonksiyonları için <code>dhyper()</code> ve <code>phyper()</code> fonksiyonlarını kullanabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hipergeometrik Dağılım Parametreleri</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span>  <span class="co"># Toplam öğrenci sayısı</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">8</span>   <span class="co"># Kız öğrenci sayısı</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span>   <span class="co"># Seçilen öğrenci sayısı</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Başarı sayısı (kız) değerleri</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># PMF Hesaplama</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(x, K, N <span class="sc">-</span> K, n)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># CDF Hesaplama</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">phyper</span>(x, K, N <span class="sc">-</span> K, n)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">cbind</span>(x,pmf,cdf), <span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     x    pmf   cdf
+[1,] 0 0.0511 0.051
+[2,] 1 0.2554 0.307
+[3,] 2 0.3973 0.704
+[4,] 3 0.2384 0.942
+[5,] 4 0.0542 0.996
+[6,] 5 0.0036 1.000</code></pre>
+</div>
+</div>
+<div id="exm-hipergeom2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.15</strong></span> Bir fabrikada üretilen 100 üründen 30’u hatalı (düşük kaliteli), 70’i ise kalitelidir. Kalite kontrol uzmanı, rastgele 10 ürün seçmekte ve bu seçilen ürünlerin içinde kaç tane hatalı olduğunu incelemektedir. Bu durumda, seçilen 10 ürün içinde <span class="math inline">\(x\)</span> tane hatalı ürün olma olasılığını veren dağılımı bulun. Bu 10 üründe 2 hatalı olma olasılığı kaçtır?</p>
+<p><strong>Çözüm</strong>: Bu olasılıklar hipergeometrik dağılım ile bulunabilir. Verilenleri özetleyelim: <span class="math display">\[
+N=100,\quad B=30,\quad n=10
+\]</span> <span class="math inline">\(n=10\)</span> boyutlu bir örneklemde hatalı ürün sayısı <span class="math inline">\(x\)</span> olasılığı <span class="math display">\[
+f(x)=\P(X=x) = \frac{\left(\begin{array}{c}
+         B \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         N-B \\
+         n-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         N \\
+         n
+       \end{array}\right)}=\frac{\left(\begin{array}{c}
+         30 \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         70 \\
+         10-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         100 \\
+         10
+       \end{array}\right)}
+\]</span> <span class="math inline">\(x=2\)</span> hatalı ürün olma olasılığını <code>R</code> ile bulalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">30</span>,<span class="dv">2</span>)<span class="sc">*</span><span class="fu">choose</span>(<span class="dv">70</span>,<span class="dv">8</span>)<span class="sc">/</span><span class="fu">choose</span>(<span class="dv">100</span>,<span class="dv">10</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2372316</code></pre>
+</div>
+</div>
+<p>Seçilen 10 üründen 2’sinin düşük kaliteli olma olasılığı yaklaşık <span class="math inline">\(\%23.7\)</span>’dir.</p>
+<p><span class="math inline">\(x=0,1,2,\ldots,10\)</span> için olasılıklar ve birikimli olasılıkları hesaplayalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hipergeometrik Dağılım Parametreleri</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Toplam ürün sayısı</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">30</span>   <span class="co"># Hatalı ürün sayısı</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span>   <span class="co"># Seçilen ürün sayısı</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hatalı ürün sayısı (x) değerleri</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># PMF Hesaplama</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(x, B, N <span class="sc">-</span> B, n)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># CDF Hesaplama</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">phyper</span>(x, B, N <span class="sc">-</span> B, n)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ekrana yazdır</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">cbind</span>(x, <span class="fu">round</span>(pmf,<span class="dv">3</span>), <span class="fu">round</span>(cdf,<span class="dv">3</span>)))</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       x            
+ [1,]  0 0.023 0.023
+ [2,]  1 0.113 0.136
+ [3,]  2 0.237 0.373
+ [4,]  3 0.281 0.654
+ [5,]  4 0.208 0.862
+ [6,]  5 0.100 0.961
+ [7,]  6 0.031 0.993
+ [8,]  7 0.006 0.999
+ [9,]  8 0.001 1.000
+[10,]  9 0.000 1.000
+[11,] 10 0.000 1.000</code></pre>
+</div>
+</div>
+<p><a href="#fig-hiperex1" class="quarto-xref">Şekil&nbsp;<span>1.8</span></a> <span class="math inline">\(X\)</span>’in olasılık kütle ve birikimli olasılık fonksiyonlarını göstermektedir.</p>
+<div id="fig-hiperex1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hiperex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-hiperex1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-hiperex1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-hiperex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-hiperex1-1.png" class="img-fluid figure-img" data-ref-parent="fig-hiperex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hiperex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-hiperex1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-hiperex1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-hiperex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-hiperex1-2.png" class="img-fluid figure-img" data-ref-parent="fig-hiperex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hiperex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hiperex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.8: Hipergeometrik(N=100, B=30, n=10) Dağılım
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="poisson-dağılımı" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="poisson-dağılımı"><span class="header-section-number">1.5.4</span> Poisson Dağılımı</h3>
+<p>Poisson dağılımı, belirli bir zaman diliminde veya belirli bir alanda nadiren gerçekleşen olayların sayısını modellemek için kullanılır. Olaylar birbirinden bağımsızdır ve belirli bir ortalama hızda gerçekleşir. Örnek olarak bir çağrı merkezine belirli bir zaman diliminde gelen çağrı sayısı, bir karayolunda belirli bir sürede meydana gelen trafik kazası sayısı, bir bankaya belirli bir süre içinde gelen müşteri sayısı verilebilir.</p>
+<p>Kesikli rassal değişken <span class="math inline">\(X\)</span> bir olayın belirli bir (göreli kısa) zaman diliminde gerçekleşme sayısını göstersin. <span class="math inline">\(X\sim Poisson(\lambda)\)</span> ile gösterdiğimiz Poisson dağılımının olasılık kütle fonksiyonu aşağıdaki gibi yazılabilir: <span id="eq-poisson1"><span class="math display">\[
+    f(x,\lambda)=\frac{\lambda^x e^{-\lambda}}{x!}, \quad
+    x=0,1,2,\ldots
+\tag{1.29}\]</span></span> Bu tanımda <span class="math inline">\(X\)</span> olayların sayısı, bilinmeyen parametre <span class="math inline">\(\lambda\)</span> ise ortalama olay sayısıdır. <span class="math inline">\(\lambda\)</span> parametresi Poisson dağılımının şekli ve merkezi ile doğrudan ilişkilidir ve dağılımın özelliklerini belirler. Poisson dağılımı, nadir olayların modellemesi ve analizi için güçlü bir araçtır ve çeşitli uygulamalarda yaygın olarak kullanılır. <a href="#fig-poisson1" class="quarto-xref">Şekil&nbsp;<span>1.10</span></a> ortalaması 2 olan bir Poisson rassal değişkeninin olasılık kütle ve kümülatif dağılım fonksiyonlarını göstermektedir.</p>
+<div id="fig-poisson1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-poisson1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/poissonplot1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-poisson1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.9: Örnek Poisson dağılımı: <span class="math inline">\(X\sim~P(\lambda=2)\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Bir Poisson rassal değişkeninin beklenen değer ve varyansının <span class="math display">\[
+\E(X)=\lambda
+\]</span> <span class="math display">\[
+\Var(X)=\lambda
+\]</span> olduğu gösterilebilir.</p>
+<div id="exm-poisson1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.16</strong></span> Bir kütüphanede bir günde ödünç alınan kitap sayısı ortalaması 3 olan bir Poisson dağılımı ile temsil edilebilmektedir. Buna göre bir günde ödünç alınan kitap sayısının 3’ten fazla olma olasılığı kaçtır?</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Verilenlere göre ödünç kitap sayısı <span class="math inline">\(X\sim~Poisson(\lambda=3)\)</span> dağılımına uymaktadır, yani: <span class="math display">\[
+f(x)=\P(X=x)=\frac{\lambda^x e^{-\lambda}}{x!} = \frac{3^x e^{-3}}{x!}
+\]</span> yazabiliriz. Buradan <span class="math inline">\(X\)</span>’in 0, 1, 2, ve 3 olma olasılıkları: <span class="math display">\[
+\P(X=0) = \frac{3^0 e^{-3}}{0!}=e^{-3}\approx 0.05
+\]</span> <span class="math display">\[
+\P(X=1) = \frac{3^1 e^{-3}}{1!}=3e^{-3}\approx 0.15
+\]</span> <span class="math display">\[
+\P(X=2) = \frac{3^2 e^{-3}}{2!}\approx 0.224
+\]</span> <span class="math display">\[
+\P(X=3) = \frac{3^3 e^{-3}}{3!}\approx 0.224
+\]</span> olur. Öyleyse <span class="math display">\[
+\P(X&gt;3) = 1-\P(X\leq 3) = 1-(0.05+0.15+0.224+0.224)=0.352
+\]</span> yaklaşık <span class="math inline">\(\%35.2\)</span> bulunur.</p>
+<p><code>R</code>’da Poisson dağılımının olasılık kütle ve birikimli dağılım fonksiyonlarını <code>dpois()</code> ve <code>ppois()</code> kullanarak da bulabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Poisson Dağılımı Parametreleri</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">3</span>  <span class="co"># Ortalama olay sayısı (günde ortalama 3 kitap ödünç alma)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Olay sayısı (x) değerleri</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># 0'dan 10'a kadar olan değerler</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PMF Hesaplama</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dpois</span>(x, lambda)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># CDF Hesaplama</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>cdf <span class="ot">&lt;-</span> <span class="fu">ppois</span>(x, lambda)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ekrana yazdır</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">cbind</span>(x, <span class="at">pmf=</span><span class="fu">round</span>(pmf,<span class="dv">3</span>), <span class="at">cdf=</span><span class="fu">round</span>(cdf,<span class="dv">3</span>)))</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       x   pmf   cdf
+ [1,]  0 0.050 0.050
+ [2,]  1 0.149 0.199
+ [3,]  2 0.224 0.423
+ [4,]  3 0.224 0.647
+ [5,]  4 0.168 0.815
+ [6,]  5 0.101 0.916
+ [7,]  6 0.050 0.966
+ [8,]  7 0.022 0.988
+ [9,]  8 0.008 0.996
+[10,]  9 0.003 0.999
+[11,] 10 0.001 1.000</code></pre>
+</div>
+</div>
+<p><a href="#fig-hiperex1" class="quarto-xref">Şekil&nbsp;<span>1.8</span></a> <span class="math inline">\(X\)</span>’in olasılık kütle ve birikimli olasılık fonksiyonlarını göstermektedir.</p>
+<div id="fig-poisson1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-poisson1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-poisson1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-poisson1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-poisson1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-poisson1-1.png" class="img-fluid figure-img" data-ref-parent="fig-poisson1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-poisson1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-poisson1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-poisson1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-poisson1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-poisson1-2.png" class="img-fluid figure-img" data-ref-parent="fig-poisson1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-poisson1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-poisson1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.10: Poisson(3) Dağılımı
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+</section>
+<section id="kesikli-rassal-değişkenlerin-birleşik-dağılımları" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="kesikli-rassal-değişkenlerin-birleşik-dağılımları"><span class="header-section-number">1.6</span> Kesikli Rassal Değişkenlerin Birleşik Dağılımları</h2>
+<p>Bu bölümde birden fazla rassal değişkenin ortak davranışını açıklamakta kullanabileceğimiz araçları öğreneceğiz. İki ve daha fazla kesikli rassal değişkeninin belirli değerlere eşit olma olasılıklarını betimlemek amacıyla birleşik olasılık kütle fonksiyonu kullanılabilir.</p>
+<section id="birleşik-olasılık-kütle-fonksiyonu" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="birleşik-olasılık-kütle-fonksiyonu"><span class="header-section-number">1.6.1</span> Birleşik Olasılık Kütle Fonksiyonu</h3>
+<div id="def-birlesik-of" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.11 (<strong>Birleşik Olasılık Kütle Fonksiyonu</strong>)</strong></span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> iki kesikli rassal değişken olsun. Bunların birleşik (ortak) olasılık fonksiyonu <span id="eq-birlesik-of1"><span class="math display">\[
+f(x,y)=\P(X=x\cap Y=y)
+\tag{1.30}\]</span></span> bu rassal değişkenlerin aynı anda belirli bir değere eşit olma olasılıklarını verir. İkili birleşik olasılıkların toplamı her zaman 1 olur: <span class="math display">\[
+\sum_i\sum_j f(x_i,y_j) = 1, \quad f(x_i,y_j)\geq 0
+\]</span></p>
+<p>Bu rassal değişkenlerin alabileceği değerler az sayıda ise birleşik (ortak) olasılıklar bir tablo halinde verilebilir (bkz çapraz tablolar). Tablodaki hücreler <span class="math inline">\(\P(X=x\cap Y=y)\)</span> ile gösterilen kesişim olasılıklarını gösterir.</p>
+<p>Daha genel olarak <span class="math inline">\(X_1,X_2,\ldots,X_k\)</span> <span class="math inline">\(k\)</span> tane kesikli r.d. ise bunların ortak olasılık fonksiyonu şöyle olur: <span id="eq-birlesik-of2"><span class="math display">\[
+f(x_1,x_2,\ldots,x_k)=P(X_1=x_1\cap X_2=x_2,\cap,\ldots,\cap
+X_k=x_k)
+\tag{1.31}\]</span></span></p>
+<p><span class="math inline">\(k\)</span> değişkenli bir ortak olasılık kütle fonksiyonu için olasılıklar toplamı 1 olmak zorundadır.</p>
+</div>
+<div id="exm-birlesik-of1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.17</strong></span> <span class="math inline">\(X\)</span>: Bir bankada 1 nolu gişede sırada bekleyen müşteri sayısını, <span class="math inline">\(Y\)</span>: 2 nolu gişede sırada bekleyen müşteri sayısını göstermektedir. Bu iki r.d. için ortak olasılık fonksiyonu aşağıdaki tabloda verilmiştir.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x\setminus y\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;"><strong>Toplam</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">0.17</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.22</td>
+<td style="text-align: center;">0.28</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.08</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Toplam</strong></td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.53</td>
+<td style="text-align: center;">0.18</td>
+<td style="text-align: center;">0.04</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+</tbody>
+</table>
+<p>Bu birleşik olasılık fonksiyonun göre birinci ve ikinci gişede aynı anda bekleyen birer müşteri olma olasılığı 0.28’dir: <span class="math display">\[
+f(x=1,y=1)=\P(X=1\cap Y=1)=0.28
+\]</span> Benzer şekilde diğer olasılıklar tablo hücrelerinde tanımlanmıştır. Olasılıklar toplamının 1 olduğuna dikkat ediniz.</p>
+</div>
+</section>
+<section id="marjinal-olasılık-fonksiyonu" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="marjinal-olasılık-fonksiyonu"><span class="header-section-number">1.6.2</span> Marjinal Olasılık Fonksiyonu</h3>
+<p>Birleşik olasılık fonksiyonu biliniyorsa, bundan hareketle marjinal ya da tekil olasılık fonksiyonları elde edilebilir.</p>
+<div id="def-marjinal-of" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.12 (<strong>Marjinal Olasılık Fonksiyonu</strong>)</strong></span> <span class="math inline">\(X\)</span>’in marjinal olasılık fonksiyonu birleşik olasılık fonksiyonundan hareketle kolayca hesaplanabilir: <span id="eq-marjinal-of1"><span class="math display">\[
+f(x)=\sum_y f(x,y)
+\tag{1.32}\]</span></span> Burada toplam <span class="math inline">\(Y\)</span>’nin tüm değerleri üzerinedir.</p>
+<p>Benzer şekilde <span class="math inline">\(Y\)</span>’nin marjinal olasılık fonksiyonu: <span id="eq-marjinal-of2"><span class="math display">\[
+f(y)=\sum_x f(x,y)
+\tag{1.33}\]</span></span></p>
+</div>
+<div id="exm-marjinal-of1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.18</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de tablo olarak verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X\)</span>’in ve <span class="math inline">\(Y\)</span>’nin marjinal olasılık fonksiyonlarını bulalım.</p>
+<p><span class="math inline">\(X\)</span>’in marjinal olasılık kütle fonksiyonunu bulmak için her bir <span class="math inline">\(x\)</span> değeri için <span class="math inline">\(Y\)</span> üzerine toplamları almamız gerekir:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\nonumber  f_x(x=0) &amp;=&amp; \P(X=0) \\
+\nonumber   &amp;=&amp; \sum_y f(x=0,~y) \\
+\nonumber   &amp;=&amp; \P(X=0 \cap Y=0) +\P(X=0 \cap Y=1)+\P(X=0 \cap Y=2)+\P(X=0 \cap Y=3)\\
+\nonumber   &amp;=&amp; 0.03+0.17+0+0 \\
+\nonumber   &amp;=&amp; 0.20
+\end{eqnarray}\]</span></p>
+<p>Benzer şekilde her bir <span class="math inline">\(x\)</span> değeri için satır toplamları <span class="math inline">\(X\)</span>’in marjinal olasılıklarını verir. Bunu bir tablo haline getirebiliriz: <span class="math display">\[
+\begin{array}{c|cccc}
+  x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f_x(x)=P(X=x) &amp; 0.20 &amp; 0.60 &amp; 0.15 &amp; 0.05 \\
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(Y\)</span>’nin marjinal olasılık fonksiyonunu bulmak için her bir <span class="math inline">\(Y\)</span> değeri için sütun toplamlarını almamız gerekir:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\nonumber  f_y(y) &amp;=&amp; \P(Y=0) \\
+\nonumber   &amp;=&amp; \sum_x f(x,~y=0) \\
+\nonumber   &amp;=&amp; \P(X=0 \cap Y=0) +\P(X=1 \cap Y=0)+\P(X=2 \cap Y=0)+\P(X=3 \cap Y=0)\\
+\nonumber   &amp;=&amp; 0.03+0.22+0+0 \\
+\nonumber   &amp;=&amp; 0.25
+\end{eqnarray}\]</span></p>
+<p>Her bir <span class="math inline">\(y\)</span> değeri için sütun toplamlarını hesapladıktan sonra <span class="math inline">\(Y\)</span>’nin marjinal olasılık fonksiyonu</p>
+<p><span class="math display">\[
+\begin{array}{c|cccc}
+  y &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f_y(y)=P(Y=y) &amp; 0.25 &amp; 0.53 &amp; 0.18 &amp; 0.04 \\
+\end{array}
+\]</span> olarak yazılabilir. Marjinal olasılıkların toplamı 1 olmalıdır.</p>
+</div>
+</section>
+<section id="koşullu-olasılık-fonksiyonu" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="koşullu-olasılık-fonksiyonu"><span class="header-section-number">1.6.3</span> Koşullu Olasılık Fonksiyonu</h3>
+<div id="def-kosullu-of" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.13 (<strong>Koşullu Olasılık Fonksiyonu</strong>)</strong></span> <span class="math inline">\(Y=y\)</span> verilmişken <span class="math inline">\(X\)</span>’in koşullu olasılık fonksiyonu: <span id="eq-kosullu-of1"><span class="math display">\[
+f(x\mid y)=\frac{f(x,y)}{f(y)} = \frac{\P(X=x\cap Y=y)}{\P(Y=y)}
+\tag{1.34}\]</span></span> Benzer şekilde <span class="math inline">\(X=x\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu olasılık fonksiyonu: <span id="eq-kosullu-of2"><span class="math display">\[
+f(y\mid x)=\frac{f(x,y)}{f(x)}= \frac{\P(X=x\cap Y=y)}{\P(X=x)}
+\tag{1.35}\]</span></span> olarak tanımlıdır.</p>
+</div>
+<div id="exm-kosullu-of1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.19</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de tablo olarak verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X=1\)</span> verilmişken ve <span class="math inline">\(Y=0\)</span> olma olasılığını bulun. Genel olarak <span class="math inline">\(X=1\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu olasılık fonksiyonunu, <span class="math inline">\(f(y\mid x=1)\)</span>, bulun.</p>
+<p><strong>Çözüm</strong></p>
+<p>Koşullu olasılıkların tanımından hareketle <span class="math display">\[
+f(y=0\mid x=1)=\frac{f(x=1,y=0)}{f(x=1)}= \frac{\P(X=1\cap Y=0)}{\P(X=1)}=\frac{0.22}{0.60}\approx 0.367
+\]</span> bulunur. Diğer koşullu olasılıklar benzer şekilde kolayca hesaplanabilir: <span class="math display">\[
+f(y=1\mid x=1)=\frac{f(x=1,y=1)}{f(x=1)}= \frac{\P(X=1\cap Y=1)}{\P(X=1)}=\frac{0.28}{0.60}\approx 0.467
+\]</span> <span class="math display">\[
+f(y=2\mid x=1)=\frac{f(x=1,y=2)}{f(x=1)}= \frac{\P(X=1\cap Y=2)}{\P(X=1)}=\frac{0.10}{0.60}\approx 0.166
+\]</span> <span class="math display">\[
+f(y=3\mid x=1)=\frac{f(x=1,y=3)}{f(x=1)}= \frac{\P(X=1\cap Y=3)}{\P(X=1)}=\frac{0}{0.60} = 0
+\]</span> Bunu bir tablo haline getirebiliriz. <span class="math inline">\(X=1\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu olasılık kütle fonksiyonu <span class="math display">\[
+\begin{array}{c|cccc}
+  y &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f(y\mid x=1)=P(Y=y\mid X=1) &amp; 0.367 &amp; 0.467 &amp; 0.166 &amp; 0 \\
+\end{array}
+\]</span> olarak bulunur.</p>
+</div>
+<div id="def-kosullu-ortalama" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.14 (Koşullu beklenen değer)</strong></span> <span class="math inline">\(X\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu beklenen değeri (ya da ortalaması) <span id="eq-condexp1"><span class="math display">\[
+\mu_{Y\mid X} = \E(Y\mid X) = \sum_y y\cdot f(y\mid x)
+\tag{1.36}\]</span></span> ile bulunur. Benzer şekilde <span class="math inline">\(Y\)</span> verilmişken <span class="math inline">\(X\)</span>’nin koşullu beklenen değeri (ya da ortalaması) <span id="eq-condexp2"><span class="math display">\[
+\mu_{X|Y} = \E(X\mid Y) = \sum_x x\cdot f(x\mid y)
+\tag{1.37}\]</span></span></p>
+</div>
+<div id="exm-kosullu-ort" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.20</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de tablo olarak verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(Y=1\)</span> verilmişken ve <span class="math inline">\(X\)</span>’in koşullu beklenen değerini bulun.</p>
+<p><strong>Çözüm</strong></p>
+<p><span class="math inline">\(Y=1\)</span> verilmişken <span class="math inline">\(X\)</span>’in ortalaması <span class="math display">\[
+\mu_{X|Y=1} = \E(X\mid Y=1) = \sum_x x\cdot f(x\mid y=1)
+\]</span> olarak yazılabilir. Alabileceği değerler <span class="math inline">\(x=0,1,2,3\)</span> ve her biri için koşullu olasılık <span class="math display">\[
+f(x=0\mid y=1)=\frac{f(x=0,y=1)}{f(y=1)}= \frac{0.17}{0.53}=0.3208
+\]</span> <span class="math display">\[
+f(x=1\mid y=1)=\frac{f(x=1,y=1)}{f(y=1)}= \frac{0.28}{0.53}=0.5283
+\]</span> <span class="math display">\[
+f(x=2\mid y=1)=\frac{f(x=2,y=1)}{f(y=1)}= \frac{0.08}{0.53}=0.1509
+\]</span> <span class="math display">\[
+f(x=3\mid y=1)=\frac{f(x=3,y=1)}{f(y=1)}= \frac{0}{0.53}=0
+\]</span> Bir tablo getirip <span class="math inline">\(f(x\mid y=1)\)</span> olasılık kütle fonksiyonunu aşağıdaki gibi yazabiliriz: <span class="math display">\[
+\begin{array}{c|cccc}
+  x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f(x\mid y=1)=P(X=x\mid Y=1) &amp; 0.3208 &amp; 0.5283 &amp; 0.1509 &amp; 0 \\
+\end{array}
+\]</span> Buradan <span class="math display">\[
+\E(X\mid Y=1) = 0\cdot (0.3208)+1\cdot(0.5283)+2\cdot (0.1509) + 3\cdot (0) = 0.83
+\]</span> bulunur.</p>
+<p><span class="math inline">\(Y\)</span>’nin diğer değerleri için de bu koşullu beklenen değeri bulabiliriz. <span class="math inline">\(Y=0\)</span> verilmişken <span class="math inline">\(X\)</span>’in beklenen değeri: <span class="math display">\[
+\E(X\mid Y=0) = 0\cdot \frac{0.03}{0.25}+1\cdot \frac{0.22}{0.25}+2\cdot \frac{0}{0.25} + 3\cdot \frac{0}{0.25} = 0.88
+\]</span> <span class="math inline">\(Y=2\)</span> verilmişken <span class="math inline">\(X\)</span>’in beklenen değeri: <span class="math display">\[
+\E(X\mid Y=2) = 0\cdot \frac{0}{0.18}+1\cdot \frac{0.10}{0.18}+2\cdot \frac{0.05}{0.18} + 3\cdot \frac{0.03}{0.04} = 1.61
+\]</span> <span class="math inline">\(Y=3\)</span> verilmişken <span class="math inline">\(X\)</span>’in beklenen değeri: <span class="math display">\[
+\E(X\mid Y=3) = 0\cdot \frac{0}{0.04}+1\cdot \frac{0}{0.04}+2\cdot \frac{0.02}{0.04} + 3\cdot \frac{0.02}{0.04} =  2.5
+\]</span> Özetlersek, her bir <span class="math inline">\(Y\)</span> değeri için <span class="math inline">\(X\)</span>’in koşullu beklenen değerini aşağıdaki gibi bir tablo haline getirebiliriz:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(Y\)</span></th>
+<th><span class="math inline">\(E(X \mid Y = y)\)</span></th>
+<th><span class="math inline">\(f(y)=P(Y = y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.88</td>
+<td>0.25</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.83</td>
+<td>0.53</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1.61</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2.5</td>
+<td>0.04</td>
+</tr>
+</tbody>
+</table>
+<p>Burada <span class="math inline">\(E(X \mid Y = y)\)</span>’in bir rassal değişken olduğuna dikkat ediniz. Koşul aldığımız değişken olan <span class="math inline">\(Y\)</span>’ye göre koşullu beklenen değerin beklenen değerini bulabiliriz: <span class="math display">\[
+\E_Y[\E(X\mid Y)] = \sum_y \E(X\mid Y=y)\cdot f(y)
+\]</span> Buradan <span class="math display">\[
+\E_Y[\E(X\mid Y)] = 0.88\cdot (0.25) + 0.83\cdot (0.53) + 1.61\cdot (0.18) + 2.5 \cdot (0.04) = 1.05
+\]</span> bulunur. Bu koşulsuz beklenen değere eşittir: <span class="math inline">\(\E(X)=1.05\)</span>. Buna yinelemeli beklenti yasası denir.</p>
+</div>
+<div id="def-LIE" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.15 (Yinelemeli Beklenti Yasası (Law of Iterated Expectations - LIE))</strong></span> Bu yasaya göre koşullu beklenen değerin beklenen değeri koşulsuz beklenen değere eşittir. Yani <span id="eq-lie1"><span class="math display">\[
+\E(X) = \E_Y[\E(X\mid Y)]
+\tag{1.38}\]</span></span> ya da <span id="eq-lie2"><span class="math display">\[
+\E(Y) = \E_X[\E(Y\mid X)]
+\tag{1.39}\]</span></span> yazabiliriz. Önceki örnekte <span class="math inline">\(\E(X) = \E_Y[\E(X\mid Y)]\)</span> olduğunu göstermiştik. Alıştırma olarak <span class="math display">\[
+\E_X[\E(Y\mid X)] = 1.01 = \E(Y)
+\]</span> olduğunu gösteriniz.</p>
+</div>
+<div id="def-kosullu-var" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.16 (Koşullu varyans)</strong></span> <span class="math inline">\(X\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu varyansı <span id="eq-condvar1"><span class="math display">\[
+\sigma^2_{Y|X} = \E[(Y-\mu_{Y|X})^2\mid X) = \sum_y (y-\mu_{Y|X})^2\cdot f(y|x)
+\tag{1.40}\]</span></span> ile bulunur. Benzer şekilde <span class="math inline">\(Y\)</span> verilmişken <span class="math inline">\(X\)</span>’nin varyansı aşağıdaki formül ile bulunur: <span id="eq-condvar2"><span class="math display">\[
+\sigma^2_{X|Y} = \E[(X-\mu_{X|Y})^2\mid Y) = \sum_x (x-\mu_{X|Y})^2\cdot f(x|y)
+\tag{1.41}\]</span></span></p>
+</div>
+<div id="exm-kosullu-var" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.21</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de tablo olarak verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(Y=1\)</span> verilmişken ve <span class="math inline">\(X\)</span>’in koşullu beklenen değerini bulmuştuk: <span class="math display">\[
+\E(X\mid Y=1) = 0.83
+\]</span> Şimdi <span class="math inline">\(Y=1\)</span> verilmişken <span class="math inline">\(X\)</span>’in koşullu varyansını bulalım.</p>
+<p><strong>Çözüm</strong>:</p>
+<p><span class="math display">\[
+\sigma^2_{X\mid Y=1} = \sum_x (x-0.83)^2\cdot f(x|y=1)
+\]</span> <span class="math inline">\(X\)</span>’in <span class="math inline">\(Y=1\)</span> değerine koşullu olasılık dağılımı aşağıdaki tablo ile özetlenebilir: <span class="math display">\[
+\begin{array}{c|cccc}
+  x &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+  \hline
+  f(x|y=1)=P(X=x\mid Y=1) &amp; 0.3208 &amp; 0.5283 &amp; 0.1509 &amp; 0 \\
+\end{array}
+\]</span> Buradan <span class="math display">\[
+\sigma^2_{X|Y=1} = (0-0.83)^2(0.3208)+(1-0.83)^2(0.5283)+(2-0.83)^2(0.1509)+(3-0.83)^20
+\]</span> <span class="math display">\[
+\sigma^2_{X|Y=1} = 0.443
+\]</span> bulunur.</p>
+<p>Bunun için kısa yol formülünü de kullanabiliriz: <span class="math display">\[
+\Var(X\mid Y=1) = \E(X^2\mid Y=1)-[\E(X\mid Y=1)]^2
+\]</span> Önce <span class="math inline">\(Y=1\)</span> iken <span class="math inline">\(X^2\)</span>’nin beklentisini bulalım: <span class="math display">\[
+\E(X^2\mid Y=1) = \sum_x x^2\cdot f(x|y=1)
+\]</span> <span class="math display">\[
+\E(X^2\mid Y=1) = 0^2(0.3208)+1^2(0.5283)+2^2(0.1509)+3^2 0 = 1.1319
+\]</span> <span class="math display">\[
+\Var(X\mid Y=1) = \E(X^2\mid Y=1)-\left[\E(X\mid Y=1)\right]^2 = 1.1319-(0.83)^2 = 0.443
+\]</span></p>
+</div>
+</section>
+<section id="bağımsızlık" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="bağımsızlık"><span class="header-section-number">1.6.4</span> Bağımsızlık</h3>
+<div id="def-bagimsizlik1" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.17 (<strong>Bağımsızlık</strong>)</strong></span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> kesikli rassal değişkenlerinin birleşik olasılıkları aşağıdaki gibi <span id="eq-bagimsizlik1"><span class="math display">\[
+f(x,y)=f_x(x)f_y(y)
+\tag{1.42}\]</span></span> marjinal olasılıkların çarpımı olarak yazılabiliyorsa bu rassal değişkenler istatistik bakımından birbirinden <strong>bağımsızdır</strong></p>
+<p>Bağımsızlık bir rassal değişkenin aldığı bir değerin diğer rassal değişkenler hakkında bilgi içermemesi anlamına gelir. Eğer <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> istatistik bakımından bağımsız ise koşullu olasılık fonksiyonu ile marjinal olasılık fonksiyonu aynıdır: <span id="eq-bagimsizlik2"><span class="math display">\[
+f(x|y)=\frac{f(x)f(y)}{f(y)} = f_x(x),
+\tag{1.43}\]</span></span> ve <span id="eq-bagimsizlik3"><span class="math display">\[
+f(y|x)=\frac{f(x)f(y)}{f(x)} =f_y(y)
+\tag{1.44}\]</span></span></p>
+</div>
+<div id="exm-bagimsizlik1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.22</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>’nin istatistik bakımından bağımsız olup olmadığını gösteriniz.</p>
+<p><strong>Çözüm</strong></p>
+<p>Bağımsızlığı göstermek için her bir <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> çifti için <span class="math inline">\(f(x,y)=f_x(x)f_y(y)\)</span> olup olmadığının incelenmesi gerekir. Örneğin <span class="math inline">\(X=0\)</span> ve <span class="math inline">\(Y=0\)</span> için <span class="math display">\[
+f(x=0,y=0)\overset{?}{=} f_x(x=0)\cdot f_y(y=0)
+\]</span> olup olmadığına bakalım. Birleşik olasılık fonksiyonundan <span class="math inline">\(f(x=0,y=0)=0.03\)</span> ve marjinal olasılıkların <span class="math inline">\(f_x(x=0)=0.2\)</span> ve <span class="math inline">\(f_y(y=0)=0.25\)</span> olduğunu görüyoruz. Öyleyse <span class="math display">\[
+0.03\neq (0.2)\cdot (0.25)=0.05
+\]</span> eşitlik sağlanmadığı için <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> birbirinden <strong>bağımsız değildir</strong> diyebiliriz.</p>
+</div>
+</section>
+<section id="x-ve-ynin-fonksiyonlarının-beklenen-değeri" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="x-ve-ynin-fonksiyonlarının-beklenen-değeri"><span class="header-section-number">1.6.5</span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>’nin fonksiyonlarının beklenen değeri</h3>
+<div id="def-xyexp" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.18 (<strong><span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>’nin fonksiyonlarının beklenen değeri</strong>)</strong></span> <span class="math inline">\(g(X,Y)\)</span>, <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> r.d.’lerinin herhangi bir fonksiyonunu ifade etsin. Bu fonksiyonun beklenen değeri: <span id="eq-kov1"><span class="math display">\[
+E\left[g(X,Y)\right]=\sum_x \sum_y g(x,y)f(x,y)
+\tag{1.45}\]</span></span> olarak tanımlanır.</p>
+</div>
+<div id="exm-xyexp" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.23</strong></span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> rassal değişkenlerinin birleşik dağılımı aşağıdaki tabloda verilmiştir (satırlar <span class="math inline">\(x\)</span> değerlerini, sütunlar <span class="math inline">\(y\)</span> değerlerini göstermektedir). <span class="math inline">\(g(x,y) = 2x+3y\)</span> biçiminde yeni bir rassal değişken tanımlanıyor. Bu rassal değişkenin beklenen değerini bulun. <span class="math display">\[
+\begin{array}{c|ccc}
+  x \backslash y &amp; -1 &amp; 0 &amp; 1  \\
+  \hline
+  0 &amp; 0.1 &amp; 0.2 &amp; 0.1 \\
+  1 &amp; 0.3 &amp; 0.1 &amp; 0.2
+\end{array}
+\]</span></p>
+<p><strong>Çözüm</strong>: Beklenti tanımını kullanarak doğrudan hesaplayabiliriz: <span class="math display">\[
+\E(g(x,y)) = \sum_x\sum_y (2x+3y)f(x,y)
+\]</span> Bunun için aşağıdaki gibi bir tablo oluşturmak hesaplamaları kolaylaştırabilir:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+<th><span class="math inline">\(f(x,y)\)</span></th>
+<th><span class="math inline">\(g(x, y) = 2x + 3y\)</span></th>
+<th><span class="math inline">\(f(x,y) \cdot g(x, y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>-1</td>
+<td>0.1</td>
+<td>-3</td>
+<td>-0.3</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0.2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>0.1</td>
+<td>3</td>
+<td>0.3</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>-1</td>
+<td>0.3</td>
+<td>-1</td>
+<td>-0.3</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0.1</td>
+<td>2</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0.2</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<!-- $$ -->
+<!-- \sum_x\sum_y (2x+3y)f(x,y) = (2\cdot 0+3\cdot (-1))\times 0.1+(2\cdot 0+3\cdot 0)\times 0.2+(2\cdot 0+3\cdot (1))\times 0.1+(2\cdot 1+3\cdot (-1))\times 0.3+(2\cdot 1+3\cdot 0)\times 0.1+(2\cdot 1+3\cdot 1)\times 0.2 -->
+<!-- $$ -->
+<p>Buradan <span class="math display">\[
+\sum_x\sum_y (2x+3y)f(x,y) =-0.3+0+0.3-0.3+0.2+1 = 0.9
+\]</span></p>
+<p><span class="math display">\[
+\E(2x+3y) = 0.9
+\]</span> bulunur. Bu beklentiyi bulmanın başka bir yolu doğrusallık özelliğini kullanmaktır. Böylece<br>
+<span class="math display">\[
+\E(2x+3y) = 2\E(X) + 3\E(Y)
+\]</span> yazılabilir. Marjinal olasılık dağılımlarını bularak bu beklentileri hesaplayabiliriz: <span class="math display">\[
+\begin{array}{c|ccc}
+  x &amp; 0 &amp; 1 \\
+  \hline
+  f_x(x) &amp; 0.4 &amp; 0.6  \\
+\end{array}
+\]</span> <span class="math display">\[
+\E(X) = 0\times 0.4+1\times 0.6 = 0.6
+\]</span> <span class="math display">\[
+\begin{array}{c|ccc}
+  y &amp; -1 &amp; 0 &amp; 1 \\
+  \hline
+  f_y(y) &amp; 0.4 &amp; 0.3 &amp; 0.3  \\
+\end{array}
+\]</span> <span class="math display">\[
+\E(Y) = -1\times 0.4+0\times 0.3+1\times 0.3 = -0.1
+\]</span> Böylece <span class="math display">\[
+\E(2x+3y) = 2\E(X) + 3\E(Y) = 2\times 0.6+3\times (-0.1)=0.9
+\]</span> bulunur.</p>
+</div>
+<div id="exm-xyexp2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.24</strong></span> Önceki örnekteki birleşik dağılım fonksiyonunu kullanarak <span class="math inline">\(g(x,y) = xy\)</span>’nin beklenen değerini bulun.</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Beklentiyi aşağıdaki gibi yazabiliriz: <span class="math display">\[
+\E(g(X,Y)) = \E(XY)= \sum_x\sum_y xyf(x,y)
+\]</span> Hesaplamalar için bir tablo yapabiliriz:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 22%">
+<col style="width: 27%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+<th><span class="math inline">\(f(x,y)\)</span></th>
+<th><span class="math inline">\(g(x, y) = x \cdot y\)</span></th>
+<th><span class="math inline">\(f(x,y) \cdot g(x, y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0 \cdot (-1) = 0\)</span></td>
+<td><span class="math inline">\(0.1 \cdot 0 = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(0 \cdot 0 = 0\)</span></td>
+<td><span class="math inline">\(0.2 \cdot 0 = 0\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0 \cdot 1 = 0\)</span></td>
+<td><span class="math inline">\(0.1 \cdot 0 = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(0.3\)</span></td>
+<td><span class="math inline">\(1 \cdot (-1) = -1\)</span></td>
+<td><span class="math inline">\(0.3 \cdot (-1) = -0.3\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(1 \cdot 0 = 0\)</span></td>
+<td><span class="math inline">\(0.1 \cdot 0 = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(1 \cdot 1 = 1\)</span></td>
+<td><span class="math inline">\(0.2 \cdot 1 = 0.2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Böylece <span class="math display">\[
+\E(XY) = 0+0+0-0.3+0+0.2=-0.1
+\]</span> bulunur. Burada <span class="math inline">\(g(x,y)=xy\)</span> doğrusal olmayan bir fonksiyon olduğu için bunu beklentilerin çarpımı şeklinde yazamayız:<br>
+<span class="math display">\[
+\E(XY) \neq \E(X)\E(Y)
+\]</span></p>
+</div>
+</section>
+<section id="kovaryans" class="level3" data-number="1.6.6">
+<h3 data-number="1.6.6" class="anchored" data-anchor-id="kovaryans"><span class="header-section-number">1.6.6</span> Kovaryans</h3>
+<div id="def-kovaryans" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.19 (<strong>Kovaryans</strong>)</strong></span> <span class="math inline">\(g(X,Y)=(X-\mu_x)(Y-\mu_y)\)</span> olsun. Bu fonksiyonun beklenen değerine <strong>kovaryans</strong> denir: <span id="eq-kov2"><span class="math display">\[
+\Cov\left(X,Y\right)=\sum_x \sum_y (x-\mu_x)(y-\mu_y)f(x,y)
+\tag{1.46}\]</span></span></p>
+<p>Kovaryansı hesaplamanın başka bir yolu aşağıda verilmiştir: <span id="eq-kov3"><span class="math display">\[
+\Cov\left(X,Y\right) = \E(XY)-\E(X)\E(Y)= \E(XY)-\mu_x \mu_y\\
+\tag{1.47}\]</span></span></p>
+<p>Burada <span class="math display">\[
+\E(XY)= \sum_x \sum_y x\cdot y\cdot f(x,y)
+\]</span> olarak tanımlıdır.</p>
+<p>Kovaryans pozitif, negatif ya da 0 olabilir. İşaret iki değişken arasındaki doğrusal ilişkinin yönü hakkında bilgi içerir. Pozitif kovaryans değişkenlerin aynı yönde, negatif işaret ise ters yönde hareket ettiklerini gösterir. Kovaryansın 0 olması iki değişken arasında bir doğrusal ilişki olmadığı anlamına gelir. Bu durumda değişkenlerin ilişkisiz olduğunu söyleyebiliriz.</p>
+<p>Eğer <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> bağımsız ise kovaryansları sıfır olur. Ancak kovaryansın 0 olması bu değişkenlerin bağımsız oldukları anlamına gelmez. Bunun nedeni kovaryansın sadece doğrusal ilişkileri ölçebilmesidir. Değişkenler doğrusal olmayan bir şekilde ilişkili ve bağımlı olabilir.</p>
+</div>
+<div id="exm-kovaryans" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.25</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> arasındaki kovaryansı hesaplayınız.</p>
+<p><strong>Çözüm</strong></p>
+<p>Kovaryans formülündeki ortalamadan farkları hesaplayabilmek için marjinal olasılık fonksiyonlarından hareketle <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>’nin beklenen değerlerinin bulunması gerekir:</p>
+<p><span class="math display">\[
+\mu_x=\sum_x x\cdot f_x(x)=0\cdot (0.2)+ 1\cdot (0.60) + 2\cdot (0.15) + 3\cdot (0.05)=1.05
+\]</span></p>
+<p><span class="math display">\[
+\mu_y=\sum_y y\cdot f_y(y)=0\cdot (0.25)+ 1\cdot (0.53) + 2\cdot (0.18) + 3\cdot (0.04)=1.01
+\]</span> Böylece</p>
+<p><span class="math display">\[\begin{eqnarray}
+\nonumber \Cov\left(X,Y\right) &amp;=&amp; \sum_x \sum_y (x-1.05)(y-1.01)f(x,y) \\
+\nonumber   &amp;=&amp; (0-1.05)(0-1.01)(0.03)+(0-1.05)(1-1.01)(0.17)+\ldots +(3-1.05)(3-1.01)(0.02) \\
+\nonumber   &amp;=&amp;  0.2595  
+\end{eqnarray}\]</span></p>
+<p>olur. Kısa yol formülünden hareketle de hesaplayabiliriz:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\nonumber \Cov\left(X,Y\right) &amp;=&amp; \E(XY)-\E(X)\E(Y)\\
+\nonumber   &amp;=&amp;  1.32 - (1.05)\cdot (1.01) \\
+\nonumber   &amp;=&amp;  0.2595  
+\end{eqnarray}\]</span></p>
+<p>Burada <span class="math inline">\(\E(XY)\)</span> değerini bulmak için aşağıdaki hesaplamaları yaptık:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\E(XY) &amp;= 0 \cdot 0 \cdot 0.03 + 0 \cdot 1 \cdot 0.17 + 0 \cdot 2 \cdot 0 + 0 \cdot 3 \cdot 0 \\
+&amp;\quad + 1 \cdot 0 \cdot 0.22 + 1 \cdot 1 \cdot 0.28 + 1 \cdot 2 \cdot 0.10 + 1 \cdot 3 \cdot 0 \\
+&amp;\quad + 2 \cdot 0 \cdot 0 + 2 \cdot 1 \cdot 0.08 + 2 \cdot 2 \cdot 0.05 + 2 \cdot 3 \cdot 0.02 \\
+&amp;\quad + 3 \cdot 0 \cdot 0 + 3 \cdot 1 \cdot 0 + 3 \cdot 2 \cdot 0.03 + 3 \cdot 3 \cdot 0.02 \\
+&amp;= 0 + 0 + 0 + 0 + 0 + 0.28 + 0.20 + 0 \\
+&amp;\quad + 0 + 0.16 + 0.20 + 0.12 + 0 + 0 + 0.18 + 0.18 \\
+&amp;= 1.32
+\end{aligned}
+\]</span></p>
+</div>
+<div id="exm-kovaryans2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.26</strong></span> <a href="#exm-xyexp" class="quarto-xref">Örnek&nbsp;<span>1.23</span></a>’de verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> arasındaki kovaryansı hesaplayınız.</p>
+<p><strong>Çözüm</strong>: Kovaryans için gereken hesaplamaları daha önce yapmıştık: <span class="math display">\[
+\E(XY) = -0.1,\quad \E(X) = 0.6, \quad \E(Y) = -0.1
+\]</span> Buradan <span class="math display">\[
+\Cov(X,Y) = \E(XY)-\E(X)\E(Y) = -0.1-(0.6)\cdot (-0.10) = -0.04
+\]</span> bulunur. Bunun sağlamasını yapmak için aşağıdaki gibi bir tablo hazırlayabiliriz. <span class="math inline">\(\mu_X=0.6\)</span> ve <span class="math inline">\(\mu_Y=-0.1\)</span> değerlerini daha önce bulmuştuk:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 20%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+<th><span class="math inline">\(f(x,y)\)</span></th>
+<th><span class="math inline">\(x - \mu_X\)</span></th>
+<th><span class="math inline">\(y - \mu_Y\)</span></th>
+<th><span class="math inline">\((x - \mu_X)(y - \mu_Y)\)</span></th>
+<th><span class="math inline">\(f(x,y)\cdot (x - \mu_X)(y - \mu_Y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(-0.6\)</span></td>
+<td><span class="math inline">\(-0.9\)</span></td>
+<td><span class="math inline">\(0.54\)</span></td>
+<td><span class="math inline">\(0.1 \cdot 0.54 = 0.054\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(-0.6\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(-0.06\)</span></td>
+<td><span class="math inline">\(0.2 \cdot -0.06 = -0.012\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(-0.6\)</span></td>
+<td><span class="math inline">\(1.1\)</span></td>
+<td><span class="math inline">\(-0.66\)</span></td>
+<td><span class="math inline">\(0.1 \cdot -0.66 = -0.066\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(0.3\)</span></td>
+<td><span class="math inline">\(0.4\)</span></td>
+<td><span class="math inline">\(-0.9\)</span></td>
+<td><span class="math inline">\(-0.36\)</span></td>
+<td><span class="math inline">\(0.3 \cdot -0.36 = -0.108\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0.4\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0.04\)</span></td>
+<td><span class="math inline">\(0.1 \cdot 0.04 = 0.004\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(0.4\)</span></td>
+<td><span class="math inline">\(1.1\)</span></td>
+<td><span class="math inline">\(0.44\)</span></td>
+<td><span class="math inline">\(0.2 \cdot 0.44 = 0.088\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Son sütunun toplamı bize kovaryansı verir: <span class="math display">\[
+\text{Cov}(X, Y) = \sum (x - \mu_X)(y - \mu_Y) f(x,y) = 0.054 - 0.012 - 0.066 - 0.108 + 0.004 + 0.088 = -0.04
+\]</span></p>
+</div>
+</section>
+<section id="korelasyon-katsayısı" class="level3" data-number="1.6.7">
+<h3 data-number="1.6.7" class="anchored" data-anchor-id="korelasyon-katsayısı"><span class="header-section-number">1.6.7</span> Korelasyon Katsayısı</h3>
+<div id="def-korkat" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.20 (<strong>Korelasyon katsayısı</strong>)</strong></span> <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> rassal değişkenleri arasındaki korelasyon katsayısı <span id="eq-korkat1"><span class="math display">\[
+\rho_{x,y} = \frac{\Cov\left(X,Y\right)}{\sigma_x\cdot \sigma_y} = \frac{\sigma_{x,y}}{\sigma_x\cdot \sigma_y}
+\tag{1.48}\]</span></span> olarak tanımlanır.</p>
+<p><span class="math inline">\(\rho_{x,y}\)</span> her zaman <span class="math inline">\(-1\)</span> ile <span class="math inline">\(1\)</span> arasında değerler alır. Korelasyonun işareti kovaryansın işaretine bağlıdır.</p>
+<p>Eğer <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> bağımsız ise korelasyonları sıfır olur. Ancak korelasyon katsayısının 0 olması bu değişkenlerin bağımsız oldukları anlamına gelmez.</p>
+</div>
+<div id="exm-kovaryans" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.27</strong></span> <a href="#exm-birlesik-of1" class="quarto-xref">Örnek&nbsp;<span>1.17</span></a>’de verilen birleşik olasılık fonksiyonundan hareketle <span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span> arasındaki korelasyon katsayısını hesaplayınız.</p>
+<p><strong>Çözüm</strong></p>
+<p>Kovaryansı daha önce hesaplamıştık: <span class="math inline">\(\Cov\left(X,Y\right)=0.2595\)</span>. <span class="math inline">\(X\)</span>’in marjinal olasılık fonksiyonundan hareketle varyansını bulalım: <span class="math display">\[
+\sigma_x^2=\E(X^2)-(E(X))^2=1.65-1.05^2=0.5475
+\]</span> Buradan standart sapma <span class="math inline">\(\sigma_x=\sqrt{0.5475}=0.74\)</span> bulunur.</p>
+<p>Benzer şekilde <span class="math inline">\(Y\)</span> için <span class="math display">\[
+\sigma_y^2=\E(Y^2)-(E(Y))^2= 1.61-1.01^2=0.5899
+\]</span> Standart sapma <span class="math inline">\(\sigma_l=\sqrt{0.5899}=0.768\)</span> olur.</p>
+<p>Korelasyon katsayısı <span class="math display">\[
+\rho_{x,y} = \frac{\Cov\left(X,Y\right)}{\sigma_x\cdot \sigma_y} = \frac{0.2595}{(0.74)(0.768)}\approx 0.457
+\]</span> olarak bulunur.</p>
+</div>
+</section>
+</section>
+<section id="rassal-değişkenlerin-toplamları-ve-farkları" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="rassal-değişkenlerin-toplamları-ve-farkları"><span class="header-section-number">1.7</span> Rassal Değişkenlerin Toplamları ve Farkları</h2>
+<p><span class="math inline">\(X\)</span> ve <span class="math inline">\(Y\)</span>, sırasıyla, ortalamaları <span class="math inline">\(\mu_x\)</span> ve <span class="math inline">\(\mu_y\)</span>, varyansları <span class="math inline">\(\sigma^2_x\)</span> ve <span class="math inline">\(\sigma^2_y\)</span> olan iki rassal değişken olsun. Bu göre aşağıdaki kuralları kolayca ispatlayabiliriz:</p>
+<p><strong>1) İki rassal değişkenin toplamının beklentisi ve varyansı</strong></p>
+<p><span class="math display">\[
+\E(X+Y) = \E(X)+\E(Y) = \mu_x+\mu_y
+\]</span></p>
+<p><span class="math display">\[
+\Var(X+Y) = \Var(X)+\Var(Y) + 2 \Cov(X,Y) = \sigma^2_x +\sigma^2_y+2 \Cov(X,Y)
+\]</span> İspat: <span class="math display">\[
+\begin{aligned}
+\Var(X+Y) &amp;= \E[(X+Y-\E(X+Y))^2] \\
+&amp; =  \E[((X-\mu_x) + (Y-\mu_y) )^2]  \\
+&amp; = \E[(X-\mu_x)^2 + (Y-\mu_y)^2 + 2(X-\mu_x)(Y-\mu_y)] \\
+&amp; = \E[(X-\mu_x)^2] + \E[(Y-\mu_y)^2]+2\E[(X-\mu_x)(Y-\mu_y)] \\
+&amp; = \sigma_x^2+\sigma_y^2 + 2 \Cov(X,Y)
+\end{aligned}
+\]</span> <strong>2) İki rassal değişkenin farkının beklentisi ve varyansı</strong></p>
+<p><span class="math display">\[
+\E(X-Y) = \E(X)+\E(Y) = \mu_x-\mu_y
+\]</span></p>
+<p><span class="math display">\[
+\Var(X-Y) = Var(X)+\Var(Y) - 2~ \Cov(X,Y) = \sigma^2_x +\sigma^2_y - 2~ \Cov(X,Y)
+\]</span> İspat: Alıştırma</p>
+<p><strong>3) Ağırlıklı toplamların beklentisi ve varyansı</strong></p>
+<p><span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzere <span class="math display">\[
+\E(aX+bY) = a\E(X)+b\E(Y)=a\mu_x +b\mu_y
+\]</span> ve <span class="math display">\[
+\Var(aX+bY) = a^2 \Var(X)+b^2\Var(Y) + 2ab~ \Cov(X,Y) = a^2\sigma^2_x +b^2\sigma^2_y+2ab~ \Cov(X,Y)
+\]</span> İspat: <span class="math display">\[
+\begin{aligned}
+\Var(aX + bY) &amp;= \E[(aX+bY-\E(aX+bY))^2] \\
+&amp; =  \E[(a(X-\mu_x) + b(Y-\mu_y) )^2]  \\
+&amp; = \E[a^2(X-\mu_x)^2 + b^2(Y-\mu_y)^2 + 2ab(X-\mu_x)(Y-\mu_y)] \\
+&amp; = a^2\E[(X-\mu_x)^2] + b^2\E[(Y-\mu_y)^2]+2ab\E[(X-\mu_x)(Y-\mu_y)] \\
+&amp; = a^2\sigma_x^2+b^2 \sigma_y^2 + 2ab~ \Cov(X,Y)
+\end{aligned}
+\]</span> <strong>4) Ağırlıklı farkların beklentisi ve varyansı</strong></p>
+<p><span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzere <span class="math display">\[
+\E(aX - bY) = a\E(X) - b\E(Y)=a\mu_x -b\mu_y
+\]</span> ve <span class="math display">\[
+\Var(aX-bY) = a^2 \Var(X)+b^2\Var(Y) - 2ab~ \Cov(X,Y) = a^2\sigma^2_x +b^2\sigma^2_y - 2ab~ \Cov(X,Y)
+\]</span> İspat: Alıştırma.</p>
+<p><strong>5) <span class="math inline">\(k\)</span> rassal değişkenin toplamının beklentisi ve varyansı</strong></p>
+<p><span class="math inline">\(X_1,X_2,\ldots,X_k\)</span>, ortalamaları <span class="math inline">\(\mu_1,\mu_2,\ldots,\mu_k\)</span> ve varyansları <span class="math inline">\(\sigma_1^2,\sigma_2^2,\ldots,\sigma_k^2\)</span> olan <span class="math inline">\(k\)</span> tane rassal değişken olsun. Bunların toplamlarının beklentisi ve varyansı aşağıdaki gibi yazılabilir. <span class="math display">\[
+\begin{aligned}
+\E(X_1+X_2+\ldots +X_k)  &amp;= \E(X_1)+\E(X_2)+\ldots+\E(X_k) \\
+&amp; =  \mu_1+\mu_2+\ldots+\mu_k
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\Var(X_1+X_2+\ldots +X_k)  &amp;= \sigma_1^2+\sigma_2^2+\ldots+\sigma_k^2+2\Cov(X_1,X_2)+2\Cov(X_1,X_3)+\ldots\\
+&amp; =  \sum_{i=1}^k \sigma_i^2 + 2\sum_{i=1}^{k-1}\sum_{j&gt;j}^k\Cov(X_i,X_j)
+\end{aligned}
+\]</span> <span class="math inline">\(X_1,X_2,\ldots,X_k\)</span> rassal değişkenleri <strong>birbirinden bağımsızsa</strong> <span class="math display">\[
+\Var(X_1+X_2+\ldots +X_k)  = \sigma_1^2+\sigma_2^2+\ldots+\sigma_k^2
+\]</span> yazılabilir. Bu durumda ikili kovaryans terimlerinin tamamı 0 olacaktır. Tüm ikili kovaryans terimleri 0 ise, yani, bu rassal değişkenler birbirleriyle ilişkisizse de aynı sonuca ulaşılır.</p>
+<!-- ## Çözümlü Alıştırmalar -->
+<!-- ::: {#exr-kesiklird-als1} -->
+<!-- ::: -->
+</section>
+<section id="çözümlü-alıştırmalar" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="çözümlü-alıştırmalar"><span class="header-section-number">1.8</span> Çözümlü Alıştırmalar</h2>
+<div id="exr-kesikli01" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.1</strong></span> Standart altı yüzlü 2 zar atılıyor. <span class="math inline">\(X\)</span> rassal değişkeni zarların toplamını göstersin.</p>
+<ol type="a">
+<li><span class="math inline">\(X\)</span>’in olasılık kütle fonksiyonunu bulunuz ve grafiğini çiziniz.</li>
+<li><span class="math inline">\(X\)</span>’in kümülatif dağılım fonksiyonunu bulunuz ve grafiğini çiziniz.</li>
+<li><span class="math inline">\(X=7\)</span> olasılığını bulunuz.</li>
+<li><span class="math inline">\(X\)</span>’in beklenen değeri kaçtır?</li>
+<li><span class="math inline">\(X\)</span>’in standart sapması kaçtır?</li>
+</ol>
+<p><strong>Çözüm</strong></p>
+<p><strong>(a, b)</strong> İki zar atıldığında örneklem uzayı <span class="math inline">\(6\cdot 6=36\)</span> temel sonuçtan oluşur. <span class="math inline">\(X\)</span> rassal değişkeni ise <span class="math inline">\((2,3,4,\ldots,11,12)\)</span> değerlerinden birini alır. Örneklem uzayının temel sonuçları ile <span class="math inline">\(X\)</span> arasındaki ilişki aşağıdaki tabloda özetlenmektedir:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 43%">
+<col style="width: 8%">
+<col style="width: 14%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(X\)</span></th>
+<th>Örneklem Uzayı Sonuçları</th>
+<th>Frekans</th>
+<th>Olasılık (PMF)</th>
+<th>Kümülatif Olasılık (CDF)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>(1,1)</td>
+<td>1</td>
+<td>0.028</td>
+<td>0.028</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>(1,2), (2,1)</td>
+<td>2</td>
+<td>0.056</td>
+<td>0.083</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>(1,3), (2,2), (3,1)</td>
+<td>3</td>
+<td>0.083</td>
+<td>0.167</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>(1,4), (2,3), (3,2), (4,1)</td>
+<td>4</td>
+<td>0.111</td>
+<td>0.278</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>(1,5), (2,4), (3,3), (4,2), (5,1)</td>
+<td>5</td>
+<td>0.139</td>
+<td>0.417</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)</td>
+<td>6</td>
+<td>0.167</td>
+<td>0.583</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>(2,6), (3,5), (4,4), (5,3), (6,2)</td>
+<td>5</td>
+<td>0.139</td>
+<td>0.722</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>(3,6), (4,5), (5,4), (6,3)</td>
+<td>4</td>
+<td>0.111</td>
+<td>0.833</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>(4,6), (5,5), (6,4)</td>
+<td>3</td>
+<td>0.083</td>
+<td>0.917</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>(5,6), (6,5)</td>
+<td>2</td>
+<td>0.056</td>
+<td>0.972</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>(6,6)</td>
+<td>1</td>
+<td>0.028</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p>Örneklem uzayındaki her bir temel sonucun olasılığı eşittir: <span class="math inline">\(1/36\approx 0.028\)</span>. <a href="#fig-ikizar1" class="quarto-xref">Şekil&nbsp;<span>1.11</span></a> bu deneyin olasılık kütle fonksiyonunu ve birikimli olasılık fonksiyonunu göstermektedir.</p>
+<div id="fig-ikizar1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ikizar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ikizar1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-ikizar1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ikizar1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-ikizar1-1.png" class="img-fluid figure-img" data-ref-parent="fig-ikizar1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ikizar1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ikizar1" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-ikizar1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ikizar1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-ikizar1-2.png" class="img-fluid figure-img" data-ref-parent="fig-ikizar1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ikizar1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ikizar1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.11: İki zar atışında zarların toplamının olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+<p><strong>c)</strong> <span class="math inline">\(\P(X=7)=0.167\)</span></p>
+<p><strong>d)</strong> <span class="math inline">\(X\)</span>’in beklenen değeri:</p>
+<p><span class="math display">\[
+\E(X) = \sum_x xf(x) = 7
+\]</span></p>
+<p><strong>e)</strong> <span class="math inline">\(X\)</span>’in varyansı:</p>
+<p><span class="math display">\[
+\E(X^2) = \sum_x x^2 f(x)=54.83
+\]</span> <span class="math display">\[
+\Var(X) = \E(X^2)-[\E(X)]^2 = 54.83-7^2=5.83\equiv \sigma_x^2
+\]</span> standart sapma: <span class="math display">\[
+\sigma_x=\sqrt{5.83} = 2.415
+\]</span></p>
+</div>
+<div id="exr-kesikli02" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.2</strong></span> Aşağıda verilen fonksiyonun <span class="math display">\[
+f(x) = c(x^2+2),\quad x=0,1,2
+\]</span> bir olasılık kütle fonksiyonu olabilmesi için <span class="math inline">\(c\)</span> kaç olmalıdır?</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Bu fonksiyonun bir olasılık kütle fonksiyonu olabilmesi için <span class="math inline">\(f(x)\geq 0\)</span> ve <span class="math inline">\(\sum_x f(x)=1\)</span> olmalıdır. <span class="math inline">\(x\)</span>’in tüm değerleri için <span class="math display">\[
+\sum_x f(x) = c(0+2) + c(1+2) + c(2^2+2)=2c+3c+6c
+\]</span> Buradan <span class="math display">\[
+11c=1~\rightarrow c=1/11
+\]</span> bulunur. Öyleyse olasılık kütle fonksiyonu aşağıdaki gibi yazılabilir: <span class="math display">\[
+f(x) = \frac{(x^2+2)}{11},\quad x=0,1,2
+\]</span></p>
+</div>
+<div id="exr-kesiklird-beklenti1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.3</strong></span> Bir e-ticaret sitesi, her bir sipariş için sabit 50 TL dağıtım maliyetine sahiptir. <span class="math inline">\(X\)</span> siparişin teslim süresini (gün olarak) göstermektedir. Her bir gün gecikme için 20 TL ek maliyet oluşmaktadır: <span class="math display">\[
+Y=50+20X
+\]</span> <span class="math inline">\(X\)</span>’in dağılımı şu şekildedir: <span class="math display">\[
+\begin{array}{c|ccccc}
+  x &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+  \hline
+  f(x)=P(X=x) &amp; 0.15 &amp; 0.25 &amp; 0.30 &amp; 0.20 &amp; 0.10 \\
+\end{array}
+\]</span> Teslim maliyetinin beklenen değer ve varyansını bulun.</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Önce <span class="math inline">\(\E(X)\)</span>’i bulalım: <span class="math display">\[
+\E(X) = \sum_x xf(x) = 1(0.15)+2(0.25)+3(0.30)+4(0.20)+5(0.10)=2.85
+\]</span> Varyansını bulalım: <span class="math display">\[
+\E(X^2) = \sum_x x^2 f(x) = 1(0.15)+2^2(0.25)+3^2(0.30)+4^2(0.20)+5^2(0.10)=9.55
+\]</span> <span class="math display">\[
+\sigma_x^2 = \E(X^2)-(\E(X))^2 = 9.55-2.85^2 = 1.4275
+\]</span> Buradan <span class="math display">\[
+\E(Y) = 50+20\E(X) = 50+20(2.85)=107
+\]</span> <span class="math display">\[
+\Var(Y) = 20^2\sigma_x^2=400\cdot (1.4275)=571
+\]</span></p>
+</div>
+<div id="exr-poisson1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.4</strong></span> Bir sektörde önümüzdeki yıl iflas edecek küçük ölçekli firmaların sayısının ortalaması 2 olan bir Poisson dağılımına uyduğu tahmin edilmiştir. İflas edecek firma sayısının 2’den fazla olma olasılığı kaçtır?</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Önümüzdeki yıl iflas edecek küçük ölçekli firmaların sayısı <span class="math inline">\(X\sim~Poisson(\lambda=2)\)</span> dağılımına uymaktadır, yani: <span class="math display">\[
+\P(X=x)=\frac{\lambda^x e^{-\lambda}}{x!} = \frac{2^x e^{-2}}{x!}
+\]</span> yazabiliriz. Buradan <span class="math inline">\(X\)</span>’in 0, 1, ve 2 olma olasılıkları: <span class="math display">\[
+\P(X=0) = \frac{2^0 e^{-2}}{0!}=e^{-2}\approx 0.135
+\]</span> <span class="math display">\[
+\P(X=1) = \frac{2^1 e^{-2}}{1!}=2e^{-2}\approx 0.271
+\]</span></p>
+<p><span class="math display">\[
+\P(X=2) = \frac{2^2 e^{-2}}{2!}=2e^{-2}\approx 0.271
+\]</span> Buradan <span class="math inline">\(\P(X\leq 2)=0.135+0.271+0.271=0.677\)</span> ve <span class="math display">\[
+\P(X&gt; 2) = 1-\P(X\leq 2) =1- 0.677 = 0.323
+\]</span> bulunur.</p>
+</div>
+<div id="exr-binom1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.5</strong></span> Bir emlakçının bir görüşmede satış yapma olasılığı 0.20’dir. Emlakçı 8 görüşme yaptığında</p>
+<ol type="a">
+<li>Hiç satış yapmama olasılığı kaçtır?</li>
+<li>1 satış yapma olasılığı kaçtır?</li>
+<li>Satış sayısının 2 ile 4 arasında olma olasılığı kaçtır? (2 ve 4 dahil)</li>
+<li>Olasılık kütle fonksiyonunun grafiğini çizin.</li>
+<li>Birikimli olasılık fonksiyonunu bulun ve grafiğini çizin.</li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> Hiç satış yapmama olasılığı kaçtır?</p>
+<p>Bu örnekte bir görüşmede satış yapma <span class="math inline">\(p=0.2\)</span> olasılıkla Bernoulli dağılımına uyar. 8 görüşmede toplam satış sayısı <span class="math inline">\(X\)</span> ise <span class="math inline">\(Binom(n=8, p=0.2)\)</span> dağılımına uyar. Öyleyse hiç satış yapmama olasılığı <span class="math display">\[
+\P(X=0) = 0.2^0\cdot 0.8^8 = 0.168
+\]</span> olur.</p>
+<p><strong>b)</strong> 1 satış yapma olasılığı kaçtır?</p>
+<p><span class="math display">\[
+\P(X=1) = C_1^8\cdot 0.2^1\cdot 0.8^7 = 0.336
+\]</span> <strong>c)</strong> Satış sayısının 2 ile 4 arasında olma olasılığı kaçtır? (2 ve 4 dahil)</p>
+<p><span class="math display">\[
+\P(X=2) = C_2^8\cdot 0.2^2\cdot 0.8^6 = 0.294
+\]</span> <span class="math display">\[
+\P(X=3) = C_3^8\cdot 0.2^3\cdot 0.8^5 = 0.147
+\]</span> <span class="math display">\[
+\P(X=4) = C_4^8\cdot 0.2^4\cdot 0.8^4 = 0.046
+\]</span> Öyleyse <span class="math display">\[
+\P(2\leq X\leq 4) = \P(X=2)+\P(X=3)+\P(X=4) = 0.487
+\]</span> bulunur.</p>
+<p><strong>d)</strong> Olasılık kütle fonksiyonunun grafiğini çizin.</p>
+<p>Olasılık kütle fonksiyonu aşağıdaki gibi yazılabilir: <span class="math display">\[
+f(x) = C^8_x \cdot (0.2)^x\cdot (0.8)^{n-x}
+\]</span> <a href="#fig-exbinom1" class="quarto-xref">Şekil&nbsp;<span>1.12</span></a> bu olasılık kütle fonksiyonunun grafiğini göstermektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-exbinom1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exbinom1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-exbinom1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exbinom1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.12: Binom(8, 0.2) dağılımının olasılık kütle fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>e)</strong> Birikimli olasılık fonksiyonunu bulun ve grafiğini çizin.</p>
+<p><a href="#fig-exbinom2" class="quarto-xref">Şekil&nbsp;<span>1.13</span></a> birikimli olasılık fonksiyonunu göstermektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-exbinom2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exbinom2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-exbinom2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exbinom2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.13: Binom(8, 0.2) dağılımının birikimli olasılık fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-hiper1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.6</strong></span> Bir şirket 20 üründen oluşan bir sevkiyat alıyor. Rastgele seçilen 6 ürün örnekleniyor ve bu örneklemde herhangi bir ürün kusurlu çıkarsa sevkiyat reddediliyor.</p>
+<ol type="a">
+<li>5 kusurlu ürün içeren bir sevkiyatın kabul edilme olasılığı nedir?</li>
+<li>2 kusurlu ürün içeren bir sevkiyatın kabul edilme olasılığı nedir?</li>
+<li>2 kusurlu ürün içeren bir sevkiyatın reddedilme olasılığı nedir?</li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> 5 kusurlu ürün içeren bir sevkiyatın kabul edilme olasılığı nedir?</p>
+<p>Kusurlu ürün sayısı <span class="math inline">\(X\)</span> hipergeometrik dağılıma uyar: <span class="math display">\[
+N=20,\quad n=6,\quad B=5
+\]</span> Olasılık kütle fonksiyonu: <span class="math display">\[
+\P(X=x) = \frac{\left(\begin{array}{c}
+         B \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         N-B \\
+         n-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         N \\
+         n
+       \end{array}\right)}
+\]</span> Hiç kusurlu ürün olmaması olasılığı: <span class="math display">\[
+\P(X=0) = \frac{\left(\begin{array}{c}
+         B \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         N-B \\
+         n-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         N \\
+         n
+       \end{array}\right)}=\frac{\left(\begin{array}{c}
+         5 \\
+         0
+       \end{array}\right) \left(\begin{array}{c}
+         15 \\
+         6
+       \end{array}\right)}{\left(\begin{array}{c}
+         20 \\
+         6
+       \end{array}\right)}=0.129
+\]</span> <strong>a)</strong> 2 kusurlu ürün içeren bir sevkiyatın kabul edilme olasılığı nedir?</p>
+<p>Kusurlu ürün sayısı <span class="math inline">\(X\)</span> hipergeometrik dağılıma uyar: <span class="math display">\[
+N=20,\quad n=6,\quad B=2
+\]</span> Hiç kusurlu ürün olmaması olasılığı: <span class="math display">\[
+\P(X=0) = \frac{\left(\begin{array}{c}
+         B \\
+         x
+       \end{array}\right) \left(\begin{array}{c}
+         N-B \\
+         n-x
+       \end{array}\right)}{\left(\begin{array}{c}
+         N \\
+         n
+       \end{array}\right)}=\frac{\left(\begin{array}{c}
+         2 \\
+         0
+       \end{array}\right) \left(\begin{array}{c}
+         18 \\
+         6
+       \end{array}\right)}{\left(\begin{array}{c}
+         20 \\
+         6
+       \end{array}\right)}=0.479
+\]</span> Kabul olasılığı yaklaşık %48’dir.</p>
+<p><strong>c)</strong> 2 kusurlu ürün içeren bir sevkiyatın reddedilme olasılığı nedir?</p>
+<p>Önceki kısımda kabul olasılığını bulmuştuk. Öyleyse reddedilme olasılığı <span class="math display">\[
+\P(\mbox{Sevkiyat Red}) = 1-\P(X=0) = 1-0.48\approx 0.52
+\]</span> yaklaşık %52’dir.</p>
+</div>
+<div id="exr-geometrik1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.7</strong></span> Bir madeni para Tura gelinceye kadar atılıyor.</p>
+<ol type="a">
+<li>Beşinci atışta Tura gelme olasılığı kaçtır?</li>
+<li><span class="math inline">\(X\)</span>, <span class="math inline">\(x\)</span>nci atışta Tura gelmesi olsun. <span class="math inline">\(\P(X=x)\)</span>, <span class="math inline">\(x=1,2,\ldots\)</span> olasılığını veren bir fonksiyon türetiniz.</li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<ol type="a">
+<li><p>Hilesiz bir para atıldığına göre Tura ve Yazı olasılıkları eşittir, <span class="math inline">\(p=0.5\)</span>. Beşinci atışta Tura geldiyse ilk sonuçların hepsinin yazı olması gerekir. Öyleyse <span class="math display">\[
+\P(\mbox{beşinci atışta Tura gelmesi}) = (1-p)^4\cdot p = 0.03125
+\]</span> bulunur.</p></li>
+<li><p><span class="math inline">\(X\)</span>, <span class="math inline">\(k\)</span>nci atışta Tura gelmesi olarak tanımlandığına göre</p></li>
+</ol>
+<ul>
+<li><span class="math inline">\(X=1\)</span> olma olasılığı <span class="math inline">\(\P(X=1)=p=0.5\)</span></li>
+<li><span class="math inline">\(X=2\)</span> olma olasılığı <span class="math inline">\(\P(X=2)=(1-p)\cdot p=0.5^2=0.25\)</span></li>
+<li><span class="math inline">\(X=3\)</span> olma olasılığı <span class="math inline">\(\P(X=3)=(1-p)^2\cdot p=0.5^3=0.125\)</span></li>
+</ul>
+<p>Diğer olasılıklar da benzer şekilde tanımlanabilir. Genel olarak <span class="math inline">\(x\)</span> denemede başarı (Tura) gelme olasılığı <span class="math inline">\(p\)</span> ise <span class="math display">\[
+f(x) = \P(X=x) = (1-p)^{x-1}\cdot p, \quad x=1,2,3,\ldots
+\]</span> yazabiliriz. Buna <strong>geometrik dağılım</strong> denir. Geometrik dağılım her denemede bağımsız olarak aynı olasılıkla gerçekleşen bir olayın <span class="math inline">\(x\)</span>. denemede ilk kez gerçekleşme olasılığını ifade eder. Bu nedenle, geometrik dağılım, bir olayın ilk kez gerçekleşeceği süreyi modelleyen dağılımlardan biridir. <a href="#fig-geometrik1" class="quarto-xref">Şekil&nbsp;<span>1.14</span></a> başarı olasılığı <span class="math inline">\(p=0.30\)</span> olan bir geometrik dağılımın olasılık kütle fonksiyonunu göstermektedir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-geometrik1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geometrik1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-geometrik1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geometrik1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.14: Geometrik dağılımın olasılık kütle fonksiyonu, p=0.3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Geometrik dağılım, <span class="math inline">\(X\)</span> ilk başarıya kadar başarısız geçen deneme sayısını temsil edecek şekilde de tanımlanabilir: <span class="math display">\[
+f(x) = \P(X=x) = (1-p)^{x}\cdot p, \quad x=0,1,2,3,\ldots
+\]</span> Bu versiyonda <span class="math inline">\(X=0\)</span>, başarıyı ilk denemede elde ettiğiniz anlamına gelir (yani, başarısızlık olmadan başarı gelir). Eğer deney, “başarısız deneme sayısı” odaklı olarak değerlendiriliyorsa bu tanımlama kullanılabilir.</p>
+</div>
+<div id="exr-geometrik2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.8</strong></span> Önceki alıştırmada elde ettiğiniz geometrik dağılımın gerçekten de olasılık dağılımı olma koşullarını sağladığını gösteriniz.</p>
+<p><strong>Çözüm</strong>:</p>
+<p>Bunun için <span class="math display">\[
+f(x)\geq 0
+\]</span> ve <span class="math display">\[
+\sum_x f(x) = 1
+\]</span> olmalıdır. Geometrik olasılık dağılımı <span class="math display">\[
+f(x) = \P(X=x) = (1-p)^{x-1}\cdot p, \quad x=1,2,3,\ldots
+\]</span> ve <span class="math inline">\(0\leq p \leq 1\)</span> olduğuna göre <span class="math inline">\(f(x)\geq 0\)</span> her zaman sağlanır.</p>
+<p><span class="math display">\[
+\sum_{x=1}^\infty (1-p)^{x-1}\cdot p = 1
+\]</span> olup olmadığını gösterelim. Burada <span class="math inline">\(p\)</span> sabit olduğu için toplam dışına alınabilir: <span class="math display">\[
+p\sum_{x=1}^\infty (1-p)^{x-1} =p \sum_{k=0}^\infty r^{k}
+\]</span> Burada <span class="math inline">\(k=x-1\)</span> ve <span class="math inline">\(r=1-p\)</span> olarak tanımlıdır. <span class="math inline">\(r\)</span> her zaman 0 ile 1 arasında olduğu için <span class="math inline">\(k\)</span> artarken <span class="math inline">\(r^k\)</span> küçülür ve limitte <span class="math display">\[
+\sum_{k=0}^\infty r^{k} = 1+ r + r^2 +r^3+r^4+\ldots =  \frac{1}{1-r} = \frac{1}{p}
+\]</span> değerine yakınsar. Buna geometrik seri denir. <a href="#fig-geomseri" class="quarto-xref">Şekil&nbsp;<span>1.15</span></a> <span class="math inline">\(r=0.8\)</span> için geometrik serinin yakınsamasını göstermektedir. Örneğin, <span class="math inline">\(r=0.8=1-p\)</span> ise seri <span class="math inline">\(1/0.2 = 5\)</span> değerine yakınsar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-geomseri" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geomseri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Kesiklird_files/figure-html/fig-geomseri-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geomseri-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.15: Geometrik seri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Sonuç olarak, geometrik serinin özelliklerinden hareketle<br>
+<span class="math display">\[
+p \sum_{x=1}^\infty (1-p)^{x-1} = p\cdot \frac{1}{p} = 1
+\]</span> olur.</p>
+</div>
+</section>
+<section id="problemler" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="problemler"><span class="header-section-number">1.9</span> Problemler</h2>
+<div id="cnj-kesiklird-prob1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.1</strong></span> Standart altı yüzlü 3 zar atılıyor. Örneklem uzayı kaç elemandan oluşur? <span class="math inline">\(X\)</span> bu üç zarın toplamını göstersin. <span class="math inline">\(X\)</span>’in olasılık kütle fonksiyonunu bulunuz.</p>
+</div>
+<div id="cnj-kesiklird-prob1a" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.2</strong></span> Bir markanın ithal edilen 10 otomobilinden 2’sinin boyasında çizikler olduğu bilinmektedir. Bir bayi bu otomobillerden 3’ünü almıştır. Otomobilde çizik olduğu durumu “V” harfi ile, olmadığı durumu “Y” harfi ile gösterelim. Örneklem uzayı S’yi oluşturun. X rassal değişken çizik olan otomobil sayısını göstermek üzere örneklem uzayı ile X’in alabileceği değerleri ilişkilendirin.</p>
+</div>
+<div id="cnj-kesiklird-prob1ba" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.3</strong></span> Aşağıda verilen fonksiyonu düşünelim: <span class="math display">\[
+f(x) = c(x^2+6),\quad x=-1,0,1
+\]</span></p>
+<ol type="a">
+<li><span class="math inline">\(f(x)\)</span>’in bir olasılık kütle fonksiyonu olabilmesi için <span class="math inline">\(c\)</span> kaç olmalıdır?</li>
+<li><span class="math inline">\(f(x)\)</span>’in grafiğini çizin.</li>
+<li>Beklenen değer ve varyansını bulun.</li>
+<li>Birikimli olasılık fonksiyonu <span class="math inline">\(F(x)\)</span>’i bulun ve grafiğini çizin.</li>
+</ol>
+</div>
+<div id="cnj-kesiklird-prob1c" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.4</strong></span> Hilesiz bir madeni para 3 kez atılıyor. X rassal değişkeni Yazı sayısı ile Tura sayısı arasındaki fark olarak tanımlanıyor.</p>
+<ol type="a">
+<li>Örneklem uzayını oluşturun.</li>
+<li><span class="math inline">\(X\)</span>’in olasılık kütle fonksiyonunu bulun.</li>
+</ol>
+</div>
+<div id="cnj-kesiklird-prob1d" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.5</strong></span> Bir madeni paranın Tura gelme olasılığı Yazı gelme olasılığının 2 katı olacak şekilde ayarlanıyor. Hileli para 3 kez atılıyor ve X rassal değişkeni Tura sayısı olarak tanımlanıyor.</p>
+<ol type="a">
+<li>Örneklem uzayını oluşturun.</li>
+<li><span class="math inline">\(X\)</span>’in olasılık kütle fonksiyonunu bulun.</li>
+</ol>
+</div>
+<div id="cnj-kesiklird-hata1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.6</strong></span> 8 üründen oluşan bir parti yedek parça içinde 2’si hatalıdır. Bir fabrika bu yedek parçalardan 3’ünü rassal biçimde satın alıyor. X hatalı ürün sayısı olmak üzere olasılık kütle fonksiyonunu bulun.</p>
+</div>
+<div id="cnj-kesiklird-torba1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.7</strong></span> Bir torbada 4 Kırmızı ve 2 Sarı top bulunmaktadır. Yerine koyarak 3 top rassal seçiliyor. X sarı topların sayısını göstersin. X’in olasılık kütle fonksiyonunu ve birikimli olasılık fonksiyonunu bulun.</p>
+</div>
+<div id="cnj-kesiklird-prob2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.8</strong></span> Büyük bir istatistik sınıfındaki öğrencilere “Yapay zekanın yakın gelecekte iş bulmayı zorlaştıracağını düşünüyorum” ifadesini 1 (kesinlikle katılmıyorum) ile 5 (kesinlikle katılıyorum) arasında değerlendirmeleri istenmiştir. Aşağıdaki tablo değerlemeleri özetlemektedir: <span class="math display">\[
+\begin{array}{c|ccccc}
+  \mbox{Değerleme} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+  \hline
+  \mbox{Oran} &amp; 0.10 &amp; 0.10 &amp; 0.40 &amp; 0.3 &amp; 0.1 \\
+\end{array}
+\]</span></p>
+<ol type="a">
+<li>Bu olasılık kütle fonksiyonunun grafiğini çizin.</li>
+<li>Birikimli dağılım fonksiyonunu bulun ve grafiğini çizin.</li>
+<li>Rassal seçilen bir öğrencinin değerlemesinin 3 veya daha fazla olma olasılığı kaçtır?</li>
+<li>Rassal seçilen bir öğrencinin değerlemesinin 2’den büyük ve 5’ten küçük olma olasılığı kaçtır?</li>
+<li>Değerlendirmelerin ortalamasını bulun.</li>
+<li>Değerlendirmelerin standart sapmasını bulun.</li>
+</ol>
+</div>
+<div id="cnj-kesiklird-beklenti2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.9</strong></span> Bir fabrika, ürettiği her bir üründe sabit 500 TL maliyete sahiptir. Her bir gün için 200 TL ek maliyet tahmin edilmektedir. Toplam üretim maliyeti şu şekilde ifade edilmektedir: <span class="math display">\[
+Y=500 + 200X
+\]</span> Ürün başına üretim süresi <span class="math inline">\(X\)</span>’in (gün cinsinden) dağılımı şu şekildedir: <span class="math display">\[
+\begin{array}{c|ccccc}
+  x &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
+  \hline
+  f(x)=P(X=x) &amp; 0.2 &amp; 0.3 &amp; 0.25 &amp; 0.15 &amp; 0.1 \\
+\end{array}
+\]</span> Üretim maliyetinin beklenen değer ve varyansını bulun.</p>
+</div>
+<div id="cnj-binom1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.10</strong></span> <span class="math inline">\(X\)</span> rassal değişkeni başarı olasılığı <span class="math inline">\(p=0.6\)</span> ve <span class="math inline">\(n=20\)</span> olan bir Binom dağılımına uymaktadır. a) Başarı sayısı <span class="math inline">\(X\)</span>’in 4 olma olasılığı kaçtır? a) En az 2 başarı olasılığı kaçtır? a) <span class="math inline">\(X\)</span>’in beklenen değerini bulun. a) <span class="math inline">\(X\)</span>’in varyansını bulun.</p>
+</div>
+<div id="cnj-binom2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.11</strong></span> Bir havayolu şirketi yolcuların yüzde 90’ının uçuşa geleceğini tahmin etmektedir. Uçuştan iki gün önce 5 koltuk boştur. Eğer 8 koltuk satılırsa uçağın fazla rezervasyon (overbook) olma olasılığı kaçtır?</p>
+</div>
+<div id="cnj-binom3" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.12</strong></span> Bir karayolunun belirli bir kesiminde son bir hafta içinde 256 sürücüye ceza kesilmiştir. Ceza tutarı 1500 TL’dir. Tüm ceza kesilen sürücülerin %85’inin bu cezayı ödedikleri bilinmektedir. Toplam ceza gelirinin ortalamasını ve standart sapmasını bulun.</p>
+</div>
+<div id="cnj-binom4" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.13</strong></span> Çoktan seçmeli bir sınavda 20 soru vardır. Her soru 5 şık içermektedir. Bir öğrenci sınava çalışmadığı için soruları rassal olarak cevaplamaya karar vermiştir.</p>
+<ol type="a">
+<li>X doğru cevap sayısını göstersin. X’in beklenen değerini bulun.<br>
+</li>
+<li>X’in standart sapmasının bulun.</li>
+<li>Her sorunun puan değerinin 5 olduğunu ve yanlış cevaplar için puan kırılmadığını düşünelim. Ayrıca adını doğru yazana ekstra 5 puan verilmektedir. Bu öğrenci için beklenen puan kaçtır?</li>
+<li>Toplam puanın standart sapmasını bulun.</li>
+</ol>
+</div>
+<div id="cnj-binom4a" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.14</strong></span> Önceki soruda doğru cevaplara 5 puan verildiğini ancak her yanlış cevap için 1 puan kırıldığını düşünelim. Boş cevaplara 0 puan verilsin.</p>
+<ol type="a">
+<li>Soruları rassal işaretleyen ve hiç boş soru bırakmayan bir öğrencinin beklenen puanı kaçtır?<br>
+</li>
+<li>Öğrenci 5 soruyu boş bırakır ve diğerlerini rassal olarak yanıtlarsa beklenen puanı kaç olur?<br>
+</li>
+</ol>
+</div>
+<div id="cnj-hiper0" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.15</strong></span> <span class="math inline">\(N=50\)</span> birimden oluşan bir anakütleden <span class="math inline">\(n=18\)</span> gözlemlik rassal örneklem çekilmiştir. Anakütledeki başarı sayısı 20 ise örneklemde 5 başarı olma olasılığı kaçtır?</p>
+</div>
+<div id="cnj-hiper1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.16</strong></span> Bir firmaya 20 üründen oluşan bir parti mal gelmiştir. Satınalma sorumlusu bu ürünlerden 5’ini rassal olarak seçerek kontrol ediyor. Eğer hatalı ürün sayısı 1 veya daha fazla olursa ürünler reddediliyor.</p>
+<ol type="a">
+<li>Bu 20 ürün içinde hatalı sayısı 4 ise, malların kabul edilme olasılığı kaçtır?</li>
+<li>Bu 20 ürün içinde hatalı sayısı 2 ise, malların red olasılığı kaçtır?</li>
+</ol>
+</div>
+<div id="cnj-poisson1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.17</strong></span> <span class="math inline">\(X\)</span> rassal değişkeni ortalaması 8 olan bir Poisson dağılımına uymaktadır: <span class="math inline">\(X\sim~Poisson(\lambda=8)\)</span>.</p>
+<ol type="a">
+<li><span class="math inline">\(X=0\)</span> olasılığı kaçtır?</li>
+<li>4 veya daha az başarı olasılığı kaçtır?</li>
+<li><span class="math inline">\(X\)</span>’in beklenen değer ve varyansını bulun.</li>
+</ol>
+</div>
+<div id="cnj-poisson2" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.18</strong></span> Bir kahve dükkanına dakikada ortalama 2 müşteri gelmektedir. Dakikada gelen müşteri sayısı Poisson dağılımına uyuyorsa, müşteri sayısının 4’den fazla olma olasılığı kaçtır?</p>
+</div>
+<div id="cnj-poisson3" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.19</strong></span> Bir fabrikadan bir ayda meydana gelen kaza sayısı ortalaması 3 olan bir Poisson dağılımına uymaktadır. Buna göre</p>
+<ol type="a">
+<li>Hiç kaza olmama olasılığı kaçtır?</li>
+<li>Bir kaza olma olasılığı kaçtır?</li>
+<li>2’den fazla kaza olma olasılığı kaçtır?</li>
+</ol>
+</div>
+<div id="cnj-geometrik1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.20</strong></span> Geometrik dağılımın, <span class="math inline">\(X\sim~Geometrik(p)\)</span>, beklenen değerinin <span class="math display">\[
+\E(X) = \frac{1}{p}
+\]</span> olduğunu gösteriniz. (ipucu: bkz. <a href="#exr-geometrik2" class="quarto-xref">Alıştırma&nbsp;<span>1.8</span></a>)</p>
+</div>
+<div id="cnj-kesiklicapraz0" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.21</strong></span> Bir araştırmada hanehalkının sigara alışkanlıkları ile ücretli spor salonu üyeliğine ilişkin bilgi toplanmıştır. X spor salonu üyeliğini gösteren bir değişkendir ve iki değer almaktadır: ücretli spor yapıyorsa 0, yapmıyorsa 1. Y ise sigara içip içmediğini göstermektedir: sigara içiyorsa 0, içmiyorsa 1 değerini almaktadır. Aşağıdaki tablo birleşik olasılıkları göstermektedir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sigara (Y) / Spor (X)</th>
+<th>0 (evet)</th>
+<th>1 (hayır)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>0</strong> (evet)</td>
+<td>0.04</td>
+<td>0.50</td>
+</tr>
+<tr class="even">
+<td><strong>1</strong> (hayır)</td>
+<td>0.02</td>
+<td>0.44</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>X ve Y’nin marjinal olasılık fonksiyonlarını bulun.</li>
+<li>Rassal seçilmiş bir hanede sigara içen varsa, ücretli spor yapma olasılığını bulun.</li>
+<li>X=0 verilmişken Y’nin koşullu olasılık fonksiyonunu bulun.</li>
+<li>X ile Y arasındaki kovaryansı bulun.</li>
+<li>X ve Y istatistik bakımından birbirinden bağımsız mıdır?</li>
+</ol>
+</div>
+<div id="cnj-kesiklicapraz1" class="theorem conjecture">
+<p><span class="theorem-title"><strong>Problem 1.22</strong></span> Bir araştırmacı hanede yaşayan kişi sayısı (X) ile tasarruf yapıp yapmama durumu (Y) arasındaki ilişki ile ilgilenmektedir. X, 1 ile 6 arasında değerler alırken, Y tasarruf yapanlar için 1, yapmayanlar için 0 değerini almaktadır. X ve Y’nin birleşik olasılık fonksiyonu aşağıdaki tabloda verilmiştir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Tasarruf / Kişi</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>Toplam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1</strong> (evet)</td>
+<td>0.04</td>
+<td>0.06</td>
+<td>0.06</td>
+<td>0.06</td>
+<td>0.03</td>
+<td>0.01</td>
+<td>0.26</td>
+</tr>
+<tr class="even">
+<td><strong>0</strong> (hayır)</td>
+<td>0.08</td>
+<td>0.15</td>
+<td>0.16</td>
+<td>0.20</td>
+<td>0.10</td>
+<td>0.05</td>
+<td>0.74</td>
+</tr>
+<tr class="odd">
+<td><strong>Toplam</strong></td>
+<td>0.12</td>
+<td>0.21</td>
+<td>0.22</td>
+<td>0.26</td>
+<td>0.13</td>
+<td>0.06</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>X ve Y’nin marjinal olasılık fonksiyonlarını bulun.</li>
+<li>X=4 verilmişken Y’nin koşullu olasılık fonksiyonunu bulun.</li>
+<li>Y=0 verilmişken X’in koşullu olasılık fonksiyonunu bulun.</li>
+<li>X ile Y arasındaki kovaryansı bulun.</li>
+<li>X ve Y istatistik bakımından birbirinden bağımsız mıdır?</li>
+</ol>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Önsöz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Önsöz</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
