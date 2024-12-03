@@ -49,14 +49,14 @@ Problemler-01: [pdf](docs/PPS-01.pdf)
 <br/>
 6. Olasılık: [pdf](docs/Olasilik.pdf) | [html](docs/Olasilik.html)  
 <br/>
-<br/>
 Problemler-02: [pdf](docs/PPS-02.pdf) 
 <br/>
 <br/>
 7. Kesikli Rassal Değişkenler: [pdf](docs/Kesiklird.pdf) | [html](docs/kesiklird/Kesiklird.html)   
 <br/>
+Problemler-03: [pdf](docs/PPS-03.pdf) 
 <br/>
-
+<br/>
 8. Sürekli Rassal Değişkenler 
 <br/>
 <br/>
