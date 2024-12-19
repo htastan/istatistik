@@ -57,15 +57,13 @@ Problemler-02: [pdf](docs/PPS-02.pdf)
 Problemler-03: [pdf](docs/PPS-03.pdf) 
 <br/>
 <br/>
-8. Sürekli Rassal Değişkenler 
-<br/>
-<br/>
-
+8. Sürekli Rassal Değişkenler: [pdf](docs/Sureklird.pdf) | [html](docs/sureklird/Sureklird.html)  
+<br/> 
 9. Normal Dağılım 
 <br/>
+Problemler-04:  
+<br/>
+<br/>
 
-10. Örnekleme ve örnekleme Dağılımları 
-<br/>
-<br/>
 
 
