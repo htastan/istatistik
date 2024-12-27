@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Normal Dağılım – İstatistik</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Normal.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Normal Dağılım</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">İstatistik</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Önsöz</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Normal.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Normal Dağılım</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">İçindekiler</h2>
+   
+  <ul>
+  <li><a href="#olasılık-yoğunluk-fonksiyonu" id="toc-olasılık-yoğunluk-fonksiyonu" class="nav-link active" data-scroll-target="#olasılık-yoğunluk-fonksiyonu"><span class="header-section-number">1.1</span> Olasılık Yoğunluk Fonksiyonu</a></li>
+  <li><a href="#birikimli-dağılım-fonksiyonu" id="toc-birikimli-dağılım-fonksiyonu" class="nav-link" data-scroll-target="#birikimli-dağılım-fonksiyonu"><span class="header-section-number">1.2</span> Birikimli Dağılım Fonksiyonu</a></li>
+  <li><a href="#kantil-fonksiyonu" id="toc-kantil-fonksiyonu" class="nav-link" data-scroll-target="#kantil-fonksiyonu"><span class="header-section-number">1.3</span> Kantil fonksiyonu</a></li>
+  <li><a href="#normal-dağılımın-özellikleri" id="toc-normal-dağılımın-özellikleri" class="nav-link" data-scroll-target="#normal-dağılımın-özellikleri"><span class="header-section-number">1.4</span> Normal Dağılımın Özellikleri</a></li>
+  <li><a href="#standart-normal-dağılım" id="toc-standart-normal-dağılım" class="nav-link" data-scroll-target="#standart-normal-dağılım"><span class="header-section-number">1.5</span> Standart Normal Dağılım</a></li>
+  <li><a href="#z-tabloları-ile-normal-dağılım-olasılıklarının-hesaplanması" id="toc-z-tabloları-ile-normal-dağılım-olasılıklarının-hesaplanması" class="nav-link" data-scroll-target="#z-tabloları-ile-normal-dağılım-olasılıklarının-hesaplanması"><span class="header-section-number">1.6</span> Z Tabloları ile Normal Dağılım Olasılıklarının Hesaplanması</a></li>
+  <li><a href="#çözümlü-alıştırmalar" id="toc-çözümlü-alıştırmalar" class="nav-link" data-scroll-target="#çözümlü-alıştırmalar"><span class="header-section-number">1.7</span> Çözümlü Alıştırmalar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-normal" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Normal Dağılım</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+<p><span class="math display">\[
+  \renewcommand{\E}{\mathbb{E}}
+  \renewcommand{\P}{\mathbb{P}}
+  \renewcommand{\Var}{\mbox{Var}}
+  \renewcommand{\Cov}{\mbox{Cov}}
+  \renewcommand{\plim}{\mbox{plim}}
+  \renewcommand{\cd}{\overset{d}{\longrightarrow}}
+  \renewcommand{\cp}{\overset{p}{\longrightarrow}}
+  \renewcommand{\adistr}{\stackrel{a}{\sim}}
+  \renewcommand{\ind}{1\hspace{-2.5mm}{1}}
+\]</span></p>
+</div>
+<p>Normal dağılım istatistikte en önemli ve en yaygın kullanılan olasılık dağılımlarından biridir. Ekonomi, işletme, finans ve diğer sosyal bilimlerde, birçok değişkenin dağılımı belirli koşullar altında normal dağılıma uyar. Normal dağılım, anket verilerinden üretim süreçlerindeki kalite kontrol metriklerine kadar geniş bir uygulama alanına sahiptir. Örneğin, bir finansal portföydeki yatırım getirileri, belirli varsayımlar altında normal dağılıma uyabilir ve bu durum risk analizlerinde önemli bir temel oluşturur. İşletmelerde ise üretim hatlarındaki ürün boyutları veya ağırlıkları genellikle normal dağılıma uygunluk gösterir, bu da kalite yönetiminde önemli bir rol oynar.</p>
+<p>Bu bölümde, normal dağılımın temel özelliklerini inceleyeceğiz. Olasılık yoğunluk fonksiyonu ve birikimli dağılım fonksiyonunu tanıtacak, normal dağılımı kullanarak olasılık hesaplamalarının nasıl yapılacağını göstereceğiz.</p>
+<section id="olasılık-yoğunluk-fonksiyonu" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="olasılık-yoğunluk-fonksiyonu"><span class="header-section-number">1.1</span> Olasılık Yoğunluk Fonksiyonu</h2>
+<div id="def-normal1" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.1</strong></span> Sürekli rassal değişken <span class="math inline">\(X\)</span>, ortalaması <span class="math inline">\(\mu\)</span> ve varyansı <span class="math inline">\(\sigma^2\)</span> olan bir normal dağılıma sahipse olasılık yoğunluk fonksiyonu <span id="eq-normal2"><span class="math display">\[
+    f(x;\mu,\sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right),\quad
+    -\infty &lt;x&lt;\infty
+\tag{1.1}\]</span></span> olarak tanımlanır. Burada <span class="math inline">\(\exp(a)\equiv e^a\)</span> üstel fonksiyonu temsil etmektedir. Bir yoğunluk fonksiyonunda bilinmeyen <span class="math inline">\(x\)</span> rassal değişkenidir. Ancak dağılımın özellikleri (şekli, simetrisi, vb) rassallık içermeyen sabit sayılar olarak tanımlanan parametrelere de bağlı olabilir. Normal dağılımın bu iki parametreye bağlı olduğunu göstermek için <span class="math inline">\(f((x;\mu,\sigma^2)\)</span> olarak yazılmıştır. Burada <span class="math inline">\(\mu\)</span> ve <span class="math inline">\(\sigma^2\)</span>’nin bilindiğini, ancak <span class="math inline">\(x\)</span>’in bilinmediğini varsayıyoruz.</p>
+<p>Normal dağılıma uyan bir rassal değişkeni ifade etmenin yaygın ve kısa bir yolu aşağıdaki gibi yazmaktır: <span id="eq-normal1"><span class="math display">\[
+X\sim N(\mu,~\sigma^2)
+\tag{1.2}\]</span></span> Bu gösterim şu şekilde okunur: <strong><span class="math inline">\(X\)</span> ortalaması <span class="math inline">\(\mu\)</span> ve varyansı <span class="math inline">\(\sigma^2\)</span> olan bir normal dağılımı takip eder</strong>. Bu notasyon, dağılımın bağlı olduğu parametreleri daha açık göstermekle beraber, <span class="math inline">\(\mu\)</span> ve <span class="math inline">\(\sigma^2\)</span>’nin aldığı değerlere bağlı olarak sonsuz sayıda normal dağılım tanımlanabileceğinin altını çizer.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normaloyf1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normaloyf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normaloyf1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normaloyf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.1: Normal olasılık yoğunluk fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-normaloyf1" class="quarto-xref">Şekil&nbsp;<span>1.1</span></a> bu yoğunluk fonksiyonunun grafiğini göstermektedir. Normal yoğunluk ortalama <span class="math inline">\(\mu\)</span> çevresinde simetrik dağılır ve biçiminden dolayı çan eğrisi olarak da bilinir. Bu dağılım ile <span class="math inline">\(X\)</span> rassal değişkenine ilişkin çıkarımlar yapılabilir. Normal yoğunluk fonksiyonu kullanılarak <span class="math inline">\(X\)</span>’in beklenen değerinin <span class="math inline">\(\E(X)=\mu\)</span>, varyansının <span class="math inline">\(\Var(X)=\sigma^2\)</span> ve standart sapmasının <span class="math inline">\(\sigma\)</span> olduğu gösterilebilir. Ortalama ve varyans biliniyorsa <span class="math inline">\(X\)</span> değişkenine ilişkin aralık olasılıkları, izleyen alt bölümlerde göreceğimiz gibi, kolayca hesaplanabilir.</p>
+<p>Normal dağılımın ortalamasını ifade eden <span class="math inline">\(\mu\)</span> konum ya da lokasyon parametresi olarak da bilinir. Varyansı sabit tutarak ortalamayı değiştirdiğimizde dağılımın şekli bozulmadan sağa ya da sola kaydığı görülebilir (bkz. <a href="#fig-normal1a" class="quarto-xref">Şekil&nbsp;<span>1.2 (a)</span></a>). Dağılımın şeklinden dolayı çan eğrisi olarak da isimlendirilir.</p>
+<p>Ölçek ya da yayılım parametresi olan <span class="math inline">\(\sigma^2\)</span> dağılımın şeklini belirler. Bu kez ortalamayı sabit tutup varyansı değiştirdiğimizde yayılımın değiştiğiniz görebiliriz (bkz. <a href="#fig-normal1b" class="quarto-xref">Şekil&nbsp;<span>1.2 (b)</span></a>). Varyans arttıkça aralık genişler ve yoğunluk fonksiyonu yayvanlaşır.</p>
+<div id="fig-normal1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normal1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normal1a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normal1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="img/normoyfplot1.pdf" class="img-fluid" data-ref-parent="fig-normal1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normal1a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Farklı lokasyon/merkez parametreleri
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normal1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normal1b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normal1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="img/normoyfplot2.pdf" class="img-fluid" data-ref-parent="fig-normal1">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normal1b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Farklı varyanslar
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.2: Normal dağılımın parametreleri
+</figcaption>
+</figure>
+</div>
+<div id="exm-normalIQ1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.1</strong></span> Bir ülkede yaşayan bireylerin IQ test skorları ortalaması 100 ve standart sapması 15 olan bir normal dağılıma uymaktadır. <span class="math inline">\(X\)</span> IQ puanı olmak üzere <span class="math display">\[
+X\sim N(100,~15^2)
+\]</span> yazabiliriz. <a href="#fig-normalIQ1" class="quarto-xref">Şekil&nbsp;<span>1.3</span></a> bu değişkenin yoğunluk grafiğini göstermektedir. Beklenen değer <span class="math inline">\(\E(X)=100\equiv \mu\)</span> çevresinde yoğunluğun en yüksek değerlere sahip olduğu kolayca görülebilir. Bu bireylerin IQ skorlarının ortalama çevresinde daha fazla yoğunlaştığını gösterir. Ortalamanın yanı sıra standart sapma, yani değişkenlik katsayısının değeri de önemlidir. Ortalama sabitken <span class="math inline">\(\sigma\)</span> arttıkça dağılım daha yayvan olur.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalIQ1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalIQ1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQ1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalIQ1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.3: IQ puanının dağılımı, X ~ N(100, 225)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>IQ skorunun en yüksek yoğunluk değerine ortalamada ulaştığını söylemiştik. <span class="math inline">\(f(x)\)</span> değerini hesaplamak istersek: <span class="math display">\[
+f(x;\mu=100,\sigma^2=15^2)=\frac{1}{15\sqrt{2\pi}}\exp\left(-\frac{1}{2}
+\left( \frac{100 - 100}{15} \right)^2\right) =\frac{1}{15\sqrt{2\pi}} e^{0}=0.0266
+\]</span> buluruz. R ile normal dağılım yoğunluklarını hesaplamak için <code>dnorm()</code> fonksiyonu kullanılabilir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">100</span>,    <span class="co"># yoğunluğunu hesaplamak istediğimiz x değeri</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean =</span> <span class="dv">100</span>, <span class="co"># ortalama, mu</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd =</span> <span class="dv">15</span>     <span class="co"># standart sapma, sigma</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02659615</code></pre>
+</div>
+</div>
+<p>Benzer şekilde ortalamanın 1 standart sapma üstünde ve altındaki yoğunluk değerleri</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">115</span>, <span class="dv">100</span>, <span class="dv">15</span>) <span class="co"># 100 + 15 </span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01613138</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="dv">15</span>)  <span class="co"># 100 - 15</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01613138</code></pre>
+</div>
+</div>
+<p>Ortalamadan daha fazla uzaklaştıkça yoğunluk değerleri azalır.</p>
+<p>Uygulamada genellikle yoğunluğun belirli bir noktadaki değeriyle değil aralık olasılıklarıyla ilgileniriz. Örneğin, rassal seçilmiş bir bireyin IQ skorunun ortalamanın 1 standart sapma uzağında, yani 85 ile 115 arasında olma olasılığı kaçtır? İnsanların yüzde kaçının IQ skoru ortalamanın en fazla 2 standart sapma uzağındadır? Buna benzer soruları cevaplayabilmek için olasılık yoğunluk fonksiyonunu kullanarak aşağıdaki gibi belirli integralleri hesaplayabilmemiz gerekir:</p>
+<p><span class="math display">\[
+\P(a\leq X \leq b)=\int_a^b \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}
+\left( \frac{x - \mu}{\sigma} \right)^2\right)~dx
+\]</span> Ancak normal dağılımın olasılık yoğunluk fonksiyonunun integrali, yani belirli bir aralıktaki olasılığı bulmak için gereken integral, genellikle kapalı formda çözülemez. Bu, fonksiyonun doğası gereği ortaya çıkan karmaşık matematiksel ifadelerden kaynaklanır. Normal dağılımın yoğunluk fonksiyonu, Gauss fonksiyonu olarak da bilinir (Gaussian dağılım) ve üstel bir ifade içerir. Bu tür fonksiyonların integralleri, genellikle el ile çözülemeyecek kadar karmaşıktır.</p>
+<p>Aralık olasılıklarını hesaplamanın kolay bir yolu belirli normal dağılım için bir değeri aşmama olasılığını veren birikimli dağılım fonksiyonunu, <span class="math inline">\(F(x)\)</span>, bulmaktır. Böylece, daha önce gördüğümüz gibi, aralık olasılıklarını <span class="math display">\[
+\P(a\leq X \leq b) = F(b)-F(a)
+\]</span> ile hesaplayabiliriz. Bilgisayar yardımıyla ya da özelleştirilmiş tablolar kullanarak ilgilendiğimiz aralık olasılıklarını nümerik yöntemlerle hesaplayabiliriz. İzleyen alt bölümlerde bu konuları ele alacağız.</p>
+</section>
+<section id="birikimli-dağılım-fonksiyonu" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="birikimli-dağılım-fonksiyonu"><span class="header-section-number">1.2</span> Birikimli Dağılım Fonksiyonu</h2>
+<div id="def-normalbdf1" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.2</strong></span> Normal dağılımın birikimli dağılım fonksiyonu (bdf), <span class="math inline">\(X\)</span> rassal değişkeninin belirli bir <span class="math inline">\(x\)</span> değerini aşmama olasılığını, <span class="math inline">\(\P(X \leq x)\)</span>, verir. Matematiksel olarak, birikimli dağılım fonksiyonu <span class="math inline">\(F(x)\)</span> şu şekilde tanımlanır:</p>
+<p><span id="eq-normalcdf1"><span class="math display">\[
+F(x) = \P(X \leq x) = \int_{-\infty}^{x} f(t)~dt
+\tag{1.3}\]</span></span></p>
+<p>Burada <span class="math inline">\(f(t)\)</span> normal dağılımın olasılık yoğunluk fonksiyonudur: <span id="eq-normalcdf2"><span class="math display">\[
+f(t) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{t-\mu}{\sigma}\right)^2\right)
+\tag{1.4}\]</span></span> Birikimli dağılım fonksiyonu, yoğunluk fonksiyonunun <span class="math inline">\(-\infty\)</span> ile <span class="math inline">\(x\)</span> arasında kalan alanını hesaplar. Bu integralin kapalı formda bir çözümü olmadığından, bdf hesaplamaları genellikle sayısal yöntemlerle yapılır. R’da bu hesaplamalar <code>pnorm()</code> fonksiyonu ile yapılabilir.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalbdf1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalbdf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalbdf1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalbdf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.4: Normal birikimli dağılım fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-normalbdf1" class="quarto-xref">Şekil&nbsp;<span>1.4</span></a> Normal birikimli dağılım fonksiyonunu göstermektedir. <span class="math inline">\(F(x)\)</span>’in her zaman 0 ile 1 arasında değerler aldığına ve <span class="math inline">\(x\)</span> arttıkça monoton bir şekilde arttığına (azalmadığına) dikkat ediniz.</p>
+<div id="exm-normalIQ2" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.2</strong></span> IQ puanlarının normal dağılım gösterdiğini varsayalım: <span class="math inline">\(X \sim N(100,~ 15^2)\)</span>. Rassal seçilmiş bir bireyin IQ puanının 115’ten küçük olma olasılığı, <span class="math inline">\(\P(X\leq 115)\)</span>, kaçtır? 85’ten küçük olma olasılığı kaçtır? 85 ile 115 arasında olma olasılığı kaçtır?</p>
+<p><strong>Çözüm</strong></p>
+<p>115’ten küçük olma olasılığı normal birikimli dağılım fonksiyonundan hareketle bulunabilir: <span class="math display">\[
+F(115) = \int_{-\infty}^{115} f(t)~dt = \int_{-\infty}^{115} \frac{1}{15 \sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{t-100}{15}\right)^2\right) dt
+\]</span> Bu integral R’da <code>pnorm()</code> fonksiyonu ile hesaplanabilir. Başka bir yol standart normal dağılım tablolarının kullanılmasıdır. Bunu daha sonra inceleyeceğiz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">115</span>,         <span class="co"># ilgilendiğimiz x değeri</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean =</span> <span class="dv">100</span>,  <span class="co"># mu</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd =</span> <span class="dv">15</span>      <span class="co"># sigma</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8413447</code></pre>
+</div>
+</div>
+<p>Bu sonuca göre, bireylerin yaklaşık %84’ünün IQ skoru 115’den küçüktür diyebiliriz. <a href="#fig-normalIQbdf1" class="quarto-xref">Şekil&nbsp;<span>1.5</span></a> bu olasılığa karşılık gelen oyf’nin altındaki taranmış bölgeyi ve normal birikimli dağılım fonksiyonunu göstermektedir.</p>
+<div id="fig-normalIQbdf1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalIQbdf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf1-1.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Normal oyf
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf1-2.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Normal bdf
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalIQbdf1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.5: <span class="math inline">\(\P(X \leq 115)=\int_{-\infty}^{115} f(x)dx=F(115)=0.8413\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Yoğunluğun altında kalan alan 1 olduğuna göre rassal seçilmiş birinin IQ’sunun 115’den fazla olma olasılığı <span class="math display">\[
+\P(X&gt;115) = 1-F(115)=1-0.8413=0.1587
+\]</span> yani yaklaşık %15.87 olur.</p>
+<p>Benzer şekilde IQ skorunun 85’den küçük olma olasılığını hesaplamak için <span class="math display">\[
+F(85) = \int_{-\infty}^{85} f(t)~dt = \int_{-\infty}^{85} \frac{1}{15 \sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{t-85}{15}\right)^2\right) dt
+\]</span> integralini R <code>pnorm()</code> fonksiyonu ile hesaplayalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># F(85) = P(X &lt;= 85)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1586553</code></pre>
+</div>
+</div>
+<div id="fig-normalIQbdf2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalIQbdf2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf2-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf2-1.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Normal oyf
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf2-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf2-2.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Normal bdf
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalIQbdf2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.6: <span class="math inline">\(\P(X \leq 85)=\int_{-\infty}^{85} f(x)dx=F(85)=0.1587\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Böylece <span class="math inline">\(a=85\)</span> ve <span class="math inline">\(b=115\)</span> olmak üzere aralık olasılığı <span class="math display">\[
+\P(85 \leq X \leq 115) = F(115)-F(85) = 0.8413-0.1587=0.6826
+\]</span> yaklaşık %68.26 olur. <a href="#fig-normalIQbdf3" class="quarto-xref">Şekil&nbsp;<span>1.7</span></a> bu aralık olasılığını oyf ve bdf üzerinde göstermektedir.</p>
+<div id="fig-normalIQbdf3" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalIQbdf3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf3-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf3-1.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf3" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Normal oyf
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalIQbdf3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalIQbdf3-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalIQbdf3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalIQbdf3-2.png" class="img-fluid figure-img" data-ref-parent="fig-normalIQbdf3" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalIQbdf3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Normal bdf
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalIQbdf3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.7: <span class="math inline">\(\P(85 \leq X \leq 115)=\int_{85}^{115} f(x)dx=F(115)-F(85)\)</span>
+</figcaption>
+</figure>
+</div>
+<p>Bu hesaplamalar sonucunda <span class="math inline">\(N(100,~15^2\)</span> dağılımına uyan IQ puanının ortalamanın en fazla 1 standart sapma uzağında olma olasılığı yaklaşık %68.26’dır: <span class="math display">\[
+\P(\mu-\sigma &lt;X&lt;\mu+\sigma)=\P(85&lt;X&lt;115)=0.6826
+\]</span></p>
+<p>Benzer şekilde 2 standart sapma içinde olma olasılığını hesaplayalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># F(70) = P(X &lt;= 70), mu - 2*sigma = 70</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">70</span>, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02275013</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># F(130) = P(X &lt;= 130), mu + 2*sigma = 130</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">130</span>, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9772499</code></pre>
+</div>
+</div>
+<p>Buradan hareketle IQ’nun 70’den düşük olma olasılığının %2.28, ve 130’dan küçük olma olasılığının %97.72 olduğunu söyleyebiliriz. Öyleyse bu aralık içinde olma olasılığı <span class="math display">\[
+\P(70 \leq X \leq 130) = F(130)-F(70) = 0.9772-0.0228= 0.9544
+\]</span> yaklaşık %95 olur.</p>
+</div>
+</section>
+<section id="kantil-fonksiyonu" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="kantil-fonksiyonu"><span class="header-section-number">1.3</span> Kantil fonksiyonu</h2>
+<div id="def-normalkantil1" class="theorem definition">
+<p><span class="theorem-title"><strong>Tanım 1.3</strong></span> <span class="math inline">\(Q(p)\)</span> ile göstereceğimiz kantil fonksiyonu verilmiş bir olasılık <span class="math inline">\(p\)</span> için <span class="math inline">\(F(x)\geq p\)</span> ifadesini sağlayan <span class="math inline">\(x\)</span> değerini verir. Bunu birikimli dağılım fonksiyonunun tersi olarak düşünebiliriz:<br>
+<span class="math display">\[
+Q(p)=F^{-1}(p)
+\]</span> <a href="#fig-normalkantil1" class="quarto-xref">Şekil&nbsp;<span>1.8</span></a> normal dağılımın kantil fonksiyonunu göstermektedir. Bu grafikte <span class="math inline">\(x\)</span> ekseninde olasılık değerleri <span class="math inline">\(p\)</span>, <span class="math inline">\(y\)</span> ekseninde ise rassal değişken değerleri (kantiller) yer almaktadır. Kantil fonksiyonu özellikle belirli olasılıklara karşılık gelen kritik değerlerin bulunması ve güven aralıklarının oluşturulmasında oldukça faydalıdır.</p>
+<p>Eğer olasılığı biliyorsak buradan hareketle bu olasılığa karşılık gelen <span class="math inline">\(x\)</span> değerini, yani kantili bulabiliriz. Örneğin normal dağılım için simetriklik özelliğinden hareketle <span class="math display">\[
+Q(0.5)=F^{-1}(0.5)=\mu=m
+\]</span> olduğu görülebilir. Benzer şekilde <span class="math inline">\(Q(0.025)\)</span> ve <span class="math inline">\(Q(0.975)\)</span> bize 2.5 ve 97.5 yüzdeliklerini verir. Buradan hareketle rassal değişkenin içine düşeceği bir %95 güven aralığı oluşturulabilir.</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalkantil1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalkantil1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalkantil1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalkantil1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.8: Normal dağılım kantil fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>R’da <code>qnorm()</code> fonksiyonunu kullanarak normal kantilleri hesaplayabiliriz. Örneğin</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.5</span>,         <span class="co"># p olasılık</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">mean =</span> <span class="dv">100</span>,  <span class="co"># mu</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd =</span> <span class="dv">15</span>      <span class="co"># sigma  </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>Yukarıdak kod ile, ortalaması 100 standart sapması 15 olan bir normal dağılımda, hangi değeri aşmama olasılığı %50’dir sorusunu cevaplamış olduk. Daha önce belirttiğimiz gibi normal dağılım için bu aynı zamanda ortalamaya eşittir.</p>
+<p>%25 ve %75 yüzdeliklerini (birinci ve üçüncü kartiller) bulalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.25</span>, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 89.88265</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.75</span>, <span class="dv">100</span>, <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 110.1173</code></pre>
+</div>
+</div>
+<div id="exm-normalkantil1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.3</strong></span> <span class="math inline">\(X\sim~N(100,~15^2)\)</span> dağılımına uyan IQ skorlarının 0.1, 0.25, 0.5, 0.75, ve 0.9 olasılıklarına karşılık gelen kantillerini bulunuz.</p>
+<p><strong>Çözüm</strong></p>
+<p>R <code>qnorm()</code> fonksiyonunu kullanarak</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>olasiliklar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(olasiliklar, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  80.77673  89.88265 100.00000 110.11735 119.22327</code></pre>
+</div>
+</div>
+<p>Böylece bireylerin %10’unun 80.78’den, %25’inin 89.88’den, %50’sinin 100’den, %75’inin 110.12’den ve %90’ının 119.22’den küçük IQ skoruna sahip olduğunu söyleyebiliriz.</p>
+</div>
+</section>
+<section id="normal-dağılımın-özellikleri" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="normal-dağılımın-özellikleri"><span class="header-section-number">1.4</span> Normal Dağılımın Özellikleri</h2>
+<p><strong>1) Simetriklik</strong></p>
+<p>Daha önce belirttiğimiz gibi normal dağılım simetriktir. Simetri katsayısı sıfıra eşittir:<br>
+<span class="math display">\[
+\E((X-\mu)^3)/\sigma^3 = 0
+\]</span> Simetri özelliğinin sonucu olarak normal dağılımın ortalaması ve medyanı eşittir. Medyanın tanımını hatırlarsak <span class="math display">\[
+\int_{-\infty}^m f(x)~dx=0.5
+\]</span> eşitliğini sağlayan <span class="math inline">\(m\)</span> medyanı verir. Normal dağılım için bu beklentiye eşittir: <span class="math display">\[
+\E(X) \equiv \mu =  m
+\]</span></p>
+<p>Bunu önceki kısımda kantil fonksiyonundan hareketle de bulmuştuk.</p>
+<p><strong>2) Basıklık (kurtosis)</strong></p>
+<p>Normal dağılımın basıklık (kurtosis) katsayısı, dağılımın tepe noktasının ne kadar keskin veya basık olduğunu gösterir. Normal dağılım için bu katsayı genellikle 3 olarak ifade edilir ve şu şekilde hesaplanır: <span class="math display">\[
+\E((X-\mu)^4)/\sigma^4 = 3
+\]</span> Burada <span class="math inline">\(\E((X-\mu)^4)\)</span>, <span class="math inline">\(X\)</span> rassal değişkeninin dördüncü merkezi momentidir. Basıklık katsayısı 3 olan bir dağılım normal basıklık (mesokurtic) olarak adlandırılır. Basıklık katsayısı 3’ten büyük olan dağılımlar daha sivri ve kalın kuyruklu (leptokurtic), 3’ten küçük olanlar ise daha basık (platykurtic) olarak değerlendirilir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalkurtosis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalkurtosis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalkurtosis-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalkurtosis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.9: Farklı basıklık (kurtosis) katsayılarına sahip dağılımlar
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-normalkurtosis" class="quarto-xref">Şekil&nbsp;<span>1.9</span></a> farklı basıklık katsayıların sahip dağılımların tipik şekillerini göstermektedir. Eğer bir dağılım platikurtik veya leptokurtik ise, bu onun kesin olarak normal olduğunu göstermez. “Platikurtik” ve “leptokurtik” terimleri, dağılımın kuyruklarının ve tepe noktasının, normal dağılımla kıyaslandığında nasıl bir şekle sahip olduğunu ifade eder. Normal dağılım mezokurtik bir şekle sahiptir (çarpıklık 0, basıklık 3). Platikurtik dağılımlar, normal dağılıma göre daha basık bir tepeye ve daha ince kuyruklara sahiptir. Bu dağılımlar simetrik olsalar da, düşük basıklık katsayısı onların normal olmadığını gösterir. Leptokurtik dağılımlar, normal dağılıma göre daha sivri bir tepeye ve daha kalın kuyruklara sahiptir.</p>
+<p>Bir dağılım, normal dağılıma benzer bir şekle sahip olabilir, ancak farklı çarpıklık ve basıklık katsayılarına sahipse normal dağılım değildir. Normal dağılımdan sapmaların değerlendirilmesine ve normallik sınamalarında çarpıklık ve basıklık değerlerinden sapmalar kullanılmaktadır.</p>
+<p><strong>3) Doğrusal dönüştürmeler</strong></p>
+<p>Normal dağılımın en önemli özelliklerinden biri doğrusal kombinasyonlarının da normal dağılıma uymasıdır. Eğer <span class="math inline">\(X\sim~N(\mu,~\sigma^2)\)</span> ise, <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabit sayılar olmak üzere</p>
+<p><span class="math display">\[
+Y=a+bX
+\]</span> olarak tanımlı yeni bir rassal değişkenin dağılımı da normal olur.</p>
+<p>Beklenti operatörünün özelliklerinden hareketle <span class="math inline">\(Y\)</span>’nin beklenen değeri <span id="eq-snd1"><span class="math display">\[
+\E(Y) = a+b\E(X) =a+b\mu
+\tag{1.5}\]</span></span> ve varyansı <span id="eq-snd2"><span class="math display">\[
+\Var(Y) = b^2\Var(X) = b^2\sigma^2
+\tag{1.6}\]</span></span> olur.</p>
+<p>Doğrusal dönüştürme <span class="math inline">\(Y\)</span>’nin dağılımını kısaca <span class="math display">\[
+Y\sim~N(a+b\mu,~b^2\sigma^2)
+\]</span> biçiminde yazabiliriz. Yani, <span class="math inline">\(Y\)</span> rassal değişkeni ortalaması <span class="math inline">\(a+b\mu\)</span> ve varyansı <span class="math inline">\(b^2\sigma^2\)</span> olan bir normal dağılıma uyar.</p>
+</section>
+<section id="standart-normal-dağılım" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="standart-normal-dağılım"><span class="header-section-number">1.5</span> Standart Normal Dağılım</h2>
+<p><span class="math inline">\(X\)</span> ortalaması <span class="math inline">\(\mu\)</span> ve varyansı <span class="math inline">\(\sigma^2\)</span> olan bir normal dağılıma uysun: <span class="math inline">\(X\sim~N(\mu,~\sigma^2\)</span>. <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> sabitlerini aşağıdaki gibi belirleyerek <span id="eq-snd3"><span class="math display">\[
+a=-\frac{\mu}{\sigma},~~~ b=\frac{1}{\sigma}
+\tag{1.7}\]</span></span> yeni bir rassal değişken tanımlayalım: <span id="eq-snd4"><span class="math display">\[
+Z = a+bX = -\frac{\mu}{\sigma}+\frac{1}{\sigma}X=\frac{X-\mu}{\sigma}
+\tag{1.8}\]</span></span></p>
+<p>Z-skoru olarak da bilinen <span class="math inline">\(Z\)</span> rassal değişkeni bir <span class="math inline">\(X\)</span>’in <strong>ortalamaya uzaklığının kaç standart sapma içerdiğini</strong> göstermektedir. Örneğin <span class="math inline">\(Z=1\)</span> değeri <span class="math inline">\(X\)</span>’in ortalamadan 1 standart sapma daha fazla olduğunu gösterir. Benzer şekilde <span class="math inline">\(Z=-2\)</span> ise ilgili değerin ortalamanın 2 standart sapma altında olduğu anlamına gelir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sndpdf" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sndpdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-sndpdf-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sndpdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.10: Standart normal dağılımın olasılık yoğunluk fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Normal rassal değişkenlerin doğrusal dönüştürmelerinin de normal dağılıma uyduğunu belirtmiştik. <span class="math inline">\(Z\)</span> dönüştürmesi, <span class="math inline">\((X-\mu)/\sigma\)</span>, doğrusal bir dönüştürme olduğu için normal dağılıma sahiptir. Bunu kısaca <span class="math display">\[
+Z\sim~N(0,~1)
+\]</span> biçiminde gösterebiliriz. Gerçekten de <span class="math inline">\(Z\)</span>’nin beklenen değerinin <span class="math inline">\(\E(Z)=0\)</span> ve varyansının <span class="math inline">\(\Var(Z)=1\)</span> olduğu kolayca gösterilebilir. <span class="math display">\[
+\E(Z)=\E\left( \frac{X-\mu}{\sigma} \right)=\frac{1}{\sigma}\E\left( X-\mu \right)
+\]</span> Burada <span class="math inline">\(1/\sigma\)</span> sabit bir sayı olduğu ve rassallık içermediği için beklentinin dışına aldık. Benzer şekilde <span class="math inline">\(\mu\)</span> da bir sabit olduğundan <span class="math display">\[
+\E\left( X-\mu \right) = \E(X)-\mu=\mu- \mu=0                         
+\]</span> olur. Öyleyse standard normal beklenen değer <span class="math inline">\(\E(Z)=\mu_z=0\)</span> olur.</p>
+<p>Standart normal dağılımın varyansını türetmek için varyans tanımından hareketle <span class="math display">\[
+\Var(Z)=\E[ (Z-\E(Z))^2 ]=\E(Z^2)
+\]</span> olur. Buradan <span class="math display">\[
+\E(Z^2)=\E\left[ \left( \frac{X-\mu}{\sigma} \right)^2 \right] = \frac{1}{\sigma^2}\E\left[ \left( X-\mu \right)^2 \right]
+\]</span> <span class="math inline">\(X\sim~N(\mu,~\sigma^2)\)</span> olduğuna göre <span class="math inline">\(\E\left[ \left( X-\mu \right)^2 \right]=\sigma^2\)</span> gerçeğinden hareketle <span class="math display">\[
+\Var(Z) = \E(Z^2)=\frac{1}{\sigma^2}\sigma^2 = 1
+\]</span> bulunur.</p>
+<p><span class="math inline">\(Z\sim~N(0,~1)\)</span> standart normal rassal değişkeninden hareketle <span class="math inline">\(X\sim~N(\mu,~\sigma^2)\)</span> de tanımlanabilir: <span class="math display">\[
+Z=\frac{X-\mu}{\sigma}~~  \Leftrightarrow~~  X=\sigma Z +\mu
+\]</span></p>
+<p>Standart normal dağılımın olasılık yoğunluk fonksiyonunu, <a href="#eq-normal2" class="quarto-xref">Denklem&nbsp;<span>1.1</span></a>’de <span class="math inline">\(\mu=0\)</span> ve <span class="math inline">\(\sigma^2=1\)</span> yazarak bulabiliriz:<br>
+<span id="eq-snd5"><span class="math display">\[
+\phi(z)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}z^2\right),\quad
+    -\infty &lt;z&lt;\infty
+\tag{1.9}\]</span></span></p>
+<p><a href="#fig-sndpdf" class="quarto-xref">Şekil&nbsp;<span>1.10</span></a> standart normal olasılık yoğunluk fonksiyonunun grafiğini göstermektedir.</p>
+<p>Standart normal birikimli dağılım fonksiyonu ise <span id="eq-snd6"><span class="math display">\[
+\Phi(z)=P(Z\leq z)=\int_{-\infty}^z
+    \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}t^2\right)dt
+\tag{1.10}\]</span></span> olarak tanımlıdır (<a href="#fig-sndcdf-1" class="quarto-xref">Şekil&nbsp;<span>1.11 (a)</span></a>). Bu integrallerin kapalı bir çözümü yoktur.</p>
+<div id="fig-sndcdf" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sndcdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sndcdf" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sndcdf-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sndcdf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-sndcdf-1.png" class="img-fluid figure-img" data-ref-parent="fig-sndcdf" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sndcdf-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Birikimli dağılım fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sndcdf" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sndcdf-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sndcdf-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-sndcdf-2.png" class="img-fluid figure-img" data-ref-parent="fig-sndcdf" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sndcdf-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Kantil fonksiyonu
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sndcdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.11: Standart normal birikimli dağılım ve kantil fonksiyonu
+</figcaption>
+</figure>
+</div>
+<p>Standart normal dağılımın olasılık yoğunluk ve birikimli dağılım fonksiyonlarını hesaplamak için, daha önce gördüğümüz gibi, <code>dnorm()</code> ve <code>pnorm()</code> fonksiyonlarını kullanabiliriz. İlgilendiğimiz olasılıkların hesaplamanın başka bir yolu standart normal tablosunu kullanmaktır. Bunu izleyen alt bölümde ele alacağız.</p>
+<p>Örnek olarak <span class="math inline">\(X\sim~N(100,~15^2)\)</span> dağılımı için 1 standart sapma içinde olma olasılığını düşünelim. Bunu daha önce bulmuştuk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">85</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">115</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="sc">-</span> p1</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+</div>
+<p>Aynı olasılığı standart normal dağılımdan hareketle bulmak için <span class="math inline">\(Z\)</span> dönüştürmesi yapmamız gerekir <span class="math inline">\(X=85\)</span> için <span class="math inline">\(Z=(85-100)/15=-1\)</span>, <span class="math inline">\(X=115\)</span> için <span class="math inline">\(Z=(115-100)/15=1\)</span> bulunur. Öyleyse</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pz1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pz2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>pz2 <span class="sc">-</span> pz1</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+</div>
+<p>olur. Benzer şekilde 2 standart sapma içinde olma olasılığı</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>) </span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9544997</code></pre>
+</div>
+</div>
+<p>ve 3 standart sapma içinde olma olasılığı</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span>) </span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9973002</code></pre>
+</div>
+</div>
+<p>olarak bulunur. Bu değerlerin daha önce gördüğümüz ampirik kural ile uyumlu olduğuna dikkat ediniz.</p>
+<p>Standart normal dağılımın kantil fonksiyonu da birikimli dağılımın tersi olarak tanımlanır: <span class="math display">\[
+Q(p) = \Phi^{-1} (z)
+\]</span> <a href="#fig-sndcdf-2" class="quarto-xref">Şekil&nbsp;<span>1.11 (b)</span></a> kantil fonksiyonunu göstermektedir. Kantil fonksiyonu, daha önce tanımladığımız gibi, <span class="math inline">\(p=\P(Z\le z)\)</span> verilmişken buna karşılık gelen <span class="math inline">\(z\)</span>’yi verir. Örneğin <span class="math inline">\(p=0.95\)</span> ise standart normal dağılımda buna karşılık gelen <span class="math inline">\(z\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.644854</code></pre>
+</div>
+</div>
+<p>olur. Yani <span class="math display">\[
+Q(0.95) = \Phi^{-1} (z) = 1.645
+\]</span> yazabiliriz. Standart normal dağılıma uyan bir rassal değişken %95 olasılıkla 1.645’den küçük değerler alır. Buradan hareketle kuyruk olasılığını, yani bu değerden daha büyük sayı çekme olasılığını <span class="math display">\[
+\P(Z&gt;1.645) = 1-P(Z\leq 1.645) = 1-\Phi(1.645)=1-0.95=0.05
+\]</span> %5 olarak buluruz. Standart normal dağılım simetrik olduğu için <span class="math display">\[
+\P(Z\leq -1.645) = 0.05
+\]</span> bulunur. Kantil fonksiyonu standart normal dağılımda belirli olasılıklara karşılık gelen kritik değerlerin bulunmasında kullanışlıdır. Benzer şekilde <span class="math inline">\(p=0.90\)</span> ise standart normal dağılımda buna karşılık gelen <span class="math inline">\(z\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.9</span>) <span class="co"># default: mean = 0, sd = 1</span></span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.281552</code></pre>
+</div>
+</div>
+<p>olarak bulunur. Hangi değeri aşmama olasılığı yüzde 10’dur sorusunu cevaplayalım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.1</span>) </span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.281552</code></pre>
+</div>
+</div>
+<p>Buradan hareketle <span class="math display">\[
+\P(Z\leq -1.28) = 0.1,~~~~\P(Z&gt; 1.28) = 0.1
+\]</span> yazılabilir.</p>
+</section>
+<section id="z-tabloları-ile-normal-dağılım-olasılıklarının-hesaplanması" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="z-tabloları-ile-normal-dağılım-olasılıklarının-hesaplanması"><span class="header-section-number">1.6</span> Z Tabloları ile Normal Dağılım Olasılıklarının Hesaplanması</h2>
+<p><span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> olsun. Aşağıdaki olasılığı hesaplamak istiyoruz: <span id="eq-normalprob1"><span class="math display">\[
+\P(a&lt;X&lt;b)=\int_a^b
+\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2\sigma^2}(x-\mu)^2\right)dx
+\tag{1.11}\]</span></span></p>
+<p>Bu integralin kapalı bir çözümünün olmadığını, ancak nümerik yöntemlerle bilgisayarda istenen kesinlik düzeyinde hesaplanabildiğini öğrenmiştik. Bunun için her seferinde bilgisayarda hesap yapmak yerine veya bilgisayarın olmadığı durumlarda standart normal dağılım (Z) tablolarını kullanabiliriz.</p>
+<p>İstenen olasılığı aşağıdaki gibi yazalım: <span id="eq-normalprob2"><span class="math display">\[
+\P\left(\frac{a-\mu}{\sigma}&lt;\frac{X-\mu}{\sigma}&lt;\frac{b-\mu}{\sigma}\right)=
+\P\left(\frac{a-\mu}{\sigma}&lt;Z&lt;\frac{b-\mu}{\sigma}\right)
+\tag{1.12}\]</span></span></p>
+<p><span id="eq-normalprob3"><span class="math display">\[
+P\left(\frac{a-\mu}{\sigma}&lt;Z&lt;\frac{b-\mu}{\sigma}\right) =
+\Phi\left(\frac{b-\mu}{\sigma}\right)-\Phi\left(\frac{a-\mu}{\sigma}\right)
+\tag{1.13}\]</span></span></p>
+<p>Burada <span class="math inline">\(\Phi(z)=P(Z\leq z)\equiv F(z)\)</span> standart normal birikimli dağılım fonksiyonunun <span class="math inline">\(z\)</span>’deki değeridir (<span class="math inline">\(z\)</span>’den küçük olma olasılığı).</p>
+<p>Z tablosu, <a href="#tbl-Ztable" class="quarto-xref">Tablo&nbsp;<span>1.1</span></a>, işte bu birikimli dağılımın yaklaşık değerlerini verir. Bu tabloda sadece pozitif <span class="math inline">\(z\)</span> için dağılım fonksiyonu değerleri gösterilmiştir. Simetri özelliğinden hareketle negatif değerler için olasılıklar kolayca bulunabilir.</p>
+<p><a href="#tbl-Ztable" class="quarto-xref">Tablo&nbsp;<span>1.1</span></a>’de satırlar noktadan önce ve sonraki basamakları, sütunlar ise noktadan sonraki ikinci basamağı göstermektedir. Örneğin <span class="math inline">\(Z\)</span>’nin 1.25 değerini aşmama olasılığını bulmak istersek 1.2 satırına ve 0.05 sütununa karşılık gelen hücredeki değeri almamız gerekir. Böylece <span class="math inline">\(P(Z\leq 1.25)=0.8944\)</span> bulunur.</p>
+<p>Negatif değerler için <span class="math inline">\(\Phi(z)=P(Z\leq z)\)</span>’nin simetri özelliği kullanılabilir: <span class="math display">\[
+\begin{array}{lll}
+  \Phi(-z) &amp;=&amp; \P(Z\leq -z) \\
+           &amp;=&amp; \P(Z\geq z)\\
+           &amp;=&amp; 1-\P(Z\leq z)\\
+           &amp;=&amp; 1-\Phi(z)
+\end{array}
+\]</span> Örneğin:<br>
+<span class="math display">\[
+\begin{array}{lll}
+  P(Z\leq -1.25)&amp;=&amp; \Phi(-1.25)  \\
+           &amp;=&amp;1-\Phi(1.25)\\
+           &amp;=&amp;1-0.8944=0.1056
+\end{array}
+\]</span></p>
+<div style="page-break-after: always;"></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/snd1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="cell">
+<div id="tbl-Ztable" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-Ztable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tablo&nbsp;1.1: Standart Normal Dağılım Olasılıkları (Z Tablosu)
+</figcaption>
+<div aria-describedby="tbl-Ztable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">0</th>
+<th style="text-align: right;">0.01</th>
+<th style="text-align: right;">0.02</th>
+<th style="text-align: right;">0.03</th>
+<th style="text-align: right;">0.04</th>
+<th style="text-align: right;">0.05</th>
+<th style="text-align: right;">0.06</th>
+<th style="text-align: right;">0.07</th>
+<th style="text-align: right;">0.08</th>
+<th style="text-align: right;">0.09</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: right;">0.5000</td>
+<td style="text-align: right;">0.5040</td>
+<td style="text-align: right;">0.5080</td>
+<td style="text-align: right;">0.5120</td>
+<td style="text-align: right;">0.5160</td>
+<td style="text-align: right;">0.5199</td>
+<td style="text-align: right;">0.5239</td>
+<td style="text-align: right;">0.5279</td>
+<td style="text-align: right;">0.5319</td>
+<td style="text-align: right;">0.5359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.1</td>
+<td style="text-align: right;">0.5398</td>
+<td style="text-align: right;">0.5438</td>
+<td style="text-align: right;">0.5478</td>
+<td style="text-align: right;">0.5517</td>
+<td style="text-align: right;">0.5557</td>
+<td style="text-align: right;">0.5596</td>
+<td style="text-align: right;">0.5636</td>
+<td style="text-align: right;">0.5675</td>
+<td style="text-align: right;">0.5714</td>
+<td style="text-align: right;">0.5753</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.2</td>
+<td style="text-align: right;">0.5793</td>
+<td style="text-align: right;">0.5832</td>
+<td style="text-align: right;">0.5871</td>
+<td style="text-align: right;">0.5910</td>
+<td style="text-align: right;">0.5948</td>
+<td style="text-align: right;">0.5987</td>
+<td style="text-align: right;">0.6026</td>
+<td style="text-align: right;">0.6064</td>
+<td style="text-align: right;">0.6103</td>
+<td style="text-align: right;">0.6141</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.3</td>
+<td style="text-align: right;">0.6179</td>
+<td style="text-align: right;">0.6217</td>
+<td style="text-align: right;">0.6255</td>
+<td style="text-align: right;">0.6293</td>
+<td style="text-align: right;">0.6331</td>
+<td style="text-align: right;">0.6368</td>
+<td style="text-align: right;">0.6406</td>
+<td style="text-align: right;">0.6443</td>
+<td style="text-align: right;">0.6480</td>
+<td style="text-align: right;">0.6517</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.4</td>
+<td style="text-align: right;">0.6554</td>
+<td style="text-align: right;">0.6591</td>
+<td style="text-align: right;">0.6628</td>
+<td style="text-align: right;">0.6664</td>
+<td style="text-align: right;">0.6700</td>
+<td style="text-align: right;">0.6736</td>
+<td style="text-align: right;">0.6772</td>
+<td style="text-align: right;">0.6808</td>
+<td style="text-align: right;">0.6844</td>
+<td style="text-align: right;">0.6879</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.5</td>
+<td style="text-align: right;">0.6915</td>
+<td style="text-align: right;">0.6950</td>
+<td style="text-align: right;">0.6985</td>
+<td style="text-align: right;">0.7019</td>
+<td style="text-align: right;">0.7054</td>
+<td style="text-align: right;">0.7088</td>
+<td style="text-align: right;">0.7123</td>
+<td style="text-align: right;">0.7157</td>
+<td style="text-align: right;">0.7190</td>
+<td style="text-align: right;">0.7224</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.6</td>
+<td style="text-align: right;">0.7257</td>
+<td style="text-align: right;">0.7291</td>
+<td style="text-align: right;">0.7324</td>
+<td style="text-align: right;">0.7357</td>
+<td style="text-align: right;">0.7389</td>
+<td style="text-align: right;">0.7422</td>
+<td style="text-align: right;">0.7454</td>
+<td style="text-align: right;">0.7486</td>
+<td style="text-align: right;">0.7517</td>
+<td style="text-align: right;">0.7549</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.7</td>
+<td style="text-align: right;">0.7580</td>
+<td style="text-align: right;">0.7611</td>
+<td style="text-align: right;">0.7642</td>
+<td style="text-align: right;">0.7673</td>
+<td style="text-align: right;">0.7704</td>
+<td style="text-align: right;">0.7734</td>
+<td style="text-align: right;">0.7764</td>
+<td style="text-align: right;">0.7794</td>
+<td style="text-align: right;">0.7823</td>
+<td style="text-align: right;">0.7852</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.8</td>
+<td style="text-align: right;">0.7881</td>
+<td style="text-align: right;">0.7910</td>
+<td style="text-align: right;">0.7939</td>
+<td style="text-align: right;">0.7967</td>
+<td style="text-align: right;">0.7995</td>
+<td style="text-align: right;">0.8023</td>
+<td style="text-align: right;">0.8051</td>
+<td style="text-align: right;">0.8078</td>
+<td style="text-align: right;">0.8106</td>
+<td style="text-align: right;">0.8133</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.9</td>
+<td style="text-align: right;">0.8159</td>
+<td style="text-align: right;">0.8186</td>
+<td style="text-align: right;">0.8212</td>
+<td style="text-align: right;">0.8238</td>
+<td style="text-align: right;">0.8264</td>
+<td style="text-align: right;">0.8289</td>
+<td style="text-align: right;">0.8315</td>
+<td style="text-align: right;">0.8340</td>
+<td style="text-align: right;">0.8365</td>
+<td style="text-align: right;">0.8389</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0.8413</td>
+<td style="text-align: right;">0.8438</td>
+<td style="text-align: right;">0.8461</td>
+<td style="text-align: right;">0.8485</td>
+<td style="text-align: right;">0.8508</td>
+<td style="text-align: right;">0.8531</td>
+<td style="text-align: right;">0.8554</td>
+<td style="text-align: right;">0.8577</td>
+<td style="text-align: right;">0.8599</td>
+<td style="text-align: right;">0.8621</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.1</td>
+<td style="text-align: right;">0.8643</td>
+<td style="text-align: right;">0.8665</td>
+<td style="text-align: right;">0.8686</td>
+<td style="text-align: right;">0.8708</td>
+<td style="text-align: right;">0.8729</td>
+<td style="text-align: right;">0.8749</td>
+<td style="text-align: right;">0.8770</td>
+<td style="text-align: right;">0.8790</td>
+<td style="text-align: right;">0.8810</td>
+<td style="text-align: right;">0.8830</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.2</td>
+<td style="text-align: right;">0.8849</td>
+<td style="text-align: right;">0.8869</td>
+<td style="text-align: right;">0.8888</td>
+<td style="text-align: right;">0.8907</td>
+<td style="text-align: right;">0.8925</td>
+<td style="text-align: right;">0.8944</td>
+<td style="text-align: right;">0.8962</td>
+<td style="text-align: right;">0.8980</td>
+<td style="text-align: right;">0.8997</td>
+<td style="text-align: right;">0.9015</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.3</td>
+<td style="text-align: right;">0.9032</td>
+<td style="text-align: right;">0.9049</td>
+<td style="text-align: right;">0.9066</td>
+<td style="text-align: right;">0.9082</td>
+<td style="text-align: right;">0.9099</td>
+<td style="text-align: right;">0.9115</td>
+<td style="text-align: right;">0.9131</td>
+<td style="text-align: right;">0.9147</td>
+<td style="text-align: right;">0.9162</td>
+<td style="text-align: right;">0.9177</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.4</td>
+<td style="text-align: right;">0.9192</td>
+<td style="text-align: right;">0.9207</td>
+<td style="text-align: right;">0.9222</td>
+<td style="text-align: right;">0.9236</td>
+<td style="text-align: right;">0.9251</td>
+<td style="text-align: right;">0.9265</td>
+<td style="text-align: right;">0.9279</td>
+<td style="text-align: right;">0.9292</td>
+<td style="text-align: right;">0.9306</td>
+<td style="text-align: right;">0.9319</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.5</td>
+<td style="text-align: right;">0.9332</td>
+<td style="text-align: right;">0.9345</td>
+<td style="text-align: right;">0.9357</td>
+<td style="text-align: right;">0.9370</td>
+<td style="text-align: right;">0.9382</td>
+<td style="text-align: right;">0.9394</td>
+<td style="text-align: right;">0.9406</td>
+<td style="text-align: right;">0.9418</td>
+<td style="text-align: right;">0.9429</td>
+<td style="text-align: right;">0.9441</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.6</td>
+<td style="text-align: right;">0.9452</td>
+<td style="text-align: right;">0.9463</td>
+<td style="text-align: right;">0.9474</td>
+<td style="text-align: right;">0.9484</td>
+<td style="text-align: right;">0.9495</td>
+<td style="text-align: right;">0.9505</td>
+<td style="text-align: right;">0.9515</td>
+<td style="text-align: right;">0.9525</td>
+<td style="text-align: right;">0.9535</td>
+<td style="text-align: right;">0.9545</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.7</td>
+<td style="text-align: right;">0.9554</td>
+<td style="text-align: right;">0.9564</td>
+<td style="text-align: right;">0.9573</td>
+<td style="text-align: right;">0.9582</td>
+<td style="text-align: right;">0.9591</td>
+<td style="text-align: right;">0.9599</td>
+<td style="text-align: right;">0.9608</td>
+<td style="text-align: right;">0.9616</td>
+<td style="text-align: right;">0.9625</td>
+<td style="text-align: right;">0.9633</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.8</td>
+<td style="text-align: right;">0.9641</td>
+<td style="text-align: right;">0.9649</td>
+<td style="text-align: right;">0.9656</td>
+<td style="text-align: right;">0.9664</td>
+<td style="text-align: right;">0.9671</td>
+<td style="text-align: right;">0.9678</td>
+<td style="text-align: right;">0.9686</td>
+<td style="text-align: right;">0.9693</td>
+<td style="text-align: right;">0.9699</td>
+<td style="text-align: right;">0.9706</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.9</td>
+<td style="text-align: right;">0.9713</td>
+<td style="text-align: right;">0.9719</td>
+<td style="text-align: right;">0.9726</td>
+<td style="text-align: right;">0.9732</td>
+<td style="text-align: right;">0.9738</td>
+<td style="text-align: right;">0.9744</td>
+<td style="text-align: right;">0.9750</td>
+<td style="text-align: right;">0.9756</td>
+<td style="text-align: right;">0.9761</td>
+<td style="text-align: right;">0.9767</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">0.9772</td>
+<td style="text-align: right;">0.9778</td>
+<td style="text-align: right;">0.9783</td>
+<td style="text-align: right;">0.9788</td>
+<td style="text-align: right;">0.9793</td>
+<td style="text-align: right;">0.9798</td>
+<td style="text-align: right;">0.9803</td>
+<td style="text-align: right;">0.9808</td>
+<td style="text-align: right;">0.9812</td>
+<td style="text-align: right;">0.9817</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.1</td>
+<td style="text-align: right;">0.9821</td>
+<td style="text-align: right;">0.9826</td>
+<td style="text-align: right;">0.9830</td>
+<td style="text-align: right;">0.9834</td>
+<td style="text-align: right;">0.9838</td>
+<td style="text-align: right;">0.9842</td>
+<td style="text-align: right;">0.9846</td>
+<td style="text-align: right;">0.9850</td>
+<td style="text-align: right;">0.9854</td>
+<td style="text-align: right;">0.9857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.2</td>
+<td style="text-align: right;">0.9861</td>
+<td style="text-align: right;">0.9864</td>
+<td style="text-align: right;">0.9868</td>
+<td style="text-align: right;">0.9871</td>
+<td style="text-align: right;">0.9875</td>
+<td style="text-align: right;">0.9878</td>
+<td style="text-align: right;">0.9881</td>
+<td style="text-align: right;">0.9884</td>
+<td style="text-align: right;">0.9887</td>
+<td style="text-align: right;">0.9890</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.3</td>
+<td style="text-align: right;">0.9893</td>
+<td style="text-align: right;">0.9896</td>
+<td style="text-align: right;">0.9898</td>
+<td style="text-align: right;">0.9901</td>
+<td style="text-align: right;">0.9904</td>
+<td style="text-align: right;">0.9906</td>
+<td style="text-align: right;">0.9909</td>
+<td style="text-align: right;">0.9911</td>
+<td style="text-align: right;">0.9913</td>
+<td style="text-align: right;">0.9916</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.4</td>
+<td style="text-align: right;">0.9918</td>
+<td style="text-align: right;">0.9920</td>
+<td style="text-align: right;">0.9922</td>
+<td style="text-align: right;">0.9925</td>
+<td style="text-align: right;">0.9927</td>
+<td style="text-align: right;">0.9929</td>
+<td style="text-align: right;">0.9931</td>
+<td style="text-align: right;">0.9932</td>
+<td style="text-align: right;">0.9934</td>
+<td style="text-align: right;">0.9936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.5</td>
+<td style="text-align: right;">0.9938</td>
+<td style="text-align: right;">0.9940</td>
+<td style="text-align: right;">0.9941</td>
+<td style="text-align: right;">0.9943</td>
+<td style="text-align: right;">0.9945</td>
+<td style="text-align: right;">0.9946</td>
+<td style="text-align: right;">0.9948</td>
+<td style="text-align: right;">0.9949</td>
+<td style="text-align: right;">0.9951</td>
+<td style="text-align: right;">0.9952</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.6</td>
+<td style="text-align: right;">0.9953</td>
+<td style="text-align: right;">0.9955</td>
+<td style="text-align: right;">0.9956</td>
+<td style="text-align: right;">0.9957</td>
+<td style="text-align: right;">0.9959</td>
+<td style="text-align: right;">0.9960</td>
+<td style="text-align: right;">0.9961</td>
+<td style="text-align: right;">0.9962</td>
+<td style="text-align: right;">0.9963</td>
+<td style="text-align: right;">0.9964</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.7</td>
+<td style="text-align: right;">0.9965</td>
+<td style="text-align: right;">0.9966</td>
+<td style="text-align: right;">0.9967</td>
+<td style="text-align: right;">0.9968</td>
+<td style="text-align: right;">0.9969</td>
+<td style="text-align: right;">0.9970</td>
+<td style="text-align: right;">0.9971</td>
+<td style="text-align: right;">0.9972</td>
+<td style="text-align: right;">0.9973</td>
+<td style="text-align: right;">0.9974</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2.8</td>
+<td style="text-align: right;">0.9974</td>
+<td style="text-align: right;">0.9975</td>
+<td style="text-align: right;">0.9976</td>
+<td style="text-align: right;">0.9977</td>
+<td style="text-align: right;">0.9977</td>
+<td style="text-align: right;">0.9978</td>
+<td style="text-align: right;">0.9979</td>
+<td style="text-align: right;">0.9979</td>
+<td style="text-align: right;">0.9980</td>
+<td style="text-align: right;">0.9981</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2.9</td>
+<td style="text-align: right;">0.9981</td>
+<td style="text-align: right;">0.9982</td>
+<td style="text-align: right;">0.9982</td>
+<td style="text-align: right;">0.9983</td>
+<td style="text-align: right;">0.9984</td>
+<td style="text-align: right;">0.9984</td>
+<td style="text-align: right;">0.9985</td>
+<td style="text-align: right;">0.9985</td>
+<td style="text-align: right;">0.9986</td>
+<td style="text-align: right;">0.9986</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9987</td>
+<td style="text-align: right;">0.9988</td>
+<td style="text-align: right;">0.9988</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9989</td>
+<td style="text-align: right;">0.9990</td>
+<td style="text-align: right;">0.9990</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<!-- \footnotesize{Örnek: $Z$'nin 1.54'den küçük olma olasılığını bulmak için 1.5 satırı ve 0.04 sütununun kesişimine bakabiliriz. Böylece $\Phi(1.54)=0.9382$ bulunur. } -->
+<!-- \newpage -->
+<div id="exm-sndex1" class="theorem example">
+<p><span class="theorem-title"><strong>Örnek 1.4</strong></span> IQ puanı örneğine devam edelim. <span class="math inline">\(X\sim~N(100,~15^2)\)</span> olsun. Rassal çekilen bir bireyin puanının 70 ile 115 arasında olma olasılığını Z tablosu ile bulun.</p>
+<p><strong>Çözüm</strong></p>
+<p>Standardize ederek istenen olasılığı <span class="math display">\[
+\P(70&lt; X &lt;115) = \P\left(\frac{70-100}{15}&lt;\frac{X-\mu}{\sigma}&lt;\frac{115-100}{15}\right)=
+\P\left(-2 &lt; Z &lt; 1 \right)
+\]</span> biçiminde yazabiliriz. Standart normal birikimli dağılımı kullanarak <span class="math display">\[
+\P\left(-2 &lt; Z &lt; 1 \right) = \Phi(1) - \Phi(-2)
+\]</span> yazabiliriz. Z tablosuna baktığımızda <span class="math display">\[
+\Phi(1) = 0.8413
+\]</span> ve <span class="math display">\[
+\Phi(2) = 0.9772
+\]</span> olduğunu görüyoruz. Simetri gereği <span class="math display">\[
+\Phi(-2) = 1-\Phi(2) = 1-0.9772=0.0228
+\]</span> olduğundan istenen olasılık <span class="math display">\[
+\P\left(-2 &lt; Z &lt; 1 \right) = \Phi(1) - \Phi(-2) = 0.8413-0.0228=0.8185
+\]</span> olur. <a href="#fig-sndinterval1" class="quarto-xref">Şekil&nbsp;<span>1.12</span></a> bu aralık olasılığın hem orijinal normal dağılım hem de standart normal dağılım üzerinde göstermektedir.</p>
+<div id="fig-sndinterval1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sndinterval1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sndinterval1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sndinterval1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sndinterval1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-sndinterval1-1.png" class="img-fluid figure-img" data-ref-parent="fig-sndinterval1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sndinterval1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Orijinal dağılım
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sndinterval1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sndinterval1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sndinterval1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-sndinterval1-2.png" class="img-fluid figure-img" data-ref-parent="fig-sndinterval1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sndinterval1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Standart normal dağılım
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sndinterval1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.12: Standart normal aralık olasılıkları
+</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="çözümlü-alıştırmalar" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="çözümlü-alıştırmalar"><span class="header-section-number">1.7</span> Çözümlü Alıştırmalar</h2>
+<div id="exr-normal-ex1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.1</strong></span> Standart normal dağılım tablosunu kullanarak aşağıdaki olasılıkları hesaplayınız ve yoğunluk fonksiyonu üzerinde gösteriniz:</p>
+<ol type="a">
+<li><span class="math inline">\(\P(Z&lt;-0.86)\)</span></li>
+<li><span class="math inline">\(\P(Z&gt;1.24)\)</span></li>
+<li><span class="math inline">\(\P(-0.86&lt;Z&lt;1.24)\)</span></li>
+<li><span class="math inline">\(\P(|Z|&gt;1)\)</span></li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> <span class="math inline">\(\Phi(z)\equiv F_Z(z)=\P(Z\leq z)\)</span> standart normal birikimli dağılım fonksiyonu olmak üzere istenen olasılık:</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(Z&lt;-0.86) &amp;=&amp;  \Phi(-0.86)  \\
+           &amp;=&amp;  1-\Phi(0.86) \\
+           &amp;=&amp; 1-0.8051\\
+           &amp;=&amp; 0.1949
+\end{array}
+\]</span> olarak bulunur (bkz. <a href="#fig-normalex1-1" class="quarto-xref">Şekil&nbsp;<span>1.13 (a)</span></a>)</p>
+<p><strong>b)</strong> (bkz. <a href="#fig-normalex1-2" class="quarto-xref">Şekil&nbsp;<span>1.13 (b)</span></a>)</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(Z&gt;1.24) &amp;=&amp; 1-\P(Z\leq 1.24)    \\
+           &amp;=&amp;  1-\Phi(1.24)   \\
+           &amp;=&amp; 1-0.8925 \\
+           &amp;=&amp; 0.1075
+\end{array}
+\]</span></p>
+<p><strong>c)</strong> (bkz. <a href="#fig-normalex1-3" class="quarto-xref">Şekil&nbsp;<span>1.13 (c)</span></a>)</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(-0.86&lt;Z&lt;1.24)  &amp;=&amp;  F_Z(1.24)-F_Z(-0.86)    \\
+           &amp;=&amp; F_Z(1.24)-[1-F_Z(0.86)]     \\
+           &amp;=&amp; 0.8925-(1-0.8051) \\
+           &amp;=&amp;  0.6976
+\end{array}
+\]</span></p>
+<p><strong>d)</strong> (bkz. <a href="#fig-normalex1-4" class="quarto-xref">Şekil&nbsp;<span>1.13 (d)</span></a>)</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(|Z|&gt;1)  &amp;=&amp;  \P(Z&lt;-1)+\P(Z&gt;1)     \\
+           &amp;=&amp; [1-F_Z(1)]+[1-F_Z(1)]      \\
+           &amp;=&amp; 2\times (1-0.8413)  \\
+           &amp;=&amp; 0.3174  
+\end{array}
+\]</span></p>
+<div id="fig-normalex1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalex1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalex1-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex1-1.png" class="img-fluid figure-img" data-ref-parent="fig-normalex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalex1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) <span class="math inline">\(\P(Z&lt;-0.86)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalex1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalex1-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex1-2.png" class="img-fluid figure-img" data-ref-parent="fig-normalex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalex1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) <span class="math inline">\(\P(Z&gt;1.24)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalex1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalex1-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalex1-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex1-3.png" class="img-fluid figure-img" data-ref-parent="fig-normalex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalex1-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) <span class="math inline">\(\P(-0.86&lt;Z&lt;1.24)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normalex1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-normalex1-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normalex1-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex1-4.png" class="img-fluid figure-img" data-ref-parent="fig-normalex1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normalex1-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) <span class="math inline">\(\P(|Z|&gt;1)\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalex1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.13: Çözümlü alıştırma 1
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="exr-normal-ex2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.2</strong></span> <span class="math inline">\(Z\)</span> standart normal dağılıma uyan bir rassal değişken olsun: <span class="math inline">\(Z\sim~N(0,~1)\)</span>. Aşağıda verilen eşitlikleri sağlayan <span class="math inline">\(k\)</span> değerlerini bulunuz:</p>
+<ol type="a">
+<li><span class="math inline">\(\P(Z\leq k)=0.85\)</span></li>
+<li><span class="math inline">\(\P(Z&gt;k)=0.25\)</span></li>
+<li><span class="math inline">\(\P(|Z|&lt;k)=0.90\)</span></li>
+<li><span class="math inline">\(\P(-1&lt;Z&lt;k) = 0.60\)</span></li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> <span class="math inline">\(\P(Z\leq k)=0.85\)</span> eşitliğini sağlayan <span class="math inline">\(k\)</span> değerini Z tablosunu kullanarak ya da <code>R</code> ile bulabiliriz (bkz. <a href="#fig-normalex2a" class="quarto-xref">Şekil&nbsp;<span>1.14</span></a>). Tablodan bu hedef olasılık 0.85’e en yakın iki değer olduğunu, yani <span class="math inline">\(k\)</span> sayısının <span class="math inline">\(1.03\)</span> ile <span class="math inline">\(1.04\)</span> arasında olduğunu görebiliriz: <span class="math display">\[
+\P(Z\leq 1.03)=0.8485
+\]</span> <span class="math display">\[
+\P(Z\leq 1.04)=0.8508
+\]</span> Basit bir yaklaşım bu iki sayının ortalamasına dayanır. Böylece <span class="math inline">\(k=(1.03+1.04)/2=1.035\)</span> diyebiliriz. Başka bir alternatif doğrusal interpolasyon yapmaktır.</p>
+<p>Olasılık <span class="math inline">\(0.85\)</span> bu iki değerin arasında olduğuna göre istenen <span class="math inline">\(k\)</span> değerini aşağıdaki gibi bulabiliriz: <span class="math display">\[
+k=1.03 + \frac{(0.85-0.8485)}{(0.8513-0.8485)}\cdot(1.04-1.03)
+\]</span> Burada basit bir interpolasyon yapıyoruz. Üst sınır ile alt sınır arasındaki farkın belirli bir oranını alt sınıra ekliyoruz. Önce hedef olasılık (0.85) ile alt sınırı aşmama olasılığı arasındaki farkı hesaplıyoruz: <span class="math display">\[
+0.85-0.8485 = 0.0015
+\]</span> Daha sonra iki olasılık arasındaki farkı (payda) hesaplıyoruz: <span class="math display">\[
+0.8513-0.8485=0.0028
+\]</span> Bu iki değerin oranı hedef olasılığın aralıktaki yerini yaklaşık olarak gösterir: <span class="math display">\[
+\frac{0.0015}{0.0028}\approx 0.5357
+\]</span> Son olarak alt sınır değerini güncelliyoruz: <span class="math display">\[
+k = 1.03+\frac{0.0015}{0.0028}\cdot (0.01)\approx 1.0354
+\]</span> <code>R</code> <code>pnorm()</code> fonksiyonu ile bu değerden daha küçük bir sayı çekme olasılığının</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.0354</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8498</code></pre>
+</div>
+</div>
+<p>yaklaşık olarak 0.85 olduğunu görebiliriz.</p>
+<p>Normal dağılım kantil fonksiyonu ile doğrudan da bulabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.85</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.036</code></pre>
+</div>
+</div>
+<p>Gerçekten de <span class="math inline">\(Z\)</span>’nin <span class="math inline">\(1.036433\)</span> değerinden daha küçük olma olasılığı tam olarak 0.85’tir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(k)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.85</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalex2a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalex2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex2a-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalex2a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.14: Çözümlü alıştırma 2(a): <span class="math inline">\(\P(Z\leq k)=0.85\)</span> olmasını sağlayan <span class="math inline">\(k\)</span> değeri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>b)</strong> <span class="math inline">\(\P(Z&gt;k)=0.25\)</span> olan <span class="math inline">\(k\)</span> değerini bulalım. <span class="math inline">\(Z\)</span> tablosu her zaman belirli bir değeri aşmama olasılıklarını verdiğine göre <span class="math display">\[
+\P(Z&gt;k)=1-\P(Z\leq k)=1-\Phi(k)=0.25
+\]</span> ve <span class="math display">\[
+\P(Z\leq k)=\Phi(k)=0.75
+\]</span> olmasını sağlayan <span class="math inline">\(k\)</span> değerini bulacağız (bkz. <a href="#fig-normalex2b" class="quarto-xref">Şekil&nbsp;<span>1.15</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalex2b" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalex2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex2b-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalex2b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.15: Çözümlü alıştırma 2(b): <span class="math inline">\(\P(Z &gt; k)=0.25\)</span> olmasını sağlayan <span class="math inline">\(k\)</span> değeri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(Z\)</span> tablosundan 0.75 olasılığının 0.7486 ile 0.7517 arasında olduğunu görüyoruz. Bunlara karşılık gelen değerler 0.67 ile 0.68’dir. Öyleyse yaklaşık olarak <span class="math inline">\(k=0.675\)</span> diyebiliriz.</p>
+<p><strong>c)</strong> <span class="math inline">\(\P(|Z|&lt;k)=0.90\)</span> eşitliğini sağlayan <span class="math inline">\(k\)</span>’yi bulmamız isteniyor (bkz. <a href="#fig-normalex2c" class="quarto-xref">Şekil&nbsp;<span>1.16</span></a>). Bu aralık aşağıdaki gibi yazılabilir: <span class="math display">\[
+\P(-k&lt;Z&lt;k)=\Phi(k)-\Phi(-k)=0.90
+\]</span> Simetri gereği <span class="math display">\[
+\Phi(k)-[1-\Phi(k)]=0.90
+\]</span> ve böylece <span class="math display">\[
+2\Phi(k) = 0.1
+\]</span> <span class="math display">\[
+\Phi(k) = \P(Z&lt;k)= 0.05
+\]</span> yazabiliriz. Yani <span class="math inline">\(Z\)</span>’nin hangi sayıdan küçük olma olasılığının <span class="math inline">\(0.05\)</span> olduğunu bulacağız. Z tablosu standart normal dağılımın pozitif değerlerini gösteriyordu. Simetri özelliğinden hareketle negatif değerleri bulabiliyoruz. Yani <span class="math inline">\(\P(Z&lt;-k)= 0.05\)</span> eşitliğin sağlayan negatif değer aşağıdaki eşitliği sağlayan pozitif değer ile aynıdır: <span class="math display">\[
+1-\P(Z&lt;k)=1-0.95 = 0.05=\P(Z&gt;k)
+\]</span> Tablodan 0.95’in 0.9495 ile 0.9505 arasında olduğunu görüyoruz. Öyleyse bunu sağlayan değer 1.64 ile 1.65 arasındadır. Ortalamasını alırsak <span class="math display">\[
+\P(Z&lt;1.645) = 0.95
+\]</span> yazabiliriz. Bu aynı zamanda simetri özelliğinden dolayı <span class="math display">\[
+\P(Z&lt;-1.645) = 1-0.95=0.05
+\]</span> olduğu anlamına gelir. Sonuç olarak</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(|Z|&lt;1.645)  &amp;=&amp;  \P(-1.645&lt;Z&lt;1.645)       \\
+           &amp;=&amp;   \Phi(1.645)-\Phi(-1.645)     \\
+           &amp;=&amp;   \Phi(1.645)-[1-\Phi(1.645)]   \\
+           &amp;=&amp;   0.95 - (1-0.95) \\
+           &amp;=&amp; 0.90
+\end{array}
+\]</span> bulunur.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalex2c" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalex2c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex2c-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalex2c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.16: Çözümlü alıştırma 2(c): <span class="math inline">\(\P(|Z| &lt; k) = 0.90\)</span> olmasını sağlayan <span class="math inline">\(k\)</span> değeri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><code>R</code> ile <span class="math inline">\(k\)</span>’yi bulmak için <code>qnorm()</code> fonksiyonunu kullanabiliriz:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.645</code></pre>
+</div>
+</div>
+<p><code>qnorm(0.95)</code> komutu standart normal dağılımın %95 yüzdeliğini verir: hangi sayıdan daha küçük olma olasılığı %95’dir ya da hangi sayıdan büyük olma olasılığı %5’tir?</p>
+<p><strong>d)</strong> <span class="math inline">\(\P(-1&lt;Z&lt;k) = 0.60\)</span> eşitliğindeki <span class="math inline">\(k\)</span> değerini bulalım (bkz. <a href="#fig-normalex2d" class="quarto-xref">Şekil&nbsp;<span>1.17</span></a>). Standart normal dağılımda <span class="math inline">\(-1\)</span> ile <span class="math inline">\(k\)</span> arasındaki alanın <span class="math inline">\(0.6\)</span> olmasını istiyoruz: <span class="math display">\[
+\P(-1&lt;Z&lt;k) = \Phi(k)-\Phi(-1) =  0.60
+\]</span> <span class="math inline">\(\Phi(-1)=1-\Phi(1)=1-0.8413=0.1587\)</span> olduğuna göre <span class="math display">\[
+\Phi(k)-0.1587 =  0.60
+\]</span> <span class="math display">\[
+\Phi(k) =  0.7587
+\]</span> olan <span class="math inline">\(k\)</span> sayısını bulacağız. Z tablosundan bunun yaklaşık 0.7 olduğunu görüyoruz: <span class="math display">\[
+\P(Z&lt;0.70)\approx 0.758
+\]</span> Sonuç olarak <span class="math display">\[
+\P(-1&lt;Z&lt;0.70) = \Phi(0.70)-[1-\Phi(1)] = 0.758-0.158= 0.60
+\]</span> bulunur.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-normalex2d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normalex2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Normal_files/figure-html/fig-normalex2d-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normalex2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1.17: Çözümlü alıştırma 2(d): <span class="math inline">\(\P(-1 &lt; Z &lt; k) = 0.60\)</span> olmasını sağlayan <span class="math inline">\(k\)</span> değeri
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-normal-ex3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.3</strong></span> <span class="math inline">\(X\)</span> ortalaması <span class="math inline">\(\mu=10\)</span> ve standart sapması <span class="math inline">\(\sigma=3\)</span> olan bir normal dağılıma uymaktadır. Buna göre</p>
+<ol type="a">
+<li><span class="math inline">\(X\)</span>’in 13’den büyük olma olasılığı kaçtır?</li>
+<li><span class="math inline">\(X\)</span>’in 8’den büyük ve 15’den küçük olma olasılığı kaçtır?</li>
+<li><span class="math inline">\(X\)</span>’in hangi sayıdan küçük olma olasılığı <span class="math inline">\(0.60\)</span>’dır?</li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> <span class="math inline">\(X\)</span>’in 13’den büyük olma olasılığı kaçtır?</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(X&gt;13)  &amp;=&amp; \P\left(\frac{X-\mu}{\sigma}&gt; \frac{13-10}{3}\right)       \\
+           &amp;=&amp;  \P\left(Z&gt; \frac{13-10}{3}\right)       \\
+           &amp;=&amp;  \P(Z&gt;1) =1-\P(Z\leq 1)  \\
+           &amp;=&amp;  1-\Phi(1) = 0.8413 \\
+           &amp;=&amp;  0.1587
+\end{array}
+\]</span> <strong>b)</strong> <span class="math inline">\(X\)</span>’in 8’den büyük ve 15’den küçük olma olasılığı kaçtır? <span class="math display">\[
+\begin{array}{lll}
+\P(8&lt;X&lt;15)  &amp;=&amp; \P\left( \frac{8-10}{3}&lt;\frac{X-\mu}{\sigma}&lt; \frac{15-10}{3}\right)       \\
+           &amp;=&amp; \P(-0.67&lt;Z&lt;1.67)       \\
+           &amp;=&amp; \Phi(1.67)-\Phi(-0.67)  \\
+           &amp;=&amp; 0.9525-(1-0.7486)\\
+           &amp;=&amp;  0.7011
+\end{array}
+\]</span></p>
+<p><strong>c)</strong> <span class="math inline">\(X\)</span>’in hangi sayıdan küçük olma olasılığı <span class="math inline">\(0.60\)</span>’dır?</p>
+<p>Bu sayıya <span class="math inline">\(a\)</span> diyelim: <span class="math display">\[
+\P(X&lt;a)=\P\left( \frac{X-\mu}{\sigma}&lt; \frac{a-10}{3}\right) =0.60
+\]</span> olmasını sağlayan <span class="math inline">\(a\)</span> değerini bulacağız. <span class="math inline">\(Z\)</span> tablosunda <span class="math inline">\(0.255\)</span>’den daha küçük bir sayı çekme olasılığının <span class="math inline">\(0.60\)</span> olduğunu görüyoruz: <span class="math display">\[
+\P(Z&lt;0.255)=0.6
+\]</span> Buradan <span class="math display">\[
+\frac{a-10}{3} = 0.255 ~~\Rightarrow~ a=10.765
+\]</span> bulunur.</p>
+</div>
+<div id="exr-normal-ex4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.4</strong></span> Bir dönercide aylık talebin ortalaması 800 kg ve standart sapması 100 kg olan bir normal dağılıma uyduğu bilinmektedir. Buna göre</p>
+<ol type="a">
+<li>Aylık talebin 600 kg’dan fazla olma olasılığı kaçtır?</li>
+<li>Aylık talebin 700 ile 900 arasında olma olasılığı kaçtır?</li>
+<li>Talebin hangi sayıdan büyük olma olasılığı 0.25’dir?</li>
+</ol>
+<p><strong>Çözüm</strong>:</p>
+<p><strong>a)</strong> Aylık talebin 600 kg’dan fazla olma olasılığı kaçtır?</p>
+<p><span class="math display">\[
+\begin{array}{lll}
+\P(X&gt;600)  &amp;=&amp; \P\left(\frac{X-\mu}{\sigma}&gt; \frac{600-800}{100}\right)       \\
+           &amp;=&amp;  \P\left(Z&gt; -2\right)       \\
+           &amp;=&amp;  1-\P(Z&lt; -2) = 1-[1-\P(Z&lt;2)]  \\
+           &amp;=&amp;  \Phi(2) \\
+           &amp;=&amp;  0.9772
+\end{array}
+\]</span> Aylık talebin 600 kg’dan fazla olma olasılığı yaklaşık olarak %98’tir.</p>
+<p><strong>b)</strong> Aylık talebin 700 ile 900 arasında olma olasılığı kaçtır? <span class="math display">\[
+\begin{array}{lll}
+\P(700&lt;X&lt;900)  &amp;=&amp; \P\left( \frac{700-800}{100}&lt;\frac{X-\mu}{\sigma}&lt; \frac{900-800}{100}\right)       \\
+           &amp;=&amp; \P(-1&lt;Z&lt;1)       \\
+           &amp;=&amp; \Phi(1)-\Phi(-1)  \\
+           &amp;=&amp; 0.8413-(1-0.8413)\\
+           &amp;=&amp;  0.6826
+\end{array}
+\]</span></p>
+<p><strong>c)</strong> Talebin hangi sayıdan büyük olma olasılığı 0.25’dir?</p>
+<p>Bu sayıya a diyelim: <span class="math display">\[
+\P(X&gt;a)=\P\left( \frac{X-\mu}{\sigma}&gt; \frac{a-800}{100}\right) =0.25
+\]</span> eşitliğini sağlayan <span class="math inline">\(a\)</span> sayısını bulmak istiyoruz. <span class="math inline">\(Z\)</span> tablosundan yaklaşık olarak <span class="math display">\[
+\P(Z&lt;0.67)=0.75~\Rightarrow~\P(Z&gt;0.67)=1-0.75=0.25
+\]</span> olduğu görülebilir. Öyleyse <span class="math display">\[
+\frac{a-800}{100} = 0.67 ~~\Rightarrow~ a=867
+\]</span> bulunur: <span class="math display">\[
+\P(X&gt;867) = 0.25
+\]</span></p>
+</div>
+<div id="exr-normal-ex5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.5</strong></span> Çok sayıda öğrencinin kayıtlı olduğu bir İstatistik dersinde öğrencilerin notları ortalaması 62 standart sapması 11 olan bir normal dağılıma uymaktadır.</p>
+<ol type="a">
+<li>Bir öğrencinin notunun 40 ile 84 arasında olma olasılığı kaçtır?</li>
+<li>Öğrencilerin %10’una AA verilecektir. Notu kaçın üzerinde olanlar AA alır?</li>
+<li>Hangi notun altında kalanlar en kötü %10 performansa sahiptir?</li>
+</ol>
+<p><strong>a)</strong> Bir öğrencinin notunun 50 ile 75 arasında olma olasılığı kaçtır?</p>
+<p><span class="math inline">\(X\)</span> not olsun. <span class="math inline">\(\mu=62\)</span> ve <span class="math inline">\(\sigma=11\)</span> verilmiş. Buna göre istenen olasılık <span class="math display">\[
+\begin{array}{lll}
+\P(40&lt;X&lt;84)  &amp;=&amp; \P\left( \frac{40-62}{11}&lt;\frac{X-\mu}{\sigma}&lt; \frac{84-62}{11}\right)       \\
+           &amp;=&amp; \P(-2&lt;Z&lt;2)       \\
+           &amp;=&amp; \Phi(2)-\Phi(-2)  \\
+           &amp;=&amp; 0.9772-(1-0.9772)\\
+           &amp;=&amp;  0.9544
+\end{array}
+\]</span> Öğrencilerin %95.4’ünün notları 40 ile 84, yani iki standart sapma içindedir.</p>
+<p><strong>b)</strong> Öğrencilerin %10’una AA verilecektir. Notu kaçın üzerinde olanlar AA alır?</p>
+<p>En yüksek not alan %10’luk dilime AA verileceğine göre <span class="math display">\[
+\P(X&gt;a) =\P\left( \frac{X-\mu}{\sigma}&gt; \frac{a-62}{11}\right) = 0.10
+\]</span> ya da <span class="math display">\[
+\P\left( Z &lt;\frac{a-62}{11}\right) = 0.90
+\]</span> olmasını sağlayan <span class="math inline">\(a\)</span> sayısını bulmamız gerekir. Standart normal tablosundan <span class="math display">\[
+\P(Z&lt;1.285) = 0.90
+\]</span> olduğunu biliyoruz. öyleyse <span class="math display">\[
+\frac{a-62}{11} = 1.285~\Rightarrow~ 76.135
+\]</span> bulunur.</p>
+<p><strong>c)</strong> Hangi notun altında kalanlar en kötü %10 performansa sahiptir?</p>
+<p><span class="math display">\[
+\P(X&lt;a)=\P\left( Z &lt;\frac{a-62}{11}\right) =0.10
+\]</span> olmasını sağlayan <span class="math inline">\(a\)</span> sayısını bulacağız. <span class="math inline">\(Z\)</span> tablosundan <span class="math display">\[
+\P(Z&lt;-1.285) = 0.10
+\]</span> olduğunu görebiliriz. Buradan <span class="math display">\[
+\frac{a-62}{11} = -1.285~\Rightarrow~ 47.865
+\]</span> bulunur. Öğrencilerin %10’u yaklaşık 48’den düşük not almıştır.</p>
+<p>Benzer şekilde diğer notlar da bulunabilir. <span class="math inline">\(Z\)</span> tablosundan ilgili olasılığı karşılık gelen <span class="math inline">\(z\)</span> değerleri bulunur ve <span class="math display">\[
+x=\mu+z\sigma
+\]</span> buna karşılık gelen <span class="math inline">\(x\)</span> değeri bulunur. Alıştırma olarak diğer harf notlarını kendiniz bulabilirsiniz.</p>
+</div>
+<div id="exr-normal-ex6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Alıştırma 1.6 (Binom dağılımının Normal yakınsaması)</strong></span> Hilesiz bir madeni para 100 kez atılıyor. Tura sayısının <span class="math inline">\(40\)</span> ile <span class="math inline">\(60\)</span> arasında olma olasılığı kaçtır?</p>
+<p>Burada <span class="math inline">\(X\)</span>, tura sayısı, <span class="math inline">\(Binom(n=100,p=0.5\)</span> dağılımına uyar. İstenen olasılık <span class="math display">\[
+\P(40\leq X\leq 60) = \P(X=40)+\P(X=41)+\ldots + \P(X=60)
+\]</span> <span class="math inline">\(X\)</span> kesikli olduğu için her bir olasılığı Binom formülüyle bulabiliriz: <span class="math display">\[
+\P(X=x)= \frac{100!}{x!(100-x)!} 0.5^x\cdot 0.5^{100-x}  
+\]</span> Bu ifadeyi her <span class="math inline">\(x\)</span> için hesaplamak mümkün olsa da, pratikte bu yaklaşım oldukça zahmetlidir. Başka bir yol binom dağılımının normal yakınsamasını kullanmaktır.</p>
+<p><span class="math inline">\(X\)</span> <span class="math inline">\(n\)</span> denemede başarı sayısı ve <span class="math inline">\(p\)</span> başarı olasılığı olsun. Önceki bölümde <span class="math inline">\(X\)</span>’in <span class="math inline">\(Binom(n,p\)</span> dağılımına uyduğunu öğrenmiştik. Binom dağılımının ortalaması ve varyansının <span class="math display">\[
+\E(X) = np,\quad \Var(X)=np(1-p)
+\]</span> olduğunu biliyoruz. Eğer <span class="math inline">\(n\)</span> yeterince büyükse Binom olasılıklarını hesaplamakta Normal dağılımı kullanabiliriz. <span class="math inline">\(X\)</span>’i standardize edersek <span class="math display">\[
+Z=\frac{X-\E(X)}{\sqrt{\Var(X)}}=\frac{X-np}{\sqrt{np(1-p)}}\sim~N(0,1)
+\]</span> bu rassal değişken yaklaşık olarak standart normal dağılıma uyar. Bu yaklaştırımın geçerli olabilmesi için genellikle <span class="math display">\[
+np(1-p)&gt;5
+\]</span> şartının sağlanması gerekir.</p>
+<p>Örneğimize geri dönelim. Binom dağılımının ortalaması ve varyansı şu şekilde hesaplanır:<br>
+<span class="math display">\[
+\E(X) = np = 100 \cdot 0.5 = 50, \quad \Var(X) = np(1-p) = 100 \cdot 0.5 \cdot 0.5 = 25
+\]</span><br>
+Standart sapma:<br>
+<span class="math display">\[
+\sigma = \sqrt{\Var(X)} = \sqrt{25} = 5
+\]</span></p>
+<p>Yaklaşık olarak <span class="math inline">\(X \sim N(50, 25)\)</span>. Ancak, Binom dağılımı kesikli bir dağılım olduğu için, sürekli bir dağılım olan Normal dağılıma geçiş yaparken <strong>süreklilik düzeltmesi</strong> uygulanmalıdır.</p>
+<p>Süreklilik düzeltmesi, bir kesikli dağılımın olasılığını sürekli bir dağılıma uyarlamak için aralığın uç noktalarına <span class="math inline">\(\pm 0.5\)</span> eklenmesini ifade eder. Bu düzeltmeyle:<br>
+<span class="math display">\[
+\P(40 \leq X \leq 60) \approx \P(39.5 \leq X \leq 60.5)
+\]</span></p>
+<p>Bu düzeltme, Binom olasılığını Normal dağılımda daha doğru bir şekilde temsil etmeyi sağlar.</p>
+<p>Standardize ederek şu ifadeye ulaşılır:<br>
+<span class="math display">\[
+\P(39.5 \leq X \leq 60.5) = \P\left(\frac{39.5 - 50}{5} \leq Z \leq \frac{60.5 - 50}{5}\right)
+\]</span><br>
+<span class="math display">\[
+\P(39.5 \leq X \leq 60.5) = \P(-2.1 \leq Z \leq 2.1)
+\]</span><br>
+Sonuç olarak <span class="math inline">\(Z\)</span> tablosunu kullanarak <span class="math display">\[
+\P(-2.1 \leq Z \leq 2.1) =\Phi(2.1)-[1-\Phi(2.1)]=0.9821-0.0179=0.9642
+\]</span> bulunur.</p>
+<p><code>R</code>’da Binom birikimli dağılım fonksiyonunu kullanarak tam sonuç ile karşılaştıralım:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">60</span>, <span class="dv">100</span>, <span class="fl">0.5</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">40</span>, <span class="dv">100</span>, <span class="fl">0.5</span>)</span></code><button title="Kopyalayın" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.954</code></pre>
+</div>
+</div>
+</div>
+<!-- ::: {#exr-normal-ex7} -->
+<!-- :::   -->
+<!-- ::: {#exr-normal-ex8} -->
+<!-- :::   -->
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Önsöz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Önsöz</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

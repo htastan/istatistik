@@ -59,7 +59,7 @@ Problemler-03: [pdf](docs/PPS-03.pdf)
 <br/>
 8. Sürekli Rassal Değişkenler: [pdf](docs/Sureklird.pdf) | [html](docs/sureklird/Sureklird.html)  
 <br/> 
-9. Normal Dağılım 
+9. Normal Dağılım: [pdf](docs/Normal.pdf) | [html](docs/normal/Normal.html)  
 <br/>
 Problemler-04:  
 <br/>
