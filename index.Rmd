@@ -61,9 +61,10 @@ Problemler-03: [pdf](docs/PPS-03.pdf)
 <br/> 
 9. Normal Dağılım: [pdf](docs/Normal.pdf) | [html](docs/normal/Normal.html)  
 <br/>
-Problemler-04:  
+Problemler-04: [pdf](docs/PPS-04.pdf) 
 <br/>
 <br/>
-
+<br/>
+<br/>
 
 
