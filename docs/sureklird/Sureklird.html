@@ -1623,15 +1623,45 @@ f_Y(y)=\left\{
 \]</span> daha önce bulmuştuk.</p>
 <p>Öyleyse <span class="math inline">\(Y=y\)</span> verilmişken <span class="math inline">\(X\)</span>’in koşullu yoğunluk fonksiyonu <span class="math display">\[
 f(x \mid y)=\frac{f(x,y)}{f_Y(y)} = \frac{\frac{1}{3}(x+y) }{\frac{1}{3}(y+\frac{1}{2}) }
-\]</span> olur. <span class="math inline">\(Y=1\)</span> değeri veri iken koşullu yoğunluk <span class="math display">\[
+\]</span> olur. Sadeleştirme yapalım ve tanım aralıklarını dikkate alalım: <span class="math display">\[
+f_{X\mid Y}(x\mid y)=\left\{
+       \begin{array}{ll}
+         \frac{2(x+y) }{1+2y }, &amp; 0&lt;x&lt;1~\hbox{ise;} \\
+         0, &amp; \hbox{değilse.}
+       \end{array}
+     \right.
+\]</span> <!-- $$ --> <!-- f_{X \mid Y}(x \mid y) =  --> <!-- \begin{cases}  --> <!-- \frac{2(x + y)}{1 + 2y}, & 0 < x < 1, \\ --> <!-- 0, & \text{aksi halde}. --> <!-- \end{cases} --> <!-- $$ --></p>
+<p><span class="math inline">\(f(x \mid y)\)</span>’nin koşullu olasılık yoğunluk fonksiyonu olduğunu gösterebiliriz. Bunun için ilk olarak pozitiflik şartının sağlanması gerekir:</p>
+<ul>
+<li><span class="math inline">\(0 &lt; x &lt; 1\)</span> ve <span class="math inline">\(0 &lt; y &lt; 2\)</span> olduğunda, hem <span class="math inline">\(x + y &gt; 0\)</span> hem de <span class="math inline">\(1 + 2y &gt; 0\)</span> olduğundan <span class="math inline">\(f(x \mid y) \geq 0\)</span>.</li>
+<li><span class="math inline">\(x \not\in (0, 1)\)</span> durumunda <span class="math inline">\(f(x \mid y) = 0\)</span>.</li>
+</ul>
+<p>Öyleyse <span class="math inline">\(f(x \mid y) \geq 0\)</span> her zaman sağlanır.</p>
+<p>İkinci olarak <span class="math inline">\(0&lt;y&lt;2\)</span> aralığındaki her hangi bir <span class="math inline">\(y\)</span> için <span class="math display">\[
+\int_{0}^{1} f(x \mid y) \, dx = 1
+\]</span> olmalıdır: <span class="math display">\[
+\int_{0}^{1} f(x \mid y) \, dx = \int_{0}^{1} \frac{2(x + y)}{1 + 2y} \, dx \overset{?}=1
+\]</span></p>
+<p>Bu integrali hesaplayalım: <span class="math display">\[
+\frac{1}{1 + 2y} \int_{0}^{1} 2(x + y) \, dx = \frac{1}{1 + 2y} \left[ \int_{0}^{1} 2x \, dx + \int_{0}^{1} 2y \, dx \right].
+\]</span> Bu integrali hesaplarken <span class="math inline">\(y\)</span> değişkenini verilen bir sabit olarak kabul ediyoruz. Köşeli parantez içindeki integralleri ayrı ayrı hesaplayalım: <span class="math display">\[
+\int_{0}^{1} 2x \, dx = \left[ x^2 \right]_{0}^{1} = 1^2 - 0^2 = 1
+\]</span> <span class="math display">\[
+\int_{0}^{1} 2y \, dx = 2y \int_{0}^{1} 1 \, dx = 2y [x]_{0}^{1} = 2y (1 - 0) = 2y
+\]</span></p>
+<p>Sonuç olarak <span class="math display">\[
+\int_{0}^{1} f(x \mid y) \, dx = \frac{1}{1 + 2y} \left[ 1 + 2y \right] = \frac{1 + 2y}{1 + 2y} = 1.
+\]</span> bulunur. <span class="math inline">\(f(x \mid y)\)</span> koşullu yoğunluk fonksiyonu verilmiş bir <span class="math inline">\(y\)</span> değeri için integral normalizasyon şartını da sağlamaktadır.</p>
+<p><span class="math inline">\(Y=1\)</span> değeri veri iken koşullu yoğunluk açık olarak yazılabilir: <span class="math display">\[
 f(x \mid y=1)=\frac{f(x,y=1)}{f_Y(y=1)} = \frac{\frac{1}{3}(x+1) }{\frac{1}{3}(1+\frac{1}{2}) } = \frac{2}{3}(x+1)
 \]</span></p>
 <p><span class="math inline">\(Y=1\)</span> verilmişken <span class="math inline">\(X\)</span>’in <span class="math inline">\(1/2\)</span>’den büyük olma olasılığı <span class="math inline">\(X\)</span>’in koşullu yoğunluk fonksiyonundan hareketle bulunabilir: <span class="math display">\[
-\P\left(X&gt;\frac{1}{2} \mid Y=1 \right)=\int_{0.5}^1 \frac{2}{3}(x+1)\,dx
+\P\left(X&gt;\frac{1}{2} \mid Y=1 \right)=\int_{0.5}^1 f_{X\mid Y}(x \mid y=1) dx =\int_{0.5}^1 \frac{2}{3}(x+1)\,dx
 \]</span> Böylece <span class="math display">\[
 \begin{array}{lll}
-  \P\left(X&gt;\frac{1}{2} \mid Y=1 \right) &amp;=&amp;  \frac{2}{3} \left.\left(\frac{x^2}{2}+x\right) \right|_{0.5}^1 \\
-    &amp;=&amp; 0.5
+  \P\left(X&gt;\frac{1}{2} \mid Y=1 \right) &amp;=&amp;  \frac{2}{3} \left.\left(\frac{x^2}{2}+x\right) \right|_{1/2}^1 \\
+    &amp;=&amp; \frac{2}{3}\left[\left(\frac{1}{2}+1 \right) - \left(\frac{1}{8}+\frac{1}{2} \right) \right] \\
+    &amp;=&amp; \frac{7}{12}
 \end{array}
 \]</span> bulunur.</p>
 <p>Benzer şekilde <span class="math inline">\(X=x\)</span> verilmişken <span class="math inline">\(Y\)</span>’nin koşullu yoğunluk fonksiyonu <span class="math display">\[
@@ -1640,7 +1670,8 @@ f(y \mid x)=\frac{f(x,y)}{f_X(x)} = \frac{\frac{1}{3}(x+y) }{\frac{2}{3}(x+1) }
 f(y \mid x=1/2)=\frac{f\left(x=\frac{1}{2}, y\right)}{f_X\left(x=\frac{1}{2}\right)} = \frac{\frac{1}{3}\left(\frac{1}{2}+y\right) }{\frac{2}{3}\left(\frac{1}{2}+1\right) } = \frac{1}{3}y + \frac{1}{6}
 \]</span> olur. Buradan istenen olasılık <span class="math display">\[
 \begin{array}{lll}
-  \P\left(1&lt;Y&lt;2 \mid X= \frac{1}{2} \right) &amp;=&amp; \int_{1}^2 \left( \frac{1}{3}y + \frac{1}{6} \right) \,dy \\
+  \P\left(1&lt;Y&lt;2 \mid X= \frac{1}{2} \right) &amp;=&amp; \int_{1}^2 f_{Y\mid X}\left( y \mid x=\frac{1}{2}\right)dy\\
+    &amp;=&amp; \int_{1}^2 \left( \frac{1}{3}y + \frac{1}{6} \right) \,dy \\
     &amp;=&amp; \left.\left(\frac{1}{6}y^2 + \frac{1}{6}y \right) \right|_{1}^2 \\
     &amp;=&amp; \frac{2}{3}
 \end{array}
